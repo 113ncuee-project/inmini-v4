@@ -1,0 +1,17 @@
+{
+  "source_identity": "336f979b54946ba967d3c16dcf56b9aa7fca3bb43dc6aa304b440540d3858933",
+  "code": {
+    "path": "C:\\Users\\user\\Desktop\\rapidchiplet\\output\\uploads\\INMIN_Full_Code_20261103_full_release.zip",
+    "bytes": 1994366,
+    "files": 222,
+    "sha256": "aca48809bb70dfc6acad671cc0dc16360a4e5ca06458d1762d25996eb9e6c1ee",
+    "crc_and_sha_verified": true
+  },
+  "results": {
+    "path": "C:\\Users\\user\\Desktop\\rapidchiplet\\output\\uploads\\INMIN_Full_Results_20261103_full_release.zip",
+    "bytes": 1644706,
+    "files": 134,
+    "sha256": "b24f3fb7ae8d5dc4e9befdf691b9576b727465af4d3c7daafa15fecf2a24a322",
+    "crc_and_sha_verified": true
+  }
+}

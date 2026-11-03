@@ -1,5 +1,7 @@
 # INMIN v0.4 progress — 2026-11-03
 
+> Subsequent authorized work: full v3 design domain + multi-step RL is now in `INMIN_FULL_SYSTEM_GUIDE.md` / `inmin_v05_progress.md`. The v0.4 handoff below is a completed historical cohort. The new one-off overnight study is active; recurring automation remains paused.
+
 ## FINAL HANDOFF — supersedes the chronological notes below
 
 Implementation and the authorized representative experiments are complete. No experiment is left running; recurring automation remains paused. Do not restart historical formal workflows. The source/evidence ZIP inventory and CRC/SHA256 results are recorded in `output/uploads/INMIN_v04_20261103_package.json`.

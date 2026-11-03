@@ -1,4 +1,14 @@
-# INMIN v0.4 下載包
+# INMIN 完整系統下載包
+
+最新完整引擎（Full v0.5，2026-11-03）：
+
+- [程式 ZIP](INMIN_Full_Code_20261103_full_release.zip)：完整 v3 設計變數＋多步 Double Q／Replay／target network；含新GUI與夜間入口。
+- [測試與數值證據 ZIP](INMIN_Full_Results_20261103_full_release.zip)：154項回歸、50個Toy布局實際PPA、三方法續跑與計帳、GUI實際8次PPA。
+- [SHA256清單](INMIN_Full_20261103_full_release_package.json)。
+
+先讀 [完整系統指南](../docs/INMIN_FULL_SYSTEM_GUIDE.md) 與 [驗證及夜間研究協定](../docs/INMIN_FULL_SYSTEM_VALIDATION.md)。此次打包時正式ResNet18多RNG對照尚在執行，不能把工程Toy結果當成DNN論文收益；後續實際結果由協定所列本機報告提供。
+
+以下是歷史 v0.4 固定硬體基線：
 
 - `INMIN_v04_Code_20261103.zip`：可攜的 v0.4 程式快照。
 - `INMIN_v04_Results_20261103.zip`：文字、JSON 與 CSV 的數值結果摘要。

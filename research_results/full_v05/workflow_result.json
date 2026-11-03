@@ -1,0 +1,15 @@
+{
+  "passed": true,
+  "elapsed_s": 186.61342979990877,
+  "checks": [
+    "3 methods exact-query CLI",
+    "same trajectory after cooperative stop/resume",
+    "same Q update count",
+    "no duplicate durable PPA",
+    "completed resume no new PPA",
+    "physical/reward/source audits",
+    "strict infeasible archive",
+    "50 actual architecture PPA",
+    "identical shared-screen charges for all 3 methods"
+  ]
+}

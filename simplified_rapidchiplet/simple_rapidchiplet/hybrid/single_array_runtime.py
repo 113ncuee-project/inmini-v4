@@ -107,6 +107,7 @@ class SingleArrayOraclePool(BoundedOraclePool):
 
 
 def worker(folder):
+    from collections import OrderedDict
     from .search import plan_from_dict
     from .single_array_evaluator import SingleArrayEvaluator
     from .single_array_hardware import ExperimentalAssumptions, SingleArrayHardware, SingleArrayHardwareV3, PROFILE_V3
@@ -114,7 +115,10 @@ def worker(folder):
     with (folder / 'workload.pkl').open('rb') as stream:
         workload = pickle.load(stream)
     atomic_json(folder / 'worker_started.json', {'worker_pid': os.getpid(), 'parent_pid': os.getppid()})
-    evaluators, last = {}, None
+    # Whole-architecture geometry caches are useful locally but retaining 50
+    # complete evaluators can exhaust a desktop during the full layout screen.
+    # Eviction changes recomputation time only, never a physical result.
+    evaluators, last = OrderedDict(), None
     for line in sys.stdin.buffer:
         req, started = json.loads(line), time.monotonic()
         cpu_started = time.process_time()
@@ -131,6 +135,9 @@ def worker(folder):
                     data['assumptions'] = ExperimentalAssumptions(**a)
                     hardware_class = SingleArrayHardwareV3 if req.get('hardware_profile') == PROFILE_V3 else SingleArrayHardware
                     evaluators[key] = SingleArrayEvaluator(workload, hardware_class(**data))
+                    while len(evaluators) > 3:
+                        evaluators.popitem(last=False)
+                evaluators.move_to_end(key)
                 oracle = evaluators[key]
                 mapping_hash = hashlib.sha256(json.dumps(req['mapping'], sort_keys=True).encode()).hexdigest()
                 oracle.compile_hook = lambda evidence: atomic_json(folder / 'compile_evidence.json',

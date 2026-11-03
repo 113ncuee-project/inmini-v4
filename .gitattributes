@@ -1,0 +1,7 @@
+# Native calendar filenames are keyed by the exact C++ source SHA256.
+# Preserve its line endings when cloning on Windows.
+*.cpp text eol=lf
+*.h text eol=lf
+*.dll binary
+*.so binary
+*.zip binary
