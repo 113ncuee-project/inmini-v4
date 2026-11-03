@@ -6,11 +6,15 @@
 
 - Live／night APP來源identity：`336f979b54946ba967d3c16dcf56b9aa7fca3bb43dc6aa304b440540d3858933`。**夜間佇列期間不要改APP或wrapper**，避免第二RNG的cohort檢查拒絕。可以更新根目錄docs與打包；不可改frozen source。
 - 主PowerShell launcher PID32956（2026-11-03 22:45:28啟動）；`night_edp` 已進架構篩選，RNG7→17，RL／SA／Random，各256full上限／2400s，EDP，oracle180s，共同screen1800s。日誌：`output/inmin_v05_20261103/night_launcher.out.log`和`.err.log`。不要重複啟動同一工作。
-- 後置一次性工作PID33416（22:56:15）正在等主launcher結束；腳本 `tmp/inmin_v05/crosscheck_and_package_after_night.ps1`。原僅等待的29296已按啟動時間核對後替換，主實驗未停。之後R50／Mobile各最多12full固定2×1相容性檢查，再自動輸出 `INMIN_Full_20261104_morning_package.json`與`OVERNIGHT_COMPLETE.json`；完成標記會核對六個主研究方法與審計，有失敗則明記completed_with_failures。它不恢復每小時automation。
+- 後置一次性工作PID17176（23:15:28）正在等主launcher結束；腳本 `tmp/inmin_v05/crosscheck_and_package_after_night.ps1`。舊等待helper依啟動時間核對後替換，主實驗未停。接著固定原2×1硬體做R18 mapping+Fusion三方法歸因對照（各128full上限／1200s），再R50／Mobile各最多12full固定2×1相容性檢查，最後自動輸出 `INMIN_Full_20261104_morning_package.json`與`OVERNIGHT_COMPLETE.json`；完成標記核對六個主研究方法、固定對照與審計，失敗會明記completed_with_failures。它不恢復每小時automation。
 - 主要新入口 `full_system_dse.py`＋`full_system_gui.py`；MultiStepQ gamma=.9、target network／replay／148維含目標DAG位置，真實cost delta reward。完整v3變數在同一流程，Batch/Microbatch仍按v3物理契約=1。
 - `acceptance_shipping`154/0/0/source-stable；`workflow_shipping`186.613s passed（含50實際布局與共同計費）；GUI `output/full_system_gui/20261103_224040_1ec992` 8full、審計0/0。GUI與交付及night四個核心源碼hash相同。
 - Balanced開發probe `r18_joint_128`已在共同screen階段合作停止（return130）；它不是完成的研究，不要resume。其negative tradeoff與durable PPA保留。
-- GitHub目前準備中的隔離checkout：`tmp/github_inmini_v3_v04`，branch `codex/full-system-v05`，目標remote `inmini-v4`，遠端main原84dac0b。新版尚需封裝最終docs／測試證據再推送；不可改原workspace舊origin0917或破壞dirty worktree。
+- 完整程式及QA證據已推送GitHub `113ncuee-project/inmini-v4` main，commit `5668fd21e655c72d38c73060a5eb8af61a2a0f8d`。隔離checkout `tmp/github_inmini_v3_v04`、branch `codex/full-system-v05`；不可改原workspace舊origin0917或破壞dirty worktree。Code／QA ZIP位於output/uploads，tag20261103_full_release，CRC／逐檔SHA通過。
+
+23:20補充：RNG7的ResNet18共享50布局已全部完成且可行，shared最佳為c8_2x4，EDP改善73.7159%但面積／平均Power增加。事後從同一已測archive篩選同時不超過原Latency/Energy/Area/Power，可得c3_1x3：Latency−34.8756%、Energy−34.8872%、Area−28.6877%、Power相近；這是前置共享收益，不是RL。公開數值匯出位於隔離repo `research_results/full_v05/R18_SHARED_SCREEN.md`、CSV、JSON。RL已做超過50次新搜尋full PPA，主要以A10把15個Temporal Groups改成9個，實際DRAM／NoP流量下降，EDP在shared之後再改善超過10%；控制方法尚未完成，暫不宣稱勝出。
+
+待夜間所有cohort與後置工作完成後再考慮小型UI修飾：GUI summary目前顯示penalized search elite，硬限制無解時應在畫面明確標strict_feasible=false；JSON推薦已正確state=null，測試已通過。另自訂帶Fusion的seed搭配--fusion-off應拒絕或明確處理；本輪隨附seed均Fusion Off，不受影響。不要在第二RNG開始前改APP造成source guard中斷。
 
 下一步：監看night正常／錯誤、整理可公開程式與QA ZIP並推送inmini-v4；在實際完成後分析同預算RL／SA／Random、保存負面結果和來源。主要研究與後置包若失敗，先讀stderr／status／原frozen snapshot；正常工作時不要再起重複實驗。尚不能宣稱比原版Gemini快／好。
 

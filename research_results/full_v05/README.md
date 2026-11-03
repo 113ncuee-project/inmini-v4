@@ -13,3 +13,7 @@
 完整說明：[驗證報告](../../docs/INMIN_FULL_SYSTEM_VALIDATION.md)、[操作及設計空間](../../docs/INMIN_FULL_SYSTEM_GUIDE.md)。原始事件、最佳mapping與帳本包含在 [測試證據ZIP](../../release_packages/INMIN_Full_Results_20261103_full_release.zip)。
 
 此公開快照建立時，正式DNN對照仍在本機執行。RL是否優於同預算SA／Random、是否接近原版Gemini，不能由這些工程測試推論。
+
+## ResNet18已完成的共享前置階段
+
+[50布局數值報告](R18_SHARED_SCREEN.md) · [全部50點CSV](r18_shared_screen.csv) · [完整選中mapping／指標JSON](r18_shared_screen_summary.json)。這部分已完成52個full PPA（reference／seed兩次＋50布局），屬架構與固定內層搜尋，與尚在執行的RL精修分開。報告同時列出EDP最佳及事後滿足原PPA上限的whole-design點，沒有拼湊不同設計的最佳指標。

@@ -71,6 +71,8 @@ RL 會從較差但可執行的設計繼續走；最佳可行設計另存 archive
 
 本版預設主要目標為 **EDP=Energy×Latency**，降低只因平均功率下降卻延遲變慢而被視為好解的機會。Balanced 仍保留為相對 latency／area／平均 power 等權 Cost；也可預先選 `latency`、`energy`。不同目標必須另開實驗，不改寫歷史結果。`--max-area`、`--max-power`、`--max-latency-ms` 為硬限制，超額使用顯式 penalty引導探索，但 `recommendation.json` 只提供 strict-feasible 設計；找不到時 `state=null`，closest 另列。
 
+有硬限制時，GUI摘要的Cost可能是closest探索值；請以推薦JSON的`strict_feasible`與`state`確認有沒有合法推薦。請保留GUI啟動視窗／PowerShell終端至工作結束；可鎖定螢幕，重開機後使用續跑。
+
 ## 如何核對與續跑
 
 ```powershell
