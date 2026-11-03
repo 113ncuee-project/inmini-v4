@@ -5,3 +5,6 @@
 *.dll binary
 *.so binary
 *.zip binary
+# Source and evidence manifests describe exact bytes, including line endings.
+simplified_rapidchiplet/** -text
+research_results/full_v05_completed/** -text

@@ -1,0 +1,40 @@
+{
+  "passed": true,
+  "errors": [],
+  "warnings": [],
+  "source_identity": "336f979b54946ba967d3c16dcf56b9aa7fca3bb43dc6aa304b440540d3858933",
+  "methods": [
+    {
+      "method": "rl",
+      "full_ppa": 193,
+      "timeouts": 1,
+      "feasible": 138,
+      "learning_transitions": 138,
+      "multi_step_transitions": 114,
+      "completed": true,
+      "best_cost": 0.061098248154740194
+    },
+    {
+      "method": "sa",
+      "full_ppa": 159,
+      "timeouts": 0,
+      "feasible": 85,
+      "learning_transitions": 0,
+      "multi_step_transitions": 0,
+      "completed": true,
+      "best_cost": 0.07943954956314464
+    },
+    {
+      "method": "random",
+      "full_ppa": 249,
+      "timeouts": 1,
+      "feasible": 183,
+      "learning_transitions": 0,
+      "multi_step_transitions": 0,
+      "completed": true,
+      "best_cost": 0.06634240301707633
+    }
+  ],
+  "physical_scope": "analytical PPA; same schema3 hardware; full schedules and lifetime checks",
+  "comparison_scope": "project Tangram-style seed and same-domain SA; no original Gemini executable comparison"
+}

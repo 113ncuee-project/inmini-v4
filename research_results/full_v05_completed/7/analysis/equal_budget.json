@@ -1,0 +1,38 @@
+[
+  {
+    "axis": "full_ppa",
+    "shared_budget": 159,
+    "method": "rl",
+    "best_cost": 0.061364261024282725
+  },
+  {
+    "axis": "full_ppa",
+    "shared_budget": 159,
+    "method": "sa",
+    "best_cost": 0.07943954956314464
+  },
+  {
+    "axis": "full_ppa",
+    "shared_budget": 159,
+    "method": "random",
+    "best_cost": 0.07468539742162571
+  },
+  {
+    "axis": "charged_wall_s",
+    "shared_budget": 3579.558767099865,
+    "method": "rl",
+    "best_cost": 0.061098248154740194
+  },
+  {
+    "axis": "charged_wall_s",
+    "shared_budget": 3579.558767099865,
+    "method": "sa",
+    "best_cost": 0.07943954956314464
+  },
+  {
+    "axis": "charged_wall_s",
+    "shared_budget": 3579.558767099865,
+    "method": "random",
+    "best_cost": 0.06634240301707633
+  }
+]

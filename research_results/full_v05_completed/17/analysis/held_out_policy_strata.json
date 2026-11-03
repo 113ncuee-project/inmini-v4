@@ -1,0 +1,200 @@
+{
+  "new_ppa": 0,
+  "policy_updates": 0,
+  "held_out": 276,
+  "missing_before_state": 0,
+  "scope": "read-only auxiliary immediate-reward head; no future-Q or policy-causality claim",
+  "strata": {
+    "all": {
+      "n": 276,
+      "families": {
+        "A2": 23,
+        "architecture_mapping": 15,
+        "fusion_beam": 23,
+        "A10": 28,
+        "A8": 32,
+        "A4": 32,
+        "C4": 26,
+        "A5": 21,
+        "A12": 31,
+        "retention": 10,
+        "A3": 3,
+        "A7": 7,
+        "C8": 2,
+        "C7": 3,
+        "A1": 7,
+        "global_mapping": 10,
+        "A6": 3
+      },
+      "initial": {
+        "n": 276,
+        "spearman": -0.2447814029122345,
+        "pairwise_concordance": 0.42201859229747674,
+        "mse": 19.469761155360185,
+        "selected_top_quartile_mean_utility": -0.9238022135291645,
+        "all_mean_utility": -1.861237635457113
+      },
+      "after_shared": {
+        "n": 276,
+        "spearman": 0.322766991039611,
+        "pairwise_concordance": 0.6137051792828685,
+        "mse": 11.96465892735379,
+        "selected_top_quartile_mean_utility": -0.5185137568668244,
+        "all_mean_utility": -1.861237635457113
+      },
+      "final": {
+        "n": 276,
+        "spearman": 0.5839069704835212,
+        "pairwise_concordance": 0.7134130146082337,
+        "mse": 12.47284140912701,
+        "selected_top_quartile_mean_utility": -0.3700429355401389,
+        "all_mean_utility": -1.861237635457113
+      }
+    },
+    "same_architecture": {
+      "n": 261,
+      "families": {
+        "A2": 23,
+        "fusion_beam": 23,
+        "A10": 28,
+        "A8": 32,
+        "A4": 32,
+        "C4": 26,
+        "A5": 21,
+        "A12": 31,
+        "retention": 10,
+        "A3": 3,
+        "A7": 7,
+        "C8": 2,
+        "C7": 3,
+        "A1": 7,
+        "global_mapping": 10,
+        "A6": 3
+      },
+      "initial": {
+        "n": 261,
+        "spearman": -0.23921310104412397,
+        "pairwise_concordance": 0.42343146000594706,
+        "mse": 14.889806465039536,
+        "selected_top_quartile_mean_utility": -0.7758894762453675,
+        "all_mean_utility": -1.4262554343020222
+      },
+      "after_shared": {
+        "n": 261,
+        "spearman": 0.2490020226870655,
+        "pairwise_concordance": 0.5867677668748141,
+        "mse": 12.241480659997428,
+        "selected_top_quartile_mean_utility": -0.43631901743321844,
+        "all_mean_utility": -1.4262554343020222
+      },
+      "final": {
+        "n": 261,
+        "spearman": 0.5181099245794993,
+        "pairwise_concordance": 0.6869461790068392,
+        "mse": 12.74692295459601,
+        "selected_top_quartile_mean_utility": -0.3809632246187441,
+        "all_mean_utility": -1.4262554343020222
+      }
+    },
+    "same_arch_no_group_edit": {
+      "n": 211,
+      "families": {
+        "A2": 23,
+        "A8": 32,
+        "A4": 32,
+        "C4": 26,
+        "A5": 21,
+        "A12": 31,
+        "retention": 10,
+        "A3": 3,
+        "A7": 7,
+        "C8": 2,
+        "C7": 3,
+        "A1": 7,
+        "fusion_beam": 1,
+        "global_mapping": 10,
+        "A6": 3
+      },
+      "initial": {
+        "n": 211,
+        "spearman": -0.14954803308225667,
+        "pairwise_concordance": 0.45361154232490186,
+        "mse": 12.855814703925006,
+        "selected_top_quartile_mean_utility": -0.7195938470086197,
+        "all_mean_utility": -1.2618758583471423
+      },
+      "after_shared": {
+        "n": 211,
+        "spearman": 0.3225652083912487,
+        "pairwise_concordance": 0.6138252214409643,
+        "mse": 10.178339637956238,
+        "selected_top_quartile_mean_utility": -0.5431862871368789,
+        "all_mean_utility": -1.2618758583471423
+      },
+      "final": {
+        "n": 211,
+        "spearman": 0.3846421122015403,
+        "pairwise_concordance": 0.6376130033786869,
+        "mse": 11.969442632861497,
+        "selected_top_quartile_mean_utility": -0.5006471013029044,
+        "all_mean_utility": -1.2618758583471423
+      }
+    },
+    "same_arch_group_edit": {
+      "n": 50,
+      "families": {
+        "fusion_beam": 22,
+        "A10": 28
+      },
+      "initial": {
+        "n": 50,
+        "spearman": -0.668491440563406,
+        "pairwise_concordance": 0.28104575163398693,
+        "mse": 23.473251675411117,
+        "selected_top_quartile_mean_utility": -3.9421456394063985,
+        "all_mean_utility": -2.1199372448316143
+      },
+      "after_shared": {
+        "n": 50,
+        "spearman": -0.007875339146066992,
+        "pairwise_concordance": 0.5089869281045751,
+        "mse": 20.947935591557574,
+        "selected_top_quartile_mean_utility": -0.8579907211317411,
+        "all_mean_utility": -2.1199372448316143
+      },
+      "final": {
+        "n": 50,
+        "spearman": 0.7062354440317514,
+        "pairwise_concordance": 0.7279411764705882,
+        "mse": 16.027889960677225,
+        "selected_top_quartile_mean_utility": 0.03874859919503796,
+        "all_mean_utility": -2.1199372448316143
+      }
+    },
+    "fine_mapping_with_one_group": {
+      "n": 0,
+      "families": {}
+    }
+  },
+  "behavior": {
+    "decisions": 196,
+    "median_normalized_entropy": 0.3378807255377214,
+    "mean_chosen_probability": 0.5963516227163388,
+    "selected_families": {
+      "A10": 30,
+      "A12": 9,
+      "retention": 5,
+      "A1": 1,
+      "A5": 29,
+      "C8": 2,
+      "A8": 45,
+      "A2": 19,
+      "A4": 36,
+      "architecture_mapping": 9,
+      "global_mapping": 6,
+      "fusion_beam": 3,
+      "C4": 1,
+      "inner_dataflow": 1
+    }
+  }
+}

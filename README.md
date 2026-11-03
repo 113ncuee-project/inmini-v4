@@ -1,5 +1,7 @@
 # RapidChiplet 專題資料
 
+> **2026-11-04：兩個RNG的完整空間研究已完成。** RL新增141／204次完整PPA，兩組在共同查詢預算下優於本輪同域SA／Random；[完整數字、最佳mapping與逐步帳本](research_results/full_v05_completed/README.md)。原DP分組限制可能弱化起點，較強DP與新機制仍在本機驗證；未宣稱已打敗原版Tangram／Gemini。下面v0.5為目前已驗收程式。
+
 > **完整系統新版：INMIN Full v0.5。** v3的1–16顆／50布局、Grouping、Partition、PE配置、獨立DRAM、Fusion／Tile／Cache與Dataflow已整合到新的多步Replay RL入口。雙擊 `start_inmin_full_gui.cmd` 使用新控制台，或 `run_inmin_full_overnight.cmd` 長跑。[完整設計空間及操作](docs/INMIN_FULL_SYSTEM_GUIDE.md) · [本輪進度](docs/inmin_v05_progress.md)。下方v0.4固定硬體實驗是歷史基線。
 
 > **2026-11-03：新增 INMIN v0.4 本機 Mapping 搜尋。** Exact native calendar 保留完整 PPA／容量成本，結構化 Mapping + 內層 dataflow + replay-Q，並提供相同動作的 Random／SA 對照。新入口 `run_inmin_v04_overnight.ps1`；原 v0.3 工具與歷史結果保留。[新版操作說明](docs/INMIN_V04_LOCAL_GUIDE.md) · [本輪進度與證據](docs/inmin_v04_progress.md)。完整 PPA 與 SGD 更新分開記帳；不把候選生成收益直接歸功於 RL policy。
