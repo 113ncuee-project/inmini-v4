@@ -1,0 +1,20 @@
+{
+  "passed": true,
+  "errors": [],
+  "warnings": [],
+  "source_identity": "b6bf8e77f95b1e47fff56491b248fd9ac55a8884aa505d5e12dcac75bdda2f05",
+  "methods": [
+    {
+      "method": "rl",
+      "full_ppa": 168,
+      "timeouts": 1,
+      "feasible": 66,
+      "learning_transitions": 0,
+      "multi_step_transitions": 0,
+      "completed": true,
+      "best_cost": 0.05103786493502289
+    }
+  ],
+  "physical_scope": "analytical PPA; same schema3 hardware; full schedules and lifetime checks",
+  "comparison_scope": "project Tangram-style seed and same-domain SA; no original Gemini executable comparison"
+}

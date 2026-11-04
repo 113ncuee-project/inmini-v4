@@ -1,0 +1,129 @@
+﻿group,scope,axis,budget,id,best_EDP
+development/7,all completed arms,q,135,development/cost_restart/7/rl,0.04383372118218357
+development/7,all completed arms,q,135,development/frozen/7/rl,0.05103786493502289
+development/7,all completed arms,q,135,development/no_restart_reference/7/rl,0.04869942544978725
+development/7,all completed arms,q,135,development/one_step_cost/7/rl,0.047275197450572626
+development/7,all completed arms,q,135,development/selected_controls/7/sa,0.05057247667797123
+development/7,all completed arms,q,135,development/selected_controls/7/random,0.05020557190033362
+development/7,all completed arms,q,135,development/transition_restart/7/rl,0.0504764910115534
+development/7,all completed arms,q,135,development/uniform/7/rl,0.05036720144128283
+development/7,all completed arms,seconds,4031.860476499656,development/cost_restart/7/rl,0.043227503449559834
+development/7,all completed arms,seconds,4031.860476499656,development/frozen/7/rl,0.05103786493502289
+development/7,all completed arms,seconds,4031.860476499656,development/no_restart_reference/7/rl,0.04869942544978725
+development/7,all completed arms,seconds,4031.860476499656,development/one_step_cost/7/rl,0.0467296608971145
+development/7,all completed arms,seconds,4031.860476499656,development/selected_controls/7/sa,0.050428660259752914
+development/7,all completed arms,seconds,4031.860476499656,development/selected_controls/7/random,0.03891873355939436
+development/7,all completed arms,seconds,4031.860476499656,development/transition_restart/7/rl,0.0504764910115534
+development/7,all completed arms,seconds,4031.860476499656,development/uniform/7/rl,0.05034258643644757
+development/7,pair: development/cost_restart/7/rl versus development/frozen/7/rl,q,168,development/cost_restart/7/rl,0.04383372118218357
+development/7,pair: development/cost_restart/7/rl versus development/frozen/7/rl,q,168,development/frozen/7/rl,0.05103786493502289
+development/7,pair: development/cost_restart/7/rl versus development/frozen/7/rl,seconds,4032.3526442996226,development/cost_restart/7/rl,0.043227503449559834
+development/7,pair: development/cost_restart/7/rl versus development/frozen/7/rl,seconds,4032.3526442996226,development/frozen/7/rl,0.05103786493502289
+development/7,pair: development/cost_restart/7/rl versus development/no_restart_reference/7/rl,q,160,development/cost_restart/7/rl,0.04383372118218357
+development/7,pair: development/cost_restart/7/rl versus development/no_restart_reference/7/rl,q,160,development/no_restart_reference/7/rl,0.04869942544978725
+development/7,pair: development/cost_restart/7/rl versus development/no_restart_reference/7/rl,seconds,4032.423167299712,development/cost_restart/7/rl,0.043227503449559834
+development/7,pair: development/cost_restart/7/rl versus development/no_restart_reference/7/rl,seconds,4032.423167299712,development/no_restart_reference/7/rl,0.04869942544978725
+development/7,pair: development/cost_restart/7/rl versus development/one_step_cost/7/rl,q,152,development/cost_restart/7/rl,0.04383372118218357
+development/7,pair: development/cost_restart/7/rl versus development/one_step_cost/7/rl,q,152,development/one_step_cost/7/rl,0.0467296608971145
+development/7,pair: development/cost_restart/7/rl versus development/one_step_cost/7/rl,seconds,4032.423167299712,development/cost_restart/7/rl,0.043227503449559834
+development/7,pair: development/cost_restart/7/rl versus development/one_step_cost/7/rl,seconds,4032.423167299712,development/one_step_cost/7/rl,0.0467296608971145
+development/7,pair: development/cost_restart/7/rl versus development/selected_controls/7/sa,q,181,development/cost_restart/7/rl,0.04383372118218357
+development/7,pair: development/cost_restart/7/rl versus development/selected_controls/7/sa,q,181,development/selected_controls/7/sa,0.050428660259752914
+development/7,pair: development/cost_restart/7/rl versus development/selected_controls/7/sa,seconds,4031.860476499656,development/cost_restart/7/rl,0.043227503449559834
+development/7,pair: development/cost_restart/7/rl versus development/selected_controls/7/sa,seconds,4031.860476499656,development/selected_controls/7/sa,0.050428660259752914
+development/7,pair: development/cost_restart/7/rl versus development/selected_controls/7/random,q,166,development/cost_restart/7/rl,0.04383372118218357
+development/7,pair: development/cost_restart/7/rl versus development/selected_controls/7/random,q,166,development/selected_controls/7/random,0.03891873355939436
+development/7,pair: development/cost_restart/7/rl versus development/selected_controls/7/random,seconds,4032.391308999853,development/cost_restart/7/rl,0.043227503449559834
+development/7,pair: development/cost_restart/7/rl versus development/selected_controls/7/random,seconds,4032.391308999853,development/selected_controls/7/random,0.03891873355939436
+development/7,pair: development/cost_restart/7/rl versus development/transition_restart/7/rl,q,135,development/cost_restart/7/rl,0.04383372118218357
+development/7,pair: development/cost_restart/7/rl versus development/transition_restart/7/rl,q,135,development/transition_restart/7/rl,0.0504764910115534
+development/7,pair: development/cost_restart/7/rl versus development/transition_restart/7/rl,seconds,4032.375146099832,development/cost_restart/7/rl,0.043227503449559834
+development/7,pair: development/cost_restart/7/rl versus development/transition_restart/7/rl,seconds,4032.375146099832,development/transition_restart/7/rl,0.0504764910115534
+development/7,pair: development/cost_restart/7/rl versus development/uniform/7/rl,q,147,development/cost_restart/7/rl,0.04383372118218357
+development/7,pair: development/cost_restart/7/rl versus development/uniform/7/rl,q,147,development/uniform/7/rl,0.05034258643644757
+development/7,pair: development/cost_restart/7/rl versus development/uniform/7/rl,seconds,4032.423167299712,development/cost_restart/7/rl,0.043227503449559834
+development/7,pair: development/cost_restart/7/rl versus development/uniform/7/rl,seconds,4032.423167299712,development/uniform/7/rl,0.05034258643644757
+development/7,pair: development/frozen/7/rl versus development/no_restart_reference/7/rl,q,160,development/frozen/7/rl,0.05103786493502289
+development/7,pair: development/frozen/7/rl versus development/no_restart_reference/7/rl,q,160,development/no_restart_reference/7/rl,0.04869942544978725
+development/7,pair: development/frozen/7/rl versus development/no_restart_reference/7/rl,seconds,4032.3526442996226,development/frozen/7/rl,0.05103786493502289
+development/7,pair: development/frozen/7/rl versus development/no_restart_reference/7/rl,seconds,4032.3526442996226,development/no_restart_reference/7/rl,0.04869942544978725
+development/7,pair: development/frozen/7/rl versus development/one_step_cost/7/rl,q,152,development/frozen/7/rl,0.05103786493502289
+development/7,pair: development/frozen/7/rl versus development/one_step_cost/7/rl,q,152,development/one_step_cost/7/rl,0.0467296608971145
+development/7,pair: development/frozen/7/rl versus development/one_step_cost/7/rl,seconds,4032.3526442996226,development/frozen/7/rl,0.05103786493502289
+development/7,pair: development/frozen/7/rl versus development/one_step_cost/7/rl,seconds,4032.3526442996226,development/one_step_cost/7/rl,0.0467296608971145
+development/7,pair: development/frozen/7/rl versus development/selected_controls/7/sa,q,168,development/frozen/7/rl,0.05103786493502289
+development/7,pair: development/frozen/7/rl versus development/selected_controls/7/sa,q,168,development/selected_controls/7/sa,0.050428660259752914
+development/7,pair: development/frozen/7/rl versus development/selected_controls/7/sa,seconds,4031.860476499656,development/frozen/7/rl,0.05103786493502289
+development/7,pair: development/frozen/7/rl versus development/selected_controls/7/sa,seconds,4031.860476499656,development/selected_controls/7/sa,0.050428660259752914
+development/7,pair: development/frozen/7/rl versus development/selected_controls/7/random,q,166,development/frozen/7/rl,0.05103786493502289
+development/7,pair: development/frozen/7/rl versus development/selected_controls/7/random,q,166,development/selected_controls/7/random,0.03891873355939436
+development/7,pair: development/frozen/7/rl versus development/selected_controls/7/random,seconds,4032.3526442996226,development/frozen/7/rl,0.05103786493502289
+development/7,pair: development/frozen/7/rl versus development/selected_controls/7/random,seconds,4032.3526442996226,development/selected_controls/7/random,0.03891873355939436
+development/7,pair: development/frozen/7/rl versus development/transition_restart/7/rl,q,135,development/frozen/7/rl,0.05103786493502289
+development/7,pair: development/frozen/7/rl versus development/transition_restart/7/rl,q,135,development/transition_restart/7/rl,0.0504764910115534
+development/7,pair: development/frozen/7/rl versus development/transition_restart/7/rl,seconds,4032.3526442996226,development/frozen/7/rl,0.05103786493502289
+development/7,pair: development/frozen/7/rl versus development/transition_restart/7/rl,seconds,4032.3526442996226,development/transition_restart/7/rl,0.0504764910115534
+development/7,pair: development/frozen/7/rl versus development/uniform/7/rl,q,147,development/frozen/7/rl,0.05103786493502289
+development/7,pair: development/frozen/7/rl versus development/uniform/7/rl,q,147,development/uniform/7/rl,0.05034258643644757
+development/7,pair: development/frozen/7/rl versus development/uniform/7/rl,seconds,4032.3526442996226,development/frozen/7/rl,0.05103786493502289
+development/7,pair: development/frozen/7/rl versus development/uniform/7/rl,seconds,4032.3526442996226,development/uniform/7/rl,0.05034258643644757
+development/7,pair: development/no_restart_reference/7/rl versus development/one_step_cost/7/rl,q,152,development/no_restart_reference/7/rl,0.04869942544978725
+development/7,pair: development/no_restart_reference/7/rl versus development/one_step_cost/7/rl,q,152,development/one_step_cost/7/rl,0.0467296608971145
+development/7,pair: development/no_restart_reference/7/rl versus development/one_step_cost/7/rl,seconds,4032.4535788998473,development/no_restart_reference/7/rl,0.04869942544978725
+development/7,pair: development/no_restart_reference/7/rl versus development/one_step_cost/7/rl,seconds,4032.4535788998473,development/one_step_cost/7/rl,0.0467296608971145
+development/7,pair: development/no_restart_reference/7/rl versus development/selected_controls/7/sa,q,160,development/no_restart_reference/7/rl,0.04869942544978725
+development/7,pair: development/no_restart_reference/7/rl versus development/selected_controls/7/sa,q,160,development/selected_controls/7/sa,0.050428660259752914
+development/7,pair: development/no_restart_reference/7/rl versus development/selected_controls/7/sa,seconds,4031.860476499656,development/no_restart_reference/7/rl,0.04869942544978725
+development/7,pair: development/no_restart_reference/7/rl versus development/selected_controls/7/sa,seconds,4031.860476499656,development/selected_controls/7/sa,0.050428660259752914
+development/7,pair: development/no_restart_reference/7/rl versus development/selected_controls/7/random,q,160,development/no_restart_reference/7/rl,0.04869942544978725
+development/7,pair: development/no_restart_reference/7/rl versus development/selected_controls/7/random,q,160,development/selected_controls/7/random,0.03936656203786106
+development/7,pair: development/no_restart_reference/7/rl versus development/selected_controls/7/random,seconds,4032.391308999853,development/no_restart_reference/7/rl,0.04869942544978725
+development/7,pair: development/no_restart_reference/7/rl versus development/selected_controls/7/random,seconds,4032.391308999853,development/selected_controls/7/random,0.03891873355939436
+development/7,pair: development/no_restart_reference/7/rl versus development/transition_restart/7/rl,q,135,development/no_restart_reference/7/rl,0.04869942544978725
+development/7,pair: development/no_restart_reference/7/rl versus development/transition_restart/7/rl,q,135,development/transition_restart/7/rl,0.0504764910115534
+development/7,pair: development/no_restart_reference/7/rl versus development/transition_restart/7/rl,seconds,4032.375146099832,development/no_restart_reference/7/rl,0.04869942544978725
+development/7,pair: development/no_restart_reference/7/rl versus development/transition_restart/7/rl,seconds,4032.375146099832,development/transition_restart/7/rl,0.0504764910115534
+development/7,pair: development/no_restart_reference/7/rl versus development/uniform/7/rl,q,147,development/no_restart_reference/7/rl,0.04869942544978725
+development/7,pair: development/no_restart_reference/7/rl versus development/uniform/7/rl,q,147,development/uniform/7/rl,0.05034258643644757
+development/7,pair: development/no_restart_reference/7/rl versus development/uniform/7/rl,seconds,4032.437642699573,development/no_restart_reference/7/rl,0.04869942544978725
+development/7,pair: development/no_restart_reference/7/rl versus development/uniform/7/rl,seconds,4032.437642699573,development/uniform/7/rl,0.05034258643644757
+development/7,pair: development/one_step_cost/7/rl versus development/selected_controls/7/sa,q,152,development/one_step_cost/7/rl,0.0467296608971145
+development/7,pair: development/one_step_cost/7/rl versus development/selected_controls/7/sa,q,152,development/selected_controls/7/sa,0.050428660259752914
+development/7,pair: development/one_step_cost/7/rl versus development/selected_controls/7/sa,seconds,4031.860476499656,development/one_step_cost/7/rl,0.0467296608971145
+development/7,pair: development/one_step_cost/7/rl versus development/selected_controls/7/sa,seconds,4031.860476499656,development/selected_controls/7/sa,0.050428660259752914
+development/7,pair: development/one_step_cost/7/rl versus development/selected_controls/7/random,q,152,development/one_step_cost/7/rl,0.0467296608971145
+development/7,pair: development/one_step_cost/7/rl versus development/selected_controls/7/random,q,152,development/selected_controls/7/random,0.03941789609125139
+development/7,pair: development/one_step_cost/7/rl versus development/selected_controls/7/random,seconds,4032.391308999853,development/one_step_cost/7/rl,0.0467296608971145
+development/7,pair: development/one_step_cost/7/rl versus development/selected_controls/7/random,seconds,4032.391308999853,development/selected_controls/7/random,0.03891873355939436
+development/7,pair: development/one_step_cost/7/rl versus development/transition_restart/7/rl,q,135,development/one_step_cost/7/rl,0.047275197450572626
+development/7,pair: development/one_step_cost/7/rl versus development/transition_restart/7/rl,q,135,development/transition_restart/7/rl,0.0504764910115534
+development/7,pair: development/one_step_cost/7/rl versus development/transition_restart/7/rl,seconds,4032.375146099832,development/one_step_cost/7/rl,0.0467296608971145
+development/7,pair: development/one_step_cost/7/rl versus development/transition_restart/7/rl,seconds,4032.375146099832,development/transition_restart/7/rl,0.0504764910115534
+development/7,pair: development/one_step_cost/7/rl versus development/uniform/7/rl,q,147,development/one_step_cost/7/rl,0.0467296608971145
+development/7,pair: development/one_step_cost/7/rl versus development/uniform/7/rl,q,147,development/uniform/7/rl,0.05034258643644757
+development/7,pair: development/one_step_cost/7/rl versus development/uniform/7/rl,seconds,4032.437642699573,development/one_step_cost/7/rl,0.0467296608971145
+development/7,pair: development/one_step_cost/7/rl versus development/uniform/7/rl,seconds,4032.437642699573,development/uniform/7/rl,0.05034258643644757
+development/7,pair: development/selected_controls/7/sa versus development/selected_controls/7/random,q,166,development/selected_controls/7/sa,0.050428660259752914
+development/7,pair: development/selected_controls/7/sa versus development/selected_controls/7/random,q,166,development/selected_controls/7/random,0.03891873355939436
+development/7,pair: development/selected_controls/7/sa versus development/selected_controls/7/random,seconds,4031.860476499656,development/selected_controls/7/sa,0.050428660259752914
+development/7,pair: development/selected_controls/7/sa versus development/selected_controls/7/random,seconds,4031.860476499656,development/selected_controls/7/random,0.03891873355939436
+development/7,pair: development/selected_controls/7/sa versus development/transition_restart/7/rl,q,135,development/selected_controls/7/sa,0.05057247667797123
+development/7,pair: development/selected_controls/7/sa versus development/transition_restart/7/rl,q,135,development/transition_restart/7/rl,0.0504764910115534
+development/7,pair: development/selected_controls/7/sa versus development/transition_restart/7/rl,seconds,4031.860476499656,development/selected_controls/7/sa,0.050428660259752914
+development/7,pair: development/selected_controls/7/sa versus development/transition_restart/7/rl,seconds,4031.860476499656,development/transition_restart/7/rl,0.0504764910115534
+development/7,pair: development/selected_controls/7/sa versus development/uniform/7/rl,q,147,development/selected_controls/7/sa,0.05057247667797123
+development/7,pair: development/selected_controls/7/sa versus development/uniform/7/rl,q,147,development/uniform/7/rl,0.05034258643644757
+development/7,pair: development/selected_controls/7/sa versus development/uniform/7/rl,seconds,4031.860476499656,development/selected_controls/7/sa,0.050428660259752914
+development/7,pair: development/selected_controls/7/sa versus development/uniform/7/rl,seconds,4031.860476499656,development/uniform/7/rl,0.05034258643644757
+development/7,pair: development/selected_controls/7/random versus development/transition_restart/7/rl,q,135,development/selected_controls/7/random,0.05020557190033362
+development/7,pair: development/selected_controls/7/random versus development/transition_restart/7/rl,q,135,development/transition_restart/7/rl,0.0504764910115534
+development/7,pair: development/selected_controls/7/random versus development/transition_restart/7/rl,seconds,4032.375146099832,development/selected_controls/7/random,0.03891873355939436
+development/7,pair: development/selected_controls/7/random versus development/transition_restart/7/rl,seconds,4032.375146099832,development/transition_restart/7/rl,0.0504764910115534
+development/7,pair: development/selected_controls/7/random versus development/uniform/7/rl,q,147,development/selected_controls/7/random,0.04531467366142753
+development/7,pair: development/selected_controls/7/random versus development/uniform/7/rl,q,147,development/uniform/7/rl,0.05034258643644757
+development/7,pair: development/selected_controls/7/random versus development/uniform/7/rl,seconds,4032.391308999853,development/selected_controls/7/random,0.03891873355939436
+development/7,pair: development/selected_controls/7/random versus development/uniform/7/rl,seconds,4032.391308999853,development/uniform/7/rl,0.05034258643644757
+development/7,pair: development/transition_restart/7/rl versus development/uniform/7/rl,q,135,development/transition_restart/7/rl,0.0504764910115534
+development/7,pair: development/transition_restart/7/rl versus development/uniform/7/rl,q,135,development/uniform/7/rl,0.05036720144128283
+development/7,pair: development/transition_restart/7/rl versus development/uniform/7/rl,seconds,4032.375146099832,development/transition_restart/7/rl,0.0504764910115534
+development/7,pair: development/transition_restart/7/rl versus development/uniform/7/rl,seconds,4032.375146099832,development/uniform/7/rl,0.05034258643644757

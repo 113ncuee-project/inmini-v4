@@ -1,0 +1,23 @@
+{
+  "passed": true,
+  "cost_value_q": true,
+  "episode_cost_rise": 0.25,
+  "elapsed_s": 201.0351603999734,
+  "checks": [
+    "3 methods exact-query CLI",
+    "same trajectory after cooperative stop/resume",
+    "same Q update count",
+    "no duplicate durable PPA",
+    "completed resume no new PPA",
+    "physical/reward/source audits",
+    "strict infeasible archive",
+    "50 actual architecture PPA",
+    "identical shared-screen charges for all 3 methods",
+    "shared physical history reuse with exact inherited charge and zero new common PPA",
+    "Gemini-style LP5 masking and SA elite restart",
+    "uniform choices with identical RL horizon and zero SGD",
+    "frozen shared Q with zero online updates",
+    "core CLI wider initialization with query reserve and charged shared PPA",
+    "cooperative initialization stop/resume and source/accounting audit"
+  ]
+}

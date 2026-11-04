@@ -1,0 +1,452 @@
+{
+  "scope": "held-out absolute after-cost model; not cross-state continuation-Q ranking, new search, causal policy benefit, or original-paper comparison",
+  "new_PPA": 0,
+  "SGD": 0,
+  "source_identity": "b6bf8e77f95b1e47fff56491b248fd9ac55a8884aa505d5e12dcac75bdda2f05",
+  "held_out": 125,
+  "excluded_trained_physical_states": 174,
+  "controls": {
+    "C:\\Users\\user\\Desktop\\rapidchiplet\\output\\inmin_v07_20261104\\study_v4\\development\\selected_controls\\7\\sa\\events.jsonl": "20b30af2e342b603118339a2f796b78ededff427bd76e14451873110c2287744",
+    "C:\\Users\\user\\Desktop\\rapidchiplet\\output\\inmin_v07_20261104\\study_v4\\development\\selected_controls\\7\\random\\events.jsonl": "7fcf3294cc99e417e5c1de4c5935d47d676ea55d5646759d177092dc2fbce240"
+  },
+  "stages": {
+    "initial": {
+      "checkpoint_sha256": "d7e7773c00c7448c824e67994f6df8b8029b44d0e778db8da7d0c77f934288a5",
+      "saved_SGD_updates": 0,
+      "log_potential_MAE": 28.203734577277135,
+      "cost_spearman": 0.02398467585974544,
+      "architectures": {
+        "5": {
+          "n": 1,
+          "log_potential_MAE": 25.86122121139856,
+          "predicted_over_true_cost_geomean": 13.278180460438174
+        },
+        "7": {
+          "n": 1,
+          "log_potential_MAE": 28.34697346212381,
+          "predicted_over_true_cost_geomean": 17.025246765148424
+        },
+        "8": {
+          "n": 28,
+          "log_potential_MAE": 28.26452214260414,
+          "predicted_over_true_cost_geomean": 16.885448478696244
+        },
+        "12": {
+          "n": 82,
+          "log_potential_MAE": 27.982415274256333,
+          "predicted_over_true_cost_geomean": 16.415754721138725
+        },
+        "14": {
+          "n": 1,
+          "log_potential_MAE": 28.076537421841113,
+          "predicted_over_true_cost_geomean": 16.570992750793174
+        },
+        "15": {
+          "n": 10,
+          "log_potential_MAE": 30.19749971737116,
+          "predicted_over_true_cost_geomean": 20.486168922573167
+        },
+        "16": {
+          "n": 2,
+          "log_potential_MAE": 27.621210204315894,
+          "predicted_over_true_cost_geomean": 15.833390302704961
+        }
+      },
+      "top_true_cost_states": [
+        {
+          "method": "random",
+          "step": 66,
+          "architecture": "single_array_c12_3x4",
+          "cost": 0.03891873355939436,
+          "predicted_cost": 0.9906201528283961,
+          "predicted_cost_rank": 48,
+          "actual_cost_rank": 1
+        },
+        {
+          "method": "random",
+          "step": 63,
+          "architecture": "single_array_c12_3x4",
+          "cost": 0.03925382750796542,
+          "predicted_cost": 0.9909723129540072,
+          "predicted_cost_rank": 80,
+          "actual_cost_rank": 2
+        },
+        {
+          "method": "random",
+          "step": 53,
+          "architecture": "single_array_c12_3x4",
+          "cost": 0.03936656203786106,
+          "predicted_cost": 0.990919129380477,
+          "predicted_cost_rank": 69,
+          "actual_cost_rank": 3
+        },
+        {
+          "method": "random",
+          "step": 52,
+          "architecture": "single_array_c12_3x4",
+          "cost": 0.03941789609125139,
+          "predicted_cost": 0.9924927555469062,
+          "predicted_cost_rank": 106,
+          "actual_cost_rank": 4
+        },
+        {
+          "method": "random",
+          "step": 54,
+          "architecture": "single_array_c12_3x4",
+          "cost": 0.03944947594817541,
+          "predicted_cost": 0.9908634341758333,
+          "predicted_cost_rank": 64,
+          "actual_cost_rank": 5
+        }
+      ]
+    },
+    "after_shared": {
+      "checkpoint_sha256": "5a72fcae81dd566e47748f1a942dccbcd620275137d9361d162a860dfd6660e9",
+      "saved_SGD_updates": 1992,
+      "log_potential_MAE": 2.395629246300489,
+      "cost_spearman": 0.29901121199914227,
+      "architectures": {
+        "5": {
+          "n": 1,
+          "log_potential_MAE": 2.297312242542784,
+          "predicted_over_true_cost_geomean": 0.7947471825661323
+        },
+        "7": {
+          "n": 1,
+          "log_potential_MAE": 0.21584085943215925,
+          "predicted_over_true_cost_geomean": 1.0218187073149265
+        },
+        "8": {
+          "n": 28,
+          "log_potential_MAE": 2.3192640314878017,
+          "predicted_over_true_cost_geomean": 1.0042207443056903
+        },
+        "12": {
+          "n": 82,
+          "log_potential_MAE": 2.460305270708765,
+          "predicted_over_true_cost_geomean": 1.0129876879831474
+        },
+        "14": {
+          "n": 1,
+          "log_potential_MAE": 1.9246217300481483,
+          "predicted_over_true_cost_geomean": 1.2122306477972762
+        },
+        "15": {
+          "n": 10,
+          "log_potential_MAE": 2.6588386897436034,
+          "predicted_over_true_cost_geomean": 1.2494459311337405
+        },
+        "16": {
+          "n": 2,
+          "log_potential_MAE": 0.8715344891623928,
+          "predicted_over_true_cost_geomean": 0.9852755243395608
+        }
+      },
+      "top_true_cost_states": [
+        {
+          "method": "random",
+          "step": 66,
+          "architecture": "single_array_c12_3x4",
+          "cost": 0.03891873355939436,
+          "predicted_cost": 0.059117212893187526,
+          "predicted_cost_rank": 30,
+          "actual_cost_rank": 1
+        },
+        {
+          "method": "random",
+          "step": 63,
+          "architecture": "single_array_c12_3x4",
+          "cost": 0.03925382750796542,
+          "predicted_cost": 0.05922903829332862,
+          "predicted_cost_rank": 40,
+          "actual_cost_rank": 2
+        },
+        {
+          "method": "random",
+          "step": 53,
+          "architecture": "single_array_c12_3x4",
+          "cost": 0.03936656203786106,
+          "predicted_cost": 0.0592180021111024,
+          "predicted_cost_rank": 37,
+          "actual_cost_rank": 3
+        },
+        {
+          "method": "random",
+          "step": 52,
+          "architecture": "single_array_c12_3x4",
+          "cost": 0.03941789609125139,
+          "predicted_cost": 0.06010961743716345,
+          "predicted_cost_rank": 94,
+          "actual_cost_rank": 4
+        },
+        {
+          "method": "random",
+          "step": 54,
+          "architecture": "single_array_c12_3x4",
+          "cost": 0.03944947594817541,
+          "predicted_cost": 0.059228993105175765,
+          "predicted_cost_rank": 39,
+          "actual_cost_rank": 5
+        }
+      ]
+    },
+    "final": {
+      "checkpoint_sha256": "ad14a5969cd11f1152f8e9e3d56d18abac23bd636cd23e93f8cc242993ffba4d",
+      "saved_SGD_updates": 4176,
+      "log_potential_MAE": 1.9937340090398972,
+      "cost_spearman": 0.4046427106651635,
+      "architectures": {
+        "5": {
+          "n": 1,
+          "log_potential_MAE": 3.340187532459776,
+          "predicted_over_true_cost_geomean": 0.7160403540204088
+        },
+        "7": {
+          "n": 1,
+          "log_potential_MAE": 0.08127932073587019,
+          "predicted_over_true_cost_geomean": 1.0081610533886027
+        },
+        "8": {
+          "n": 28,
+          "log_potential_MAE": 1.4770023112218282,
+          "predicted_over_true_cost_geomean": 0.9028078043571348
+        },
+        "12": {
+          "n": 82,
+          "log_potential_MAE": 2.179149165507799,
+          "predicted_over_true_cost_geomean": 1.027014545334819
+        },
+        "14": {
+          "n": 1,
+          "log_potential_MAE": 4.663871913153617,
+          "predicted_over_true_cost_geomean": 1.5942241496086325
+        },
+        "15": {
+          "n": 10,
+          "log_potential_MAE": 1.8497730616918457,
+          "predicted_over_true_cost_geomean": 1.1906271820125516
+        },
+        "16": {
+          "n": 2,
+          "log_potential_MAE": 1.2936927304343655,
+          "predicted_over_true_cost_geomean": 1.1102989420627076
+        }
+      },
+      "top_true_cost_states": [
+        {
+          "method": "random",
+          "step": 66,
+          "architecture": "single_array_c12_3x4",
+          "cost": 0.03891873355939436,
+          "predicted_cost": 0.052760062286602676,
+          "predicted_cost_rank": 43,
+          "actual_cost_rank": 1
+        },
+        {
+          "method": "random",
+          "step": 63,
+          "architecture": "single_array_c12_3x4",
+          "cost": 0.03925382750796542,
+          "predicted_cost": 0.05155313528685745,
+          "predicted_cost_rank": 20,
+          "actual_cost_rank": 2
+        },
+        {
+          "method": "random",
+          "step": 53,
+          "architecture": "single_array_c12_3x4",
+          "cost": 0.03936656203786106,
+          "predicted_cost": 0.05154314594689489,
+          "predicted_cost_rank": 18,
+          "actual_cost_rank": 3
+        },
+        {
+          "method": "random",
+          "step": 52,
+          "architecture": "single_array_c12_3x4",
+          "cost": 0.03941789609125139,
+          "predicted_cost": 0.05295021589649779,
+          "predicted_cost_rank": 48,
+          "actual_cost_rank": 4
+        },
+        {
+          "method": "random",
+          "step": 54,
+          "architecture": "single_array_c12_3x4",
+          "cost": 0.03944947594817541,
+          "predicted_cost": 0.051527939517598716,
+          "predicted_cost_rank": 17,
+          "actual_cost_rank": 5
+        }
+      ]
+    }
+  },
+  "coverage": {
+    "rl": {
+      "selected_families": {
+        "A5": 5,
+        "A2": 20,
+        "C4": 15,
+        "A12": 11,
+        "fusion_beam": 2,
+        "A10": 3,
+        "group_projection": 4,
+        "A4": 23,
+        "retention": 1,
+        "A8": 2,
+        "inner_dataflow": 2,
+        "global_mapping": 3,
+        "architecture_mapping": 1
+      },
+      "novel_architectures": 2,
+      "architectures": {
+        "single_array_c4_4x1": {
+          "attempts": 1,
+          "full": 1,
+          "feasible": 1,
+          "neural_high_probability": 0,
+          "best_cost": 0.07822676019481807
+        },
+        "single_array_c8_2x4": {
+          "attempts": 91,
+          "full": 90,
+          "feasible": 90,
+          "neural_high_probability": 62,
+          "best_cost": 0.043227503449559834
+        }
+      }
+    },
+    "sa": {
+      "selected_families": {
+        "A5": 17,
+        "A2": 14,
+        "C4": 3,
+        "A12": 9,
+        "fusion_beam": 6,
+        "A4": 7,
+        "architecture_mapping": 4,
+        "global_mapping": 4,
+        "A8": 9,
+        "A1": 2,
+        "retention": 1,
+        "group_projection": 3,
+        "A10": 3
+      },
+      "novel_architectures": 5,
+      "architectures": {
+        "single_array_c12_2x6": {
+          "attempts": 69,
+          "full": 68,
+          "feasible": 67,
+          "neural_high_probability": 0,
+          "best_cost": 0.050428660259752914
+        },
+        "single_array_c16_4x4": {
+          "attempts": 1,
+          "full": 1,
+          "feasible": 1,
+          "neural_high_probability": 0,
+          "best_cost": 0.0588572111410519
+        },
+        "single_array_c5_1x5": {
+          "attempts": 1,
+          "full": 1,
+          "feasible": 1,
+          "neural_high_probability": 0,
+          "best_cost": 0.07410562889116143
+        },
+        "single_array_c8_1x8": {
+          "attempts": 1,
+          "full": 1,
+          "feasible": 1,
+          "neural_high_probability": 0,
+          "best_cost": 0.06097888115079931
+        },
+        "single_array_c8_2x4": {
+          "attempts": 10,
+          "full": 10,
+          "feasible": 10,
+          "neural_high_probability": 0,
+          "best_cost": 0.051078444286907124
+        }
+      }
+    },
+    "random": {
+      "selected_families": {
+        "A5": 9,
+        "A2": 10,
+        "C4": 7,
+        "A12": 6,
+        "fusion_beam": 4,
+        "A4": 2,
+        "global_mapping": 6,
+        "architecture_mapping": 7,
+        "A8": 7,
+        "A1": 2,
+        "group_projection": 3,
+        "A10": 2,
+        "retention": 1,
+        "A6": 1
+      },
+      "novel_architectures": 8,
+      "architectures": {
+        "single_array_c12_3x4": {
+          "attempts": 15,
+          "full": 14,
+          "feasible": 14,
+          "neural_high_probability": 0,
+          "best_cost": 0.03891873355939436
+        },
+        "single_array_c12_6x2": {
+          "attempts": 1,
+          "full": 1,
+          "feasible": 1,
+          "neural_high_probability": 0,
+          "best_cost": 0.052872930570990025
+        },
+        "single_array_c14_7x2": {
+          "attempts": 1,
+          "full": 1,
+          "feasible": 1,
+          "neural_high_probability": 0,
+          "best_cost": 0.06010696819089981
+        },
+        "single_array_c15_3x5": {
+          "attempts": 11,
+          "full": 11,
+          "feasible": 10,
+          "neural_high_probability": 0,
+          "best_cost": 0.045147640074470925
+        },
+        "single_array_c16_2x8": {
+          "attempts": 1,
+          "full": 1,
+          "feasible": 1,
+          "neural_high_probability": 0,
+          "best_cost": 0.06659440422251613
+        },
+        "single_array_c2_2x1": {
+          "attempts": 1,
+          "full": 1,
+          "feasible": 0,
+          "neural_high_probability": 0,
+          "best_cost": null
+        },
+        "single_array_c7_1x7": {
+          "attempts": 1,
+          "full": 1,
+          "feasible": 1,
+          "neural_high_probability": 0,
+          "best_cost": 0.05799254176579444
+        },
+        "single_array_c8_2x4": {
+          "attempts": 36,
+          "full": 36,
+          "feasible": 34,
+          "neural_high_probability": 0,
+          "best_cost": 0.050112886253182005
+        }
+      }
+    }
+  }
+}

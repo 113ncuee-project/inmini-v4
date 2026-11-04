@@ -1,0 +1,1459 @@
+{
+  "status": {
+    "status": "interrupted_after_development",
+    "source_identity": "b6bf8e77f95b1e47fff56491b248fd9ac55a8884aa505d5e12dcac75bdda2f05",
+    "reason": "finish old uniform development AND audit; old RL16.06% below Random24.42%, only2search architectures versus Random8, heldout best ranked43/125; stop only observed coordinator36784, cooperative CLI stop, preserve pending old confirmation as not executed"
+  },
+  "generated_utc": "2026-11-04T05:31:57.823484+00:00",
+  "rows": [
+    {
+      "phase": "development",
+      "case": "development/cost_restart/7",
+      "seed": 7,
+      "method": "rl",
+      "source": "b6bf8e77f95b1e47fff56491b248fd9ac55a8884aa505d5e12dcac75bdda2f05",
+      "algorithm": "multistep_double_q",
+      "Q": "physical_cost_factored_double_q_v1",
+      "gamma": 0.9,
+      "horizon": 8,
+      "architecture_scaling": "proportional",
+      "continuation": false,
+      "reference_only": false,
+      "strict_feasible": true,
+      "EDP": 0.043227503449559834,
+      "gain_after_shared_pct": 16.05671764713561,
+      "charged_full_PPA": 191,
+      "new_full_PPA": 91,
+      "search_s": 1804.0221997001208,
+      "charged_s": 4034.032840699656,
+      "latency_ms": 2.771740052890612,
+      "energy_mJ": 11.224796765852789,
+      "area_mm2": 106.22171971764706,
+      "average_power_W": 4.0497292500956545,
+      "DRAM_read_B": 13967360,
+      "NoC_hop_B": 148878944,
+      "NoP_hop_B": 60924528,
+      "SGD": 4176,
+      "timeouts": 1,
+      "audit_passed": true
+    },
+    {
+      "phase": "development",
+      "case": "development/frozen/7",
+      "seed": 7,
+      "method": "rl",
+      "source": "b6bf8e77f95b1e47fff56491b248fd9ac55a8884aa505d5e12dcac75bdda2f05",
+      "algorithm": "frozen_shared_q_control",
+      "Q": "physical_cost_factored_double_q_v1",
+      "gamma": 0.9,
+      "horizon": 8,
+      "architecture_scaling": "proportional",
+      "continuation": false,
+      "reference_only": false,
+      "strict_feasible": true,
+      "EDP": 0.05103786493502289,
+      "gain_after_shared_pct": 0.8898140063277715,
+      "charged_full_PPA": 168,
+      "new_full_PPA": 68,
+      "search_s": 1803.0208346999716,
+      "charged_s": 4033.031470899703,
+      "latency_ms": 3.090803051093788,
+      "energy_mJ": 11.884803235961112,
+      "area_mm2": 106.22171971764706,
+      "average_power_W": 3.8452153176680928,
+      "DRAM_read_B": 13708396,
+      "NoC_hop_B": 164612864,
+      "NoP_hop_B": 62397984,
+      "SGD": 1992,
+      "timeouts": 1,
+      "audit_passed": true
+    },
+    {
+      "phase": "development",
+      "case": "development/no_restart_reference/7",
+      "seed": 7,
+      "method": "rl",
+      "source": "04b213b1d767e7556dd57cd7a68d692c3b732adf1ce792df914dfbe5c54b7872",
+      "algorithm": "multistep_double_q",
+      "Q": "physical_cost_factored_double_q_v1",
+      "gamma": 0.9,
+      "horizon": 8,
+      "architecture_scaling": "proportional",
+      "continuation": false,
+      "reference_only": true,
+      "strict_feasible": true,
+      "EDP": 0.04869942544978725,
+      "gain_after_shared_pct": 5.4308184666772235,
+      "charged_full_PPA": 160,
+      "new_full_PPA": 60,
+      "search_s": 1804.086698200088,
+      "charged_s": 4034.0973340997007,
+      "latency_ms": 2.999039973007856,
+      "energy_mJ": 11.687252128214997,
+      "area_mm2": 106.22171971764706,
+      "average_power_W": 3.8969977837585765,
+      "DRAM_read_B": 12879619,
+      "NoC_hop_B": 167903936,
+      "NoP_hop_B": 60679120,
+      "SGD": 3408,
+      "timeouts": 1,
+      "audit_passed": true
+    },
+    {
+      "phase": "development",
+      "case": "development/one_step_cost/7",
+      "seed": 7,
+      "method": "rl",
+      "source": "b6bf8e77f95b1e47fff56491b248fd9ac55a8884aa505d5e12dcac75bdda2f05",
+      "algorithm": "one_step_action_value_rl",
+      "Q": "physical_cost_factored_double_q_v1",
+      "gamma": 0.0,
+      "horizon": 1,
+      "architecture_scaling": "proportional",
+      "continuation": false,
+      "reference_only": false,
+      "strict_feasible": true,
+      "EDP": 0.0467296608971145,
+      "gain_after_shared_pct": 9.255894837479184,
+      "charged_full_PPA": 152,
+      "new_full_PPA": 52,
+      "search_s": 1803.263235800201,
+      "charged_s": 4033.2738697999157,
+      "latency_ms": 2.440240313124889,
+      "energy_mJ": 13.782590791327703,
+      "area_mm2": 147.64920790588235,
+      "average_power_W": 5.648046512959285,
+      "DRAM_read_B": 12645906,
+      "NoC_hop_B": 191586320,
+      "NoP_hop_B": 98785088,
+      "SGD": 3216,
+      "timeouts": 1,
+      "audit_passed": true
+    },
+    {
+      "phase": "development",
+      "case": "development/selected_controls/7",
+      "seed": 7,
+      "method": "sa",
+      "source": "b6bf8e77f95b1e47fff56491b248fd9ac55a8884aa505d5e12dcac75bdda2f05",
+      "algorithm": "sa",
+      "Q": null,
+      "gamma": 0.9,
+      "horizon": 8,
+      "architecture_scaling": "proportional",
+      "continuation": false,
+      "reference_only": false,
+      "strict_feasible": true,
+      "EDP": 0.050428660259752914,
+      "gain_after_shared_pct": 2.0728256536819534,
+      "charged_full_PPA": 181,
+      "new_full_PPA": 81,
+      "search_s": 1802.386648299871,
+      "charged_s": 4032.3972821997013,
+      "latency_ms": 2.7376466782030575,
+      "energy_mJ": 13.25778168348592,
+      "area_mm2": 133.8400451764706,
+      "average_power_W": 4.842765791891046,
+      "DRAM_read_B": 13712492,
+      "NoC_hop_B": 178927616,
+      "NoP_hop_B": 90408560,
+      "SGD": 0,
+      "timeouts": 1,
+      "audit_passed": true
+    },
+    {
+      "phase": "development",
+      "case": "development/selected_controls/7",
+      "seed": 7,
+      "method": "random",
+      "source": "b6bf8e77f95b1e47fff56491b248fd9ac55a8884aa505d5e12dcac75bdda2f05",
+      "algorithm": "random",
+      "Q": null,
+      "gamma": 0.9,
+      "horizon": 8,
+      "architecture_scaling": "proportional",
+      "continuation": false,
+      "reference_only": false,
+      "strict_feasible": true,
+      "EDP": 0.03891873355939436,
+      "gain_after_shared_pct": 24.4238973040807,
+      "charged_full_PPA": 166,
+      "new_full_PPA": 66,
+      "search_s": 1803.612236800138,
+      "charged_s": 4033.622871699743,
+      "latency_ms": 2.2436259010937,
+      "energy_mJ": 12.484727989085485,
+      "area_mm2": 159.33257957647058,
+      "average_power_W": 5.564531940462782,
+      "DRAM_read_B": 13171870,
+      "NoC_hop_B": 170285200,
+      "NoP_hop_B": 73527488,
+      "SGD": 0,
+      "timeouts": 1,
+      "audit_passed": true
+    },
+    {
+      "phase": "development",
+      "case": "development/transition_restart/7",
+      "seed": 7,
+      "method": "rl",
+      "source": "b6bf8e77f95b1e47fff56491b248fd9ac55a8884aa505d5e12dcac75bdda2f05",
+      "algorithm": "multistep_double_q",
+      "Q": "original_transition_double_q",
+      "gamma": 0.9,
+      "horizon": 8,
+      "architecture_scaling": "proportional",
+      "continuation": false,
+      "reference_only": false,
+      "strict_feasible": true,
+      "EDP": 0.0504764910115534,
+      "gain_after_shared_pct": 1.979943345356583,
+      "charged_full_PPA": 135,
+      "new_full_PPA": 35,
+      "search_s": 1803.4219397001434,
+      "charged_s": 4033.432574699633,
+      "latency_ms": 2.9653493169140526,
+      "energy_mJ": 12.251355043729653,
+      "area_mm2": 94.53834804705882,
+      "average_power_W": 4.13150483615848,
+      "DRAM_read_B": 12975642,
+      "NoC_hop_B": 159293792,
+      "NoP_hop_B": 99552288,
+      "SGD": 2808,
+      "timeouts": 2,
+      "audit_passed": true
+    },
+    {
+      "phase": "development",
+      "case": "development/uniform/7",
+      "seed": 7,
+      "method": "rl",
+      "source": "b6bf8e77f95b1e47fff56491b248fd9ac55a8884aa505d5e12dcac75bdda2f05",
+      "algorithm": "uniform_horizon_control",
+      "Q": "physical_cost_factored_double_q_v1",
+      "gamma": 0.9,
+      "horizon": 8,
+      "architecture_scaling": "proportional",
+      "continuation": false,
+      "reference_only": false,
+      "strict_feasible": true,
+      "EDP": 0.05034258643644757,
+      "gain_after_shared_pct": 2.2399719997887146,
+      "charged_full_PPA": 147,
+      "new_full_PPA": 47,
+      "search_s": 1803.5449214000255,
+      "charged_s": 4033.555556199746,
+      "latency_ms": 2.7355304716405615,
+      "energy_mJ": 13.245391442079331,
+      "area_mm2": 133.8400451764706,
+      "average_power_W": 4.841982781546483,
+      "DRAM_read_B": 13712492,
+      "NoC_hop_B": 178830336,
+      "NoP_hop_B": 89929184,
+      "SGD": 0,
+      "timeouts": 2,
+      "audit_passed": true
+    }
+  ],
+  "equal_budget": [
+    {
+      "group": "development/7",
+      "scope": "all completed arms",
+      "axis": "q",
+      "budget": 135,
+      "id": "development/cost_restart/7/rl",
+      "best_EDP": 0.04383372118218357
+    },
+    {
+      "group": "development/7",
+      "scope": "all completed arms",
+      "axis": "q",
+      "budget": 135,
+      "id": "development/frozen/7/rl",
+      "best_EDP": 0.05103786493502289
+    },
+    {
+      "group": "development/7",
+      "scope": "all completed arms",
+      "axis": "q",
+      "budget": 135,
+      "id": "development/no_restart_reference/7/rl",
+      "best_EDP": 0.04869942544978725
+    },
+    {
+      "group": "development/7",
+      "scope": "all completed arms",
+      "axis": "q",
+      "budget": 135,
+      "id": "development/one_step_cost/7/rl",
+      "best_EDP": 0.047275197450572626
+    },
+    {
+      "group": "development/7",
+      "scope": "all completed arms",
+      "axis": "q",
+      "budget": 135,
+      "id": "development/selected_controls/7/sa",
+      "best_EDP": 0.05057247667797123
+    },
+    {
+      "group": "development/7",
+      "scope": "all completed arms",
+      "axis": "q",
+      "budget": 135,
+      "id": "development/selected_controls/7/random",
+      "best_EDP": 0.05020557190033362
+    },
+    {
+      "group": "development/7",
+      "scope": "all completed arms",
+      "axis": "q",
+      "budget": 135,
+      "id": "development/transition_restart/7/rl",
+      "best_EDP": 0.0504764910115534
+    },
+    {
+      "group": "development/7",
+      "scope": "all completed arms",
+      "axis": "q",
+      "budget": 135,
+      "id": "development/uniform/7/rl",
+      "best_EDP": 0.05036720144128283
+    },
+    {
+      "group": "development/7",
+      "scope": "all completed arms",
+      "axis": "seconds",
+      "budget": 4031.860476499656,
+      "id": "development/cost_restart/7/rl",
+      "best_EDP": 0.043227503449559834
+    },
+    {
+      "group": "development/7",
+      "scope": "all completed arms",
+      "axis": "seconds",
+      "budget": 4031.860476499656,
+      "id": "development/frozen/7/rl",
+      "best_EDP": 0.05103786493502289
+    },
+    {
+      "group": "development/7",
+      "scope": "all completed arms",
+      "axis": "seconds",
+      "budget": 4031.860476499656,
+      "id": "development/no_restart_reference/7/rl",
+      "best_EDP": 0.04869942544978725
+    },
+    {
+      "group": "development/7",
+      "scope": "all completed arms",
+      "axis": "seconds",
+      "budget": 4031.860476499656,
+      "id": "development/one_step_cost/7/rl",
+      "best_EDP": 0.0467296608971145
+    },
+    {
+      "group": "development/7",
+      "scope": "all completed arms",
+      "axis": "seconds",
+      "budget": 4031.860476499656,
+      "id": "development/selected_controls/7/sa",
+      "best_EDP": 0.050428660259752914
+    },
+    {
+      "group": "development/7",
+      "scope": "all completed arms",
+      "axis": "seconds",
+      "budget": 4031.860476499656,
+      "id": "development/selected_controls/7/random",
+      "best_EDP": 0.03891873355939436
+    },
+    {
+      "group": "development/7",
+      "scope": "all completed arms",
+      "axis": "seconds",
+      "budget": 4031.860476499656,
+      "id": "development/transition_restart/7/rl",
+      "best_EDP": 0.0504764910115534
+    },
+    {
+      "group": "development/7",
+      "scope": "all completed arms",
+      "axis": "seconds",
+      "budget": 4031.860476499656,
+      "id": "development/uniform/7/rl",
+      "best_EDP": 0.05034258643644757
+    },
+    {
+      "group": "development/7",
+      "scope": "pair: development/cost_restart/7/rl versus development/frozen/7/rl",
+      "axis": "q",
+      "budget": 168,
+      "id": "development/cost_restart/7/rl",
+      "best_EDP": 0.04383372118218357
+    },
+    {
+      "group": "development/7",
+      "scope": "pair: development/cost_restart/7/rl versus development/frozen/7/rl",
+      "axis": "q",
+      "budget": 168,
+      "id": "development/frozen/7/rl",
+      "best_EDP": 0.05103786493502289
+    },
+    {
+      "group": "development/7",
+      "scope": "pair: development/cost_restart/7/rl versus development/frozen/7/rl",
+      "axis": "seconds",
+      "budget": 4032.3526442996226,
+      "id": "development/cost_restart/7/rl",
+      "best_EDP": 0.043227503449559834
+    },
+    {
+      "group": "development/7",
+      "scope": "pair: development/cost_restart/7/rl versus development/frozen/7/rl",
+      "axis": "seconds",
+      "budget": 4032.3526442996226,
+      "id": "development/frozen/7/rl",
+      "best_EDP": 0.05103786493502289
+    },
+    {
+      "group": "development/7",
+      "scope": "pair: development/cost_restart/7/rl versus development/no_restart_reference/7/rl",
+      "axis": "q",
+      "budget": 160,
+      "id": "development/cost_restart/7/rl",
+      "best_EDP": 0.04383372118218357
+    },
+    {
+      "group": "development/7",
+      "scope": "pair: development/cost_restart/7/rl versus development/no_restart_reference/7/rl",
+      "axis": "q",
+      "budget": 160,
+      "id": "development/no_restart_reference/7/rl",
+      "best_EDP": 0.04869942544978725
+    },
+    {
+      "group": "development/7",
+      "scope": "pair: development/cost_restart/7/rl versus development/no_restart_reference/7/rl",
+      "axis": "seconds",
+      "budget": 4032.423167299712,
+      "id": "development/cost_restart/7/rl",
+      "best_EDP": 0.043227503449559834
+    },
+    {
+      "group": "development/7",
+      "scope": "pair: development/cost_restart/7/rl versus development/no_restart_reference/7/rl",
+      "axis": "seconds",
+      "budget": 4032.423167299712,
+      "id": "development/no_restart_reference/7/rl",
+      "best_EDP": 0.04869942544978725
+    },
+    {
+      "group": "development/7",
+      "scope": "pair: development/cost_restart/7/rl versus development/one_step_cost/7/rl",
+      "axis": "q",
+      "budget": 152,
+      "id": "development/cost_restart/7/rl",
+      "best_EDP": 0.04383372118218357
+    },
+    {
+      "group": "development/7",
+      "scope": "pair: development/cost_restart/7/rl versus development/one_step_cost/7/rl",
+      "axis": "q",
+      "budget": 152,
+      "id": "development/one_step_cost/7/rl",
+      "best_EDP": 0.0467296608971145
+    },
+    {
+      "group": "development/7",
+      "scope": "pair: development/cost_restart/7/rl versus development/one_step_cost/7/rl",
+      "axis": "seconds",
+      "budget": 4032.423167299712,
+      "id": "development/cost_restart/7/rl",
+      "best_EDP": 0.043227503449559834
+    },
+    {
+      "group": "development/7",
+      "scope": "pair: development/cost_restart/7/rl versus development/one_step_cost/7/rl",
+      "axis": "seconds",
+      "budget": 4032.423167299712,
+      "id": "development/one_step_cost/7/rl",
+      "best_EDP": 0.0467296608971145
+    },
+    {
+      "group": "development/7",
+      "scope": "pair: development/cost_restart/7/rl versus development/selected_controls/7/sa",
+      "axis": "q",
+      "budget": 181,
+      "id": "development/cost_restart/7/rl",
+      "best_EDP": 0.04383372118218357
+    },
+    {
+      "group": "development/7",
+      "scope": "pair: development/cost_restart/7/rl versus development/selected_controls/7/sa",
+      "axis": "q",
+      "budget": 181,
+      "id": "development/selected_controls/7/sa",
+      "best_EDP": 0.050428660259752914
+    },
+    {
+      "group": "development/7",
+      "scope": "pair: development/cost_restart/7/rl versus development/selected_controls/7/sa",
+      "axis": "seconds",
+      "budget": 4031.860476499656,
+      "id": "development/cost_restart/7/rl",
+      "best_EDP": 0.043227503449559834
+    },
+    {
+      "group": "development/7",
+      "scope": "pair: development/cost_restart/7/rl versus development/selected_controls/7/sa",
+      "axis": "seconds",
+      "budget": 4031.860476499656,
+      "id": "development/selected_controls/7/sa",
+      "best_EDP": 0.050428660259752914
+    },
+    {
+      "group": "development/7",
+      "scope": "pair: development/cost_restart/7/rl versus development/selected_controls/7/random",
+      "axis": "q",
+      "budget": 166,
+      "id": "development/cost_restart/7/rl",
+      "best_EDP": 0.04383372118218357
+    },
+    {
+      "group": "development/7",
+      "scope": "pair: development/cost_restart/7/rl versus development/selected_controls/7/random",
+      "axis": "q",
+      "budget": 166,
+      "id": "development/selected_controls/7/random",
+      "best_EDP": 0.03891873355939436
+    },
+    {
+      "group": "development/7",
+      "scope": "pair: development/cost_restart/7/rl versus development/selected_controls/7/random",
+      "axis": "seconds",
+      "budget": 4032.391308999853,
+      "id": "development/cost_restart/7/rl",
+      "best_EDP": 0.043227503449559834
+    },
+    {
+      "group": "development/7",
+      "scope": "pair: development/cost_restart/7/rl versus development/selected_controls/7/random",
+      "axis": "seconds",
+      "budget": 4032.391308999853,
+      "id": "development/selected_controls/7/random",
+      "best_EDP": 0.03891873355939436
+    },
+    {
+      "group": "development/7",
+      "scope": "pair: development/cost_restart/7/rl versus development/transition_restart/7/rl",
+      "axis": "q",
+      "budget": 135,
+      "id": "development/cost_restart/7/rl",
+      "best_EDP": 0.04383372118218357
+    },
+    {
+      "group": "development/7",
+      "scope": "pair: development/cost_restart/7/rl versus development/transition_restart/7/rl",
+      "axis": "q",
+      "budget": 135,
+      "id": "development/transition_restart/7/rl",
+      "best_EDP": 0.0504764910115534
+    },
+    {
+      "group": "development/7",
+      "scope": "pair: development/cost_restart/7/rl versus development/transition_restart/7/rl",
+      "axis": "seconds",
+      "budget": 4032.375146099832,
+      "id": "development/cost_restart/7/rl",
+      "best_EDP": 0.043227503449559834
+    },
+    {
+      "group": "development/7",
+      "scope": "pair: development/cost_restart/7/rl versus development/transition_restart/7/rl",
+      "axis": "seconds",
+      "budget": 4032.375146099832,
+      "id": "development/transition_restart/7/rl",
+      "best_EDP": 0.0504764910115534
+    },
+    {
+      "group": "development/7",
+      "scope": "pair: development/cost_restart/7/rl versus development/uniform/7/rl",
+      "axis": "q",
+      "budget": 147,
+      "id": "development/cost_restart/7/rl",
+      "best_EDP": 0.04383372118218357
+    },
+    {
+      "group": "development/7",
+      "scope": "pair: development/cost_restart/7/rl versus development/uniform/7/rl",
+      "axis": "q",
+      "budget": 147,
+      "id": "development/uniform/7/rl",
+      "best_EDP": 0.05034258643644757
+    },
+    {
+      "group": "development/7",
+      "scope": "pair: development/cost_restart/7/rl versus development/uniform/7/rl",
+      "axis": "seconds",
+      "budget": 4032.423167299712,
+      "id": "development/cost_restart/7/rl",
+      "best_EDP": 0.043227503449559834
+    },
+    {
+      "group": "development/7",
+      "scope": "pair: development/cost_restart/7/rl versus development/uniform/7/rl",
+      "axis": "seconds",
+      "budget": 4032.423167299712,
+      "id": "development/uniform/7/rl",
+      "best_EDP": 0.05034258643644757
+    },
+    {
+      "group": "development/7",
+      "scope": "pair: development/frozen/7/rl versus development/no_restart_reference/7/rl",
+      "axis": "q",
+      "budget": 160,
+      "id": "development/frozen/7/rl",
+      "best_EDP": 0.05103786493502289
+    },
+    {
+      "group": "development/7",
+      "scope": "pair: development/frozen/7/rl versus development/no_restart_reference/7/rl",
+      "axis": "q",
+      "budget": 160,
+      "id": "development/no_restart_reference/7/rl",
+      "best_EDP": 0.04869942544978725
+    },
+    {
+      "group": "development/7",
+      "scope": "pair: development/frozen/7/rl versus development/no_restart_reference/7/rl",
+      "axis": "seconds",
+      "budget": 4032.3526442996226,
+      "id": "development/frozen/7/rl",
+      "best_EDP": 0.05103786493502289
+    },
+    {
+      "group": "development/7",
+      "scope": "pair: development/frozen/7/rl versus development/no_restart_reference/7/rl",
+      "axis": "seconds",
+      "budget": 4032.3526442996226,
+      "id": "development/no_restart_reference/7/rl",
+      "best_EDP": 0.04869942544978725
+    },
+    {
+      "group": "development/7",
+      "scope": "pair: development/frozen/7/rl versus development/one_step_cost/7/rl",
+      "axis": "q",
+      "budget": 152,
+      "id": "development/frozen/7/rl",
+      "best_EDP": 0.05103786493502289
+    },
+    {
+      "group": "development/7",
+      "scope": "pair: development/frozen/7/rl versus development/one_step_cost/7/rl",
+      "axis": "q",
+      "budget": 152,
+      "id": "development/one_step_cost/7/rl",
+      "best_EDP": 0.0467296608971145
+    },
+    {
+      "group": "development/7",
+      "scope": "pair: development/frozen/7/rl versus development/one_step_cost/7/rl",
+      "axis": "seconds",
+      "budget": 4032.3526442996226,
+      "id": "development/frozen/7/rl",
+      "best_EDP": 0.05103786493502289
+    },
+    {
+      "group": "development/7",
+      "scope": "pair: development/frozen/7/rl versus development/one_step_cost/7/rl",
+      "axis": "seconds",
+      "budget": 4032.3526442996226,
+      "id": "development/one_step_cost/7/rl",
+      "best_EDP": 0.0467296608971145
+    },
+    {
+      "group": "development/7",
+      "scope": "pair: development/frozen/7/rl versus development/selected_controls/7/sa",
+      "axis": "q",
+      "budget": 168,
+      "id": "development/frozen/7/rl",
+      "best_EDP": 0.05103786493502289
+    },
+    {
+      "group": "development/7",
+      "scope": "pair: development/frozen/7/rl versus development/selected_controls/7/sa",
+      "axis": "q",
+      "budget": 168,
+      "id": "development/selected_controls/7/sa",
+      "best_EDP": 0.050428660259752914
+    },
+    {
+      "group": "development/7",
+      "scope": "pair: development/frozen/7/rl versus development/selected_controls/7/sa",
+      "axis": "seconds",
+      "budget": 4031.860476499656,
+      "id": "development/frozen/7/rl",
+      "best_EDP": 0.05103786493502289
+    },
+    {
+      "group": "development/7",
+      "scope": "pair: development/frozen/7/rl versus development/selected_controls/7/sa",
+      "axis": "seconds",
+      "budget": 4031.860476499656,
+      "id": "development/selected_controls/7/sa",
+      "best_EDP": 0.050428660259752914
+    },
+    {
+      "group": "development/7",
+      "scope": "pair: development/frozen/7/rl versus development/selected_controls/7/random",
+      "axis": "q",
+      "budget": 166,
+      "id": "development/frozen/7/rl",
+      "best_EDP": 0.05103786493502289
+    },
+    {
+      "group": "development/7",
+      "scope": "pair: development/frozen/7/rl versus development/selected_controls/7/random",
+      "axis": "q",
+      "budget": 166,
+      "id": "development/selected_controls/7/random",
+      "best_EDP": 0.03891873355939436
+    },
+    {
+      "group": "development/7",
+      "scope": "pair: development/frozen/7/rl versus development/selected_controls/7/random",
+      "axis": "seconds",
+      "budget": 4032.3526442996226,
+      "id": "development/frozen/7/rl",
+      "best_EDP": 0.05103786493502289
+    },
+    {
+      "group": "development/7",
+      "scope": "pair: development/frozen/7/rl versus development/selected_controls/7/random",
+      "axis": "seconds",
+      "budget": 4032.3526442996226,
+      "id": "development/selected_controls/7/random",
+      "best_EDP": 0.03891873355939436
+    },
+    {
+      "group": "development/7",
+      "scope": "pair: development/frozen/7/rl versus development/transition_restart/7/rl",
+      "axis": "q",
+      "budget": 135,
+      "id": "development/frozen/7/rl",
+      "best_EDP": 0.05103786493502289
+    },
+    {
+      "group": "development/7",
+      "scope": "pair: development/frozen/7/rl versus development/transition_restart/7/rl",
+      "axis": "q",
+      "budget": 135,
+      "id": "development/transition_restart/7/rl",
+      "best_EDP": 0.0504764910115534
+    },
+    {
+      "group": "development/7",
+      "scope": "pair: development/frozen/7/rl versus development/transition_restart/7/rl",
+      "axis": "seconds",
+      "budget": 4032.3526442996226,
+      "id": "development/frozen/7/rl",
+      "best_EDP": 0.05103786493502289
+    },
+    {
+      "group": "development/7",
+      "scope": "pair: development/frozen/7/rl versus development/transition_restart/7/rl",
+      "axis": "seconds",
+      "budget": 4032.3526442996226,
+      "id": "development/transition_restart/7/rl",
+      "best_EDP": 0.0504764910115534
+    },
+    {
+      "group": "development/7",
+      "scope": "pair: development/frozen/7/rl versus development/uniform/7/rl",
+      "axis": "q",
+      "budget": 147,
+      "id": "development/frozen/7/rl",
+      "best_EDP": 0.05103786493502289
+    },
+    {
+      "group": "development/7",
+      "scope": "pair: development/frozen/7/rl versus development/uniform/7/rl",
+      "axis": "q",
+      "budget": 147,
+      "id": "development/uniform/7/rl",
+      "best_EDP": 0.05034258643644757
+    },
+    {
+      "group": "development/7",
+      "scope": "pair: development/frozen/7/rl versus development/uniform/7/rl",
+      "axis": "seconds",
+      "budget": 4032.3526442996226,
+      "id": "development/frozen/7/rl",
+      "best_EDP": 0.05103786493502289
+    },
+    {
+      "group": "development/7",
+      "scope": "pair: development/frozen/7/rl versus development/uniform/7/rl",
+      "axis": "seconds",
+      "budget": 4032.3526442996226,
+      "id": "development/uniform/7/rl",
+      "best_EDP": 0.05034258643644757
+    },
+    {
+      "group": "development/7",
+      "scope": "pair: development/no_restart_reference/7/rl versus development/one_step_cost/7/rl",
+      "axis": "q",
+      "budget": 152,
+      "id": "development/no_restart_reference/7/rl",
+      "best_EDP": 0.04869942544978725
+    },
+    {
+      "group": "development/7",
+      "scope": "pair: development/no_restart_reference/7/rl versus development/one_step_cost/7/rl",
+      "axis": "q",
+      "budget": 152,
+      "id": "development/one_step_cost/7/rl",
+      "best_EDP": 0.0467296608971145
+    },
+    {
+      "group": "development/7",
+      "scope": "pair: development/no_restart_reference/7/rl versus development/one_step_cost/7/rl",
+      "axis": "seconds",
+      "budget": 4032.4535788998473,
+      "id": "development/no_restart_reference/7/rl",
+      "best_EDP": 0.04869942544978725
+    },
+    {
+      "group": "development/7",
+      "scope": "pair: development/no_restart_reference/7/rl versus development/one_step_cost/7/rl",
+      "axis": "seconds",
+      "budget": 4032.4535788998473,
+      "id": "development/one_step_cost/7/rl",
+      "best_EDP": 0.0467296608971145
+    },
+    {
+      "group": "development/7",
+      "scope": "pair: development/no_restart_reference/7/rl versus development/selected_controls/7/sa",
+      "axis": "q",
+      "budget": 160,
+      "id": "development/no_restart_reference/7/rl",
+      "best_EDP": 0.04869942544978725
+    },
+    {
+      "group": "development/7",
+      "scope": "pair: development/no_restart_reference/7/rl versus development/selected_controls/7/sa",
+      "axis": "q",
+      "budget": 160,
+      "id": "development/selected_controls/7/sa",
+      "best_EDP": 0.050428660259752914
+    },
+    {
+      "group": "development/7",
+      "scope": "pair: development/no_restart_reference/7/rl versus development/selected_controls/7/sa",
+      "axis": "seconds",
+      "budget": 4031.860476499656,
+      "id": "development/no_restart_reference/7/rl",
+      "best_EDP": 0.04869942544978725
+    },
+    {
+      "group": "development/7",
+      "scope": "pair: development/no_restart_reference/7/rl versus development/selected_controls/7/sa",
+      "axis": "seconds",
+      "budget": 4031.860476499656,
+      "id": "development/selected_controls/7/sa",
+      "best_EDP": 0.050428660259752914
+    },
+    {
+      "group": "development/7",
+      "scope": "pair: development/no_restart_reference/7/rl versus development/selected_controls/7/random",
+      "axis": "q",
+      "budget": 160,
+      "id": "development/no_restart_reference/7/rl",
+      "best_EDP": 0.04869942544978725
+    },
+    {
+      "group": "development/7",
+      "scope": "pair: development/no_restart_reference/7/rl versus development/selected_controls/7/random",
+      "axis": "q",
+      "budget": 160,
+      "id": "development/selected_controls/7/random",
+      "best_EDP": 0.03936656203786106
+    },
+    {
+      "group": "development/7",
+      "scope": "pair: development/no_restart_reference/7/rl versus development/selected_controls/7/random",
+      "axis": "seconds",
+      "budget": 4032.391308999853,
+      "id": "development/no_restart_reference/7/rl",
+      "best_EDP": 0.04869942544978725
+    },
+    {
+      "group": "development/7",
+      "scope": "pair: development/no_restart_reference/7/rl versus development/selected_controls/7/random",
+      "axis": "seconds",
+      "budget": 4032.391308999853,
+      "id": "development/selected_controls/7/random",
+      "best_EDP": 0.03891873355939436
+    },
+    {
+      "group": "development/7",
+      "scope": "pair: development/no_restart_reference/7/rl versus development/transition_restart/7/rl",
+      "axis": "q",
+      "budget": 135,
+      "id": "development/no_restart_reference/7/rl",
+      "best_EDP": 0.04869942544978725
+    },
+    {
+      "group": "development/7",
+      "scope": "pair: development/no_restart_reference/7/rl versus development/transition_restart/7/rl",
+      "axis": "q",
+      "budget": 135,
+      "id": "development/transition_restart/7/rl",
+      "best_EDP": 0.0504764910115534
+    },
+    {
+      "group": "development/7",
+      "scope": "pair: development/no_restart_reference/7/rl versus development/transition_restart/7/rl",
+      "axis": "seconds",
+      "budget": 4032.375146099832,
+      "id": "development/no_restart_reference/7/rl",
+      "best_EDP": 0.04869942544978725
+    },
+    {
+      "group": "development/7",
+      "scope": "pair: development/no_restart_reference/7/rl versus development/transition_restart/7/rl",
+      "axis": "seconds",
+      "budget": 4032.375146099832,
+      "id": "development/transition_restart/7/rl",
+      "best_EDP": 0.0504764910115534
+    },
+    {
+      "group": "development/7",
+      "scope": "pair: development/no_restart_reference/7/rl versus development/uniform/7/rl",
+      "axis": "q",
+      "budget": 147,
+      "id": "development/no_restart_reference/7/rl",
+      "best_EDP": 0.04869942544978725
+    },
+    {
+      "group": "development/7",
+      "scope": "pair: development/no_restart_reference/7/rl versus development/uniform/7/rl",
+      "axis": "q",
+      "budget": 147,
+      "id": "development/uniform/7/rl",
+      "best_EDP": 0.05034258643644757
+    },
+    {
+      "group": "development/7",
+      "scope": "pair: development/no_restart_reference/7/rl versus development/uniform/7/rl",
+      "axis": "seconds",
+      "budget": 4032.437642699573,
+      "id": "development/no_restart_reference/7/rl",
+      "best_EDP": 0.04869942544978725
+    },
+    {
+      "group": "development/7",
+      "scope": "pair: development/no_restart_reference/7/rl versus development/uniform/7/rl",
+      "axis": "seconds",
+      "budget": 4032.437642699573,
+      "id": "development/uniform/7/rl",
+      "best_EDP": 0.05034258643644757
+    },
+    {
+      "group": "development/7",
+      "scope": "pair: development/one_step_cost/7/rl versus development/selected_controls/7/sa",
+      "axis": "q",
+      "budget": 152,
+      "id": "development/one_step_cost/7/rl",
+      "best_EDP": 0.0467296608971145
+    },
+    {
+      "group": "development/7",
+      "scope": "pair: development/one_step_cost/7/rl versus development/selected_controls/7/sa",
+      "axis": "q",
+      "budget": 152,
+      "id": "development/selected_controls/7/sa",
+      "best_EDP": 0.050428660259752914
+    },
+    {
+      "group": "development/7",
+      "scope": "pair: development/one_step_cost/7/rl versus development/selected_controls/7/sa",
+      "axis": "seconds",
+      "budget": 4031.860476499656,
+      "id": "development/one_step_cost/7/rl",
+      "best_EDP": 0.0467296608971145
+    },
+    {
+      "group": "development/7",
+      "scope": "pair: development/one_step_cost/7/rl versus development/selected_controls/7/sa",
+      "axis": "seconds",
+      "budget": 4031.860476499656,
+      "id": "development/selected_controls/7/sa",
+      "best_EDP": 0.050428660259752914
+    },
+    {
+      "group": "development/7",
+      "scope": "pair: development/one_step_cost/7/rl versus development/selected_controls/7/random",
+      "axis": "q",
+      "budget": 152,
+      "id": "development/one_step_cost/7/rl",
+      "best_EDP": 0.0467296608971145
+    },
+    {
+      "group": "development/7",
+      "scope": "pair: development/one_step_cost/7/rl versus development/selected_controls/7/random",
+      "axis": "q",
+      "budget": 152,
+      "id": "development/selected_controls/7/random",
+      "best_EDP": 0.03941789609125139
+    },
+    {
+      "group": "development/7",
+      "scope": "pair: development/one_step_cost/7/rl versus development/selected_controls/7/random",
+      "axis": "seconds",
+      "budget": 4032.391308999853,
+      "id": "development/one_step_cost/7/rl",
+      "best_EDP": 0.0467296608971145
+    },
+    {
+      "group": "development/7",
+      "scope": "pair: development/one_step_cost/7/rl versus development/selected_controls/7/random",
+      "axis": "seconds",
+      "budget": 4032.391308999853,
+      "id": "development/selected_controls/7/random",
+      "best_EDP": 0.03891873355939436
+    },
+    {
+      "group": "development/7",
+      "scope": "pair: development/one_step_cost/7/rl versus development/transition_restart/7/rl",
+      "axis": "q",
+      "budget": 135,
+      "id": "development/one_step_cost/7/rl",
+      "best_EDP": 0.047275197450572626
+    },
+    {
+      "group": "development/7",
+      "scope": "pair: development/one_step_cost/7/rl versus development/transition_restart/7/rl",
+      "axis": "q",
+      "budget": 135,
+      "id": "development/transition_restart/7/rl",
+      "best_EDP": 0.0504764910115534
+    },
+    {
+      "group": "development/7",
+      "scope": "pair: development/one_step_cost/7/rl versus development/transition_restart/7/rl",
+      "axis": "seconds",
+      "budget": 4032.375146099832,
+      "id": "development/one_step_cost/7/rl",
+      "best_EDP": 0.0467296608971145
+    },
+    {
+      "group": "development/7",
+      "scope": "pair: development/one_step_cost/7/rl versus development/transition_restart/7/rl",
+      "axis": "seconds",
+      "budget": 4032.375146099832,
+      "id": "development/transition_restart/7/rl",
+      "best_EDP": 0.0504764910115534
+    },
+    {
+      "group": "development/7",
+      "scope": "pair: development/one_step_cost/7/rl versus development/uniform/7/rl",
+      "axis": "q",
+      "budget": 147,
+      "id": "development/one_step_cost/7/rl",
+      "best_EDP": 0.0467296608971145
+    },
+    {
+      "group": "development/7",
+      "scope": "pair: development/one_step_cost/7/rl versus development/uniform/7/rl",
+      "axis": "q",
+      "budget": 147,
+      "id": "development/uniform/7/rl",
+      "best_EDP": 0.05034258643644757
+    },
+    {
+      "group": "development/7",
+      "scope": "pair: development/one_step_cost/7/rl versus development/uniform/7/rl",
+      "axis": "seconds",
+      "budget": 4032.437642699573,
+      "id": "development/one_step_cost/7/rl",
+      "best_EDP": 0.0467296608971145
+    },
+    {
+      "group": "development/7",
+      "scope": "pair: development/one_step_cost/7/rl versus development/uniform/7/rl",
+      "axis": "seconds",
+      "budget": 4032.437642699573,
+      "id": "development/uniform/7/rl",
+      "best_EDP": 0.05034258643644757
+    },
+    {
+      "group": "development/7",
+      "scope": "pair: development/selected_controls/7/sa versus development/selected_controls/7/random",
+      "axis": "q",
+      "budget": 166,
+      "id": "development/selected_controls/7/sa",
+      "best_EDP": 0.050428660259752914
+    },
+    {
+      "group": "development/7",
+      "scope": "pair: development/selected_controls/7/sa versus development/selected_controls/7/random",
+      "axis": "q",
+      "budget": 166,
+      "id": "development/selected_controls/7/random",
+      "best_EDP": 0.03891873355939436
+    },
+    {
+      "group": "development/7",
+      "scope": "pair: development/selected_controls/7/sa versus development/selected_controls/7/random",
+      "axis": "seconds",
+      "budget": 4031.860476499656,
+      "id": "development/selected_controls/7/sa",
+      "best_EDP": 0.050428660259752914
+    },
+    {
+      "group": "development/7",
+      "scope": "pair: development/selected_controls/7/sa versus development/selected_controls/7/random",
+      "axis": "seconds",
+      "budget": 4031.860476499656,
+      "id": "development/selected_controls/7/random",
+      "best_EDP": 0.03891873355939436
+    },
+    {
+      "group": "development/7",
+      "scope": "pair: development/selected_controls/7/sa versus development/transition_restart/7/rl",
+      "axis": "q",
+      "budget": 135,
+      "id": "development/selected_controls/7/sa",
+      "best_EDP": 0.05057247667797123
+    },
+    {
+      "group": "development/7",
+      "scope": "pair: development/selected_controls/7/sa versus development/transition_restart/7/rl",
+      "axis": "q",
+      "budget": 135,
+      "id": "development/transition_restart/7/rl",
+      "best_EDP": 0.0504764910115534
+    },
+    {
+      "group": "development/7",
+      "scope": "pair: development/selected_controls/7/sa versus development/transition_restart/7/rl",
+      "axis": "seconds",
+      "budget": 4031.860476499656,
+      "id": "development/selected_controls/7/sa",
+      "best_EDP": 0.050428660259752914
+    },
+    {
+      "group": "development/7",
+      "scope": "pair: development/selected_controls/7/sa versus development/transition_restart/7/rl",
+      "axis": "seconds",
+      "budget": 4031.860476499656,
+      "id": "development/transition_restart/7/rl",
+      "best_EDP": 0.0504764910115534
+    },
+    {
+      "group": "development/7",
+      "scope": "pair: development/selected_controls/7/sa versus development/uniform/7/rl",
+      "axis": "q",
+      "budget": 147,
+      "id": "development/selected_controls/7/sa",
+      "best_EDP": 0.05057247667797123
+    },
+    {
+      "group": "development/7",
+      "scope": "pair: development/selected_controls/7/sa versus development/uniform/7/rl",
+      "axis": "q",
+      "budget": 147,
+      "id": "development/uniform/7/rl",
+      "best_EDP": 0.05034258643644757
+    },
+    {
+      "group": "development/7",
+      "scope": "pair: development/selected_controls/7/sa versus development/uniform/7/rl",
+      "axis": "seconds",
+      "budget": 4031.860476499656,
+      "id": "development/selected_controls/7/sa",
+      "best_EDP": 0.050428660259752914
+    },
+    {
+      "group": "development/7",
+      "scope": "pair: development/selected_controls/7/sa versus development/uniform/7/rl",
+      "axis": "seconds",
+      "budget": 4031.860476499656,
+      "id": "development/uniform/7/rl",
+      "best_EDP": 0.05034258643644757
+    },
+    {
+      "group": "development/7",
+      "scope": "pair: development/selected_controls/7/random versus development/transition_restart/7/rl",
+      "axis": "q",
+      "budget": 135,
+      "id": "development/selected_controls/7/random",
+      "best_EDP": 0.05020557190033362
+    },
+    {
+      "group": "development/7",
+      "scope": "pair: development/selected_controls/7/random versus development/transition_restart/7/rl",
+      "axis": "q",
+      "budget": 135,
+      "id": "development/transition_restart/7/rl",
+      "best_EDP": 0.0504764910115534
+    },
+    {
+      "group": "development/7",
+      "scope": "pair: development/selected_controls/7/random versus development/transition_restart/7/rl",
+      "axis": "seconds",
+      "budget": 4032.375146099832,
+      "id": "development/selected_controls/7/random",
+      "best_EDP": 0.03891873355939436
+    },
+    {
+      "group": "development/7",
+      "scope": "pair: development/selected_controls/7/random versus development/transition_restart/7/rl",
+      "axis": "seconds",
+      "budget": 4032.375146099832,
+      "id": "development/transition_restart/7/rl",
+      "best_EDP": 0.0504764910115534
+    },
+    {
+      "group": "development/7",
+      "scope": "pair: development/selected_controls/7/random versus development/uniform/7/rl",
+      "axis": "q",
+      "budget": 147,
+      "id": "development/selected_controls/7/random",
+      "best_EDP": 0.04531467366142753
+    },
+    {
+      "group": "development/7",
+      "scope": "pair: development/selected_controls/7/random versus development/uniform/7/rl",
+      "axis": "q",
+      "budget": 147,
+      "id": "development/uniform/7/rl",
+      "best_EDP": 0.05034258643644757
+    },
+    {
+      "group": "development/7",
+      "scope": "pair: development/selected_controls/7/random versus development/uniform/7/rl",
+      "axis": "seconds",
+      "budget": 4032.391308999853,
+      "id": "development/selected_controls/7/random",
+      "best_EDP": 0.03891873355939436
+    },
+    {
+      "group": "development/7",
+      "scope": "pair: development/selected_controls/7/random versus development/uniform/7/rl",
+      "axis": "seconds",
+      "budget": 4032.391308999853,
+      "id": "development/uniform/7/rl",
+      "best_EDP": 0.05034258643644757
+    },
+    {
+      "group": "development/7",
+      "scope": "pair: development/transition_restart/7/rl versus development/uniform/7/rl",
+      "axis": "q",
+      "budget": 135,
+      "id": "development/transition_restart/7/rl",
+      "best_EDP": 0.0504764910115534
+    },
+    {
+      "group": "development/7",
+      "scope": "pair: development/transition_restart/7/rl versus development/uniform/7/rl",
+      "axis": "q",
+      "budget": 135,
+      "id": "development/uniform/7/rl",
+      "best_EDP": 0.05036720144128283
+    },
+    {
+      "group": "development/7",
+      "scope": "pair: development/transition_restart/7/rl versus development/uniform/7/rl",
+      "axis": "seconds",
+      "budget": 4032.375146099832,
+      "id": "development/transition_restart/7/rl",
+      "best_EDP": 0.0504764910115534
+    },
+    {
+      "group": "development/7",
+      "scope": "pair: development/transition_restart/7/rl versus development/uniform/7/rl",
+      "axis": "seconds",
+      "budget": 4032.375146099832,
+      "id": "development/uniform/7/rl",
+      "best_EDP": 0.05034258643644757
+    }
+  ],
+  "quality_thresholds": [
+    {
+      "id": "development/cost_restart/7/rl",
+      "gain_target_pct": 5,
+      "charged_PPA": 121,
+      "charged_s": 2431.7107922998257,
+      "result": "reached"
+    },
+    {
+      "id": "development/cost_restart/7/rl",
+      "gain_target_pct": 10,
+      "charged_PPA": 130,
+      "charged_s": 2573.9543239998166,
+      "result": "reached"
+    },
+    {
+      "id": "development/cost_restart/7/rl",
+      "gain_target_pct": 20,
+      "charged_PPA": null,
+      "charged_s": null,
+      "result": "not reached within completed budget"
+    },
+    {
+      "id": "development/frozen/7/rl",
+      "gain_target_pct": 5,
+      "charged_PPA": null,
+      "charged_s": null,
+      "result": "not reached within completed budget"
+    },
+    {
+      "id": "development/frozen/7/rl",
+      "gain_target_pct": 10,
+      "charged_PPA": null,
+      "charged_s": null,
+      "result": "not reached within completed budget"
+    },
+    {
+      "id": "development/frozen/7/rl",
+      "gain_target_pct": 20,
+      "charged_PPA": null,
+      "charged_s": null,
+      "result": "not reached within completed budget"
+    },
+    {
+      "id": "development/no_restart_reference/7/rl",
+      "gain_target_pct": 5,
+      "charged_PPA": 121,
+      "charged_s": 2651.130866599735,
+      "result": "reached"
+    },
+    {
+      "id": "development/no_restart_reference/7/rl",
+      "gain_target_pct": 10,
+      "charged_PPA": null,
+      "charged_s": null,
+      "result": "not reached within completed budget"
+    },
+    {
+      "id": "development/no_restart_reference/7/rl",
+      "gain_target_pct": 20,
+      "charged_PPA": null,
+      "charged_s": null,
+      "result": "not reached within completed budget"
+    },
+    {
+      "id": "development/one_step_cost/7/rl",
+      "gain_target_pct": 5,
+      "charged_PPA": 133,
+      "charged_s": 3042.185899199918,
+      "result": "reached"
+    },
+    {
+      "id": "development/one_step_cost/7/rl",
+      "gain_target_pct": 10,
+      "charged_PPA": null,
+      "charged_s": null,
+      "result": "not reached within completed budget"
+    },
+    {
+      "id": "development/one_step_cost/7/rl",
+      "gain_target_pct": 20,
+      "charged_PPA": null,
+      "charged_s": null,
+      "result": "not reached within completed budget"
+    },
+    {
+      "id": "development/selected_controls/7/sa",
+      "gain_target_pct": 5,
+      "charged_PPA": null,
+      "charged_s": null,
+      "result": "not reached within completed budget"
+    },
+    {
+      "id": "development/selected_controls/7/sa",
+      "gain_target_pct": 10,
+      "charged_PPA": null,
+      "charged_s": null,
+      "result": "not reached within completed budget"
+    },
+    {
+      "id": "development/selected_controls/7/sa",
+      "gain_target_pct": 20,
+      "charged_PPA": null,
+      "charged_s": null,
+      "result": "not reached within completed budget"
+    },
+    {
+      "id": "development/selected_controls/7/random",
+      "gain_target_pct": 5,
+      "charged_PPA": 140,
+      "charged_s": 3072.112094699871,
+      "result": "reached"
+    },
+    {
+      "id": "development/selected_controls/7/random",
+      "gain_target_pct": 10,
+      "charged_PPA": 140,
+      "charged_s": 3072.112094699871,
+      "result": "reached"
+    },
+    {
+      "id": "development/selected_controls/7/random",
+      "gain_target_pct": 20,
+      "charged_PPA": 152,
+      "charged_s": 3479.2360799997114,
+      "result": "reached"
+    },
+    {
+      "id": "development/transition_restart/7/rl",
+      "gain_target_pct": 5,
+      "charged_PPA": null,
+      "charged_s": null,
+      "result": "not reached within completed budget"
+    },
+    {
+      "id": "development/transition_restart/7/rl",
+      "gain_target_pct": 10,
+      "charged_PPA": null,
+      "charged_s": null,
+      "result": "not reached within completed budget"
+    },
+    {
+      "id": "development/transition_restart/7/rl",
+      "gain_target_pct": 20,
+      "charged_PPA": null,
+      "charged_s": null,
+      "result": "not reached within completed budget"
+    },
+    {
+      "id": "development/uniform/7/rl",
+      "gain_target_pct": 5,
+      "charged_PPA": null,
+      "charged_s": null,
+      "result": "not reached within completed budget"
+    },
+    {
+      "id": "development/uniform/7/rl",
+      "gain_target_pct": 10,
+      "charged_PPA": null,
+      "charged_s": null,
+      "result": "not reached within completed budget"
+    },
+    {
+      "id": "development/uniform/7/rl",
+      "gain_target_pct": 20,
+      "charged_PPA": null,
+      "charged_s": null,
+      "result": "not reached within completed budget"
+    }
+  ],
+  "reporter_sha256": "7160f6c1c2ce49b80898bd6aa585c21141f018a7ccd45ba70ad8b30c61bd4187",
+  "new_PPA": 0,
+  "new_SGD": 0,
+  "images": 0,
+  "scope": "complete cases only; extensions include all inherited costs and are not independent RNGs; analytical PPA, adapted baselines; no original-paper superiority claim"
+}

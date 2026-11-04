@@ -1,0 +1,21 @@
+{
+  "created_utc": "2026-11-04T05:41:02.323718+00:00",
+  "source_identity": "b6bf8e77f95b1e47fff56491b248fd9ac55a8884aa505d5e12dcac75bdda2f05",
+  "source_files": 208,
+  "scope": "validated b6 full-domain software; eight completed development rows including historical reference; RL16.06% versus Random24.42%, independent confirmation not completed; no superiority preclaim",
+  "images": 0,
+  "code": {
+    "path": "C:\\Users\\user\\Desktop\\rapidchiplet\\output\\uploads\\INMIN_Full_Code_20261104_v07_cost_validated.zip",
+    "bytes": 2356952,
+    "files": 290,
+    "sha256": "b69e2321d76a0add9e2e9343cad5af51d1b5957eb1eae328849b7ab5848ac91f",
+    "crc_and_sha_verified": true
+  },
+  "results": {
+    "path": "C:\\Users\\user\\Desktop\\rapidchiplet\\output\\uploads\\INMIN_Full_Results_20261104_v07_cost_validated.zip",
+    "bytes": 29450839,
+    "files": 374,
+    "sha256": "f5c20439f347243bbe7fbcbddcd21ecb9b789d0b95eb4f9069a460227d36c104",
+    "crc_and_sha_verified": true
+  }
+}

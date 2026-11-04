@@ -1,3 +1,5 @@
+> 歷史版本記錄：以下為v0.5／v0.6當時的來源、實驗與協定。現行程式及新結果請見 [成本拆分Q報告](INMIN_COST_VALUE_RESULTS.md) 與 [操作指南](INMIN_FULL_SYSTEM_GUIDE.md)。
+
 # INMIN graph-edit RL：設計、歸因及事前實驗協定
 
 ## 目前實際版本 — 2026-11-04上午

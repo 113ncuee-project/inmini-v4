@@ -26,6 +26,7 @@ from profile_mapping_oracle import load_workload
 from replay_mapping_dse import compact, cost, append
 from simple_rapidchiplet.hybrid.full_space import FullDesignSpace, DesignTrial, decision_hash
 from simple_rapidchiplet.hybrid.multi_step_q import MultiStepQ
+from simple_rapidchiplet.hybrid.cost_value_q import CostValueQ
 from simple_rapidchiplet.hybrid.rl_actions import validate_state
 from simple_rapidchiplet.hybrid.rl_schema import DesignState
 from simple_rapidchiplet.hybrid.search import _rng_tuple, plan_from_dict
@@ -43,6 +44,15 @@ def physical_violation(metrics, args):
 def objective_cost(metrics, reference, args):
     value = cost(metrics, reference, args.objective)
     return None if value is None else value + 10 * physical_violation(metrics, args)
+
+
+def episode_cost_cut(value, elite_cost, fraction):
+    """Use only a completed measured cost; no proxy prunes a legal proposal.
+
+    This changes the episode's continuation, never the actual PPA reward.
+    The rejected trajectory's measured design remains in the physical archive.
+    """
+    return fraction is not None and value is not None and value > elite_cost * (1 + fraction)
 
 
 def execute(args):
@@ -112,7 +122,7 @@ def execute(args):
                            inner=not args.no_inner, composites=not args.no_composites,
                            guidance=args.guidance, fusion=not args.fusion_off, legacy_generator=args.legacy_generator,
                            boundary_features=not args.no_boundary_features, resource_projection=not args.no_resource_projection,
-                           operators=args.operators)
+                           operators=args.operators, architecture_scaling=args.architecture_scaling)
     write(out / 'design_space.json', space.domain())
     # Architecture enumeration is a shared outer phase, paid once physically
     # and charged identically to every comparator. No layout is pruned from
@@ -226,7 +236,7 @@ def execute(args):
             inner=not args.no_inner, composites=not args.no_composites, guidance=args.guidance,
             fusion=not args.fusion_off, legacy_generator=args.legacy_generator,
             boundary_features=not args.no_boundary_features, resource_projection=not args.no_resource_projection,
-            operators=args.operators)
+            operators=args.operators, architecture_scaling=args.architecture_scaling)
         folder = out / method
         folder.mkdir(exist_ok=True)
         saved = read(folder / 'checkpoint.json', {})
@@ -265,18 +275,24 @@ def execute(args):
         started = time.perf_counter()
         size = space.features(initial, initial_metrics, reference, [DesignTrial(initial, 'A2')]).shape[1]
         graph_size = len(space.graph_feature_names) if space.boundary_features else 0
-        policy = MultiStepQ(size, args.seed, gamma=args.gamma, base_size=size - graph_size if graph_size else None)
+        policy = (CostValueQ(size, space.after_design_indices, args.seed, gamma=args.gamma) if args.cost_value_q else
+                  MultiStepQ(size, args.seed, gamma=args.gamma, base_size=size - graph_size if graph_size else None))
         if saved.get('policy_file'):
             policy.load(folder / saved['policy_file'])
         elif method == 'rl':
             policy.save(folder / 'policy_initial.pt')
             for row in screening['rows'] if not args.no_shared_warmstart else ():
                 if row.get('utility') is not None:
-                    policy.observe(row['features'], row['utility'], np.empty((0, size), np.float32), True, args.replay_updates)
+                    if args.cost_value_q:
+                        policy.pretrain(row['features'], row['cost'], args.replay_updates)
+                    else:
+                        policy.observe(row['features'], row['utility'], np.empty((0, size), np.float32), True, args.replay_updates)
             write(folder / 'shared_warmstart.json', dict(physical_samples=sum(r.get('utility') is not None for r in screening['rows']) if not args.no_shared_warmstart else 0,
                 available_shared_samples=sum(r.get('utility') is not None for r in screening['rows']),
                 policy_updates=policy.updates, charged_shared_full_ppa=screening.get('full_ppa', 0),
-                scope='terminal physical improvement labels from the identical shared architecture screen; zero new PPA'))
+                cost_value_q=args.cost_value_q,
+                scope=('absolute after-state physical cost labels; before-invariant potential head; continuation branch remains zero; zero new PPA'
+                    if args.cost_value_q else 'terminal physical improvement labels from the identical shared architecture screen; zero new PPA')))
             policy.save(folder / 'policy_after_shared.pt')
         # Persist pending observed transitions before drawing successors. On a
         # stop, their Bellman target is filled from the identical saved state.
@@ -346,11 +362,13 @@ def execute(args):
                 if not cached_trials:
                     stop_reason = 'proposal_stalled'
                     break
-                features = space.features(current, current_m, reference, cached_trials, progress)
+                full_features = method == 'rl' and not (args.uniform_policy and args.freeze_search_policy)
+                features = space.features(current, current_m, reference, cached_trials, progress) if full_features else None
                 if pending and method == 'rl' and not args.freeze_search_policy:
                     update_before = policy.updates
                     policy.observe(pending['features'], pending['reward'], features,
-                                   terminal=pending['terminal'], updates=args.replay_updates)
+                                   terminal=pending['terminal'], updates=args.replay_updates,
+                                   **(dict(before_cost=pending['before_cost'], next_cost=pending['next_cost']) if args.cost_value_q else {}))
                     append(folder / 'learning.jsonl', dict(transition_step=pending['step'], before_decision=steps + 1,
                         reward=pending['reward'], terminal=pending['terminal'], successor_count=len(features),
                         updates_before=update_before, updates_after=policy.updates,
@@ -362,15 +380,18 @@ def execute(args):
                     pending = None
                 epsilon = max(.10, .45 * (1 - pool.full_evaluations / max(1, args.queries - common_charge)))
                 if method == 'rl' and phase == 'learning_search' and not args.uniform_policy:
-                    probabilities, q = policy.probabilities(features, epsilon)
+                    probabilities, q = policy.probabilities(features, epsilon,
+                        **(dict(before_cost=objective_cost(current_m, reference, args)) if args.cost_value_q else {}))
                 else:
-                    probabilities, q = np.ones(len(features)) / len(features), np.zeros(len(features))
-                chosen = rng.choices(range(len(features)), probabilities, k=1)[0]
+                    probabilities, q = np.ones(len(cached_trials)) / len(cached_trials), np.zeros(len(cached_trials))
+                chosen = rng.choices(range(len(cached_trials)), probabilities, k=1)[0]
                 trial = cached_trials[chosen]
+                selected_features = features[chosen] if features is not None else space.features(current,current_m,reference,[trial],progress)[0]
                 before = objective_cost(current_m, reference, args)
                 updates_before = policy.updates
                 request = dict(step=steps + 1, phase=phase, method=method, state_hash=trial.fingerprint,
-                    before_state_hash=decision_hash(current), action=trial.to_dict(), features=features[chosen].tolist(),
+                    before_state_hash=decision_hash(current), action=trial.to_dict(), features=selected_features.tolist(),
+                    feature_rows_computed=len(cached_trials) if full_features else 1,
                     behavior_probability=float(probabilities[chosen]), probabilities=probabilities.tolist(),
                     q_values=q.tolist(), selected_index=chosen, candidate_hashes=[t.fingerprint for t in cached_trials],
                     episode=episode, epoch_steps=epoch_steps, policy_updates_before=updates_before,
@@ -398,6 +419,7 @@ def execute(args):
                     reward = 10 * math.log(before / value) if valid else None
                     accepted = False
                     terminal = False
+                    episode_cut = None
                     if valid:
                         if phase in ('architecture_screen', 'uniform_warmup') or method == 'random':
                             current, current_m = elite, elite_m
@@ -418,15 +440,25 @@ def execute(args):
                             # temporarily worse state. Archive remains separate.
                             current, current_m, accepted = trial.state, metrics, True
                             epoch_steps += 1
-                            terminal = epoch_steps >= args.horizon
+                            eligible = episode_cost_cut(value, elite_cost, args.episode_cost_rise)
+                            # A stochastic exemption retains nonzero support
+                            # for the original worse-intermediate trajectories.
+                            cost_cut = (eligible and args.episode_restart_probability > 0 and
+                                        accept_rng.random() < args.episode_restart_probability)
+                            terminal = epoch_steps >= args.horizon or cost_cut
+                            episode_cut = 'measured_cost_rise' if cost_cut else 'horizon' if terminal else None
                             if terminal:
                                 current, current_m, epoch_steps = elite, elite_m, 0
                                 episode += 1
                         if method == 'rl' and pool.full_evaluations > full_before:
-                            pending = dict(step=steps, features=features[chosen].tolist(), reward=reward, terminal=terminal)
+                            pending = dict(step=steps, features=selected_features.tolist(), reward=reward, terminal=terminal)
+                            if args.cost_value_q:
+                                pending.update(before_cost=before, next_cost=value)
                     coverage[trial.state.architecture_candidate_id] = dict(status='full_evaluated', feasible=valid, step=steps)
                     outcome = dict(status='full_completed', feasible=valid, cost=value, reward=reward,
-                                   improved_global_best=improved, accepted=accepted, terminal=terminal, metrics=compact(metrics))
+                                   improved_global_best=improved, accepted=accepted, terminal=terminal,
+                                   episode_cut_reason=episode_cut, episode_cost_rise_limit=args.episode_cost_rise,
+                                   metrics=compact(metrics))
                 except (ValueError, RuntimeError, TimeoutError) as error:
                     outcome = dict(status='timeout' if isinstance(error, TimeoutError) else 'compiler_or_worker_reject',
                         reason=str(error), feasible=None, cost=None, reward=None, improved_global_best=False, accepted=False)
@@ -447,7 +479,8 @@ def execute(args):
                 # End-of-budget truncation has no executable successor within
                 # this experiment. Never bootstrap from unmeasured states.
                 update_before = policy.updates
-                policy.observe(pending['features'], pending['reward'], np.empty((0, size), np.float32), True, args.replay_updates)
+                policy.observe(pending['features'], pending['reward'], np.empty((0, size), np.float32), True, args.replay_updates,
+                    **(dict(before_cost=pending['before_cost'], next_cost=pending['next_cost']) if args.cost_value_q else {}))
                 append(folder / 'learning.jsonl', dict(transition_step=pending['step'], before_decision=None,
                     reward=pending['reward'], terminal=True, successor_count=0, budget_truncation=True,
                     updates_before=update_before, updates_after=policy.updates,
@@ -483,6 +516,12 @@ def execute(args):
             'frozen_initial_q_control' if args.freeze_search_policy else 'multistep_double_q') if method == 'rl' else method
         summary['online_policy_updates_enabled'] = method == 'rl' and not args.freeze_search_policy
         summary['shared_warmstart_enabled'] = method == 'rl' and not args.no_shared_warmstart
+        summary['q_representation'] = (CostValueQ.representation if args.cost_value_q else 'original_transition_double_q') if method == 'rl' else None
+        if method == 'rl' and not (args.uniform_policy or args.freeze_search_policy) and (args.gamma == 0 or args.horizon == 1):
+            summary['algorithm'] = 'one_step_action_value_rl'
+        summary['episode_cost_rise_limit'] = args.episode_cost_rise
+        summary['episode_restart_probability'] = args.episode_restart_probability
+        summary['feature_evaluation'] = 'all candidates for neural selection/TD' if method=='rl' and not(args.uniform_policy and args.freeze_search_policy) else 'selected candidate only; no unused neural feature overhead'
         summary['recommended_cost'] = feasible_cost
         summary['note'] = 'best_* and gain fields describe penalized search elite; recommendation.json contains only strict-feasible designs'
         write(folder / 'summary.json', summary)
@@ -542,6 +581,10 @@ def main():
     p.add_argument('--legacy-generator', action='store_true')
     p.add_argument('--guidance', action='store_true')
     p.add_argument('--no-boundary-features', action='store_true')
+    p.add_argument('--cost-value-q', action='store_true', help='factor exact measured before cost from Q; learn an invariant after-design cost head and a genuine multi-step continuation branch')
+    p.add_argument('--architecture-scaling', choices=('legacy','proportional'), default='proportional', help='additional architecture shortcut; all original integer PE quotas remain reachable')
+    p.add_argument('--episode-cost-rise',type=float,help='end a learning episode when measured cost exceeds elite by this fraction; default off; all legal actions remain evaluable')
+    p.add_argument('--episode-restart-probability',type=float,default=.9,help='probability of reset after measured excess; values below1 retain worse-intermediate exploration')
     p.add_argument('--no-resource-projection', action='store_true')
     p.add_argument('--freeze-search-policy', action='store_true', help='causal control: retain shared warmstart but disable all new search-policy learning')
     p.add_argument('--no-shared-warmstart', action='store_true')
@@ -551,6 +594,10 @@ def main():
     p.add_argument('--resume', action='store_true')
     p.add_argument('--frozen-child', action='store_true', help=argparse.SUPPRESS)
     args = p.parse_args()
+    if args.episode_cost_rise is not None and (not math.isfinite(args.episode_cost_rise) or args.episode_cost_rise < 0):
+        p.error('episode-cost-rise must be a nonnegative finite fraction')
+    if not math.isfinite(args.episode_restart_probability) or not 0 <= args.episode_restart_probability <= 1:
+        p.error('episode-restart-probability must be in [0,1]')
     if min(args.queries, args.shortlist) < 4 or min(args.seconds, args.eval_timeout, args.horizon, args.replay_updates) <= 0:
         p.error('positive budgets/horizon/updates and queries/shortlist >=4 required')
     if not 0 <= args.gamma < 1 or args.warmup < 0 or args.max_fusion_depth < 2:

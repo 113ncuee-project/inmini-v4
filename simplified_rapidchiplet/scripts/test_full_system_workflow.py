@@ -13,6 +13,8 @@ def main():
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument('--seed-case', required=True)
     p.add_argument('--out', required=True)
+    p.add_argument('--cost-value-q', action='store_true')
+    p.add_argument('--episode-cost-rise',type=float)
     args = p.parse_args()
     out = Path(args.out).resolve()
     if out.exists():
@@ -21,6 +23,10 @@ def main():
     script = APP / 'full_system_dse.py'
     start = time.perf_counter()
     def run(arguments, expected=0):
+        if args.cost_value_q and '--resume' not in arguments and '--cost-value-q' not in arguments:
+            arguments = [*arguments, '--cost-value-q']
+        if args.episode_cost_rise is not None and '--resume' not in arguments and '--episode-cost-rise' not in arguments:
+            arguments = [*arguments, '--episode-cost-rise', str(args.episode_cost_rise)]
         result = subprocess.run([sys.executable, '-u', '-X', 'utf8', str(script), *map(str, arguments)], capture_output=True, text=True, encoding='utf-8')
         with (out / 'commands.log').open('a', encoding='utf-8') as stream:
             stream.write(json.dumps(list(map(str, arguments))) + '\n' + result.stdout + result.stderr + '\n')
@@ -30,7 +36,8 @@ def main():
     def command(target):
         return ['--seed-case', str(Path(args.seed_case).resolve()), '--out', str(target), '--queries', '14', '--seconds', '240',
                 '--architecture-screen', 'off', '--methods', 'rl,sa,random', '--eval-timeout', '20', '--shortlist', '24',
-                '--horizon', '4', '--warmup', '3', '--replay-updates', '8']
+                '--horizon', '4', '--warmup', '3', '--replay-updates', '8', *(['--cost-value-q'] if args.cost_value_q else []),
+                *(['--episode-cost-rise',str(args.episode_cost_rise)] if args.episode_cost_rise is not None else [])]
     full, partial = out / 'full', out / 'resumed'
     run(command(full))
     refinement = read(full / 'seed_refinement.json')
@@ -145,7 +152,39 @@ def main():
         raise AssertionError('initializer stop/resume changed the deterministic best mapping')
     if not analyze(init_stopped)['passed']:
         raise AssertionError('initializer stop/resume accounting audit failed')
-    write(out / 'result.json', dict(passed=True, elapsed_s=time.perf_counter() - start,
+    if args.episode_cost_rise is not None:
+        restart = out / 'measured_restart'
+        run(['--seed-case', str(Path(args.seed_case).resolve()), '--out', restart, '--queries', '20', '--seconds', '120',
+             '--architecture-screen', 'off', '--seed-refinement', 'off', '--methods', 'rl', '--warmup', '0', '--horizon', '8',
+             '--cost-value-q', '--episode-cost-rise', '0', '--episode-restart-probability', '1', '--replay-updates', '4'])
+        from simple_rapidchiplet.hybrid.full_space import decision_hash
+        from simple_rapidchiplet.hybrid.rl_schema import DesignState
+        records = [json.loads(line) for line in (restart / 'rl/events.jsonl').read_text(encoding='utf-8').splitlines()]
+        best = decision_hash(DesignState.from_dict(read(restart / 'shared_start.json')['state']))
+        cuts = 0
+        require_before = None
+        for row in records:
+            if require_before is not None and row['before_state_hash'] != require_before:
+                raise AssertionError('measured episode cut did not return to the verified elite')
+            require_before = None
+            if row.get('improved_global_best'):
+                best = row['state_hash']
+            if row.get('episode_cut_reason') == 'measured_cost_rise':
+                if not row.get('terminal') or not row.get('feasible') or row.get('reward') is None:
+                    raise AssertionError('measured cut lacks a real feasible PPA reward/terminal')
+                cuts += 1
+                require_before = best
+        if not cuts or not analyze(restart)['passed']:
+            raise AssertionError('actual workflow did not exercise a measured-cost episode cut')
+    if args.cost_value_q:
+        import torch
+        checkpoint = read(full / 'rl/checkpoint.json')
+        trained = torch.load(full / 'rl' / checkpoint['policy_file'], map_location='cpu', weights_only=False)
+        if trained.get('representation') != 'physical_cost_factored_double_q_v1' or not trained['cost_replay']:
+            raise AssertionError('CLI did not train the declared physical cost representation')
+        if not any(not row[3] for row in trained['replay']):
+            raise AssertionError('cost-value CLI validation lacked a genuine nonterminal Bellman transition')
+    write(out / 'result.json', dict(passed=True, cost_value_q=args.cost_value_q, episode_cost_rise=args.episode_cost_rise, elapsed_s=time.perf_counter() - start,
         checks=['3 methods exact-query CLI', 'same trajectory after cooperative stop/resume', 'same Q update count',
                 'no duplicate durable PPA', 'completed resume no new PPA', 'physical/reward/source audits', 'strict infeasible archive',
                 '50 actual architecture PPA', 'identical shared-screen charges for all 3 methods',

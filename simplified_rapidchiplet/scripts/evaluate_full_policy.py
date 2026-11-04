@@ -4,11 +4,13 @@ import json
 from pathlib import Path
 import sys
 import numpy as np
+import torch
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from run_local_rl_diagnostics import read, write
 from analyze_replay_mapping import ranking_metrics
 from simple_rapidchiplet.hybrid.multi_step_q import MultiStepQ
+from simple_rapidchiplet.hybrid.cost_value_q import CostValueQ
 from simple_rapidchiplet.hybrid.full_space import DesignTrial
 
 
@@ -39,9 +41,11 @@ def evaluate(out):
             path = out / 'rl' / name
             if not path.exists():
                 continue
-            model = MultiStepQ(x.shape[1])
+            header = torch.load(path, map_location='cpu', weights_only=False)
+            factored = header.get('representation') == CostValueQ.representation
+            model = CostValueQ(x.shape[1], header['after_indices']) if factored else MultiStepQ(x.shape[1])
             model.load(path)
-            prediction = model.predict_reward(x)
+            prediction = model.predict_reward(x, np.asarray([r['before_cost'] for r in controls])) if factored else model.predict_reward(x)
             result[label] = ranking_metrics(prediction, y)
     write(out / 'analysis/held_out_policy.json', result)
     print(json.dumps(result))

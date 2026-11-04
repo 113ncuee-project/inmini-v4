@@ -1,0 +1,25 @@
+﻿id,gain_target_pct,charged_PPA,charged_s,result
+development/cost_restart/7/rl,5,121,2431.7107922998257,reached
+development/cost_restart/7/rl,10,130,2573.9543239998166,reached
+development/cost_restart/7/rl,20,,,not reached within completed budget
+development/frozen/7/rl,5,,,not reached within completed budget
+development/frozen/7/rl,10,,,not reached within completed budget
+development/frozen/7/rl,20,,,not reached within completed budget
+development/no_restart_reference/7/rl,5,121,2651.130866599735,reached
+development/no_restart_reference/7/rl,10,,,not reached within completed budget
+development/no_restart_reference/7/rl,20,,,not reached within completed budget
+development/one_step_cost/7/rl,5,133,3042.185899199918,reached
+development/one_step_cost/7/rl,10,,,not reached within completed budget
+development/one_step_cost/7/rl,20,,,not reached within completed budget
+development/selected_controls/7/sa,5,,,not reached within completed budget
+development/selected_controls/7/sa,10,,,not reached within completed budget
+development/selected_controls/7/sa,20,,,not reached within completed budget
+development/selected_controls/7/random,5,140,3072.112094699871,reached
+development/selected_controls/7/random,10,140,3072.112094699871,reached
+development/selected_controls/7/random,20,152,3479.2360799997114,reached
+development/transition_restart/7/rl,5,,,not reached within completed budget
+development/transition_restart/7/rl,10,,,not reached within completed budget
+development/transition_restart/7/rl,20,,,not reached within completed budget
+development/uniform/7/rl,5,,,not reached within completed budget
+development/uniform/7/rl,10,,,not reached within completed budget
+development/uniform/7/rl,20,,,not reached within completed budget

@@ -1,10 +1,10 @@
-# INMIN Full v0.6：本機操作與完整搜尋空間
+# INMIN Full v0.7：本機操作與完整搜尋空間
 
-更新：2026-11-04。程式來源 `5f2fdce00493d95868b4b0837c03c283d590a0c5a274a34de6a6bc3ec37766de`。173項回歸、完整CLI與實際GUI已通過；新RL技術的收益另由實驗對照驗證。[驗證證據](INMIN_FULL_SYSTEM_VALIDATION.md) · [技術與協定](INMIN_GRAPH_EDIT_DEVELOPMENT.md) · [數字結果](INMIN_GRAPH_EDIT_RESULTS.md)。
+更新：2026-11-04。程式來源 `b6bf8e77f95b1e47fff56491b248fd9ac55a8884aa505d5e12dcac75bdda2f05`。182項回歸、完整CLI與實際GUI已通過；新RL技術的收益另由實驗對照驗證。[驗證證據](INMIN_FULL_SYSTEM_VALIDATION.md) · [技術與協定](INMIN_GRAPH_EDIT_DEVELOPMENT.md) · [新成本Q結果](INMIN_COST_VALUE_RESULTS.md) · [歷史結果](INMIN_GRAPH_EDIT_RESULTS.md) · [RACE-RL參考核對](INMIN_RACE_REFERENCE_AUDIT.md)。
 
 ## 最短啟動方式
 
-專案根目錄有 `.venv` 時，雙擊 `start_inmin_full_gui.cmd`；本機介面為 `http://127.0.0.1:8766`。可設定模型、目標、完整查詢上限、時間、Fusion深度與PPA硬限制，並停止／續跑。GUI顯示嚴格可行的整組設計數字；沒有合法推薦時會明確顯示。
+專案根目錄有 `.venv` 時，雙擊 `start_inmin_full_gui.cmd`；本機介面為 `http://127.0.0.1:8766`。可設定模型、目標、完整查詢上限、時間、Fusion深度與PPA硬限制，並停止／續跑。本版GUI保留舊Q作對照；要用新設定，選「起點校正多步Q」，Episode容許Cost惡化比例填0.25，重啟機率0.9。GUI顯示嚴格可行的整組設計數字；沒有合法推薦時會明確顯示。
 
 新環境使用Python3.12：
 
@@ -18,7 +18,7 @@ py -3.12 -m venv .venv
 ## 一次完整長跑
 
 ```powershell
-.venv/Scripts/python.exe -u -X utf8 simplified_rapidchiplet/full_system_dse.py --seed-case inputs/replay_v04/resnet18 --out output/r18_long --methods rl,sa,random --queries 512 --seconds 7200 --eval-timeout 600 --seed 7
+.venv/Scripts/python.exe -u -X utf8 simplified_rapidchiplet/full_system_dse.py --seed-case inputs/replay_v04/resnet18 --out output/r18_long --methods rl,sa,random --queries 512 --seconds 7200 --eval-timeout 600 --seed 7 --cost-value-q --episode-cost-rise .25
 ```
 
 `--queries`是每方法**含共同階段**的完整PPA上限；`--seconds`是每方法搜尋時間上限，包含候選、特徵、SGD與Oracle。共同reference／seed、架構與起點強化實際只做一次，再對各方法同額計費。初始化另外有有界預算，總端到端時間會更長。7200秒不是保證完成512次或已收斂；報告列出實際查詢與時間。
@@ -28,7 +28,7 @@ py -3.12 -m venv .venv
 .\run_inmin_full_overnight.ps1 -Resume -OutputRoot output/full_system_overnight -KeepAwake
 ```
 
-預設三RNG×三方法，搜尋上限合計九小時，另加共同階段。可指定多個模型；請先選擇符合可用時間的組合。腳本執行期間暫時避免自動睡眠；電腦要保持開機。一般本機執行不需要對話或LLM服務。
+腳本預設cost-Q、量測後0.25惡化reset／機率0.9及600秒單次oracle；可用 -Policy transition、-DisableCostRestart 做對照。預設三RNG×三方法，搜尋上限合計九小時，另加共同階段。可指定多個模型；請先選擇符合可用時間的組合。腳本執行期間暫時避免自動睡眠；電腦要保持開機。一般本機執行不需要對話或LLM服務。
 
 ## 停止、續跑與延長
 
@@ -80,6 +80,8 @@ New-Item output/r18_long/STOP_REQUESTED -ItemType File -Force
 
 ## RL及本版技術
 
+建議使用 `--cost-value-q --episode-cost-rise .25`；未指定新旗標的原transition-Q仍保留相容性。新Q使用 `Q=phi(before)+V(after)+H(before,action)`、`phi=10 log(C)`。V僅取65個絕對after-design特徵，以實際完整PPA成本訓練；H以Double-Q target學習continuation。成本超過elite的1.25倍後以90%機率結束episode，仍保留實際負reward及10%較差中間狀態的探索。
+
 外層為action-conditioned Double Q：gamma=.9、target network、replay、每8個合法步驟回到elite；每個實際新可行PPA預設24次minibatch SGD。完整物理成本差提供reward：
 
 ```text
@@ -89,7 +91,7 @@ y = r + gamma * Q_target(next_features[argmax Q_online(next_features)])
 
 terminal不bootstrap；timeout／容量失敗不提供虛構PPA reward。epsilon-greedy的低entropy本身不證明學習有效，須看同預算搜尋、held-out診斷與凍結／均勻控制。
 
-149維共用狀態／候選描述外，預設加入111維：75個tensor-boundary編輯、14個實際before-schedule service／criticality／queue／pressure，以及22個ordered Part×PE ownership的邏輯局部性編輯。graph residual分支零初始化，使F on/off的初始base Q完全相同。邏輯box需求不含完整tile、cache lifetime與排程，不能當PPA或reward。
+149維共用狀態／候選描述外，預設加入111維：75個tensor-boundary編輯、14個實際before-schedule service／criticality／queue／pressure，以及22個ordered Part×PE ownership的邏輯局部性編輯。原transition-Q的graph residual分支零初始化，使其F on/off初始base Q相同；新成本拆分Q是另一種網路容量，不能將兩者差距直接當成純特徵消融。邏輯box需求不含完整tile、cache lifetime與排程，不能當PPA或reward。
 
 額外Spatial整組整數DP對明示proxy求最佳份額，嚴守總quota及PE互斥；Temporal投影可重用序列stage的PE，以實際kernel／分池價格及當前量到的T/E產生候選。這些只是提案；完整Oracle仍決勝。有限family round-robin避免50架構候選擠掉其他變數。
 

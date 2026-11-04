@@ -1,0 +1,79 @@
+{
+  "stages": [
+    {
+      "stage": "full_regression",
+      "return_code": 0,
+      "wall_s": 45.40553390001878
+    },
+    {
+      "stage": "real_CLI_restart_workflow",
+      "return_code": 0,
+      "wall_s": 201.55008409987204
+    },
+    {
+      "stage": "actual_GUI",
+      "return_code": 0,
+      "wall_s": 15.138679599855095
+    },
+    {
+      "stage": "development/cost_restart/7",
+      "return_code": 0,
+      "wall_s": 1816.711321100127
+    },
+    {
+      "stage": "audit development/cost_restart/7",
+      "return_code": 0,
+      "wall_s": 7.4648637000937015
+    },
+    {
+      "stage": "development/one_step_cost/7",
+      "return_code": 0,
+      "wall_s": 1817.0523777001072
+    },
+    {
+      "stage": "audit development/one_step_cost/7",
+      "return_code": 0,
+      "wall_s": 6.31813249993138
+    },
+    {
+      "stage": "development/transition_restart/7",
+      "return_code": 0,
+      "wall_s": 1816.6605842001736
+    },
+    {
+      "stage": "audit development/transition_restart/7",
+      "return_code": 0,
+      "wall_s": 6.269097999902442
+    },
+    {
+      "stage": "development/selected_controls/7",
+      "return_code": 0,
+      "wall_s": 3621.584047699813
+    },
+    {
+      "stage": "audit development/selected_controls/7",
+      "return_code": 0,
+      "wall_s": 11.829252399969846
+    },
+    {
+      "stage": "development/frozen/7",
+      "return_code": 0,
+      "wall_s": 1818.16293160012
+    },
+    {
+      "stage": "audit development/frozen/7",
+      "return_code": 0,
+      "wall_s": 7.741306600160897
+    },
+    {
+      "stage": "development/uniform/7",
+      "return_code": 0,
+      "wall_s": 1818.6362338999752
+    },
+    {
+      "stage": "audit development/uniform/7",
+      "return_code": 0,
+      "wall_s": 7.325103500159457
+    }
+  ]
+}

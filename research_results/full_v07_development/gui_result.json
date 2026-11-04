@@ -1,0 +1,11 @@
+{
+  "passed": true,
+  "fields": 15,
+  "cost_value_q": true,
+  "episode_controls": true,
+  "status_api": true,
+  "strict_recommendations": true,
+  "token_required": true,
+  "new_ppa": 8,
+  "out": "C:\\Users\\user\\Desktop\\rapidchiplet\\output\\inmin_v07_20261104\\study_v4\\output\\full_system_gui\\20261104_095859_3d9bfe"
+}

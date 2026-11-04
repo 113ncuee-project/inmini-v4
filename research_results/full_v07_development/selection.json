@@ -1,0 +1,22 @@
+{
+  "selected": "cost_restart",
+  "flags": [
+    "--cost-value-q",
+    "--episode-cost-rise",
+    ".25",
+    "--episode-restart-probability",
+    ".9"
+  ],
+  "criterion": "smallest strict-feasible development EDP under96new/1800s; disclose actual same-query/time floors; gamma0/horizon1 is one-step action-value RL, never described as multi-step",
+  "values": {
+    "cost_restart": 0.043227503449559834,
+    "one_step_cost": 0.0467296608971145,
+    "transition_restart": 0.0504764910115534,
+    "no_restart_reference": 0.04869942544978725
+  },
+  "development_seed": 7,
+  "confirmation_seeds": [
+    37,
+    47
+  ]
+}

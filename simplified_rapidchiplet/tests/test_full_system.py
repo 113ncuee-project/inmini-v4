@@ -91,6 +91,9 @@ class FullSystemTests(unittest.TestCase):
         a, b = tuple(self.w.layer_map)[:2]
         context = self.sp.features(self.s, metrics, metrics, [DesignTrial(self.s, 'A2', (a,)), DesignTrial(self.s, 'A2', (b,))])
         self.assertFalse(np.array_equal(context[0], context[1]))
+        selected = min(3, len(trials)-1)
+        single = self.sp.features(self.s,metrics,metrics,[trials[selected]])
+        np.testing.assert_array_equal(f[selected],single[0])
 
     def test_batch_and_unsupported_routing_keep_v3_limits(self):
         with self.assertRaises(ValueError):

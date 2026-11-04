@@ -1,0 +1,26 @@
+{
+  "held_out": 125,
+  "new_PPA": 0,
+  "SGD": 0,
+  "stages": {
+    "initial": {
+      "saved_SGD": 0,
+      "cost_spearman": 0.02398467585974544,
+      "log_potential_MAE": 28.203734577277135,
+      "best_control_rank": 48
+    },
+    "after_shared": {
+      "saved_SGD": 1992,
+      "cost_spearman": 0.29901121199914227,
+      "log_potential_MAE": 2.395629246300489,
+      "best_control_rank": 30
+    },
+    "final": {
+      "saved_SGD": 4176,
+      "cost_spearman": 0.4046427106651635,
+      "log_potential_MAE": 1.9937340090398972,
+      "best_control_rank": 43
+    }
+  },
+  "scope": "absolute after-cost head; no cross-state future-Q or causal search superiority claim"
+}

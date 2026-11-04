@@ -14,3 +14,7 @@ research_results/full_v06_development/** -text
 inputs/replay_v04/** -text
 research_tools/** -text
 research/** -text
+
+research_results/full_v07_development/** -text
+
+run_inmin_full_overnight.ps1 -text

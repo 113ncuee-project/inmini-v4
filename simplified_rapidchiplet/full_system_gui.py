@@ -3,6 +3,7 @@ import argparse
 from concurrent.futures import ThreadPoolExecutor
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 import json
+import math
 from pathlib import Path
 import secrets
 import html
@@ -31,6 +32,10 @@ CUSTOM_WORKLOAD
 <label>架構共同篩選 <select name="architecture_screen"><option value="all">全部 50 種</option><option value="off">僅在搜尋時切換架構</option></select></label><br>
 <label>DAG 資料邊界特徵 <select name="boundary_features"><option value="on">開啟</option><option value="off">關閉（消融）</option></select></label>
 <label>整組 PE 配額投影 <select name="resource_projection"><option value="on">開啟</option><option value="off">關閉（消融）</option></select></label><br>
+<label>RL 成本表示 <select name="cost_value_q"><option value="off">原多步Q</option><option value="on">起點校正多步Q（研究對照）</option></select></label>
+<label>架構切換配額 <select name="architecture_scaling"><option value="proportional">按原使用比例配置</option><option value="legacy">舊版全部PE配置</option></select></label><br>
+<label>Episode 容許 Cost 惡化比例（空白停用） <input name="episode_cost_rise" type="number" step="0.05" min="0"></label>
+<label>惡化後重啟機率 <input name="episode_restart_probability" type="number" step="0.05" min="0" max="1" value="0.9"></label><br>
 <label>起點強化 <select name="seed_refinement"><option value="wide">完整長度 DP + inner refinements</option><option value="off">略過額外強化</option></select></label>
 <label>額外起點 PPA 上限 <input name="seed_queries" type="number" min="0" value="48"></label>
 <label>起點評估秒數 <input name="seed_seconds" type="number" min="1" value="1200"></label><br>
@@ -178,6 +183,22 @@ def main():
                     if refinement not in ('wide', 'off'):
                         raise ValueError('unknown seed refinement')
                     command += ['--seed-refinement', refinement]
+                    cost_value_q = data.get('cost_value_q', 'off')
+                    scaling = data.get('architecture_scaling', 'proportional')
+                    if cost_value_q not in ('on', 'off') or scaling not in ('legacy', 'proportional'):
+                        raise ValueError('unknown RL cost representation/architecture quota setting')
+                    if cost_value_q == 'on':
+                        command += ['--cost-value-q']
+                    command += ['--architecture-scaling', scaling]
+                    restart_probability=float(data.get('episode_restart_probability','.9'))
+                    if not math.isfinite(restart_probability) or not 0 <= restart_probability <= 1:
+                        raise ValueError('restart probability must be in [0,1]')
+                    command += ['--episode-restart-probability',str(restart_probability)]
+                    if data.get('episode_cost_rise'):
+                        rise=float(data['episode_cost_rise'])
+                        if not math.isfinite(rise) or rise < 0:
+                            raise ValueError('cost rise must be a nonnegative finite fraction')
+                        command += ['--episode-cost-rise',str(rise)]
                     for key in ('boundary_features', 'resource_projection'):
                         option = data.get(key, 'on')
                         if option not in ('on', 'off'):

@@ -66,11 +66,11 @@ class DesignTrial:
 
 
 class FullDesignSpace:
-    version = 'v06_strong_seed_graph_edit_schema3_4'
+    version = 'v07_cost_value_full_schema3_1'
 
     def __init__(self, workload, candidates, *, shortlist=64, max_depth=4, inner=True,
                  composites=True, guidance=False, fusion=True, legacy_generator=False,
-                 boundary_features=True, resource_projection=True, operators='full'):
+                 boundary_features=True, resource_projection=True, operators='full', architecture_scaling='proportional'):
         self.w = workload
         self.candidates = {c.id: c for c in candidates}
         self.shortlist, self.max_depth = shortlist, max_depth
@@ -78,6 +78,9 @@ class FullDesignSpace:
         self.legacy_generator = legacy_generator
         self.boundary_features, self.resource_projection = boundary_features, resource_projection
         self.operators = operators
+        self.architecture_scaling = architecture_scaling
+        if architecture_scaling not in ('legacy', 'proportional'):
+            raise ValueError('unknown architecture quota scaling')
         if operators not in ('full', 'gemini5'):
             raise ValueError('unknown operator scope')
         self.boundaries = TensorBoundaryEncoder(workload, self.candidates)
@@ -98,9 +101,31 @@ class FullDesignSpace:
     def graph_feature_names(self):
         return (*self.boundaries.names, *OBSERVED_NAMES, *self.locality.names)
 
+    @property
+    def after_design_indices(self):
+        """Only absolute after-design descriptions, invariant to the before.
+
+        Omit measured before PPA, progress, family/targets, before sketches,
+        deltas, and observed bottleneck features from the physical cost head.
+        The continuation Q branch still receives the complete original vector.
+        """
+        prefix, design = 6 + len(FAMILIES), 34
+        result = list(range(prefix + design, prefix + 2 * design))
+        base = prefix + 3 * design + 15
+        if self.boundary_features:
+            boundary = (len(self.boundaries.names) - 3) // 3
+            locality = (len(self.locality.names) - 1) // 3
+            result.extend(range(base + boundary, base + 2 * boundary))
+            offset = base + len(self.boundaries.names) + len(OBSERVED_NAMES)
+            result.extend(range(offset + locality, offset + 2 * locality))
+        return tuple(result)
+
     def domain(self):
         return dict(version=self.version, architectures=[c.to_dict() for c in self.candidates.values()],
             active_operator_scope=self.operators,
+            architecture_quota_scaling=self.architecture_scaling,
+            after_cost_features=dict(indices=self.after_design_indices,
+                role='absolute after-design inputs for optional cost-factored Q; no measured after PPA or before-state dependence'),
             comparison_scope='full schema3' if self.operators == 'full' else 'Gemini-style OP1-OP5 only; grouping/architecture/inner decisions fixed for this comparison',
             decision_identity='all physical decisions with ordered group labels canonicalized; exact oracle inputs unchanged',
             families=FAMILIES, partition='all nonempty integer B/K/H/W supported by schema3; B=1',
@@ -129,7 +154,7 @@ class FullDesignSpace:
         Legacy proportional resizing remains a separately sampled alternative.
         Neither operation changes the target's physical IO/SRAM/area costs.
         """
-        if legacy:
+        if legacy and self.architecture_scaling == 'legacy':
             mapping = resized_mapping(self.w, base, candidate)
         else:
             h = candidate.hardware
@@ -146,7 +171,14 @@ class FullDesignSpace:
                 for index, lid in enumerate(group.layer_ids):
                     old = base.mapping.mapping_map[lid]
                     remaining = len(slots) - cursor - (len(group.layer_ids) - index - 1)
-                    quota = min(len(old.chiplets), remaining if group.mode == 'spatial' else len(slots))
+                    # The historical "resized" Temporal proposal activated
+                    # EVERY target PE, even if the source left most idle. A
+                    # proportional shortcut preserves the paid utilization
+                    # fraction and spreads it across the real target dies.
+                    # Atomic allocation still reaches every legal quota.
+                    ratio = len(slots) / len(self.candidates[base.architecture_candidate_id].hardware.compute_slots)
+                    desired = max(1, round(len(old.chiplets) * ratio)) if legacy else len(old.chiplets)
+                    quota = min(desired, remaining if group.mode == 'spatial' else len(slots))
                     while quota > 0:
                         parts = partition_options(self.w, lid, quota, 1)
                         if parts:
@@ -168,6 +200,7 @@ class FullDesignSpace:
                         evaluation_report=None, remaining_budget=None)
         validate_state(self.w, state, self.candidates)
         return DesignTrial(state, 'architecture_mapping', (), dict(target=candidate.id, legacy_resize=legacy,
+                          allocation_mode=('historical_full_resize' if self.architecture_scaling == 'legacy' else 'proportional_spread') if legacy else 'preserve_spread',
                           complete_mapping=mapping.to_dict()))
 
     def _fusion_beam(self, base, rng, limit=6):
