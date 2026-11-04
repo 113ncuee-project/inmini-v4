@@ -1,6 +1,14 @@
 # INMIN 完整系統下載包
 
-最新完整引擎（Full v0.5，2026-11-03）：
+最新完整引擎（Full v0.6，2026-11-04）：
+
+- [程式 ZIP](INMIN_Full_Code_20261104_v06_validated.zip)：205個驗證來源、完整v3有效搜尋域、多步Double Q、強起點DP／inner、GUI／夜間入口與延長工具。
+- [測試與數字報告 ZIP](INMIN_Full_Results_20261104_v06_validated.zip)：173項回歸、完整CLI／GUI與續跑；原v0.5兩RNG、固定硬體負面結果、可行Fusion配對、跨模型執行檢查，以及新強起點48次PPA。
+- [SHA256及CRC驗證](INMIN_Full_20261104_v06_validated_package.json)。程式2.33MB，數字證據6.28MB，均不含圖片。
+
+新DP／inner起點已完成，最佳EDP=0.05149608，不能歸給RL。新版F/P、SA／Random、凍結／均勻控制仍在執行；不以未完成對照宣稱新技術有效。[結果與限制](../docs/INMIN_GRAPH_EDIT_RESULTS.md)及[操作指南](../docs/INMIN_FULL_SYSTEM_GUIDE.md)提供完整說明。
+
+以下是歷史Full v0.5（2026-11-03）：
 
 - [程式 ZIP](INMIN_Full_Code_20261103_full_release.zip)：完整 v3 設計變數＋多步 Double Q／Replay／target network；含新GUI與夜間入口。
 - [測試與數值證據 ZIP](INMIN_Full_Results_20261103_full_release.zip)：154項回歸、50個Toy布局實際PPA、三方法續跑與計帳、GUI實際8次PPA。

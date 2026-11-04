@@ -9,6 +9,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from run_local_rl_diagnostics import read, write
 from analyze_replay_mapping import ranking_metrics
 from simple_rapidchiplet.hybrid.multi_step_q import MultiStepQ
+from simple_rapidchiplet.hybrid.full_space import DesignTrial
 
 
 def evaluate(out):
@@ -17,6 +18,8 @@ def evaluate(out):
         path = folder / 'events.jsonl'
         return [json.loads(line) for line in path.read_text(encoding='utf-8').splitlines()] if path.exists() else []
     trained = {r['state_hash'] for r in events(out / 'rl') if r.get('feasible') and r.get('new_full_ppa')}
+    trained.update(DesignTrial.from_dict(r['trial']).fingerprint
+                   for r in read(out / 'screening.json', dict(rows=[]))['rows'] if r.get('cost') is not None)
     trained.update(r['trial']['state']['architecture_candidate_id'] + ':' + json.dumps(r['trial']['state']['mapping'], sort_keys=True)
                    for r in read(out / 'screening.json', dict(rows=[]))['rows'] if r.get('cost') is not None)
     controls, seen = [], set()

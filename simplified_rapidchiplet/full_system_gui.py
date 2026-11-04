@@ -29,6 +29,11 @@ CUSTOM_WORKLOAD
 <label>RNG Seed <input name="seed" type="number" value="7"></label>
 <label>Fusion 最大深度 <input name="max_fusion_depth" type="number" min="2" value="4"></label>
 <label>架構共同篩選 <select name="architecture_screen"><option value="all">全部 50 種</option><option value="off">僅在搜尋時切換架構</option></select></label><br>
+<label>DAG 資料邊界特徵 <select name="boundary_features"><option value="on">開啟</option><option value="off">關閉（消融）</option></select></label>
+<label>整組 PE 配額投影 <select name="resource_projection"><option value="on">開啟</option><option value="off">關閉（消融）</option></select></label><br>
+<label>起點強化 <select name="seed_refinement"><option value="wide">完整長度 DP + inner refinements</option><option value="off">略過額外強化</option></select></label>
+<label>額外起點 PPA 上限 <input name="seed_queries" type="number" min="0" value="48"></label>
+<label>起點評估秒數 <input name="seed_seconds" type="number" min="1" value="1200"></label><br>
 <label>Power 上限 W（可空） <input name="max_power" type="number" step="any" min="0"></label>
 <label>Area 上限 mm²（可空） <input name="max_area" type="number" step="any" min="0"></label>
 <label>Latency 上限 ms（可空） <input name="max_latency_ms" type="number" step="any" min="0"></label><br>
@@ -38,7 +43,14 @@ CUSTOM_WORKLOAD
 <script>
 async function act(action,params={}){let r=await fetch('/api/'+action,{method:'POST',headers:{'Content-Type':'application/json','X-INMIN-Token':TOKEN},body:JSON.stringify(params)});let d=await r.json();if(!r.ok)alert(d.error);await refresh()}
 document.querySelector('#form').onsubmit=e=>{e.preventDefault();act('start',Object.fromEntries(new FormData(e.target)))};
-async function refresh(){try{let d=await(await fetch('/api/status')).json();document.querySelector('#status').textContent=JSON.stringify(d.status,null,2)+'\\n'+(d.out||'');document.querySelector('#log').textContent=d.log||'';let box=document.querySelector('#results');box.replaceChildren();for(let [k,v] of Object.entries(d.summary||{})){let p=document.createElement('p');p.textContent=k+': Full PPA '+v.full_ppa+' | Cost改善 '+v.gain_vs_seed_pct.toFixed(3)+'% | Latency改善 '+v.latency_improvement_pct.toFixed(3)+'% | Energy改善 '+v.energy_improvement_pct.toFixed(3)+'% | '+v.best_architecture+' | Fusion深度 '+v.best_fusion_depth;box.append(p)}}catch(e){document.querySelector('#status').textContent=String(e)}}
+async function refresh(){try{
+let d=await(await fetch('/api/status')).json();document.querySelector('#status').textContent=JSON.stringify(d.status,null,2)+'\\n'+(d.out||'');document.querySelector('#log').textContent=d.log||'';
+let box=document.querySelector('#results');box.replaceChildren();
+for(let [k,v] of Object.entries(d.summary||{})){
+let p=document.createElement('p'),r=(d.recommendations||{})[k];
+if(!r||!r.strict_feasible){p.textContent=k+': 完整 PPA '+v.full_ppa+'；目前沒有符合所有硬限制的推薦設計。'}
+else{let m=r.metrics,shared=d.shared_start||{};p.textContent=k+': 完整 PPA '+v.full_ppa+' | 總Cost改善 '+(100*(1-r.cost/v.seed_cost)).toFixed(3)+'% | 起點後再改善 '+(100*(1-r.cost/(shared.cost||v.seed_cost))).toFixed(3)+'% | Latency改善 '+(100*(1-m.latency_s/v.initial.latency_s)).toFixed(3)+'% | Energy改善 '+(100*(1-m.energy_j/v.initial.energy_j)).toFixed(3)+'% | Area '+m.area_mm2.toFixed(3)+' mm² | 平均Power '+m.power_w.toFixed(3)+' W | '+r.architecture+' | Fusion深度 '+r.fusion_depth;}
+box.append(p)}}catch(e){document.querySelector('#status').textContent=String(e)}}
 setInterval(refresh,4000);refresh();</script></html>'''
 
 
@@ -76,9 +88,23 @@ def main():
             if code == 0:
                 subprocess.run([sys.executable, '-X', 'utf8', str(APP / 'scripts/analyze_full_system.py'), '--out', str(out)],
                                stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+            elif read(out / 'status.json', {}).get('status') != 'interrupted':
+                write(out / 'status.json', dict(status='failed', return_code=code,
+                    error='runner exited before completion; inspect launcher_logs and runner.log (another active experiment may hold the project lock)'))
         finally:
             if awake:
                 awake(0x80000000)
+
+    def recommendations(out, summaries):
+        result = {}
+        for method in summaries:
+            rec = read(out / method / 'recommendation.json', {})
+            state = rec.get('state') or {}
+            result[method] = dict(strict_feasible=bool(rec.get('strict_feasible')), cost=rec.get('cost'),
+                architecture=state.get('architecture_candidate_id'),
+                fusion_depth=max((len(s['layer_ids']) for s in state.get('mapping', {}).get('fusion_stacks', ())), default=0),
+                metrics={k: rec.get('metrics', {}).get(k) for k in ('latency_s', 'energy_j', 'area_mm2', 'power_w')} if rec.get('metrics') else None)
+        return result
 
     class Handler(BaseHTTPRequestHandler):
         def respond(self, value, status=200):
@@ -105,8 +131,10 @@ def main():
                     with (out / 'runner.log').open('rb') as stream:
                         stream.seek(max(0, stream.seek(0, 2) - 10000))
                         log = stream.read().decode('utf-8', errors='replace')
+                summaries = read(out / 'summary.json', {}) if out else {}
                 self.respond(dict(out=str(out) if out else None, status=read(out / 'status.json', {}) if out else {},
-                    summary=read(out / 'summary.json', {}) if out else {}, log=log))
+                    summary=summaries, recommendations=recommendations(out, summaries) if out else {},
+                    shared_start={k:v for k,v in read(out / 'shared_start.json', {}).items() if k in ('cost', 'full_ppa', 'wall_s', 'gain_before_rl_pct', 'initialization')} if out else {}, log=log))
             else:
                 self.respond(dict(error='not found'), 404)
 
@@ -136,13 +164,26 @@ def main():
                     if data['methods'] not in ('rl,sa,random', 'rl,sa', 'rl') or data['architecture_screen'] not in ('all', 'off'):
                         raise ValueError('unknown methods/screen')
                     numeric = {k: int(data[k]) for k in ('queries', 'seconds', 'eval_timeout', 'seed', 'max_fusion_depth')}
+                    numeric.update(seed_queries=int(data.get('seed_queries', 48)), seed_seconds=int(data.get('seed_seconds', 1200)))
                     if numeric['queries'] < 8 or min(numeric['seconds'], numeric['eval_timeout']) <= 0 or numeric['max_fusion_depth'] < 2:
                         raise ValueError('invalid positive budget/depth')
+                    if numeric['seed_queries'] < 0 or numeric['seed_seconds'] <= 0:
+                        raise ValueError('invalid initialization query/time ceiling')
                     out = ROOT / 'output/full_system_gui' / (time.strftime('%Y%m%d_%H%M%S') + '_' + secrets.token_hex(3))
                     command = [sys.executable, '-u', '-X', 'utf8', str(APP / 'full_system_dse.py'), '--seed-case',
                         str(custom or ROOT / 'inputs/replay_v04' / data['model']), '--out', str(out)]
                     for key in ('methods', 'objective', 'architecture_screen'):
                         command += ['--' + key.replace('_', '-'), data[key]]
+                    refinement = data.get('seed_refinement', 'wide')
+                    if refinement not in ('wide', 'off'):
+                        raise ValueError('unknown seed refinement')
+                    command += ['--seed-refinement', refinement]
+                    for key in ('boundary_features', 'resource_projection'):
+                        option = data.get(key, 'on')
+                        if option not in ('on', 'off'):
+                            raise ValueError('unknown feature/projection setting')
+                        if option == 'off':
+                            command += ['--no-' + key.replace('_', '-')]
                     for key, value in numeric.items():
                         command += ['--' + key.replace('_', '-'), str(value)]
                     for key in ('max_power', 'max_area', 'max_latency_ms'):

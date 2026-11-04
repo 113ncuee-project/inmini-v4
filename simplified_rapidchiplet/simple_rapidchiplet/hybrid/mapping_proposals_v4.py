@@ -35,7 +35,7 @@ class StructuredMappings:
         self.w,self.c,self.seed,self.inner=workload,candidate,seed,inner
         self.h=candidate.hardware;self.slots=self.h.compute_slots;self.memo={};self.geometry_cache={}
         self.local_oracle=SingleArrayEvaluator(workload,self.h)
-        qs=sorted({q for q in (1,2,4,8,16,len(self.slots)) if q<=len(self.slots)})
+        qs=sorted({q for q in (1,2,4,8,16,32,64,128,256,len(self.slots)) if q<=len(self.slots)})
         self.domain=list(product(qs,('K','P','balanced'),('contiguous','spread','gateway'),('interleave','nearest','rotate'),('cold','auto','persistent')))
 
     @lru_cache(maxsize=8192)

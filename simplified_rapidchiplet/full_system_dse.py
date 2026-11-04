@@ -24,13 +24,14 @@ sys.path.insert(0, str(APP / 'scripts'))
 from run_local_rl_diagnostics import read, write, sources, sha, lock, environment
 from profile_mapping_oracle import load_workload
 from replay_mapping_dse import compact, cost, append
-from simple_rapidchiplet.hybrid.full_space import FullDesignSpace, DesignTrial
+from simple_rapidchiplet.hybrid.full_space import FullDesignSpace, DesignTrial, decision_hash
 from simple_rapidchiplet.hybrid.multi_step_q import MultiStepQ
 from simple_rapidchiplet.hybrid.rl_actions import validate_state
 from simple_rapidchiplet.hybrid.rl_schema import DesignState
 from simple_rapidchiplet.hybrid.search import _rng_tuple, plan_from_dict
 from simple_rapidchiplet.hybrid.single_array_hardware import enumerate_single_array_architectures_v3
 from simple_rapidchiplet.hybrid.single_array_runtime import SingleArrayOraclePool
+from simple_rapidchiplet.hybrid.shared_evidence import import_shared
 
 
 def physical_violation(metrics, args):
@@ -65,9 +66,21 @@ def execute(args):
     old_reference = seed_data['bootstrap'][0]
     selected = min(seed_data['bootstrap'], key=lambda r: objective_cost(r['metrics'], old_reference['metrics'], args))
     initial = DesignState.from_dict(selected['state'])
+    if args.fusion_off and initial.mapping.fusion_stacks:
+        raise ValueError('--fusion-off requires an unfused starting mapping; select an unfused seed instead of silently changing its measured PPA')
     if initial.architecture_candidate_id not in lookup:
         raise ValueError('fixed architecture must match the supplied seed')
+    if args.shared_case and not read(out / 'imported_shared.json'):
+        if read(out / 'common.json'):
+            raise ValueError('refusing to replace existing common observations')
+        provenance = import_shared(args.shared_case, out, manifest['files'], read(out / 'seed_input_manifest.json'), args)
+        write(out / 'imported_shared.json', provenance)
     common = read(out / 'common.json')
+    if common and args.shared_case:
+        if DesignState.from_dict(common['initial_state']).fingerprint != initial.fingerprint:
+            raise ValueError('imported initial state differs from current seed selection')
+        if not math.isclose(common['seed_cost'], objective_cost(common['metrics'], common['reference'], args), rel_tol=1e-12):
+            raise ValueError('imported seed cost differs from declared objective')
     if not common:
         tick = time.perf_counter()
         pool = SingleArrayOraclePool(workload, out / 'common_worker', deadline=time.monotonic() + args.eval_timeout * 3 + 30,
@@ -97,12 +110,21 @@ def execute(args):
     initial_metrics, seed_cost = common['metrics'], common['seed_cost']
     space = FullDesignSpace(workload, architectures, shortlist=args.shortlist, max_depth=args.max_fusion_depth,
                            inner=not args.no_inner, composites=not args.no_composites,
-                           guidance=args.guidance, fusion=not args.fusion_off, legacy_generator=args.legacy_generator)
+                           guidance=args.guidance, fusion=not args.fusion_off, legacy_generator=args.legacy_generator,
+                           boundary_features=not args.no_boundary_features, resource_projection=not args.no_resource_projection,
+                           operators=args.operators)
     write(out / 'design_space.json', space.domain())
     # Architecture enumeration is a shared outer phase, paid once physically
     # and charged identically to every comparator. No layout is pruned from
     # the subsequent RL domain. Its gains are reported before policy gains.
-    screening = read(out / 'screening.json', dict(rows=[], wall_s=0., completed=False))
+    screening = read(out / 'screening.json', dict(rows=[], full_ppa=0, wall_s=0., completed=False))
+    if args.shared_case:
+        # Features belong to the current controller, while labels remain the
+        # verified unchanged physical observations. Do not import old 148-D Q
+        # features or a trained policy into the new graph encoding.
+        for row in screening['rows']:
+            trial = DesignTrial.from_dict(row['trial'])
+            row['features'] = space.features(initial, initial_metrics, reference, [trial])[0].tolist()
     if args.architecture_screen == 'all' and not screening['completed']:
         tick = time.perf_counter()
         screen_pool = SingleArrayOraclePool(workload, out / 'screen_worker',
@@ -163,6 +185,35 @@ def execute(args):
         original_seed_cost=seed_cost, full_ppa=common_charge, wall_s=common_wall,
         gain_before_rl_pct=100 * (1 - start_cost / seed_cost),
         screen_domain_attempted=screening.get('complete_domain_attempted', False)))
+    if args.seed_refinement == 'wide' and not args.shared_case:
+        # Refinement is a core local workflow, not a prerequisite artifact that
+        # only this assistant can prepare. Small query ceilings reserve search.
+        if not (out / 'screening.json').exists():
+            write(out / 'screening.json', screening)
+        write(out / 'status.json', dict(status='running', phase='wide_seed_refinement', source_identity=manifest['identity']))
+        from refine_full_start import refine_start
+        try:
+            refine_start(out, args)
+        except InterruptedError:
+            write(out / 'status.json', dict(status='interrupted', phase='wide_seed_refinement', source_identity=manifest['identity']))
+            return 130
+        screening = read(out / 'screening.json')
+        start_state, start_m, start_cost = initial, initial_metrics, seed_cost
+        for row in screening['rows']:
+            if row.get('cost') is not None and row['cost'] < start_cost:
+                start_state, start_m, start_cost = DesignTrial.from_dict(row['trial']).state, row['metrics'], row['cost']
+        common_charge = common['full_ppa'] + screening.get('full_ppa', 0)
+        common_wall = common['wall_s'] + screening['wall_s']
+        # Features are controller-specific; recompute them from the actual
+        # measured before-state, never from the candidate's after-state metrics.
+        for row in screening['rows']:
+            row['features'] = space.features(initial, initial_metrics, reference, [DesignTrial.from_dict(row['trial'])])[0].tolist()
+        write(out / 'screening.json', screening)
+        write(out / 'shared_start.json', dict(state=start_state.to_dict(), metrics=start_m, cost=start_cost,
+            original_seed_cost=seed_cost, full_ppa=common_charge, wall_s=common_wall,
+            gain_before_rl_pct=100 * (1 - start_cost / seed_cost),
+            screen_domain_attempted=screening.get('complete_domain_attempted', False),
+            initialization='charged wider-DP/inner refinement after architecture screen; not attributed to RL'))
     summaries = read(out / 'summary.json', {})
     control = dict(status='running', pid=os.getpid(), source_identity=manifest['identity'])
     write(out / 'status.json', control)
@@ -173,7 +224,9 @@ def execute(args):
         # caches only contain pure descriptions, never another arm's labels.
         space = FullDesignSpace(workload, architectures, shortlist=args.shortlist, max_depth=args.max_fusion_depth,
             inner=not args.no_inner, composites=not args.no_composites, guidance=args.guidance,
-            fusion=not args.fusion_off, legacy_generator=args.legacy_generator)
+            fusion=not args.fusion_off, legacy_generator=args.legacy_generator,
+            boundary_features=not args.no_boundary_features, resource_projection=not args.no_resource_projection,
+            operators=args.operators)
         folder = out / method
         folder.mkdir(exist_ok=True)
         saved = read(folder / 'checkpoint.json', {})
@@ -190,8 +243,10 @@ def execute(args):
             for row in screening['rows']:
                 if row['cost'] is not None and not physical_violation(row['metrics'], args) and (feasible_cost is None or row['cost'] < feasible_cost):
                     feasible_state, feasible_m, feasible_cost = DesignTrial.from_dict(row['trial']).state, row['metrics'], row['cost']
-        screen_states = {DesignTrial.from_dict(r['trial']).fingerprint for r in screening['rows']}
-        visited = set(saved.get('visited', ())) | {initial.fingerprint} | screen_states
+        # An unfinished timeout is not a known bad design. It stays eligible
+        # for a later explicit evaluation under the current search budget.
+        screen_states = {DesignTrial.from_dict(r['trial']).fingerprint for r in screening['rows'] if r['status'] == 'full_completed'}
+        visited = set(saved.get('visited', ())) | {decision_hash(initial)} | screen_states
         steps, elapsed = saved.get('steps', 0), saved.get('elapsed_s', 0.)
         episode = saved.get('episode', 0)
         epoch_steps = saved.get('epoch_steps', 0)
@@ -209,15 +264,17 @@ def execute(args):
         # happens to be present at startup.
         started = time.perf_counter()
         size = space.features(initial, initial_metrics, reference, [DesignTrial(initial, 'A2')]).shape[1]
-        policy = MultiStepQ(size, args.seed, gamma=args.gamma)
+        graph_size = len(space.graph_feature_names) if space.boundary_features else 0
+        policy = MultiStepQ(size, args.seed, gamma=args.gamma, base_size=size - graph_size if graph_size else None)
         if saved.get('policy_file'):
             policy.load(folder / saved['policy_file'])
         elif method == 'rl':
             policy.save(folder / 'policy_initial.pt')
-            for row in screening['rows']:
+            for row in screening['rows'] if not args.no_shared_warmstart else ():
                 if row.get('utility') is not None:
                     policy.observe(row['features'], row['utility'], np.empty((0, size), np.float32), True, args.replay_updates)
-            write(folder / 'shared_warmstart.json', dict(physical_samples=sum(r.get('utility') is not None for r in screening['rows']),
+            write(folder / 'shared_warmstart.json', dict(physical_samples=sum(r.get('utility') is not None for r in screening['rows']) if not args.no_shared_warmstart else 0,
+                available_shared_samples=sum(r.get('utility') is not None for r in screening['rows']),
                 policy_updates=policy.updates, charged_shared_full_ppa=screening.get('full_ppa', 0),
                 scope='terminal physical improvement labels from the identical shared architecture screen; zero new PPA'))
             policy.save(folder / 'policy_after_shared.pt')
@@ -236,7 +293,7 @@ def execute(args):
                 elite, elite_m, elite_cost = state, item['metrics'], value
             if value is not None and not physical_violation(item['metrics'], args) and (feasible_cost is None or value < feasible_cost):
                 feasible_state, feasible_m, feasible_cost = state, item['metrics'], value
-            visited.add(state.fingerprint)
+            visited.add(decision_hash(state))
 
         def save(status):
             nonlocal policy_revision, policy_history
@@ -290,7 +347,7 @@ def execute(args):
                     stop_reason = 'proposal_stalled'
                     break
                 features = space.features(current, current_m, reference, cached_trials, progress)
-                if pending and method == 'rl':
+                if pending and method == 'rl' and not args.freeze_search_policy:
                     update_before = policy.updates
                     policy.observe(pending['features'], pending['reward'], features,
                                    terminal=pending['terminal'], updates=args.replay_updates)
@@ -299,8 +356,12 @@ def execute(args):
                         updates_before=update_before, updates_after=policy.updates,
                         gradient_norm=policy.last_gradient_norm, loss=float(np.mean(policy.losses[-args.replay_updates:]))))
                     pending = None
+                elif pending and method == 'rl' and args.freeze_search_policy:
+                    # Explicit causal control: observe PPA in events, but make
+                    # no local-policy gradient/replay update after warmstart.
+                    pending = None
                 epsilon = max(.10, .45 * (1 - pool.full_evaluations / max(1, args.queries - common_charge)))
-                if method == 'rl' and phase == 'learning_search':
+                if method == 'rl' and phase == 'learning_search' and not args.uniform_policy:
                     probabilities, q = policy.probabilities(features, epsilon)
                 else:
                     probabilities, q = np.ones(len(features)) / len(features), np.zeros(len(features))
@@ -309,7 +370,7 @@ def execute(args):
                 before = objective_cost(current_m, reference, args)
                 updates_before = policy.updates
                 request = dict(step=steps + 1, phase=phase, method=method, state_hash=trial.fingerprint,
-                    before_state_hash=current.fingerprint, action=trial.to_dict(), features=features[chosen].tolist(),
+                    before_state_hash=decision_hash(current), action=trial.to_dict(), features=features[chosen].tolist(),
                     behavior_probability=float(probabilities[chosen]), probabilities=probabilities.tolist(),
                     q_values=q.tolist(), selected_index=chosen, candidate_hashes=[t.fingerprint for t in cached_trials],
                     episode=episode, epoch_steps=epoch_steps, policy_updates_before=updates_before,
@@ -342,10 +403,16 @@ def execute(args):
                             current, current_m = elite, elite_m
                             accepted, terminal = improved, True
                         elif method == 'sa':
-                            temperature = max(.002, .08 * (1 - pool.full_evaluations / max(1, args.queries - common_charge)))
-                            accepted = value <= before or accept_rng.random() < math.exp(min(0, (before - value) / (temperature * seed_cost)))
+                            temperature = max(.002, args.sa_temperature * (1 - pool.full_evaluations / max(1, args.queries - common_charge)))
+                            scale = start_cost if args.sa_temperature_reference == 'shared' else seed_cost
+                            accepted = value <= before or accept_rng.random() < math.exp(min(0, (before - value) / (temperature * scale)))
                             if accepted:
                                 current, current_m = trial.state, metrics
+                                if args.sa_elite_restart:
+                                    epoch_steps += 1
+                                    if epoch_steps >= args.horizon:
+                                        current, current_m, epoch_steps = elite, elite_m, 0
+                                        episode += 1
                         else:
                             # RL follows every executable trial, including a
                             # temporarily worse state. Archive remains separate.
@@ -376,7 +443,7 @@ def execute(args):
                     gain_vs_seed_pct=100 * (1 - elite_cost / seed_cost), architecture=elite.architecture_candidate_id,
                     fusion_depth=max((len(s.layer_ids) for s in elite.mapping.fusion_stacks), default=0),
                     policy_updates=policy.updates, last_status=outcome['status'])), flush=True)
-            if pending and method == 'rl' and stop_reason != 'interrupted':
+            if pending and method == 'rl' and stop_reason != 'interrupted' and not args.freeze_search_policy:
                 # End-of-budget truncation has no executable successor within
                 # this experiment. Never bootstrap from unmeasured states.
                 update_before = policy.updates
@@ -385,6 +452,8 @@ def execute(args):
                     reward=pending['reward'], terminal=True, successor_count=0, budget_truncation=True,
                     updates_before=update_before, updates_after=policy.updates,
                     gradient_norm=policy.last_gradient_norm, loss=float(np.mean(policy.losses[-args.replay_updates:]))))
+                pending = None
+            elif pending and method == 'rl' and stop_reason != 'interrupted' and args.freeze_search_policy:
                 pending = None
             if steps >= args.queries * 8:
                 stop_reason = 'attempt_budget_exhausted'
@@ -398,7 +467,7 @@ def execute(args):
         summary = dict(method=method, status=stop_reason, common_full_ppa=common_charge, search_full_ppa=pool.full_evaluations,
             full_ppa=common_charge + pool.full_evaluations, seed_cost=seed_cost, best_cost=elite_cost,
             gain_vs_seed_pct=100 * (1 - elite_cost / seed_cost), best=compact(elite_m), initial=compact(initial_metrics),
-            best_step=best_step, best_state_hash=elite.fingerprint, best_architecture=elite.architecture_candidate_id,
+            best_step=best_step, best_state_hash=decision_hash(elite), best_architecture=elite.architecture_candidate_id,
             best_fusion_depth=max((len(s.layer_ids) for s in elite.mapping.fusion_stacks), default=0),
             policy_updates=policy.updates, search_wall_s=elapsed + time.perf_counter() - started,
             charged_wall_s=common_wall + elapsed + time.perf_counter() - started, architecture_coverage=coverage,
@@ -409,6 +478,11 @@ def execute(args):
             area_improvement_pct=100 * (1 - elite_m['area_mm2'] / initial_metrics['area_mm2']),
             objective=args.objective, gamma=args.gamma, domain=space.version)
         summary['strict_feasible'] = feasible_state is not None
+        summary['algorithm'] = ('uniform_horizon_control' if args.uniform_policy else
+            'frozen_shared_q_control' if args.freeze_search_policy and not args.no_shared_warmstart else
+            'frozen_initial_q_control' if args.freeze_search_policy else 'multistep_double_q') if method == 'rl' else method
+        summary['online_policy_updates_enabled'] = method == 'rl' and not args.freeze_search_policy
+        summary['shared_warmstart_enabled'] = method == 'rl' and not args.no_shared_warmstart
         summary['recommended_cost'] = feasible_cost
         summary['note'] = 'best_* and gain fields describe penalized search elite; recommendation.json contains only strict-feasible designs'
         write(folder / 'summary.json', summary)
@@ -436,6 +510,7 @@ def report(out, summaries):
 def main():
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument('--seed-case', default=str(APP.parent / 'inputs/replay_v04/resnet18'))
+    p.add_argument('--shared-case', help='verified identical-oracle shared pre-search history; charges inherited PPA/time')
     p.add_argument('--out', required=True)
     p.add_argument('--methods', default='rl,sa,random')
     p.add_argument('--queries', type=int, default=512)
@@ -447,6 +522,9 @@ def main():
     p.add_argument('--gamma', type=float, default=.9)
     p.add_argument('--replay-updates', type=int, default=24)
     p.add_argument('--warmup', type=int, default=8)
+    p.add_argument('--sa-elite-restart', action='store_true')
+    p.add_argument('--sa-temperature', type=float, default=.08)
+    p.add_argument('--sa-temperature-reference', choices=('seed', 'shared'), default='seed')
     p.add_argument('--max-fusion-depth', type=int, default=4)
     p.add_argument('--objective', choices=('balanced', 'edp', 'latency', 'energy'), default='edp')
     p.add_argument('--max-power', type=float)
@@ -454,11 +532,21 @@ def main():
     p.add_argument('--max-latency-ms', type=float)
     p.add_argument('--architecture-screen', choices=('all', 'off'), default='all')
     p.add_argument('--screen-seconds', type=float, default=3600)
+    p.add_argument('--seed-refinement', choices=('wide', 'off'), default='wide')
+    p.add_argument('--seed-queries', type=int, default=48)
+    p.add_argument('--seed-seconds', type=float, default=1200)
+    p.add_argument('--seed-dp-seconds', type=float, default=600)
     p.add_argument('--fixed-architecture')
     p.add_argument('--no-inner', action='store_true')
     p.add_argument('--no-composites', action='store_true')
     p.add_argument('--legacy-generator', action='store_true')
     p.add_argument('--guidance', action='store_true')
+    p.add_argument('--no-boundary-features', action='store_true')
+    p.add_argument('--no-resource-projection', action='store_true')
+    p.add_argument('--freeze-search-policy', action='store_true', help='causal control: retain shared warmstart but disable all new search-policy learning')
+    p.add_argument('--no-shared-warmstart', action='store_true')
+    p.add_argument('--uniform-policy', action='store_true', help='causal control: uniform actions with the identical RL horizon/acceptance dynamics')
+    p.add_argument('--operators', choices=('full', 'gemini5'), default='full')
     p.add_argument('--fusion-off', action='store_true')
     p.add_argument('--resume', action='store_true')
     p.add_argument('--frozen-child', action='store_true', help=argparse.SUPPRESS)
@@ -467,6 +555,10 @@ def main():
         p.error('positive budgets/horizon/updates and queries/shortlist >=4 required')
     if not 0 <= args.gamma < 1 or args.warmup < 0 or args.max_fusion_depth < 2:
         p.error('gamma in [0,1), warmup>=0 and fusion depth>=2 required')
+    if not math.isfinite(args.sa_temperature) or args.sa_temperature <= 0:
+        p.error('SA temperature must be positive finite')
+    if args.seed_queries < 0 or min(args.seed_seconds, args.seed_dp_seconds) <= 0:
+        p.error('seed query ceiling must be nonnegative and seed time limits positive')
     if any(v is not None and (v <= 0 or not math.isfinite(v)) for v in (args.max_power, args.max_area, args.max_latency_ms)):
         p.error('physical limits must be positive finite values')
     if any(m not in ('rl', 'sa', 'random') for m in args.methods.split(',')) or len(set(args.methods.split(','))) != len(args.methods.split(',')):
@@ -475,7 +567,10 @@ def main():
     if args.frozen_child:
         return execute(args)
     out = Path(args.out)
-    with lock(APP.parent / 'output/.local_rl_diagnostics.lock'), lock(out / 'run.lock'):
+    # Isolated development copies share the real project's serial oracle lock.
+    # A copied APP must not silently create a second heavy-experiment lane.
+    workspace = next((p for p in APP.parents if (p / '.venv/Scripts/python.exe').is_file() and (p / 'inputs').is_dir()), APP.parent)
+    with lock(workspace / 'output/.local_rl_diagnostics.lock'), lock(out / 'run.lock'):
         if args.resume:
             saved = read(out / 'effective_config.json')
             if not saved:
@@ -512,7 +607,7 @@ def main():
         (out / 'STOP_REQUESTED').unlink(missing_ok=True)
         command = [sys.executable, '-u', '-X', 'utf8', str(out / 'source_snapshot/full_system_dse.py'), '--frozen-child']
         for key, value in vars(args).items():
-            if key in ('resume', 'frozen_child') or value is None:
+            if key in ('resume', 'frozen_child') or value is None or (args.resume and key not in saved):
                 continue
             flag = '--' + key.replace('_', '-')
             if isinstance(value, bool):

@@ -1,6 +1,6 @@
 # Completed original full-space experiment (source336)
 
-Read-only extraction from two completed, audited RNG cases. This is development evidence preceding the stronger-start experiment; gains may partly correct bounded DP grouping. EDP is normalized to a common fixed reference. No new PPA or SGD.
+Read-only extraction from two completed, audited RNG cases. This is development evidence preceding the stronger-start experiment; gains may partly correct bounded DP grouping. EDP is normalized to a common fixed reference. No new PPA or SGD. These runs have no area, average-power or latency hard cap; inspect the complete metric tuple and use explicit caps for constrained studies.
 
 |RNG|Method|New / charged full PPA|EDP|Gain after shared %|Latency ms|Energy mJ|Area mm2|Average W|Search s|Groups|
 |---:|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|

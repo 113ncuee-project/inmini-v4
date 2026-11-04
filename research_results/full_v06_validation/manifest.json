@@ -1,0 +1,12 @@
+{
+  "files": {
+    "acceptance_result.json": "e0e3a623820e970bfa6dcb0832a0803df4e61f516ed305d6d757cd137dd7f46e",
+    "continuation_result.json": "6c4030c6b36682725f74d12ebaa8636fe858caaed2a2b82ea9d22e756d0653da",
+    "gui_result.json": "09cec96e5feb212add0021cbcfe9e22fba88e0229bac118c64509855c2c4b557",
+    "promotion.json": "1dee66acab45e32e7c0c07ffe2315ea11925f951cf32a72629e9f5eac4909431",
+    "README.md": "997962563350bad259223f594b428af15f6983d877c7ab0d91b9e276b3e3cd0f",
+    "workflow_result.json": "5d6e4e6c2bc9b612c38a4820f55485bcc7cfabc42def80de4216a6f98ed912db"
+  },
+  "new_ppa_by_export": 0,
+  "images": 0
+}

@@ -1,0 +1,21 @@
+{
+  "passed": true,
+  "new_ppa": 12,
+  "original_unchanged": true,
+  "new_common_ppa": 0,
+  "full_ppa_before": {
+    "rl": 14,
+    "sa": 14,
+    "random": 14
+  },
+  "full_ppa_after": {
+    "rl": 18,
+    "sa": 18,
+    "random": 18
+  },
+  "old_q_updates": 96,
+  "new_q_updates": 128,
+  "audit_passed": true,
+  "parent_source_identity": "6294492daa7f67cd7e5c9b81282aa7120757a21a5c317f159897b1232ce30ee3",
+  "scope": "frozen shipping Toy policies continued under enlarged ceilings; preserved parent, measured state and cumulative query/time ledgers"
+}

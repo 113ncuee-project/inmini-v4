@@ -1,0 +1,83 @@
+{
+  "rl": {
+    "method": "rl",
+    "status": "full_query_budget_exhausted",
+    "common_full_ppa": 1,
+    "search_full_ppa": 11,
+    "full_ppa": 12,
+    "seed_cost": 1.0,
+    "best_cost": 0.4170471817282246,
+    "gain_vs_seed_pct": 58.29528182717753,
+    "best": {
+      "feasible": true,
+      "latency_s": 0.048958162863190484,
+      "energy_j": 0.05825686466663332,
+      "power_w": 1.1899315917843423,
+      "area_mm2": 64.79423152941176,
+      "dram_read_bytes": 134931288,
+      "dram_write_bytes": 16839144,
+      "noc_hop_bytes": 358808256,
+      "nop_hop_bytes": 253287168,
+      "executed_macs": 4089184256,
+      "recompute_macs": 0,
+      "unit_count": 9538,
+      "calendar_backend": "native",
+      "oracle_phase_wall_s": {
+        "compile": 1.327999999979511,
+        "communication_and_job_build": 14.905999999959022,
+        "schedule": 5.780999999959022,
+        "capacity_and_metrics": 1.5160000000614673,
+        "diagnostics": 1.702999999979511
+      },
+      "oracle_process_cpu_s": 24.671875
+    },
+    "initial": {
+      "feasible": true,
+      "latency_s": 0.06730562451953305,
+      "energy_j": 0.10160981746715497,
+      "power_w": 1.5096779532543578,
+      "area_mm2": 64.79423152941176,
+      "dram_read_bytes": 221467043,
+      "dram_write_bytes": 16839144,
+      "noc_hop_bytes": 1233349120,
+      "nop_hop_bytes": 391820544,
+      "executed_macs": 4089184256,
+      "recompute_macs": 0,
+      "unit_count": 28384,
+      "calendar_backend": "native",
+      "oracle_phase_wall_s": {
+        "compile": 22.875,
+        "communication_and_job_build": 60.79700000002049,
+        "schedule": 9.594000000040978,
+        "capacity_and_metrics": 6.796000000089407,
+        "diagnostics": 3.0
+      },
+      "oracle_process_cpu_s": 101.484375
+    },
+    "best_step": 3,
+    "best_state_hash": "f08ff919d1c694371b2bea55545f6d4c8ca151ccec0c91c894f4edfa2123a71e",
+    "best_architecture": "single_array_c2_2x1",
+    "best_fusion_depth": 0,
+    "policy_updates": 168,
+    "search_wall_s": 569.0573915001005,
+    "charged_wall_s": 672.7252300002147,
+    "architecture_coverage": {
+      "single_array_c2_2x1": {
+        "status": "full_evaluated",
+        "feasible": true,
+        "step": 11
+      }
+    },
+    "gain_after_shared_screen_pct": 58.29528182717753,
+    "gain_before_rl_pct": 0.0,
+    "latency_improvement_pct": 27.259923353088965,
+    "energy_improvement_pct": 42.66610636766014,
+    "area_improvement_pct": 0.0,
+    "objective": "edp",
+    "gamma": 0.9,
+    "domain": "v05_full_schema3_transactions_1",
+    "strict_feasible": true,
+    "recommended_cost": 0.4170471817282246,
+    "note": "best_* and gain fields describe penalized search elite; recommendation.json contains only strict-feasible designs"
+  }
+}

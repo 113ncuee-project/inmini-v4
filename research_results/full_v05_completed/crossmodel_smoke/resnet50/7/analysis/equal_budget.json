@@ -1,0 +1,14 @@
+[
+  {
+    "axis": "full_ppa",
+    "shared_budget": 12,
+    "method": "rl",
+    "best_cost": 0.4170471817282246
+  },
+  {
+    "axis": "charged_wall_s",
+    "shared_budget": 671.4305805000477,
+    "method": "rl",
+    "best_cost": 0.4170471817282246
+  }
+]

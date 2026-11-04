@@ -7,6 +7,7 @@ All candidates still require the complete SingleArrayOraclePool evaluation.
 """
 from collections import Counter, defaultdict
 from dataclasses import dataclass, replace
+from functools import cached_property
 import math
 import time
 
@@ -17,12 +18,32 @@ from .depth_first import legal_stack
 from .mapping import FusionStack, LayerGroup, Partition, initial_mapping
 from .mapping_proposals_v4 import StructuredMappings
 from .rl_actions import apply_transaction, generate_candidates, resized_mapping, validate_state, _group_dict
-from .rl_schema import DesignState, ActionEdit, make_action_plan
+from .rl_schema import DesignState, ActionEdit, make_action_plan, stable_hash
 from .single_array_proposals import SingleArrayJointProposals
+from .tensor_boundary import TensorBoundaryEncoder, OBSERVED_NAMES
+from .resource_projection import ResourceProjector
+from .lp_five import propose_five
+from .temporal_projection import TemporalProjector
+from .tensor_locality import TensorLocalityEncoder
 
 
 FAMILIES = tuple('A' + str(i) for i in (*range(1, 11), 12)) + tuple('C' + str(i) for i in range(1, 10)) + (
-    'global_mapping', 'retention', 'inner_dataflow', 'fusion_beam', 'architecture_mapping')
+    'global_mapping', 'retention', 'inner_dataflow', 'fusion_beam', 'architecture_mapping', 'group_projection')
+
+
+def decision_hash(state):
+    """Controller-only identity, invariant to display labels of ordered groups.
+
+    Actual plans and the oracle's exact durable keys remain untouched. Physical
+    group membership/order/mode, allocations, FD, tiles and all other decisions
+    stay in this identity; only the arbitrary human labels are canonicalized.
+    """
+    data = replace(state, evaluation_report=None, remaining_budget=None).to_dict()
+    data.pop('evaluation_report')
+    data.pop('remaining_budget')
+    for index, group in enumerate(data['mapping']['groups']):
+        group['id'] = f'group{index}'
+    return stable_hash(data)
 
 
 @dataclass(frozen=True)
@@ -32,9 +53,9 @@ class DesignTrial:
     targets: tuple = ()
     action: dict | None = None
 
-    @property
+    @cached_property
     def fingerprint(self):
-        return self.state.fingerprint
+        return decision_hash(self.state)
 
     def to_dict(self):
         return dict(state=self.state.to_dict(), family=self.family, targets=self.targets, action=self.action)
@@ -45,15 +66,24 @@ class DesignTrial:
 
 
 class FullDesignSpace:
-    version = 'v05_full_schema3_transactions_1'
+    version = 'v06_strong_seed_graph_edit_schema3_4'
 
     def __init__(self, workload, candidates, *, shortlist=64, max_depth=4, inner=True,
-                 composites=True, guidance=False, fusion=True, legacy_generator=False):
+                 composites=True, guidance=False, fusion=True, legacy_generator=False,
+                 boundary_features=True, resource_projection=True, operators='full'):
         self.w = workload
         self.candidates = {c.id: c for c in candidates}
         self.shortlist, self.max_depth = shortlist, max_depth
         self.inner, self.composites, self.guidance, self.fusion = inner, composites, guidance, fusion
         self.legacy_generator = legacy_generator
+        self.boundary_features, self.resource_projection = boundary_features, resource_projection
+        self.operators = operators
+        if operators not in ('full', 'gemini5'):
+            raise ValueError('unknown operator scope')
+        self.boundaries = TensorBoundaryEncoder(workload, self.candidates)
+        self.locality = TensorLocalityEncoder(workload, self.candidates)
+        self.projector = ResourceProjector(workload, self.candidates)
+        self.temporal_projector = TemporalProjector(workload, self.candidates)
         self.calls = 0
         self.banks = {}
         self.history = []
@@ -64,17 +94,31 @@ class FullDesignSpace:
             self.banks[key] = StructuredMappings(self.w, self.candidates[key], state, inner=self.inner)
         return self.banks[key]
 
+    @property
+    def graph_feature_names(self):
+        return (*self.boundaries.names, *OBSERVED_NAMES, *self.locality.names)
+
     def domain(self):
         return dict(version=self.version, architectures=[c.to_dict() for c in self.candidates.values()],
+            active_operator_scope=self.operators,
+            comparison_scope='full schema3' if self.operators == 'full' else 'Gemini-style OP1-OP5 only; grouping/architecture/inner decisions fixed for this comparison',
+            decision_identity='all physical decisions with ordered group labels canonicalized; exact oracle inputs unchanged',
             families=FAMILIES, partition='all nonempty integer B/K/H/W supported by schema3; B=1',
             placement='ordered PE swaps, idle relocation, inter-layer swaps and explicit allocation',
             dram='independent external activation, output materialization and weight endpoints; paid interleave',
             groups='topological temporal/spatial merge/split and joint reallocation',
-            fusion=dict(enabled=self.fusion, depth_limit=self.max_depth, tiles='positive bounded sink H/W; atomic halve/double',
+            fusion=dict(enabled=self.fusion, depth_limit=self.max_depth, tiles='all positive bounded sink H/W; atomic +/-1, halve/double and uniform jumps',
                         overlap=['recompute', 'horizontal_cache', 'full_cache']),
             microbatch=dict(values=[1], reason='same Batch=1 physical compiler contract as v3'),
             dataflows=['output_stationary', 'weight_reuse', 'activation_reuse'],
+            inner_tiling='deterministic physical per-pool full-channel fitting inside each ownership region; inherited channel/microtile fields are not additional searched hardware modes',
             weight_policies=['cold', 'persistent'],
+            graph_edit_features=dict(enabled=self.boundary_features, version=self.boundaries.version,
+                                     ownership_version=self.locality.version,
+                                     names=self.graph_feature_names, labels='before-schedule context and logical edits only; full oracle rewards only'),
+            resource_projection=dict(enabled=self.resource_projection, version=self.projector.version,
+                                     temporal_version=self.temporal_projector.version,
+                                     role='additional spatial conserving DP and serial-stage measured-cost proposals; no domain pruning'),
             approximate='finite rotating proposals and inner proxy beam; no global optimality proof',
             unsupported=['input-channel package reduction', 'arbitrary floorplan/routing', 'vertical-only cache'])
 
@@ -233,7 +277,12 @@ class FullDesignSpace:
                         add('A12', [('A12', dict(layer_id=lid, dataflow=flow))], (lid,))
                 add('A8', [('A8', dict(tensor_id='weight:' + lid, configuration_id=rng.choice(memories)))], (lid,))
             for tid in (*layer.inputs, layer.output):
-                add('A8', [('A8', dict(tensor_id=tid, configuration_id=rng.choice(memories)))], (lid,))
+                tensor = self.w.tensor_map[tid]
+                active = (not tensor.producer or tid in self.w.output_ids or
+                          any(base.mapping.group_map[u].id != base.mapping.group_map[tensor.producer].id for u in self.w.consumers[tid]))
+                if active:
+                    targets = tuple(dict.fromkeys((*( (tensor.producer,) if tensor.producer else ()), *self.w.consumers[tid])))
+                    add('A8', [('A8', dict(tensor_id=tid, configuration_id=rng.choice(memories)))], targets)
 
         fused = {l for s in base.mapping.fusion_stacks for l in s.layer_ids}
         for stack in base.mapping.fusion_stacks if self.fusion else ():
@@ -241,6 +290,13 @@ class FullDesignSpace:
             add('A1', [('A1', dict(operation='split', layer_ids=members))], members)
             sink = self.w.tensor_map[self.w.layer_map[members[-1]].output]
             for axis in (0, 1):
+                # Halving/doubling alone cannot reach e.g. tile 5 from 4 in
+                # every finite sink extent. Unit moves connect the whole
+                # bounded integer domain; random jumps avoid a long walk.
+                for delta in (-1, 1):
+                    tile = list(stack.tile_hw)
+                    tile[axis] = max(1, min(sink.shape[axis + 2], tile[axis] + delta))
+                    add('A3', [('A3', dict(layer_ids=members, tile_hw=tile))], members)
                 for factor in (.5, 2.):
                     tile = list(stack.tile_hw)
                     tile[axis] = max(1, min(sink.shape[axis + 2], int(tile[axis] * factor)))
@@ -249,6 +305,8 @@ class FullDesignSpace:
                     if self.composites:
                         add('C7' if factor < 1 else 'C8', [edit, ActionEdit('A7', dict(layer_ids=members,
                             cache_h=factor > 1, cache_v=factor > 1))], members)
+            tile = [rng.randint(1, sink.shape[2]), rng.randint(1, sink.shape[3])]
+            add('A3', [('A3', dict(layer_ids=members, tile_hw=tile))], members)
             for ch, cv in ((False, False), (True, False), (True, True)):
                 add('A7', [('A7', dict(layer_ids=members, cache_h=ch, cache_v=cv))], members)
         groups = base.mapping.groups
@@ -300,10 +358,81 @@ class FullDesignSpace:
                     add('C4', edits, (left, right))
         return tuple(plans)
 
+    def _projected_groups(self, base, rng, report=None):
+        """Additional joint proposals; original single-variable moves remain.
+
+        Sample existing groups as well as adjacent merges. Tensor-heavy cuts
+        receive an explicit proposal, with random representatives to avoid
+        restricting group reachability to a handpicked chain.
+        """
+        groups = base.mapping.groups
+        fused = {lid for s in base.mapping.fusion_stacks for lid in s.layer_ids}
+        capacity = len(self.candidates[base.architecture_candidate_id].hardware.compute_slots)
+        eligible = [i for i, g in enumerate(groups) if not fused.intersection(g.layer_ids)
+                    and (g.mode == 'temporal' or 2 <= len(g.layer_ids) <= capacity)]
+        edits, rows = [], []
+        for i in rng.sample(eligible, min(2, len(eligible))):
+            if groups[i].mode == 'temporal':
+                cap = rng.choice(tuple(q for q in (16, 32, 64) if q <= capacity))
+                placement = rng.choice(('preserve', 'spread'))
+                for multiplier in (.5, 1., 2.):
+                    try:
+                        state, evidence = self.temporal_projector.project(base, groups[i].id, self.bank(base), report or {},
+                            cap=cap, energy_multiplier=multiplier, placement=placement)
+                        rows.append(DesignTrial(state, 'group_projection', groups[i].layer_ids, evidence))
+                    except ValueError:
+                        continue
+                continue
+            changed = (*groups[:i], replace(groups[i], mode='spatial'), *groups[i + 1:])
+            edits.append((tuple(changed), groups[i].id, groups[i].layer_ids))
+        merges = []
+        for i in range(len(groups) - 1):
+            members = (*groups[i].layer_ids, *groups[i + 1].layer_ids)
+            if len(members) > min(capacity, 8) or fused.intersection(members):
+                continue
+            left, right = set(groups[i].layer_ids), set(groups[i + 1].layer_ids)
+            cut = sum(self.w.tensor_map[t].bytes for lid in right for t in self.w.layer_map[lid].inputs
+                      if self.w.tensor_map[t].producer in left)
+            merges.append((cut, i, members))
+        selected = []
+        if merges:
+            selected.append(max(merges, key=lambda row: (row[0], -row[1])))
+            selected.extend(rng.sample(merges, min(2, len(merges))))
+        for _, i, members in selected:
+            group = LayerGroup(groups[i].id + '_project', members, 'spatial')
+            edits.append(((*groups[:i], group, *groups[i + 2:]), group.id, members))
+        for changed, gid, targets in edits:
+            shadow = replace(base, mapping=replace(base.mapping, groups=tuple(changed)))
+            try:
+                state, evidence = self.projector.project(shadow, (gid,),
+                    memory_weight=rng.choice((0., 1.)), placement=rng.choice(('preserve', 'spread')))
+                rows.append(DesignTrial(state, 'group_projection', tuple(targets), evidence))
+            except ValueError:
+                continue
+        return rows
+
     def propose(self, base, report, rng, excluded=()):
         started = time.perf_counter()
         self.calls += 1
         candidate = self.candidates[base.architecture_candidate_id]
+        if self.operators == 'gemini5':
+            rows = [DesignTrial(*row) for row in propose_five(self.w, base, candidate, rng)]
+            seen, valid, rejected = set(excluded) | {decision_hash(base)}, [], Counter()
+            rng.shuffle(rows)
+            for row in rows:
+                if row.fingerprint in seen:
+                    continue
+                try:
+                    validate_state(self.w, row.state, self.candidates)
+                except ValueError as error:
+                    rejected[str(error)] += 1
+                    continue
+                seen.add(row.fingerprint)
+                valid.append(row)
+            valid = valid[:self.shortlist]
+            return tuple(valid), dict(calls=self.calls, generation_wall_s=time.perf_counter() - started,
+                operator_scope='gemini5', full_ppa=0, selected_families=dict(Counter(t.family for t in valid)),
+                candidate_count=len(valid), rejected=dict(rejected))
         # Only architecture construction is factored out. The current-hardware
         # legacy transaction domain is passed through the original generator.
         if self.legacy_generator:
@@ -350,6 +479,8 @@ class FullDesignSpace:
                                     'inner_dataflow', tuple(self.w.layer_map), dict(proxy_is_full_ppa=False)))
         if self.fusion:
             rows.extend(self._fusion_beam(base, rng))
+        if self.resource_projection:
+            rows.extend(self._projected_groups(base, rng, report))
         targets = [c for c in self.candidates.values() if c.id != candidate.id]
         rng.shuffle(targets)
         for c in targets[:min(8, len(targets))]:
@@ -358,7 +489,7 @@ class FullDesignSpace:
                     rows.append(self.architecture_trial(base, c, legacy=legacy))
                 except ValueError:
                     pass
-        seen = set(excluded) | {base.fingerprint}
+        seen = set(excluded) | {decision_hash(base)}
         valid, rejects = [], Counter()
         for row in rows:
             if row.fingerprint in seen:
@@ -432,6 +563,7 @@ class FullDesignSpace:
         evidence = {r['layer_id']: r for r in report.get('diagnostics', {}).get('layers', ())}
         order = {l.id: i / max(1, len(self.w.layers) - 1) for i, l in enumerate(self.w.layers)}
         result = []
+        boundary_before = self.boundaries.sketch(base) if self.boundary_features else None
         for trial in trials:
             after = design(trial.state)
             targets = tuple(sorted(set(trial.targets) & set(self.w.layer_map), key=order.get))
@@ -450,5 +582,10 @@ class FullDesignSpace:
                           sum(bool(self.w.layer_map[l].weight_shape) for l in targets) / count,
                           sum(base.mapping.group_map[l].mode == 'spatial' for l in targets) / count))
             vector = [1., *ppa, progress, *[float(trial.family == f) for f in FAMILIES], *before, *after, *(after - before), *local]
+            if self.boundary_features:
+                vector.extend(self.boundaries.encode(base, trial.state, before_sketch=boundary_before,
+                                                      after_key=trial.fingerprint))
+                vector.extend(self.boundaries.observed_edit(base, report, trial.state, trial.targets))
+                vector.extend(self.locality.encode(base, report, trial.state))
             result.append(np.clip(vector, -8, 8))
         return np.asarray(result, dtype=np.float32)

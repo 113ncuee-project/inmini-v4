@@ -1,0 +1,233 @@
+{
+  "new_ppa": 0,
+  "policy_updates": 0,
+  "cases": [
+    {
+      "seed": 7,
+      "method": "rl",
+      "counts": {
+        "A8_selected": 22,
+        "inactive_internal_tensor": 14,
+        "inactive_new_full_ppa": 14,
+        "inactive_with_identical_physical_tuple": 14,
+        "active_tensor": 4,
+        "active_weight": 4
+      },
+      "inactive_evaluation_wall_s": 155.12629330088384,
+      "inactive_share_of_new_full_queries": 0.09929078014184398,
+      "examples": [
+        {
+          "step": 37,
+          "tensor": "layer3_1_relu",
+          "identical_physical_tuple": true,
+          "new_full_ppa": 1
+        },
+        {
+          "step": 51,
+          "tensor": "layer1_1_bn2",
+          "identical_physical_tuple": true,
+          "new_full_ppa": 1
+        },
+        {
+          "step": 53,
+          "tensor": "layer1_0_bn2",
+          "identical_physical_tuple": true,
+          "new_full_ppa": 1
+        },
+        {
+          "step": 57,
+          "tensor": "layer2_0_downsample_1",
+          "identical_physical_tuple": true,
+          "new_full_ppa": 1
+        }
+      ]
+    },
+    {
+      "seed": 7,
+      "method": "sa",
+      "counts": {
+        "A8_selected": 12,
+        "active_weight": 6,
+        "active_tensor": 4,
+        "inactive_internal_tensor": 2,
+        "inactive_new_full_ppa": 2,
+        "inactive_with_identical_physical_tuple": 2
+      },
+      "inactive_evaluation_wall_s": 37.34168859990314,
+      "inactive_share_of_new_full_queries": 0.018691588785046728,
+      "examples": [
+        {
+          "step": 33,
+          "tensor": "layer3_1_bn2",
+          "identical_physical_tuple": true,
+          "new_full_ppa": 1
+        },
+        {
+          "step": 89,
+          "tensor": "layer2_0_bn2",
+          "identical_physical_tuple": true,
+          "new_full_ppa": 1
+        }
+      ]
+    },
+    {
+      "seed": 7,
+      "method": "random",
+      "counts": {
+        "A8_selected": 23,
+        "active_tensor": 9,
+        "inactive_internal_tensor": 12,
+        "inactive_new_full_ppa": 12,
+        "inactive_with_identical_physical_tuple": 12,
+        "active_weight": 2
+      },
+      "inactive_evaluation_wall_s": 82.52253260067664,
+      "inactive_share_of_new_full_queries": 0.06091370558375635,
+      "examples": [
+        {
+          "step": 37,
+          "tensor": "layer4_0_bn2",
+          "identical_physical_tuple": true,
+          "new_full_ppa": 1
+        },
+        {
+          "step": 43,
+          "tensor": "layer2_0_bn2",
+          "identical_physical_tuple": true,
+          "new_full_ppa": 1
+        },
+        {
+          "step": 54,
+          "tensor": "layer4_0_downsample_1",
+          "identical_physical_tuple": true,
+          "new_full_ppa": 1
+        },
+        {
+          "step": 81,
+          "tensor": "layer4_1_bn2",
+          "identical_physical_tuple": true,
+          "new_full_ppa": 1
+        }
+      ]
+    },
+    {
+      "seed": 17,
+      "method": "rl",
+      "counts": {
+        "A8_selected": 45,
+        "inactive_internal_tensor": 40,
+        "inactive_new_full_ppa": 40,
+        "inactive_with_identical_physical_tuple": 40,
+        "active_tensor": 5
+      },
+      "inactive_evaluation_wall_s": 359.4448002006393,
+      "inactive_share_of_new_full_queries": 0.19607843137254902,
+      "examples": [
+        {
+          "step": 26,
+          "tensor": "layer3_1_bn2",
+          "identical_physical_tuple": true,
+          "new_full_ppa": 1
+        },
+        {
+          "step": 34,
+          "tensor": "layer1_1_bn2",
+          "identical_physical_tuple": true,
+          "new_full_ppa": 1
+        },
+        {
+          "step": 56,
+          "tensor": "maxpool",
+          "identical_physical_tuple": true,
+          "new_full_ppa": 1
+        },
+        {
+          "step": 57,
+          "tensor": "layer2_0_bn2",
+          "identical_physical_tuple": true,
+          "new_full_ppa": 1
+        }
+      ]
+    },
+    {
+      "seed": 17,
+      "method": "sa",
+      "counts": {
+        "A8_selected": 9,
+        "inactive_internal_tensor": 7,
+        "inactive_new_full_ppa": 7,
+        "inactive_with_identical_physical_tuple": 7,
+        "active_weight": 2
+      },
+      "inactive_evaluation_wall_s": 75.69504889985546,
+      "inactive_share_of_new_full_queries": 0.05555555555555555,
+      "examples": [
+        {
+          "step": 16,
+          "tensor": "layer2_1_bn2",
+          "identical_physical_tuple": true,
+          "new_full_ppa": 1
+        },
+        {
+          "step": 38,
+          "tensor": "layer4_0_downsample_1",
+          "identical_physical_tuple": true,
+          "new_full_ppa": 1
+        },
+        {
+          "step": 56,
+          "tensor": "layer2_1_relu",
+          "identical_physical_tuple": true,
+          "new_full_ppa": 1
+        },
+        {
+          "step": 63,
+          "tensor": "layer4_0_downsample_1",
+          "identical_physical_tuple": true,
+          "new_full_ppa": 1
+        }
+      ]
+    },
+    {
+      "seed": 17,
+      "method": "random",
+      "counts": {
+        "A8_selected": 23,
+        "active_tensor": 9,
+        "inactive_internal_tensor": 10,
+        "inactive_new_full_ppa": 10,
+        "inactive_with_identical_physical_tuple": 10,
+        "active_weight": 4
+      },
+      "inactive_evaluation_wall_s": 71.3801527004689,
+      "inactive_share_of_new_full_queries": 0.049019607843137254,
+      "examples": [
+        {
+          "step": 28,
+          "tensor": "layer2_0_downsample_1",
+          "identical_physical_tuple": true,
+          "new_full_ppa": 1
+        },
+        {
+          "step": 37,
+          "tensor": "layer4_0_relu",
+          "identical_physical_tuple": true,
+          "new_full_ppa": 1
+        },
+        {
+          "step": 99,
+          "tensor": "layer4_1_relu",
+          "identical_physical_tuple": true,
+          "new_full_ppa": 1
+        },
+        {
+          "step": 117,
+          "tensor": "layer4_0_downsample_1",
+          "identical_physical_tuple": true,
+          "new_full_ppa": 1
+        }
+      ]
+    }
+  ],
+  "scope": "old source336 only; logical active-boundary classification plus observed equal full-PPA tuples; no new-controller benefit assumed"
+}

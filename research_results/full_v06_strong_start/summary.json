@@ -1,0 +1,3587 @@
+{
+  "source_stable": true,
+  "architectures": [
+    {
+      "architecture": "single_array_c2_2x1",
+      "new_full_ppa": 24,
+      "charged_full_ppa": 26,
+      "inherited_full_ppa": 2,
+      "generation_wall_s": 46.80124179995619,
+      "search_wall_s": 466.8082107005175,
+      "charged_wall_s": 587.7532474005129,
+      "best_cost": 0.23483868410738973,
+      "best": {
+        "state_hash": "e9e2e54edaf4b43de77a7d7b5f5c13f0aa0c33cb5817e60b1e0a9ec1779413d2",
+        "variant": "inner_direction_quota",
+        "screen": null,
+        "trial": {
+          "state": {
+            "architecture_candidate_id": "single_array_c2_2x1",
+            "mapping": {
+              "groups": [
+                {
+                  "id": "seed_conv1",
+                  "layer_ids": [
+                    "conv1"
+                  ],
+                  "mode": "temporal"
+                },
+                {
+                  "id": "seed_maxpool",
+                  "layer_ids": [
+                    "maxpool"
+                  ],
+                  "mode": "temporal"
+                },
+                {
+                  "id": "seed_layer1_0_conv1",
+                  "layer_ids": [
+                    "layer1_0_conv1"
+                  ],
+                  "mode": "temporal"
+                },
+                {
+                  "id": "seed_layer1_0_conv2",
+                  "layer_ids": [
+                    "layer1_0_conv2"
+                  ],
+                  "mode": "temporal"
+                },
+                {
+                  "id": "seed_add",
+                  "layer_ids": [
+                    "add"
+                  ],
+                  "mode": "temporal"
+                },
+                {
+                  "id": "seed_layer1_1_conv1",
+                  "layer_ids": [
+                    "layer1_1_conv1"
+                  ],
+                  "mode": "temporal"
+                },
+                {
+                  "id": "seed_layer1_1_conv2",
+                  "layer_ids": [
+                    "layer1_1_conv2"
+                  ],
+                  "mode": "temporal"
+                },
+                {
+                  "id": "seed_add_1_layer2_0_conv1",
+                  "layer_ids": [
+                    "add_1",
+                    "layer2_0_conv1"
+                  ],
+                  "mode": "temporal"
+                },
+                {
+                  "id": "seed_layer2_0_conv2_layer2_0_downsample_0_add_2",
+                  "layer_ids": [
+                    "layer2_0_conv2",
+                    "layer2_0_downsample_0",
+                    "add_2"
+                  ],
+                  "mode": "temporal"
+                },
+                {
+                  "id": "seed_layer2_1_conv1_layer2_1_conv2_add_3",
+                  "layer_ids": [
+                    "layer2_1_conv1",
+                    "layer2_1_conv2",
+                    "add_3"
+                  ],
+                  "mode": "temporal"
+                },
+                {
+                  "id": "seed_layer3_0_conv1_layer3_0_conv2_layer3_0_downsample_0_add_4_layer3_1_conv1_layer3_1_conv2_add_5",
+                  "layer_ids": [
+                    "layer3_0_conv1",
+                    "layer3_0_conv2",
+                    "layer3_0_downsample_0",
+                    "add_4",
+                    "layer3_1_conv1",
+                    "layer3_1_conv2",
+                    "add_5"
+                  ],
+                  "mode": "temporal"
+                },
+                {
+                  "id": "seed_layer4_0_conv1_layer4_0_conv2_layer4_0_downsample_0_add_6_layer4_1_conv1_layer4_1_conv2_add_7_avgpool_flatten",
+                  "layer_ids": [
+                    "layer4_0_conv1",
+                    "layer4_0_conv2",
+                    "layer4_0_downsample_0",
+                    "add_6",
+                    "layer4_1_conv1",
+                    "layer4_1_conv2",
+                    "add_7",
+                    "avgpool",
+                    "flatten"
+                  ],
+                  "mode": "temporal"
+                },
+                {
+                  "id": "seed_fc",
+                  "layer_ids": [
+                    "fc"
+                  ],
+                  "mode": "temporal"
+                }
+              ],
+              "layer_mappings": [
+                {
+                  "layer_id": "conv1",
+                  "chiplets": [
+                    "compute:0/pe:0",
+                    "compute:1/pe:0",
+                    "compute:0/pe:1",
+                    "compute:1/pe:1",
+                    "compute:0/pe:2",
+                    "compute:1/pe:2",
+                    "compute:0/pe:3",
+                    "compute:1/pe:3"
+                  ],
+                  "partition": {
+                    "b": 1,
+                    "k": 8,
+                    "h": 1,
+                    "w": 1
+                  },
+                  "input_dram": "interleave",
+                  "weight_dram": "interleave",
+                  "output_dram": "interleave",
+                  "tile_shape": [
+                    0,
+                    0,
+                    0,
+                    0
+                  ],
+                  "channel_tile": 128,
+                  "weight_policy": "persistent",
+                  "dataflow": "output_stationary",
+                  "microtile_shape": [
+                    0,
+                    0,
+                    0,
+                    0
+                  ]
+                },
+                {
+                  "layer_id": "maxpool",
+                  "chiplets": [
+                    "compute:0/pe:0",
+                    "compute:1/pe:0",
+                    "compute:0/pe:1",
+                    "compute:1/pe:1",
+                    "compute:0/pe:2",
+                    "compute:1/pe:2",
+                    "compute:0/pe:3",
+                    "compute:1/pe:3"
+                  ],
+                  "partition": {
+                    "b": 1,
+                    "k": 8,
+                    "h": 1,
+                    "w": 1
+                  },
+                  "input_dram": "interleave",
+                  "weight_dram": "interleave",
+                  "output_dram": "interleave",
+                  "tile_shape": [
+                    0,
+                    0,
+                    0,
+                    0
+                  ],
+                  "channel_tile": 128,
+                  "weight_policy": "cold",
+                  "dataflow": "output_stationary",
+                  "microtile_shape": [
+                    0,
+                    0,
+                    0,
+                    0
+                  ]
+                },
+                {
+                  "layer_id": "layer1_0_conv1",
+                  "chiplets": [
+                    "compute:0/pe:0",
+                    "compute:1/pe:0",
+                    "compute:0/pe:1",
+                    "compute:1/pe:1",
+                    "compute:0/pe:2",
+                    "compute:1/pe:2",
+                    "compute:0/pe:3",
+                    "compute:1/pe:3"
+                  ],
+                  "partition": {
+                    "b": 1,
+                    "k": 8,
+                    "h": 1,
+                    "w": 1
+                  },
+                  "input_dram": "interleave",
+                  "weight_dram": "interleave",
+                  "output_dram": "interleave",
+                  "tile_shape": [
+                    0,
+                    0,
+                    0,
+                    0
+                  ],
+                  "channel_tile": 128,
+                  "weight_policy": "persistent",
+                  "dataflow": "weight_reuse",
+                  "microtile_shape": [
+                    0,
+                    0,
+                    0,
+                    0
+                  ]
+                },
+                {
+                  "layer_id": "layer1_0_conv2",
+                  "chiplets": [
+                    "compute:0/pe:0",
+                    "compute:1/pe:0",
+                    "compute:0/pe:1",
+                    "compute:1/pe:1",
+                    "compute:0/pe:2",
+                    "compute:1/pe:2",
+                    "compute:0/pe:3",
+                    "compute:1/pe:3"
+                  ],
+                  "partition": {
+                    "b": 1,
+                    "k": 8,
+                    "h": 1,
+                    "w": 1
+                  },
+                  "input_dram": "interleave",
+                  "weight_dram": "interleave",
+                  "output_dram": "interleave",
+                  "tile_shape": [
+                    0,
+                    0,
+                    0,
+                    0
+                  ],
+                  "channel_tile": 128,
+                  "weight_policy": "persistent",
+                  "dataflow": "weight_reuse",
+                  "microtile_shape": [
+                    0,
+                    0,
+                    0,
+                    0
+                  ]
+                },
+                {
+                  "layer_id": "add",
+                  "chiplets": [
+                    "compute:0/pe:0",
+                    "compute:1/pe:0",
+                    "compute:0/pe:1",
+                    "compute:1/pe:1",
+                    "compute:0/pe:2",
+                    "compute:1/pe:2",
+                    "compute:0/pe:3",
+                    "compute:1/pe:3"
+                  ],
+                  "partition": {
+                    "b": 1,
+                    "k": 8,
+                    "h": 1,
+                    "w": 1
+                  },
+                  "input_dram": "interleave",
+                  "weight_dram": "interleave",
+                  "output_dram": "interleave",
+                  "tile_shape": [
+                    0,
+                    0,
+                    0,
+                    0
+                  ],
+                  "channel_tile": 128,
+                  "weight_policy": "cold",
+                  "dataflow": "output_stationary",
+                  "microtile_shape": [
+                    0,
+                    0,
+                    0,
+                    0
+                  ]
+                },
+                {
+                  "layer_id": "layer1_1_conv1",
+                  "chiplets": [
+                    "compute:0/pe:0",
+                    "compute:1/pe:0",
+                    "compute:0/pe:1",
+                    "compute:1/pe:1",
+                    "compute:0/pe:2",
+                    "compute:1/pe:2",
+                    "compute:0/pe:3",
+                    "compute:1/pe:3"
+                  ],
+                  "partition": {
+                    "b": 1,
+                    "k": 8,
+                    "h": 1,
+                    "w": 1
+                  },
+                  "input_dram": "interleave",
+                  "weight_dram": "interleave",
+                  "output_dram": "interleave",
+                  "tile_shape": [
+                    0,
+                    0,
+                    0,
+                    0
+                  ],
+                  "channel_tile": 128,
+                  "weight_policy": "persistent",
+                  "dataflow": "weight_reuse",
+                  "microtile_shape": [
+                    0,
+                    0,
+                    0,
+                    0
+                  ]
+                },
+                {
+                  "layer_id": "layer1_1_conv2",
+                  "chiplets": [
+                    "compute:0/pe:0",
+                    "compute:1/pe:0",
+                    "compute:0/pe:1",
+                    "compute:1/pe:1",
+                    "compute:0/pe:2",
+                    "compute:1/pe:2",
+                    "compute:0/pe:3",
+                    "compute:1/pe:3"
+                  ],
+                  "partition": {
+                    "b": 1,
+                    "k": 8,
+                    "h": 1,
+                    "w": 1
+                  },
+                  "input_dram": "interleave",
+                  "weight_dram": "interleave",
+                  "output_dram": "interleave",
+                  "tile_shape": [
+                    0,
+                    0,
+                    0,
+                    0
+                  ],
+                  "channel_tile": 128,
+                  "weight_policy": "persistent",
+                  "dataflow": "weight_reuse",
+                  "microtile_shape": [
+                    0,
+                    0,
+                    0,
+                    0
+                  ]
+                },
+                {
+                  "layer_id": "add_1",
+                  "chiplets": [
+                    "compute:0/pe:0",
+                    "compute:1/pe:0",
+                    "compute:0/pe:1",
+                    "compute:1/pe:1",
+                    "compute:0/pe:2",
+                    "compute:1/pe:2",
+                    "compute:0/pe:3",
+                    "compute:1/pe:3"
+                  ],
+                  "partition": {
+                    "b": 1,
+                    "k": 8,
+                    "h": 1,
+                    "w": 1
+                  },
+                  "input_dram": "interleave",
+                  "weight_dram": "interleave",
+                  "output_dram": "interleave",
+                  "tile_shape": [
+                    0,
+                    0,
+                    0,
+                    0
+                  ],
+                  "channel_tile": 128,
+                  "weight_policy": "cold",
+                  "dataflow": "output_stationary",
+                  "microtile_shape": [
+                    0,
+                    0,
+                    0,
+                    0
+                  ]
+                },
+                {
+                  "layer_id": "layer2_0_conv1",
+                  "chiplets": [
+                    "compute:0/pe:0",
+                    "compute:1/pe:0",
+                    "compute:0/pe:1",
+                    "compute:1/pe:1",
+                    "compute:0/pe:2",
+                    "compute:1/pe:2",
+                    "compute:0/pe:3",
+                    "compute:1/pe:3"
+                  ],
+                  "partition": {
+                    "b": 1,
+                    "k": 8,
+                    "h": 1,
+                    "w": 1
+                  },
+                  "input_dram": "interleave",
+                  "weight_dram": "interleave",
+                  "output_dram": "interleave",
+                  "tile_shape": [
+                    0,
+                    0,
+                    0,
+                    0
+                  ],
+                  "channel_tile": 128,
+                  "weight_policy": "persistent",
+                  "dataflow": "weight_reuse",
+                  "microtile_shape": [
+                    0,
+                    0,
+                    0,
+                    0
+                  ]
+                },
+                {
+                  "layer_id": "layer2_0_conv2",
+                  "chiplets": [
+                    "compute:0/pe:0",
+                    "compute:1/pe:0",
+                    "compute:0/pe:1",
+                    "compute:1/pe:1",
+                    "compute:0/pe:2",
+                    "compute:1/pe:2",
+                    "compute:0/pe:3",
+                    "compute:1/pe:3"
+                  ],
+                  "partition": {
+                    "b": 1,
+                    "k": 8,
+                    "h": 1,
+                    "w": 1
+                  },
+                  "input_dram": "interleave",
+                  "weight_dram": "interleave",
+                  "output_dram": "interleave",
+                  "tile_shape": [
+                    0,
+                    0,
+                    0,
+                    0
+                  ],
+                  "channel_tile": 128,
+                  "weight_policy": "persistent",
+                  "dataflow": "weight_reuse",
+                  "microtile_shape": [
+                    0,
+                    0,
+                    0,
+                    0
+                  ]
+                },
+                {
+                  "layer_id": "layer2_0_downsample_0",
+                  "chiplets": [
+                    "compute:0/pe:0",
+                    "compute:1/pe:0",
+                    "compute:0/pe:1",
+                    "compute:1/pe:1",
+                    "compute:0/pe:2",
+                    "compute:1/pe:2",
+                    "compute:0/pe:3",
+                    "compute:1/pe:3"
+                  ],
+                  "partition": {
+                    "b": 1,
+                    "k": 8,
+                    "h": 1,
+                    "w": 1
+                  },
+                  "input_dram": "interleave",
+                  "weight_dram": "interleave",
+                  "output_dram": "interleave",
+                  "tile_shape": [
+                    0,
+                    0,
+                    0,
+                    0
+                  ],
+                  "channel_tile": 128,
+                  "weight_policy": "persistent",
+                  "dataflow": "weight_reuse",
+                  "microtile_shape": [
+                    0,
+                    0,
+                    0,
+                    0
+                  ]
+                },
+                {
+                  "layer_id": "add_2",
+                  "chiplets": [
+                    "compute:0/pe:0",
+                    "compute:1/pe:0",
+                    "compute:0/pe:1",
+                    "compute:1/pe:1",
+                    "compute:0/pe:2",
+                    "compute:1/pe:2",
+                    "compute:0/pe:3",
+                    "compute:1/pe:3"
+                  ],
+                  "partition": {
+                    "b": 1,
+                    "k": 8,
+                    "h": 1,
+                    "w": 1
+                  },
+                  "input_dram": "interleave",
+                  "weight_dram": "interleave",
+                  "output_dram": "interleave",
+                  "tile_shape": [
+                    0,
+                    0,
+                    0,
+                    0
+                  ],
+                  "channel_tile": 128,
+                  "weight_policy": "cold",
+                  "dataflow": "output_stationary",
+                  "microtile_shape": [
+                    0,
+                    0,
+                    0,
+                    0
+                  ]
+                },
+                {
+                  "layer_id": "layer2_1_conv1",
+                  "chiplets": [
+                    "compute:0/pe:0",
+                    "compute:1/pe:0",
+                    "compute:0/pe:1",
+                    "compute:1/pe:1",
+                    "compute:0/pe:2",
+                    "compute:1/pe:2",
+                    "compute:0/pe:3",
+                    "compute:1/pe:3"
+                  ],
+                  "partition": {
+                    "b": 1,
+                    "k": 8,
+                    "h": 1,
+                    "w": 1
+                  },
+                  "input_dram": "interleave",
+                  "weight_dram": "interleave",
+                  "output_dram": "interleave",
+                  "tile_shape": [
+                    0,
+                    0,
+                    0,
+                    0
+                  ],
+                  "channel_tile": 128,
+                  "weight_policy": "persistent",
+                  "dataflow": "weight_reuse",
+                  "microtile_shape": [
+                    0,
+                    0,
+                    0,
+                    0
+                  ]
+                },
+                {
+                  "layer_id": "layer2_1_conv2",
+                  "chiplets": [
+                    "compute:0/pe:0",
+                    "compute:1/pe:0",
+                    "compute:0/pe:1",
+                    "compute:1/pe:1",
+                    "compute:0/pe:2",
+                    "compute:1/pe:2",
+                    "compute:0/pe:3",
+                    "compute:1/pe:3"
+                  ],
+                  "partition": {
+                    "b": 1,
+                    "k": 8,
+                    "h": 1,
+                    "w": 1
+                  },
+                  "input_dram": "interleave",
+                  "weight_dram": "interleave",
+                  "output_dram": "interleave",
+                  "tile_shape": [
+                    0,
+                    0,
+                    0,
+                    0
+                  ],
+                  "channel_tile": 128,
+                  "weight_policy": "persistent",
+                  "dataflow": "weight_reuse",
+                  "microtile_shape": [
+                    0,
+                    0,
+                    0,
+                    0
+                  ]
+                },
+                {
+                  "layer_id": "add_3",
+                  "chiplets": [
+                    "compute:0/pe:0",
+                    "compute:1/pe:0",
+                    "compute:0/pe:1",
+                    "compute:1/pe:1",
+                    "compute:0/pe:2",
+                    "compute:1/pe:2",
+                    "compute:0/pe:3",
+                    "compute:1/pe:3"
+                  ],
+                  "partition": {
+                    "b": 1,
+                    "k": 8,
+                    "h": 1,
+                    "w": 1
+                  },
+                  "input_dram": "interleave",
+                  "weight_dram": "interleave",
+                  "output_dram": "interleave",
+                  "tile_shape": [
+                    0,
+                    0,
+                    0,
+                    0
+                  ],
+                  "channel_tile": 128,
+                  "weight_policy": "cold",
+                  "dataflow": "output_stationary",
+                  "microtile_shape": [
+                    0,
+                    0,
+                    0,
+                    0
+                  ]
+                },
+                {
+                  "layer_id": "layer3_0_conv1",
+                  "chiplets": [
+                    "compute:0/pe:0",
+                    "compute:1/pe:0",
+                    "compute:0/pe:1",
+                    "compute:1/pe:1",
+                    "compute:0/pe:2",
+                    "compute:1/pe:2",
+                    "compute:0/pe:3",
+                    "compute:1/pe:3"
+                  ],
+                  "partition": {
+                    "b": 1,
+                    "k": 8,
+                    "h": 1,
+                    "w": 1
+                  },
+                  "input_dram": "interleave",
+                  "weight_dram": "interleave",
+                  "output_dram": "interleave",
+                  "tile_shape": [
+                    0,
+                    0,
+                    0,
+                    0
+                  ],
+                  "channel_tile": 128,
+                  "weight_policy": "persistent",
+                  "dataflow": "weight_reuse",
+                  "microtile_shape": [
+                    0,
+                    0,
+                    0,
+                    0
+                  ]
+                },
+                {
+                  "layer_id": "layer3_0_conv2",
+                  "chiplets": [
+                    "compute:0/pe:0",
+                    "compute:1/pe:0",
+                    "compute:0/pe:1",
+                    "compute:1/pe:1",
+                    "compute:0/pe:2",
+                    "compute:1/pe:2",
+                    "compute:0/pe:3",
+                    "compute:1/pe:3"
+                  ],
+                  "partition": {
+                    "b": 1,
+                    "k": 8,
+                    "h": 1,
+                    "w": 1
+                  },
+                  "input_dram": "interleave",
+                  "weight_dram": "interleave",
+                  "output_dram": "interleave",
+                  "tile_shape": [
+                    0,
+                    0,
+                    0,
+                    0
+                  ],
+                  "channel_tile": 128,
+                  "weight_policy": "persistent",
+                  "dataflow": "weight_reuse",
+                  "microtile_shape": [
+                    0,
+                    0,
+                    0,
+                    0
+                  ]
+                },
+                {
+                  "layer_id": "layer3_0_downsample_0",
+                  "chiplets": [
+                    "compute:0/pe:0",
+                    "compute:1/pe:0",
+                    "compute:0/pe:1",
+                    "compute:1/pe:1",
+                    "compute:0/pe:2",
+                    "compute:1/pe:2",
+                    "compute:0/pe:3",
+                    "compute:1/pe:3"
+                  ],
+                  "partition": {
+                    "b": 1,
+                    "k": 8,
+                    "h": 1,
+                    "w": 1
+                  },
+                  "input_dram": "interleave",
+                  "weight_dram": "interleave",
+                  "output_dram": "interleave",
+                  "tile_shape": [
+                    0,
+                    0,
+                    0,
+                    0
+                  ],
+                  "channel_tile": 128,
+                  "weight_policy": "persistent",
+                  "dataflow": "weight_reuse",
+                  "microtile_shape": [
+                    0,
+                    0,
+                    0,
+                    0
+                  ]
+                },
+                {
+                  "layer_id": "add_4",
+                  "chiplets": [
+                    "compute:0/pe:0",
+                    "compute:1/pe:0",
+                    "compute:0/pe:1",
+                    "compute:1/pe:1",
+                    "compute:0/pe:2",
+                    "compute:1/pe:2",
+                    "compute:0/pe:3",
+                    "compute:1/pe:3"
+                  ],
+                  "partition": {
+                    "b": 1,
+                    "k": 8,
+                    "h": 1,
+                    "w": 1
+                  },
+                  "input_dram": "interleave",
+                  "weight_dram": "interleave",
+                  "output_dram": "interleave",
+                  "tile_shape": [
+                    0,
+                    0,
+                    0,
+                    0
+                  ],
+                  "channel_tile": 128,
+                  "weight_policy": "cold",
+                  "dataflow": "output_stationary",
+                  "microtile_shape": [
+                    0,
+                    0,
+                    0,
+                    0
+                  ]
+                },
+                {
+                  "layer_id": "layer3_1_conv1",
+                  "chiplets": [
+                    "compute:0/pe:0",
+                    "compute:1/pe:0",
+                    "compute:0/pe:1",
+                    "compute:1/pe:1",
+                    "compute:0/pe:2",
+                    "compute:1/pe:2",
+                    "compute:0/pe:3",
+                    "compute:1/pe:3"
+                  ],
+                  "partition": {
+                    "b": 1,
+                    "k": 8,
+                    "h": 1,
+                    "w": 1
+                  },
+                  "input_dram": "interleave",
+                  "weight_dram": "interleave",
+                  "output_dram": "interleave",
+                  "tile_shape": [
+                    0,
+                    0,
+                    0,
+                    0
+                  ],
+                  "channel_tile": 128,
+                  "weight_policy": "persistent",
+                  "dataflow": "weight_reuse",
+                  "microtile_shape": [
+                    0,
+                    0,
+                    0,
+                    0
+                  ]
+                },
+                {
+                  "layer_id": "layer3_1_conv2",
+                  "chiplets": [
+                    "compute:0/pe:0",
+                    "compute:1/pe:0",
+                    "compute:0/pe:1",
+                    "compute:1/pe:1",
+                    "compute:0/pe:2",
+                    "compute:1/pe:2",
+                    "compute:0/pe:3",
+                    "compute:1/pe:3"
+                  ],
+                  "partition": {
+                    "b": 1,
+                    "k": 8,
+                    "h": 1,
+                    "w": 1
+                  },
+                  "input_dram": "interleave",
+                  "weight_dram": "interleave",
+                  "output_dram": "interleave",
+                  "tile_shape": [
+                    0,
+                    0,
+                    0,
+                    0
+                  ],
+                  "channel_tile": 128,
+                  "weight_policy": "persistent",
+                  "dataflow": "weight_reuse",
+                  "microtile_shape": [
+                    0,
+                    0,
+                    0,
+                    0
+                  ]
+                },
+                {
+                  "layer_id": "add_5",
+                  "chiplets": [
+                    "compute:0/pe:0",
+                    "compute:1/pe:0",
+                    "compute:0/pe:1",
+                    "compute:1/pe:1",
+                    "compute:0/pe:2",
+                    "compute:1/pe:2",
+                    "compute:0/pe:3",
+                    "compute:1/pe:3"
+                  ],
+                  "partition": {
+                    "b": 1,
+                    "k": 8,
+                    "h": 1,
+                    "w": 1
+                  },
+                  "input_dram": "interleave",
+                  "weight_dram": "interleave",
+                  "output_dram": "interleave",
+                  "tile_shape": [
+                    0,
+                    0,
+                    0,
+                    0
+                  ],
+                  "channel_tile": 128,
+                  "weight_policy": "cold",
+                  "dataflow": "output_stationary",
+                  "microtile_shape": [
+                    0,
+                    0,
+                    0,
+                    0
+                  ]
+                },
+                {
+                  "layer_id": "layer4_0_conv1",
+                  "chiplets": [
+                    "compute:0/pe:0",
+                    "compute:1/pe:0",
+                    "compute:0/pe:1",
+                    "compute:1/pe:1",
+                    "compute:0/pe:2",
+                    "compute:1/pe:2",
+                    "compute:0/pe:3",
+                    "compute:1/pe:3"
+                  ],
+                  "partition": {
+                    "b": 1,
+                    "k": 8,
+                    "h": 1,
+                    "w": 1
+                  },
+                  "input_dram": "interleave",
+                  "weight_dram": "interleave",
+                  "output_dram": "interleave",
+                  "tile_shape": [
+                    0,
+                    0,
+                    0,
+                    0
+                  ],
+                  "channel_tile": 128,
+                  "weight_policy": "cold",
+                  "dataflow": "weight_reuse",
+                  "microtile_shape": [
+                    0,
+                    0,
+                    0,
+                    0
+                  ]
+                },
+                {
+                  "layer_id": "layer4_0_conv2",
+                  "chiplets": [
+                    "compute:0/pe:0",
+                    "compute:1/pe:0",
+                    "compute:0/pe:1",
+                    "compute:1/pe:1",
+                    "compute:0/pe:2",
+                    "compute:1/pe:2",
+                    "compute:0/pe:3",
+                    "compute:1/pe:3"
+                  ],
+                  "partition": {
+                    "b": 1,
+                    "k": 8,
+                    "h": 1,
+                    "w": 1
+                  },
+                  "input_dram": "interleave",
+                  "weight_dram": "interleave",
+                  "output_dram": "interleave",
+                  "tile_shape": [
+                    0,
+                    0,
+                    0,
+                    0
+                  ],
+                  "channel_tile": 128,
+                  "weight_policy": "cold",
+                  "dataflow": "weight_reuse",
+                  "microtile_shape": [
+                    0,
+                    0,
+                    0,
+                    0
+                  ]
+                },
+                {
+                  "layer_id": "layer4_0_downsample_0",
+                  "chiplets": [
+                    "compute:0/pe:0",
+                    "compute:1/pe:0",
+                    "compute:0/pe:1",
+                    "compute:1/pe:1",
+                    "compute:0/pe:2",
+                    "compute:1/pe:2",
+                    "compute:0/pe:3",
+                    "compute:1/pe:3"
+                  ],
+                  "partition": {
+                    "b": 1,
+                    "k": 8,
+                    "h": 1,
+                    "w": 1
+                  },
+                  "input_dram": "interleave",
+                  "weight_dram": "interleave",
+                  "output_dram": "interleave",
+                  "tile_shape": [
+                    0,
+                    0,
+                    0,
+                    0
+                  ],
+                  "channel_tile": 128,
+                  "weight_policy": "persistent",
+                  "dataflow": "weight_reuse",
+                  "microtile_shape": [
+                    0,
+                    0,
+                    0,
+                    0
+                  ]
+                },
+                {
+                  "layer_id": "add_6",
+                  "chiplets": [
+                    "compute:0/pe:0",
+                    "compute:1/pe:0",
+                    "compute:0/pe:1",
+                    "compute:1/pe:1",
+                    "compute:0/pe:2",
+                    "compute:1/pe:2",
+                    "compute:0/pe:3",
+                    "compute:1/pe:3"
+                  ],
+                  "partition": {
+                    "b": 1,
+                    "k": 8,
+                    "h": 1,
+                    "w": 1
+                  },
+                  "input_dram": "interleave",
+                  "weight_dram": "interleave",
+                  "output_dram": "interleave",
+                  "tile_shape": [
+                    0,
+                    0,
+                    0,
+                    0
+                  ],
+                  "channel_tile": 128,
+                  "weight_policy": "cold",
+                  "dataflow": "output_stationary",
+                  "microtile_shape": [
+                    0,
+                    0,
+                    0,
+                    0
+                  ]
+                },
+                {
+                  "layer_id": "layer4_1_conv1",
+                  "chiplets": [
+                    "compute:0/pe:0",
+                    "compute:1/pe:0",
+                    "compute:0/pe:1",
+                    "compute:1/pe:1",
+                    "compute:0/pe:2",
+                    "compute:1/pe:2",
+                    "compute:0/pe:3",
+                    "compute:1/pe:3"
+                  ],
+                  "partition": {
+                    "b": 1,
+                    "k": 8,
+                    "h": 1,
+                    "w": 1
+                  },
+                  "input_dram": "interleave",
+                  "weight_dram": "interleave",
+                  "output_dram": "interleave",
+                  "tile_shape": [
+                    0,
+                    0,
+                    0,
+                    0
+                  ],
+                  "channel_tile": 128,
+                  "weight_policy": "cold",
+                  "dataflow": "weight_reuse",
+                  "microtile_shape": [
+                    0,
+                    0,
+                    0,
+                    0
+                  ]
+                },
+                {
+                  "layer_id": "layer4_1_conv2",
+                  "chiplets": [
+                    "compute:0/pe:0",
+                    "compute:1/pe:0",
+                    "compute:0/pe:1",
+                    "compute:1/pe:1",
+                    "compute:0/pe:2",
+                    "compute:1/pe:2",
+                    "compute:0/pe:3",
+                    "compute:1/pe:3"
+                  ],
+                  "partition": {
+                    "b": 1,
+                    "k": 8,
+                    "h": 1,
+                    "w": 1
+                  },
+                  "input_dram": "interleave",
+                  "weight_dram": "interleave",
+                  "output_dram": "interleave",
+                  "tile_shape": [
+                    0,
+                    0,
+                    0,
+                    0
+                  ],
+                  "channel_tile": 128,
+                  "weight_policy": "cold",
+                  "dataflow": "weight_reuse",
+                  "microtile_shape": [
+                    0,
+                    0,
+                    0,
+                    0
+                  ]
+                },
+                {
+                  "layer_id": "add_7",
+                  "chiplets": [
+                    "compute:0/pe:0",
+                    "compute:1/pe:0",
+                    "compute:0/pe:1",
+                    "compute:1/pe:1",
+                    "compute:0/pe:2",
+                    "compute:1/pe:2",
+                    "compute:0/pe:3",
+                    "compute:1/pe:3"
+                  ],
+                  "partition": {
+                    "b": 1,
+                    "k": 8,
+                    "h": 1,
+                    "w": 1
+                  },
+                  "input_dram": "interleave",
+                  "weight_dram": "interleave",
+                  "output_dram": "interleave",
+                  "tile_shape": [
+                    0,
+                    0,
+                    0,
+                    0
+                  ],
+                  "channel_tile": 128,
+                  "weight_policy": "cold",
+                  "dataflow": "output_stationary",
+                  "microtile_shape": [
+                    0,
+                    0,
+                    0,
+                    0
+                  ]
+                },
+                {
+                  "layer_id": "avgpool",
+                  "chiplets": [
+                    "compute:0/pe:0",
+                    "compute:1/pe:0",
+                    "compute:0/pe:1",
+                    "compute:1/pe:1",
+                    "compute:0/pe:2",
+                    "compute:1/pe:2",
+                    "compute:0/pe:3",
+                    "compute:1/pe:3"
+                  ],
+                  "partition": {
+                    "b": 1,
+                    "k": 8,
+                    "h": 1,
+                    "w": 1
+                  },
+                  "input_dram": "interleave",
+                  "weight_dram": "interleave",
+                  "output_dram": "interleave",
+                  "tile_shape": [
+                    0,
+                    0,
+                    0,
+                    0
+                  ],
+                  "channel_tile": 128,
+                  "weight_policy": "cold",
+                  "dataflow": "output_stationary",
+                  "microtile_shape": [
+                    0,
+                    0,
+                    0,
+                    0
+                  ]
+                },
+                {
+                  "layer_id": "flatten",
+                  "chiplets": [
+                    "compute:0/pe:0",
+                    "compute:1/pe:0",
+                    "compute:0/pe:1",
+                    "compute:1/pe:1",
+                    "compute:0/pe:2",
+                    "compute:1/pe:2",
+                    "compute:0/pe:3",
+                    "compute:1/pe:3"
+                  ],
+                  "partition": {
+                    "b": 1,
+                    "k": 8,
+                    "h": 1,
+                    "w": 1
+                  },
+                  "input_dram": "interleave",
+                  "weight_dram": "interleave",
+                  "output_dram": "interleave",
+                  "tile_shape": [
+                    0,
+                    0,
+                    0,
+                    0
+                  ],
+                  "channel_tile": 128,
+                  "weight_policy": "cold",
+                  "dataflow": "output_stationary",
+                  "microtile_shape": [
+                    0,
+                    0,
+                    0,
+                    0
+                  ]
+                },
+                {
+                  "layer_id": "fc",
+                  "chiplets": [
+                    "compute:0/pe:0",
+                    "compute:1/pe:0",
+                    "compute:0/pe:1",
+                    "compute:1/pe:1",
+                    "compute:0/pe:2",
+                    "compute:1/pe:2",
+                    "compute:0/pe:3",
+                    "compute:1/pe:3"
+                  ],
+                  "partition": {
+                    "b": 1,
+                    "k": 8,
+                    "h": 1,
+                    "w": 1
+                  },
+                  "input_dram": "interleave",
+                  "weight_dram": "interleave",
+                  "output_dram": "interleave",
+                  "tile_shape": [
+                    0,
+                    0,
+                    0,
+                    0
+                  ],
+                  "channel_tile": 128,
+                  "weight_policy": "persistent",
+                  "dataflow": "output_stationary",
+                  "microtile_shape": [
+                    0,
+                    0,
+                    0,
+                    0
+                  ]
+                }
+              ],
+              "microbatch_size": 1,
+              "collective": "multicast",
+              "memory_ids": [
+                "memory:0",
+                "memory:1",
+                "memory:2",
+                "memory:3"
+              ],
+              "fusion_stacks": []
+            },
+            "model_hash": "60dff119ed8dd6a0151582a8f8445efb4b711858c32cb6d4055b1e1c00f5467f",
+            "hardware_template_version": "chiplet_single_pe_array_v0_3",
+            "version": 3,
+            "precision_config": {
+              "activation_bits": 8,
+              "weight_bits": 8,
+              "psum_bits": 24
+            },
+            "routing_config": {
+              "algorithm": "template_deterministic"
+            },
+            "scheduler_config": {
+              "algorithm": "resource_calendar"
+            },
+            "preferences": {
+              "latency_weight": 0.3333333333333333,
+              "area_weight": 0.3333333333333333,
+              "power_weight": 0.3333333333333333,
+              "energy_weight": 0
+            },
+            "constraints": {
+              "max_area_mm2": null,
+              "max_power_w": null,
+              "max_latency_s": null,
+              "soft_area_mm2": null,
+              "soft_power_w": null,
+              "soft_latency_s": null
+            },
+            "workload_definition": {
+              "batch_size": 1,
+              "model": "resnet18",
+              "source": "torchvision 0.22.0+cpu FX/meta shapes; weights=None; INT8/INT24 assumption; input=224"
+            },
+            "evaluation_report": null,
+            "remaining_budget": null
+          },
+          "family": "tangram_wide_dp_inner",
+          "targets": [
+            "add",
+            "add_1",
+            "add_2",
+            "add_3",
+            "add_4",
+            "add_5",
+            "add_6",
+            "add_7",
+            "avgpool",
+            "conv1",
+            "fc",
+            "flatten",
+            "layer1_0_conv1",
+            "layer1_0_conv2",
+            "layer1_1_conv1",
+            "layer1_1_conv2",
+            "layer2_0_conv1",
+            "layer2_0_conv2",
+            "layer2_0_downsample_0",
+            "layer2_1_conv1",
+            "layer2_1_conv2",
+            "layer3_0_conv1",
+            "layer3_0_conv2",
+            "layer3_0_downsample_0",
+            "layer3_1_conv1",
+            "layer3_1_conv2",
+            "layer4_0_conv1",
+            "layer4_0_conv2",
+            "layer4_0_downsample_0",
+            "layer4_1_conv1",
+            "layer4_1_conv2",
+            "maxpool"
+          ],
+          "action": {
+            "declared_inner": [
+              8,
+              "K",
+              "spread",
+              "interleave",
+              "auto"
+            ],
+            "group_provenance": "widened DP; unchanged boundaries"
+          }
+        },
+        "status": "full_completed",
+        "cost": 0.23483868410738973,
+        "metrics": {
+          "feasible": true,
+          "latency_s": 0.010532026080077826,
+          "energy_j": 0.016048281821304286,
+          "power_w": 1.5237601672541337,
+          "area_mm2": 64.79423152941176,
+          "dram_read_bytes": 40544923,
+          "dram_write_bytes": 2560488,
+          "noc_hop_bytes": 148589760,
+          "nop_hop_bytes": 72457056,
+          "executed_macs": 1814073344,
+          "recompute_macs": 0,
+          "unit_count": 2928,
+          "calendar_backend": "native",
+          "oracle_phase_wall_s": {
+            "compile": 0.8279999999795109,
+            "communication_and_job_build": 6.625,
+            "schedule": 1.625,
+            "capacity_and_metrics": 1.0309999999590218,
+            "diagnostics": 0.5160000000614673
+          },
+          "oracle_process_cpu_s": 10.21875
+        },
+        "feasible": true,
+        "wall_s": 11.41837349999696
+      },
+      "source_identity": "5f2fdce00493d95868b4b0837c03c283d590a0c5a274a34de6a6bc3ec37766de",
+      "proposal_count": 37,
+      "complete_proposal_evaluation": false,
+      "comparison_scope": "widened INMIN Tangram-style adapter + explicit inner refinement; not original executable"
+    },
+    {
+      "architecture": "single_array_c8_2x4",
+      "new_full_ppa": 24,
+      "charged_full_ppa": 76,
+      "inherited_full_ppa": 52,
+      "generation_wall_s": 81.17039120011032,
+      "search_wall_s": 449.23344130045734,
+      "charged_wall_s": 1710.1511062004138,
+      "best_cost": 0.05149608430588703,
+      "best": {
+        "state_hash": "8c9eafe49a3b043d5c3b9a2fa0f364359ba489556c76a4ceed7e3d3ef349fc59",
+        "variant": "inner_direction_quota",
+        "screen": null,
+        "trial": {
+          "state": {
+            "architecture_candidate_id": "single_array_c8_2x4",
+            "mapping": {
+              "groups": [
+                {
+                  "id": "seed_conv1_maxpool",
+                  "layer_ids": [
+                    "conv1",
+                    "maxpool"
+                  ],
+                  "mode": "temporal"
+                },
+                {
+                  "id": "seed_layer1_0_conv1_layer1_0_conv2_add_layer1_1_conv1_layer1_1_conv2_add_1_layer2_0_conv1_layer2_0_conv2_layer2_0_downsample_0_add_2_layer2_1_conv1_layer2_1_conv2_add_3_layer3_0_conv1_layer3_0_conv2_layer3_0_downsample_0_add_4_layer3_1_conv1_layer3_1_conv2_add_5_layer4_0_conv1_layer4_0_conv2_layer4_0_downsample_0_add_6_layer4_1_conv1_layer4_1_conv2_add_7_avgpool_flatten_fc",
+                  "layer_ids": [
+                    "layer1_0_conv1",
+                    "layer1_0_conv2",
+                    "add",
+                    "layer1_1_conv1",
+                    "layer1_1_conv2",
+                    "add_1",
+                    "layer2_0_conv1",
+                    "layer2_0_conv2",
+                    "layer2_0_downsample_0",
+                    "add_2",
+                    "layer2_1_conv1",
+                    "layer2_1_conv2",
+                    "add_3",
+                    "layer3_0_conv1",
+                    "layer3_0_conv2",
+                    "layer3_0_downsample_0",
+                    "add_4",
+                    "layer3_1_conv1",
+                    "layer3_1_conv2",
+                    "add_5",
+                    "layer4_0_conv1",
+                    "layer4_0_conv2",
+                    "layer4_0_downsample_0",
+                    "add_6",
+                    "layer4_1_conv1",
+                    "layer4_1_conv2",
+                    "add_7",
+                    "avgpool",
+                    "flatten",
+                    "fc"
+                  ],
+                  "mode": "temporal"
+                }
+              ],
+              "layer_mappings": [
+                {
+                  "layer_id": "conv1",
+                  "chiplets": [
+                    "compute:0/pe:0",
+                    "compute:1/pe:0",
+                    "compute:2/pe:0",
+                    "compute:3/pe:0",
+                    "compute:4/pe:0",
+                    "compute:5/pe:0",
+                    "compute:6/pe:0",
+                    "compute:7/pe:0",
+                    "compute:0/pe:1",
+                    "compute:1/pe:1",
+                    "compute:2/pe:1",
+                    "compute:3/pe:1",
+                    "compute:4/pe:1",
+                    "compute:5/pe:1",
+                    "compute:6/pe:1",
+                    "compute:7/pe:1",
+                    "compute:0/pe:2",
+                    "compute:1/pe:2",
+                    "compute:2/pe:2",
+                    "compute:3/pe:2",
+                    "compute:4/pe:2",
+                    "compute:5/pe:2",
+                    "compute:6/pe:2",
+                    "compute:7/pe:2",
+                    "compute:0/pe:3",
+                    "compute:1/pe:3",
+                    "compute:2/pe:3",
+                    "compute:3/pe:3",
+                    "compute:4/pe:3",
+                    "compute:5/pe:3",
+                    "compute:6/pe:3",
+                    "compute:7/pe:3"
+                  ],
+                  "partition": {
+                    "b": 1,
+                    "k": 2,
+                    "h": 4,
+                    "w": 4
+                  },
+                  "input_dram": "interleave",
+                  "weight_dram": "interleave",
+                  "output_dram": "interleave",
+                  "tile_shape": [
+                    0,
+                    0,
+                    0,
+                    0
+                  ],
+                  "channel_tile": 128,
+                  "weight_policy": "persistent",
+                  "dataflow": "output_stationary",
+                  "microtile_shape": [
+                    0,
+                    0,
+                    0,
+                    0
+                  ]
+                },
+                {
+                  "layer_id": "maxpool",
+                  "chiplets": [
+                    "compute:0/pe:0",
+                    "compute:1/pe:0",
+                    "compute:2/pe:0",
+                    "compute:3/pe:0",
+                    "compute:4/pe:0",
+                    "compute:5/pe:0",
+                    "compute:6/pe:0",
+                    "compute:7/pe:0",
+                    "compute:0/pe:1",
+                    "compute:1/pe:1",
+                    "compute:2/pe:1",
+                    "compute:3/pe:1",
+                    "compute:4/pe:1",
+                    "compute:5/pe:1",
+                    "compute:6/pe:1",
+                    "compute:7/pe:1",
+                    "compute:0/pe:2",
+                    "compute:1/pe:2",
+                    "compute:2/pe:2",
+                    "compute:3/pe:2",
+                    "compute:4/pe:2",
+                    "compute:5/pe:2",
+                    "compute:6/pe:2",
+                    "compute:7/pe:2",
+                    "compute:0/pe:3",
+                    "compute:1/pe:3",
+                    "compute:2/pe:3",
+                    "compute:3/pe:3",
+                    "compute:4/pe:3",
+                    "compute:5/pe:3",
+                    "compute:6/pe:3",
+                    "compute:7/pe:3"
+                  ],
+                  "partition": {
+                    "b": 1,
+                    "k": 4,
+                    "h": 2,
+                    "w": 4
+                  },
+                  "input_dram": "interleave",
+                  "weight_dram": "interleave",
+                  "output_dram": "interleave",
+                  "tile_shape": [
+                    0,
+                    0,
+                    0,
+                    0
+                  ],
+                  "channel_tile": 128,
+                  "weight_policy": "cold",
+                  "dataflow": "output_stationary",
+                  "microtile_shape": [
+                    0,
+                    0,
+                    0,
+                    0
+                  ]
+                },
+                {
+                  "layer_id": "layer1_0_conv1",
+                  "chiplets": [
+                    "compute:0/pe:0",
+                    "compute:1/pe:0",
+                    "compute:2/pe:0",
+                    "compute:3/pe:0",
+                    "compute:4/pe:0",
+                    "compute:5/pe:0",
+                    "compute:6/pe:0",
+                    "compute:7/pe:0",
+                    "compute:0/pe:1",
+                    "compute:1/pe:1",
+                    "compute:2/pe:1",
+                    "compute:3/pe:1",
+                    "compute:4/pe:1",
+                    "compute:5/pe:1",
+                    "compute:6/pe:1",
+                    "compute:7/pe:1",
+                    "compute:0/pe:2",
+                    "compute:1/pe:2",
+                    "compute:2/pe:2",
+                    "compute:3/pe:2",
+                    "compute:4/pe:2",
+                    "compute:5/pe:2",
+                    "compute:6/pe:2",
+                    "compute:7/pe:2",
+                    "compute:0/pe:3",
+                    "compute:1/pe:3",
+                    "compute:2/pe:3",
+                    "compute:3/pe:3",
+                    "compute:4/pe:3",
+                    "compute:5/pe:3",
+                    "compute:6/pe:3",
+                    "compute:7/pe:3"
+                  ],
+                  "partition": {
+                    "b": 1,
+                    "k": 4,
+                    "h": 2,
+                    "w": 4
+                  },
+                  "input_dram": "interleave",
+                  "weight_dram": "interleave",
+                  "output_dram": "interleave",
+                  "tile_shape": [
+                    0,
+                    0,
+                    0,
+                    0
+                  ],
+                  "channel_tile": 128,
+                  "weight_policy": "persistent",
+                  "dataflow": "weight_reuse",
+                  "microtile_shape": [
+                    0,
+                    0,
+                    0,
+                    0
+                  ]
+                },
+                {
+                  "layer_id": "layer1_0_conv2",
+                  "chiplets": [
+                    "compute:0/pe:0",
+                    "compute:1/pe:0",
+                    "compute:2/pe:0",
+                    "compute:3/pe:0",
+                    "compute:4/pe:0",
+                    "compute:5/pe:0",
+                    "compute:6/pe:0",
+                    "compute:7/pe:0",
+                    "compute:0/pe:1",
+                    "compute:1/pe:1",
+                    "compute:2/pe:1",
+                    "compute:3/pe:1",
+                    "compute:4/pe:1",
+                    "compute:5/pe:1",
+                    "compute:6/pe:1",
+                    "compute:7/pe:1",
+                    "compute:0/pe:2",
+                    "compute:1/pe:2",
+                    "compute:2/pe:2",
+                    "compute:3/pe:2",
+                    "compute:4/pe:2",
+                    "compute:5/pe:2",
+                    "compute:6/pe:2",
+                    "compute:7/pe:2",
+                    "compute:0/pe:3",
+                    "compute:1/pe:3",
+                    "compute:2/pe:3",
+                    "compute:3/pe:3",
+                    "compute:4/pe:3",
+                    "compute:5/pe:3",
+                    "compute:6/pe:3",
+                    "compute:7/pe:3"
+                  ],
+                  "partition": {
+                    "b": 1,
+                    "k": 4,
+                    "h": 2,
+                    "w": 4
+                  },
+                  "input_dram": "interleave",
+                  "weight_dram": "interleave",
+                  "output_dram": "interleave",
+                  "tile_shape": [
+                    0,
+                    0,
+                    0,
+                    0
+                  ],
+                  "channel_tile": 128,
+                  "weight_policy": "persistent",
+                  "dataflow": "weight_reuse",
+                  "microtile_shape": [
+                    0,
+                    0,
+                    0,
+                    0
+                  ]
+                },
+                {
+                  "layer_id": "add",
+                  "chiplets": [
+                    "compute:0/pe:0",
+                    "compute:1/pe:0",
+                    "compute:2/pe:0",
+                    "compute:3/pe:0",
+                    "compute:4/pe:0",
+                    "compute:5/pe:0",
+                    "compute:6/pe:0",
+                    "compute:7/pe:0",
+                    "compute:0/pe:1",
+                    "compute:1/pe:1",
+                    "compute:2/pe:1",
+                    "compute:3/pe:1",
+                    "compute:4/pe:1",
+                    "compute:5/pe:1",
+                    "compute:6/pe:1",
+                    "compute:7/pe:1",
+                    "compute:0/pe:2",
+                    "compute:1/pe:2",
+                    "compute:2/pe:2",
+                    "compute:3/pe:2",
+                    "compute:4/pe:2",
+                    "compute:5/pe:2",
+                    "compute:6/pe:2",
+                    "compute:7/pe:2",
+                    "compute:0/pe:3",
+                    "compute:1/pe:3",
+                    "compute:2/pe:3",
+                    "compute:3/pe:3",
+                    "compute:4/pe:3",
+                    "compute:5/pe:3",
+                    "compute:6/pe:3",
+                    "compute:7/pe:3"
+                  ],
+                  "partition": {
+                    "b": 1,
+                    "k": 4,
+                    "h": 2,
+                    "w": 4
+                  },
+                  "input_dram": "interleave",
+                  "weight_dram": "interleave",
+                  "output_dram": "interleave",
+                  "tile_shape": [
+                    0,
+                    0,
+                    0,
+                    0
+                  ],
+                  "channel_tile": 128,
+                  "weight_policy": "cold",
+                  "dataflow": "output_stationary",
+                  "microtile_shape": [
+                    0,
+                    0,
+                    0,
+                    0
+                  ]
+                },
+                {
+                  "layer_id": "layer1_1_conv1",
+                  "chiplets": [
+                    "compute:0/pe:0",
+                    "compute:1/pe:0",
+                    "compute:2/pe:0",
+                    "compute:3/pe:0",
+                    "compute:4/pe:0",
+                    "compute:5/pe:0",
+                    "compute:6/pe:0",
+                    "compute:7/pe:0",
+                    "compute:0/pe:1",
+                    "compute:1/pe:1",
+                    "compute:2/pe:1",
+                    "compute:3/pe:1",
+                    "compute:4/pe:1",
+                    "compute:5/pe:1",
+                    "compute:6/pe:1",
+                    "compute:7/pe:1",
+                    "compute:0/pe:2",
+                    "compute:1/pe:2",
+                    "compute:2/pe:2",
+                    "compute:3/pe:2",
+                    "compute:4/pe:2",
+                    "compute:5/pe:2",
+                    "compute:6/pe:2",
+                    "compute:7/pe:2",
+                    "compute:0/pe:3",
+                    "compute:1/pe:3",
+                    "compute:2/pe:3",
+                    "compute:3/pe:3",
+                    "compute:4/pe:3",
+                    "compute:5/pe:3",
+                    "compute:6/pe:3",
+                    "compute:7/pe:3"
+                  ],
+                  "partition": {
+                    "b": 1,
+                    "k": 4,
+                    "h": 2,
+                    "w": 4
+                  },
+                  "input_dram": "interleave",
+                  "weight_dram": "interleave",
+                  "output_dram": "interleave",
+                  "tile_shape": [
+                    0,
+                    0,
+                    0,
+                    0
+                  ],
+                  "channel_tile": 128,
+                  "weight_policy": "persistent",
+                  "dataflow": "weight_reuse",
+                  "microtile_shape": [
+                    0,
+                    0,
+                    0,
+                    0
+                  ]
+                },
+                {
+                  "layer_id": "layer1_1_conv2",
+                  "chiplets": [
+                    "compute:0/pe:0",
+                    "compute:1/pe:0",
+                    "compute:2/pe:0",
+                    "compute:3/pe:0",
+                    "compute:4/pe:0",
+                    "compute:5/pe:0",
+                    "compute:6/pe:0",
+                    "compute:7/pe:0",
+                    "compute:0/pe:1",
+                    "compute:1/pe:1",
+                    "compute:2/pe:1",
+                    "compute:3/pe:1",
+                    "compute:4/pe:1",
+                    "compute:5/pe:1",
+                    "compute:6/pe:1",
+                    "compute:7/pe:1",
+                    "compute:0/pe:2",
+                    "compute:1/pe:2",
+                    "compute:2/pe:2",
+                    "compute:3/pe:2",
+                    "compute:4/pe:2",
+                    "compute:5/pe:2",
+                    "compute:6/pe:2",
+                    "compute:7/pe:2",
+                    "compute:0/pe:3",
+                    "compute:1/pe:3",
+                    "compute:2/pe:3",
+                    "compute:3/pe:3",
+                    "compute:4/pe:3",
+                    "compute:5/pe:3",
+                    "compute:6/pe:3",
+                    "compute:7/pe:3"
+                  ],
+                  "partition": {
+                    "b": 1,
+                    "k": 4,
+                    "h": 2,
+                    "w": 4
+                  },
+                  "input_dram": "interleave",
+                  "weight_dram": "interleave",
+                  "output_dram": "interleave",
+                  "tile_shape": [
+                    0,
+                    0,
+                    0,
+                    0
+                  ],
+                  "channel_tile": 128,
+                  "weight_policy": "persistent",
+                  "dataflow": "weight_reuse",
+                  "microtile_shape": [
+                    0,
+                    0,
+                    0,
+                    0
+                  ]
+                },
+                {
+                  "layer_id": "add_1",
+                  "chiplets": [
+                    "compute:0/pe:0",
+                    "compute:1/pe:0",
+                    "compute:2/pe:0",
+                    "compute:3/pe:0",
+                    "compute:4/pe:0",
+                    "compute:5/pe:0",
+                    "compute:6/pe:0",
+                    "compute:7/pe:0",
+                    "compute:0/pe:1",
+                    "compute:1/pe:1",
+                    "compute:2/pe:1",
+                    "compute:3/pe:1",
+                    "compute:4/pe:1",
+                    "compute:5/pe:1",
+                    "compute:6/pe:1",
+                    "compute:7/pe:1",
+                    "compute:0/pe:2",
+                    "compute:1/pe:2",
+                    "compute:2/pe:2",
+                    "compute:3/pe:2",
+                    "compute:4/pe:2",
+                    "compute:5/pe:2",
+                    "compute:6/pe:2",
+                    "compute:7/pe:2",
+                    "compute:0/pe:3",
+                    "compute:1/pe:3",
+                    "compute:2/pe:3",
+                    "compute:3/pe:3",
+                    "compute:4/pe:3",
+                    "compute:5/pe:3",
+                    "compute:6/pe:3",
+                    "compute:7/pe:3"
+                  ],
+                  "partition": {
+                    "b": 1,
+                    "k": 4,
+                    "h": 2,
+                    "w": 4
+                  },
+                  "input_dram": "interleave",
+                  "weight_dram": "interleave",
+                  "output_dram": "interleave",
+                  "tile_shape": [
+                    0,
+                    0,
+                    0,
+                    0
+                  ],
+                  "channel_tile": 128,
+                  "weight_policy": "cold",
+                  "dataflow": "output_stationary",
+                  "microtile_shape": [
+                    0,
+                    0,
+                    0,
+                    0
+                  ]
+                },
+                {
+                  "layer_id": "layer2_0_conv1",
+                  "chiplets": [
+                    "compute:0/pe:0",
+                    "compute:1/pe:0",
+                    "compute:2/pe:0",
+                    "compute:3/pe:0",
+                    "compute:4/pe:0",
+                    "compute:5/pe:0",
+                    "compute:6/pe:0",
+                    "compute:7/pe:0",
+                    "compute:0/pe:1",
+                    "compute:1/pe:1",
+                    "compute:2/pe:1",
+                    "compute:3/pe:1",
+                    "compute:4/pe:1",
+                    "compute:5/pe:1",
+                    "compute:6/pe:1",
+                    "compute:7/pe:1",
+                    "compute:0/pe:2",
+                    "compute:1/pe:2",
+                    "compute:2/pe:2",
+                    "compute:3/pe:2",
+                    "compute:4/pe:2",
+                    "compute:5/pe:2",
+                    "compute:6/pe:2",
+                    "compute:7/pe:2",
+                    "compute:0/pe:3",
+                    "compute:1/pe:3",
+                    "compute:2/pe:3",
+                    "compute:3/pe:3",
+                    "compute:4/pe:3",
+                    "compute:5/pe:3",
+                    "compute:6/pe:3",
+                    "compute:7/pe:3"
+                  ],
+                  "partition": {
+                    "b": 1,
+                    "k": 8,
+                    "h": 2,
+                    "w": 2
+                  },
+                  "input_dram": "interleave",
+                  "weight_dram": "interleave",
+                  "output_dram": "interleave",
+                  "tile_shape": [
+                    0,
+                    0,
+                    0,
+                    0
+                  ],
+                  "channel_tile": 128,
+                  "weight_policy": "persistent",
+                  "dataflow": "weight_reuse",
+                  "microtile_shape": [
+                    0,
+                    0,
+                    0,
+                    0
+                  ]
+                },
+                {
+                  "layer_id": "layer2_0_conv2",
+                  "chiplets": [
+                    "compute:0/pe:0",
+                    "compute:1/pe:0",
+                    "compute:2/pe:0",
+                    "compute:3/pe:0",
+                    "compute:4/pe:0",
+                    "compute:5/pe:0",
+                    "compute:6/pe:0",
+                    "compute:7/pe:0",
+                    "compute:0/pe:1",
+                    "compute:1/pe:1",
+                    "compute:2/pe:1",
+                    "compute:3/pe:1",
+                    "compute:4/pe:1",
+                    "compute:5/pe:1",
+                    "compute:6/pe:1",
+                    "compute:7/pe:1",
+                    "compute:0/pe:2",
+                    "compute:1/pe:2",
+                    "compute:2/pe:2",
+                    "compute:3/pe:2",
+                    "compute:4/pe:2",
+                    "compute:5/pe:2",
+                    "compute:6/pe:2",
+                    "compute:7/pe:2",
+                    "compute:0/pe:3",
+                    "compute:1/pe:3",
+                    "compute:2/pe:3",
+                    "compute:3/pe:3",
+                    "compute:4/pe:3",
+                    "compute:5/pe:3",
+                    "compute:6/pe:3",
+                    "compute:7/pe:3"
+                  ],
+                  "partition": {
+                    "b": 1,
+                    "k": 8,
+                    "h": 2,
+                    "w": 2
+                  },
+                  "input_dram": "interleave",
+                  "weight_dram": "interleave",
+                  "output_dram": "interleave",
+                  "tile_shape": [
+                    0,
+                    0,
+                    0,
+                    0
+                  ],
+                  "channel_tile": 128,
+                  "weight_policy": "persistent",
+                  "dataflow": "weight_reuse",
+                  "microtile_shape": [
+                    0,
+                    0,
+                    0,
+                    0
+                  ]
+                },
+                {
+                  "layer_id": "layer2_0_downsample_0",
+                  "chiplets": [
+                    "compute:0/pe:0",
+                    "compute:1/pe:0",
+                    "compute:2/pe:0",
+                    "compute:3/pe:0",
+                    "compute:4/pe:0",
+                    "compute:5/pe:0",
+                    "compute:6/pe:0",
+                    "compute:7/pe:0",
+                    "compute:0/pe:1",
+                    "compute:1/pe:1",
+                    "compute:2/pe:1",
+                    "compute:3/pe:1",
+                    "compute:4/pe:1",
+                    "compute:5/pe:1",
+                    "compute:6/pe:1",
+                    "compute:7/pe:1",
+                    "compute:0/pe:2",
+                    "compute:1/pe:2",
+                    "compute:2/pe:2",
+                    "compute:3/pe:2",
+                    "compute:4/pe:2",
+                    "compute:5/pe:2",
+                    "compute:6/pe:2",
+                    "compute:7/pe:2",
+                    "compute:0/pe:3",
+                    "compute:1/pe:3",
+                    "compute:2/pe:3",
+                    "compute:3/pe:3",
+                    "compute:4/pe:3",
+                    "compute:5/pe:3",
+                    "compute:6/pe:3",
+                    "compute:7/pe:3"
+                  ],
+                  "partition": {
+                    "b": 1,
+                    "k": 8,
+                    "h": 2,
+                    "w": 2
+                  },
+                  "input_dram": "interleave",
+                  "weight_dram": "interleave",
+                  "output_dram": "interleave",
+                  "tile_shape": [
+                    0,
+                    0,
+                    0,
+                    0
+                  ],
+                  "channel_tile": 128,
+                  "weight_policy": "persistent",
+                  "dataflow": "weight_reuse",
+                  "microtile_shape": [
+                    0,
+                    0,
+                    0,
+                    0
+                  ]
+                },
+                {
+                  "layer_id": "add_2",
+                  "chiplets": [
+                    "compute:0/pe:0",
+                    "compute:1/pe:0",
+                    "compute:2/pe:0",
+                    "compute:3/pe:0",
+                    "compute:4/pe:0",
+                    "compute:5/pe:0",
+                    "compute:6/pe:0",
+                    "compute:7/pe:0",
+                    "compute:0/pe:1",
+                    "compute:1/pe:1",
+                    "compute:2/pe:1",
+                    "compute:3/pe:1",
+                    "compute:4/pe:1",
+                    "compute:5/pe:1",
+                    "compute:6/pe:1",
+                    "compute:7/pe:1",
+                    "compute:0/pe:2",
+                    "compute:1/pe:2",
+                    "compute:2/pe:2",
+                    "compute:3/pe:2",
+                    "compute:4/pe:2",
+                    "compute:5/pe:2",
+                    "compute:6/pe:2",
+                    "compute:7/pe:2",
+                    "compute:0/pe:3",
+                    "compute:1/pe:3",
+                    "compute:2/pe:3",
+                    "compute:3/pe:3",
+                    "compute:4/pe:3",
+                    "compute:5/pe:3",
+                    "compute:6/pe:3",
+                    "compute:7/pe:3"
+                  ],
+                  "partition": {
+                    "b": 1,
+                    "k": 8,
+                    "h": 2,
+                    "w": 2
+                  },
+                  "input_dram": "interleave",
+                  "weight_dram": "interleave",
+                  "output_dram": "interleave",
+                  "tile_shape": [
+                    0,
+                    0,
+                    0,
+                    0
+                  ],
+                  "channel_tile": 128,
+                  "weight_policy": "cold",
+                  "dataflow": "output_stationary",
+                  "microtile_shape": [
+                    0,
+                    0,
+                    0,
+                    0
+                  ]
+                },
+                {
+                  "layer_id": "layer2_1_conv1",
+                  "chiplets": [
+                    "compute:0/pe:0",
+                    "compute:1/pe:0",
+                    "compute:2/pe:0",
+                    "compute:3/pe:0",
+                    "compute:4/pe:0",
+                    "compute:5/pe:0",
+                    "compute:6/pe:0",
+                    "compute:7/pe:0",
+                    "compute:0/pe:1",
+                    "compute:1/pe:1",
+                    "compute:2/pe:1",
+                    "compute:3/pe:1",
+                    "compute:4/pe:1",
+                    "compute:5/pe:1",
+                    "compute:6/pe:1",
+                    "compute:7/pe:1",
+                    "compute:0/pe:2",
+                    "compute:1/pe:2",
+                    "compute:2/pe:2",
+                    "compute:3/pe:2",
+                    "compute:4/pe:2",
+                    "compute:5/pe:2",
+                    "compute:6/pe:2",
+                    "compute:7/pe:2",
+                    "compute:0/pe:3",
+                    "compute:1/pe:3",
+                    "compute:2/pe:3",
+                    "compute:3/pe:3",
+                    "compute:4/pe:3",
+                    "compute:5/pe:3",
+                    "compute:6/pe:3",
+                    "compute:7/pe:3"
+                  ],
+                  "partition": {
+                    "b": 1,
+                    "k": 8,
+                    "h": 2,
+                    "w": 2
+                  },
+                  "input_dram": "interleave",
+                  "weight_dram": "interleave",
+                  "output_dram": "interleave",
+                  "tile_shape": [
+                    0,
+                    0,
+                    0,
+                    0
+                  ],
+                  "channel_tile": 128,
+                  "weight_policy": "persistent",
+                  "dataflow": "weight_reuse",
+                  "microtile_shape": [
+                    0,
+                    0,
+                    0,
+                    0
+                  ]
+                },
+                {
+                  "layer_id": "layer2_1_conv2",
+                  "chiplets": [
+                    "compute:0/pe:0",
+                    "compute:1/pe:0",
+                    "compute:2/pe:0",
+                    "compute:3/pe:0",
+                    "compute:4/pe:0",
+                    "compute:5/pe:0",
+                    "compute:6/pe:0",
+                    "compute:7/pe:0",
+                    "compute:0/pe:1",
+                    "compute:1/pe:1",
+                    "compute:2/pe:1",
+                    "compute:3/pe:1",
+                    "compute:4/pe:1",
+                    "compute:5/pe:1",
+                    "compute:6/pe:1",
+                    "compute:7/pe:1",
+                    "compute:0/pe:2",
+                    "compute:1/pe:2",
+                    "compute:2/pe:2",
+                    "compute:3/pe:2",
+                    "compute:4/pe:2",
+                    "compute:5/pe:2",
+                    "compute:6/pe:2",
+                    "compute:7/pe:2",
+                    "compute:0/pe:3",
+                    "compute:1/pe:3",
+                    "compute:2/pe:3",
+                    "compute:3/pe:3",
+                    "compute:4/pe:3",
+                    "compute:5/pe:3",
+                    "compute:6/pe:3",
+                    "compute:7/pe:3"
+                  ],
+                  "partition": {
+                    "b": 1,
+                    "k": 8,
+                    "h": 2,
+                    "w": 2
+                  },
+                  "input_dram": "interleave",
+                  "weight_dram": "interleave",
+                  "output_dram": "interleave",
+                  "tile_shape": [
+                    0,
+                    0,
+                    0,
+                    0
+                  ],
+                  "channel_tile": 128,
+                  "weight_policy": "persistent",
+                  "dataflow": "weight_reuse",
+                  "microtile_shape": [
+                    0,
+                    0,
+                    0,
+                    0
+                  ]
+                },
+                {
+                  "layer_id": "add_3",
+                  "chiplets": [
+                    "compute:0/pe:0",
+                    "compute:1/pe:0",
+                    "compute:2/pe:0",
+                    "compute:3/pe:0",
+                    "compute:4/pe:0",
+                    "compute:5/pe:0",
+                    "compute:6/pe:0",
+                    "compute:7/pe:0",
+                    "compute:0/pe:1",
+                    "compute:1/pe:1",
+                    "compute:2/pe:1",
+                    "compute:3/pe:1",
+                    "compute:4/pe:1",
+                    "compute:5/pe:1",
+                    "compute:6/pe:1",
+                    "compute:7/pe:1",
+                    "compute:0/pe:2",
+                    "compute:1/pe:2",
+                    "compute:2/pe:2",
+                    "compute:3/pe:2",
+                    "compute:4/pe:2",
+                    "compute:5/pe:2",
+                    "compute:6/pe:2",
+                    "compute:7/pe:2",
+                    "compute:0/pe:3",
+                    "compute:1/pe:3",
+                    "compute:2/pe:3",
+                    "compute:3/pe:3",
+                    "compute:4/pe:3",
+                    "compute:5/pe:3",
+                    "compute:6/pe:3",
+                    "compute:7/pe:3"
+                  ],
+                  "partition": {
+                    "b": 1,
+                    "k": 8,
+                    "h": 2,
+                    "w": 2
+                  },
+                  "input_dram": "interleave",
+                  "weight_dram": "interleave",
+                  "output_dram": "interleave",
+                  "tile_shape": [
+                    0,
+                    0,
+                    0,
+                    0
+                  ],
+                  "channel_tile": 128,
+                  "weight_policy": "cold",
+                  "dataflow": "output_stationary",
+                  "microtile_shape": [
+                    0,
+                    0,
+                    0,
+                    0
+                  ]
+                },
+                {
+                  "layer_id": "layer3_0_conv1",
+                  "chiplets": [
+                    "compute:0/pe:0",
+                    "compute:1/pe:0",
+                    "compute:2/pe:0",
+                    "compute:3/pe:0",
+                    "compute:4/pe:0",
+                    "compute:5/pe:0",
+                    "compute:6/pe:0",
+                    "compute:7/pe:0",
+                    "compute:0/pe:1",
+                    "compute:1/pe:1",
+                    "compute:2/pe:1",
+                    "compute:3/pe:1",
+                    "compute:4/pe:1",
+                    "compute:5/pe:1",
+                    "compute:6/pe:1",
+                    "compute:7/pe:1",
+                    "compute:0/pe:2",
+                    "compute:1/pe:2",
+                    "compute:2/pe:2",
+                    "compute:3/pe:2",
+                    "compute:4/pe:2",
+                    "compute:5/pe:2",
+                    "compute:6/pe:2",
+                    "compute:7/pe:2",
+                    "compute:0/pe:3",
+                    "compute:1/pe:3",
+                    "compute:2/pe:3",
+                    "compute:3/pe:3",
+                    "compute:4/pe:3",
+                    "compute:5/pe:3",
+                    "compute:6/pe:3",
+                    "compute:7/pe:3"
+                  ],
+                  "partition": {
+                    "b": 1,
+                    "k": 32,
+                    "h": 1,
+                    "w": 1
+                  },
+                  "input_dram": "interleave",
+                  "weight_dram": "interleave",
+                  "output_dram": "interleave",
+                  "tile_shape": [
+                    0,
+                    0,
+                    0,
+                    0
+                  ],
+                  "channel_tile": 128,
+                  "weight_policy": "persistent",
+                  "dataflow": "weight_reuse",
+                  "microtile_shape": [
+                    0,
+                    0,
+                    0,
+                    0
+                  ]
+                },
+                {
+                  "layer_id": "layer3_0_conv2",
+                  "chiplets": [
+                    "compute:0/pe:0",
+                    "compute:1/pe:0",
+                    "compute:2/pe:0",
+                    "compute:3/pe:0",
+                    "compute:4/pe:0",
+                    "compute:5/pe:0",
+                    "compute:6/pe:0",
+                    "compute:7/pe:0",
+                    "compute:0/pe:1",
+                    "compute:1/pe:1",
+                    "compute:2/pe:1",
+                    "compute:3/pe:1",
+                    "compute:4/pe:1",
+                    "compute:5/pe:1",
+                    "compute:6/pe:1",
+                    "compute:7/pe:1",
+                    "compute:0/pe:2",
+                    "compute:1/pe:2",
+                    "compute:2/pe:2",
+                    "compute:3/pe:2",
+                    "compute:4/pe:2",
+                    "compute:5/pe:2",
+                    "compute:6/pe:2",
+                    "compute:7/pe:2",
+                    "compute:0/pe:3",
+                    "compute:1/pe:3",
+                    "compute:2/pe:3",
+                    "compute:3/pe:3",
+                    "compute:4/pe:3",
+                    "compute:5/pe:3",
+                    "compute:6/pe:3",
+                    "compute:7/pe:3"
+                  ],
+                  "partition": {
+                    "b": 1,
+                    "k": 32,
+                    "h": 1,
+                    "w": 1
+                  },
+                  "input_dram": "interleave",
+                  "weight_dram": "interleave",
+                  "output_dram": "interleave",
+                  "tile_shape": [
+                    0,
+                    0,
+                    0,
+                    0
+                  ],
+                  "channel_tile": 128,
+                  "weight_policy": "persistent",
+                  "dataflow": "weight_reuse",
+                  "microtile_shape": [
+                    0,
+                    0,
+                    0,
+                    0
+                  ]
+                },
+                {
+                  "layer_id": "layer3_0_downsample_0",
+                  "chiplets": [
+                    "compute:0/pe:0",
+                    "compute:1/pe:0",
+                    "compute:2/pe:0",
+                    "compute:3/pe:0",
+                    "compute:4/pe:0",
+                    "compute:5/pe:0",
+                    "compute:6/pe:0",
+                    "compute:7/pe:0",
+                    "compute:0/pe:1",
+                    "compute:1/pe:1",
+                    "compute:2/pe:1",
+                    "compute:3/pe:1",
+                    "compute:4/pe:1",
+                    "compute:5/pe:1",
+                    "compute:6/pe:1",
+                    "compute:7/pe:1",
+                    "compute:0/pe:2",
+                    "compute:1/pe:2",
+                    "compute:2/pe:2",
+                    "compute:3/pe:2",
+                    "compute:4/pe:2",
+                    "compute:5/pe:2",
+                    "compute:6/pe:2",
+                    "compute:7/pe:2",
+                    "compute:0/pe:3",
+                    "compute:1/pe:3",
+                    "compute:2/pe:3",
+                    "compute:3/pe:3",
+                    "compute:4/pe:3",
+                    "compute:5/pe:3",
+                    "compute:6/pe:3",
+                    "compute:7/pe:3"
+                  ],
+                  "partition": {
+                    "b": 1,
+                    "k": 32,
+                    "h": 1,
+                    "w": 1
+                  },
+                  "input_dram": "interleave",
+                  "weight_dram": "interleave",
+                  "output_dram": "interleave",
+                  "tile_shape": [
+                    0,
+                    0,
+                    0,
+                    0
+                  ],
+                  "channel_tile": 128,
+                  "weight_policy": "persistent",
+                  "dataflow": "weight_reuse",
+                  "microtile_shape": [
+                    0,
+                    0,
+                    0,
+                    0
+                  ]
+                },
+                {
+                  "layer_id": "add_4",
+                  "chiplets": [
+                    "compute:0/pe:0",
+                    "compute:1/pe:0",
+                    "compute:2/pe:0",
+                    "compute:3/pe:0",
+                    "compute:4/pe:0",
+                    "compute:5/pe:0",
+                    "compute:6/pe:0",
+                    "compute:7/pe:0",
+                    "compute:0/pe:1",
+                    "compute:1/pe:1",
+                    "compute:2/pe:1",
+                    "compute:3/pe:1",
+                    "compute:4/pe:1",
+                    "compute:5/pe:1",
+                    "compute:6/pe:1",
+                    "compute:7/pe:1",
+                    "compute:0/pe:2",
+                    "compute:1/pe:2",
+                    "compute:2/pe:2",
+                    "compute:3/pe:2",
+                    "compute:4/pe:2",
+                    "compute:5/pe:2",
+                    "compute:6/pe:2",
+                    "compute:7/pe:2",
+                    "compute:0/pe:3",
+                    "compute:1/pe:3",
+                    "compute:2/pe:3",
+                    "compute:3/pe:3",
+                    "compute:4/pe:3",
+                    "compute:5/pe:3",
+                    "compute:6/pe:3",
+                    "compute:7/pe:3"
+                  ],
+                  "partition": {
+                    "b": 1,
+                    "k": 32,
+                    "h": 1,
+                    "w": 1
+                  },
+                  "input_dram": "interleave",
+                  "weight_dram": "interleave",
+                  "output_dram": "interleave",
+                  "tile_shape": [
+                    0,
+                    0,
+                    0,
+                    0
+                  ],
+                  "channel_tile": 128,
+                  "weight_policy": "cold",
+                  "dataflow": "output_stationary",
+                  "microtile_shape": [
+                    0,
+                    0,
+                    0,
+                    0
+                  ]
+                },
+                {
+                  "layer_id": "layer3_1_conv1",
+                  "chiplets": [
+                    "compute:0/pe:0",
+                    "compute:1/pe:0",
+                    "compute:2/pe:0",
+                    "compute:3/pe:0",
+                    "compute:4/pe:0",
+                    "compute:5/pe:0",
+                    "compute:6/pe:0",
+                    "compute:7/pe:0",
+                    "compute:0/pe:1",
+                    "compute:1/pe:1",
+                    "compute:2/pe:1",
+                    "compute:3/pe:1",
+                    "compute:4/pe:1",
+                    "compute:5/pe:1",
+                    "compute:6/pe:1",
+                    "compute:7/pe:1",
+                    "compute:0/pe:2",
+                    "compute:1/pe:2",
+                    "compute:2/pe:2",
+                    "compute:3/pe:2",
+                    "compute:4/pe:2",
+                    "compute:5/pe:2",
+                    "compute:6/pe:2",
+                    "compute:7/pe:2",
+                    "compute:0/pe:3",
+                    "compute:1/pe:3",
+                    "compute:2/pe:3",
+                    "compute:3/pe:3",
+                    "compute:4/pe:3",
+                    "compute:5/pe:3",
+                    "compute:6/pe:3",
+                    "compute:7/pe:3"
+                  ],
+                  "partition": {
+                    "b": 1,
+                    "k": 32,
+                    "h": 1,
+                    "w": 1
+                  },
+                  "input_dram": "interleave",
+                  "weight_dram": "interleave",
+                  "output_dram": "interleave",
+                  "tile_shape": [
+                    0,
+                    0,
+                    0,
+                    0
+                  ],
+                  "channel_tile": 128,
+                  "weight_policy": "persistent",
+                  "dataflow": "weight_reuse",
+                  "microtile_shape": [
+                    0,
+                    0,
+                    0,
+                    0
+                  ]
+                },
+                {
+                  "layer_id": "layer3_1_conv2",
+                  "chiplets": [
+                    "compute:0/pe:0",
+                    "compute:1/pe:0",
+                    "compute:2/pe:0",
+                    "compute:3/pe:0",
+                    "compute:4/pe:0",
+                    "compute:5/pe:0",
+                    "compute:6/pe:0",
+                    "compute:7/pe:0",
+                    "compute:0/pe:1",
+                    "compute:1/pe:1",
+                    "compute:2/pe:1",
+                    "compute:3/pe:1",
+                    "compute:4/pe:1",
+                    "compute:5/pe:1",
+                    "compute:6/pe:1",
+                    "compute:7/pe:1",
+                    "compute:0/pe:2",
+                    "compute:1/pe:2",
+                    "compute:2/pe:2",
+                    "compute:3/pe:2",
+                    "compute:4/pe:2",
+                    "compute:5/pe:2",
+                    "compute:6/pe:2",
+                    "compute:7/pe:2",
+                    "compute:0/pe:3",
+                    "compute:1/pe:3",
+                    "compute:2/pe:3",
+                    "compute:3/pe:3",
+                    "compute:4/pe:3",
+                    "compute:5/pe:3",
+                    "compute:6/pe:3",
+                    "compute:7/pe:3"
+                  ],
+                  "partition": {
+                    "b": 1,
+                    "k": 32,
+                    "h": 1,
+                    "w": 1
+                  },
+                  "input_dram": "interleave",
+                  "weight_dram": "interleave",
+                  "output_dram": "interleave",
+                  "tile_shape": [
+                    0,
+                    0,
+                    0,
+                    0
+                  ],
+                  "channel_tile": 128,
+                  "weight_policy": "persistent",
+                  "dataflow": "weight_reuse",
+                  "microtile_shape": [
+                    0,
+                    0,
+                    0,
+                    0
+                  ]
+                },
+                {
+                  "layer_id": "add_5",
+                  "chiplets": [
+                    "compute:0/pe:0",
+                    "compute:1/pe:0",
+                    "compute:2/pe:0",
+                    "compute:3/pe:0",
+                    "compute:4/pe:0",
+                    "compute:5/pe:0",
+                    "compute:6/pe:0",
+                    "compute:7/pe:0",
+                    "compute:0/pe:1",
+                    "compute:1/pe:1",
+                    "compute:2/pe:1",
+                    "compute:3/pe:1",
+                    "compute:4/pe:1",
+                    "compute:5/pe:1",
+                    "compute:6/pe:1",
+                    "compute:7/pe:1",
+                    "compute:0/pe:2",
+                    "compute:1/pe:2",
+                    "compute:2/pe:2",
+                    "compute:3/pe:2",
+                    "compute:4/pe:2",
+                    "compute:5/pe:2",
+                    "compute:6/pe:2",
+                    "compute:7/pe:2",
+                    "compute:0/pe:3",
+                    "compute:1/pe:3",
+                    "compute:2/pe:3",
+                    "compute:3/pe:3",
+                    "compute:4/pe:3",
+                    "compute:5/pe:3",
+                    "compute:6/pe:3",
+                    "compute:7/pe:3"
+                  ],
+                  "partition": {
+                    "b": 1,
+                    "k": 32,
+                    "h": 1,
+                    "w": 1
+                  },
+                  "input_dram": "interleave",
+                  "weight_dram": "interleave",
+                  "output_dram": "interleave",
+                  "tile_shape": [
+                    0,
+                    0,
+                    0,
+                    0
+                  ],
+                  "channel_tile": 128,
+                  "weight_policy": "cold",
+                  "dataflow": "output_stationary",
+                  "microtile_shape": [
+                    0,
+                    0,
+                    0,
+                    0
+                  ]
+                },
+                {
+                  "layer_id": "layer4_0_conv1",
+                  "chiplets": [
+                    "compute:0/pe:0",
+                    "compute:1/pe:0",
+                    "compute:2/pe:0",
+                    "compute:3/pe:0",
+                    "compute:4/pe:0",
+                    "compute:5/pe:0",
+                    "compute:6/pe:0",
+                    "compute:7/pe:0",
+                    "compute:0/pe:1",
+                    "compute:1/pe:1",
+                    "compute:2/pe:1",
+                    "compute:3/pe:1",
+                    "compute:4/pe:1",
+                    "compute:5/pe:1",
+                    "compute:6/pe:1",
+                    "compute:7/pe:1",
+                    "compute:0/pe:2",
+                    "compute:1/pe:2",
+                    "compute:2/pe:2",
+                    "compute:3/pe:2",
+                    "compute:4/pe:2",
+                    "compute:5/pe:2",
+                    "compute:6/pe:2",
+                    "compute:7/pe:2",
+                    "compute:0/pe:3",
+                    "compute:1/pe:3",
+                    "compute:2/pe:3",
+                    "compute:3/pe:3",
+                    "compute:4/pe:3",
+                    "compute:5/pe:3",
+                    "compute:6/pe:3",
+                    "compute:7/pe:3"
+                  ],
+                  "partition": {
+                    "b": 1,
+                    "k": 32,
+                    "h": 1,
+                    "w": 1
+                  },
+                  "input_dram": "interleave",
+                  "weight_dram": "interleave",
+                  "output_dram": "interleave",
+                  "tile_shape": [
+                    0,
+                    0,
+                    0,
+                    0
+                  ],
+                  "channel_tile": 128,
+                  "weight_policy": "persistent",
+                  "dataflow": "weight_reuse",
+                  "microtile_shape": [
+                    0,
+                    0,
+                    0,
+                    0
+                  ]
+                },
+                {
+                  "layer_id": "layer4_0_conv2",
+                  "chiplets": [
+                    "compute:0/pe:0",
+                    "compute:1/pe:0",
+                    "compute:2/pe:0",
+                    "compute:3/pe:0",
+                    "compute:4/pe:0",
+                    "compute:5/pe:0",
+                    "compute:6/pe:0",
+                    "compute:7/pe:0",
+                    "compute:0/pe:1",
+                    "compute:1/pe:1",
+                    "compute:2/pe:1",
+                    "compute:3/pe:1",
+                    "compute:4/pe:1",
+                    "compute:5/pe:1",
+                    "compute:6/pe:1",
+                    "compute:7/pe:1",
+                    "compute:0/pe:2",
+                    "compute:1/pe:2",
+                    "compute:2/pe:2",
+                    "compute:3/pe:2",
+                    "compute:4/pe:2",
+                    "compute:5/pe:2",
+                    "compute:6/pe:2",
+                    "compute:7/pe:2",
+                    "compute:0/pe:3",
+                    "compute:1/pe:3",
+                    "compute:2/pe:3",
+                    "compute:3/pe:3",
+                    "compute:4/pe:3",
+                    "compute:5/pe:3",
+                    "compute:6/pe:3",
+                    "compute:7/pe:3"
+                  ],
+                  "partition": {
+                    "b": 1,
+                    "k": 32,
+                    "h": 1,
+                    "w": 1
+                  },
+                  "input_dram": "interleave",
+                  "weight_dram": "interleave",
+                  "output_dram": "interleave",
+                  "tile_shape": [
+                    0,
+                    0,
+                    0,
+                    0
+                  ],
+                  "channel_tile": 128,
+                  "weight_policy": "persistent",
+                  "dataflow": "weight_reuse",
+                  "microtile_shape": [
+                    0,
+                    0,
+                    0,
+                    0
+                  ]
+                },
+                {
+                  "layer_id": "layer4_0_downsample_0",
+                  "chiplets": [
+                    "compute:0/pe:0",
+                    "compute:1/pe:0",
+                    "compute:2/pe:0",
+                    "compute:3/pe:0",
+                    "compute:4/pe:0",
+                    "compute:5/pe:0",
+                    "compute:6/pe:0",
+                    "compute:7/pe:0",
+                    "compute:0/pe:1",
+                    "compute:1/pe:1",
+                    "compute:2/pe:1",
+                    "compute:3/pe:1",
+                    "compute:4/pe:1",
+                    "compute:5/pe:1",
+                    "compute:6/pe:1",
+                    "compute:7/pe:1",
+                    "compute:0/pe:2",
+                    "compute:1/pe:2",
+                    "compute:2/pe:2",
+                    "compute:3/pe:2",
+                    "compute:4/pe:2",
+                    "compute:5/pe:2",
+                    "compute:6/pe:2",
+                    "compute:7/pe:2",
+                    "compute:0/pe:3",
+                    "compute:1/pe:3",
+                    "compute:2/pe:3",
+                    "compute:3/pe:3",
+                    "compute:4/pe:3",
+                    "compute:5/pe:3",
+                    "compute:6/pe:3",
+                    "compute:7/pe:3"
+                  ],
+                  "partition": {
+                    "b": 1,
+                    "k": 32,
+                    "h": 1,
+                    "w": 1
+                  },
+                  "input_dram": "interleave",
+                  "weight_dram": "interleave",
+                  "output_dram": "interleave",
+                  "tile_shape": [
+                    0,
+                    0,
+                    0,
+                    0
+                  ],
+                  "channel_tile": 128,
+                  "weight_policy": "persistent",
+                  "dataflow": "weight_reuse",
+                  "microtile_shape": [
+                    0,
+                    0,
+                    0,
+                    0
+                  ]
+                },
+                {
+                  "layer_id": "add_6",
+                  "chiplets": [
+                    "compute:0/pe:0",
+                    "compute:1/pe:0",
+                    "compute:2/pe:0",
+                    "compute:3/pe:0",
+                    "compute:4/pe:0",
+                    "compute:5/pe:0",
+                    "compute:6/pe:0",
+                    "compute:7/pe:0",
+                    "compute:0/pe:1",
+                    "compute:1/pe:1",
+                    "compute:2/pe:1",
+                    "compute:3/pe:1",
+                    "compute:4/pe:1",
+                    "compute:5/pe:1",
+                    "compute:6/pe:1",
+                    "compute:7/pe:1",
+                    "compute:0/pe:2",
+                    "compute:1/pe:2",
+                    "compute:2/pe:2",
+                    "compute:3/pe:2",
+                    "compute:4/pe:2",
+                    "compute:5/pe:2",
+                    "compute:6/pe:2",
+                    "compute:7/pe:2",
+                    "compute:0/pe:3",
+                    "compute:1/pe:3",
+                    "compute:2/pe:3",
+                    "compute:3/pe:3",
+                    "compute:4/pe:3",
+                    "compute:5/pe:3",
+                    "compute:6/pe:3",
+                    "compute:7/pe:3"
+                  ],
+                  "partition": {
+                    "b": 1,
+                    "k": 32,
+                    "h": 1,
+                    "w": 1
+                  },
+                  "input_dram": "interleave",
+                  "weight_dram": "interleave",
+                  "output_dram": "interleave",
+                  "tile_shape": [
+                    0,
+                    0,
+                    0,
+                    0
+                  ],
+                  "channel_tile": 128,
+                  "weight_policy": "cold",
+                  "dataflow": "output_stationary",
+                  "microtile_shape": [
+                    0,
+                    0,
+                    0,
+                    0
+                  ]
+                },
+                {
+                  "layer_id": "layer4_1_conv1",
+                  "chiplets": [
+                    "compute:0/pe:0",
+                    "compute:1/pe:0",
+                    "compute:2/pe:0",
+                    "compute:3/pe:0",
+                    "compute:4/pe:0",
+                    "compute:5/pe:0",
+                    "compute:6/pe:0",
+                    "compute:7/pe:0",
+                    "compute:0/pe:1",
+                    "compute:1/pe:1",
+                    "compute:2/pe:1",
+                    "compute:3/pe:1",
+                    "compute:4/pe:1",
+                    "compute:5/pe:1",
+                    "compute:6/pe:1",
+                    "compute:7/pe:1",
+                    "compute:0/pe:2",
+                    "compute:1/pe:2",
+                    "compute:2/pe:2",
+                    "compute:3/pe:2",
+                    "compute:4/pe:2",
+                    "compute:5/pe:2",
+                    "compute:6/pe:2",
+                    "compute:7/pe:2",
+                    "compute:0/pe:3",
+                    "compute:1/pe:3",
+                    "compute:2/pe:3",
+                    "compute:3/pe:3",
+                    "compute:4/pe:3",
+                    "compute:5/pe:3",
+                    "compute:6/pe:3",
+                    "compute:7/pe:3"
+                  ],
+                  "partition": {
+                    "b": 1,
+                    "k": 32,
+                    "h": 1,
+                    "w": 1
+                  },
+                  "input_dram": "interleave",
+                  "weight_dram": "interleave",
+                  "output_dram": "interleave",
+                  "tile_shape": [
+                    0,
+                    0,
+                    0,
+                    0
+                  ],
+                  "channel_tile": 128,
+                  "weight_policy": "persistent",
+                  "dataflow": "weight_reuse",
+                  "microtile_shape": [
+                    0,
+                    0,
+                    0,
+                    0
+                  ]
+                },
+                {
+                  "layer_id": "layer4_1_conv2",
+                  "chiplets": [
+                    "compute:0/pe:0",
+                    "compute:1/pe:0",
+                    "compute:2/pe:0",
+                    "compute:3/pe:0",
+                    "compute:4/pe:0",
+                    "compute:5/pe:0",
+                    "compute:6/pe:0",
+                    "compute:7/pe:0",
+                    "compute:0/pe:1",
+                    "compute:1/pe:1",
+                    "compute:2/pe:1",
+                    "compute:3/pe:1",
+                    "compute:4/pe:1",
+                    "compute:5/pe:1",
+                    "compute:6/pe:1",
+                    "compute:7/pe:1",
+                    "compute:0/pe:2",
+                    "compute:1/pe:2",
+                    "compute:2/pe:2",
+                    "compute:3/pe:2",
+                    "compute:4/pe:2",
+                    "compute:5/pe:2",
+                    "compute:6/pe:2",
+                    "compute:7/pe:2",
+                    "compute:0/pe:3",
+                    "compute:1/pe:3",
+                    "compute:2/pe:3",
+                    "compute:3/pe:3",
+                    "compute:4/pe:3",
+                    "compute:5/pe:3",
+                    "compute:6/pe:3",
+                    "compute:7/pe:3"
+                  ],
+                  "partition": {
+                    "b": 1,
+                    "k": 32,
+                    "h": 1,
+                    "w": 1
+                  },
+                  "input_dram": "interleave",
+                  "weight_dram": "interleave",
+                  "output_dram": "interleave",
+                  "tile_shape": [
+                    0,
+                    0,
+                    0,
+                    0
+                  ],
+                  "channel_tile": 128,
+                  "weight_policy": "persistent",
+                  "dataflow": "weight_reuse",
+                  "microtile_shape": [
+                    0,
+                    0,
+                    0,
+                    0
+                  ]
+                },
+                {
+                  "layer_id": "add_7",
+                  "chiplets": [
+                    "compute:0/pe:0",
+                    "compute:1/pe:0",
+                    "compute:2/pe:0",
+                    "compute:3/pe:0",
+                    "compute:4/pe:0",
+                    "compute:5/pe:0",
+                    "compute:6/pe:0",
+                    "compute:7/pe:0",
+                    "compute:0/pe:1",
+                    "compute:1/pe:1",
+                    "compute:2/pe:1",
+                    "compute:3/pe:1",
+                    "compute:4/pe:1",
+                    "compute:5/pe:1",
+                    "compute:6/pe:1",
+                    "compute:7/pe:1",
+                    "compute:0/pe:2",
+                    "compute:1/pe:2",
+                    "compute:2/pe:2",
+                    "compute:3/pe:2",
+                    "compute:4/pe:2",
+                    "compute:5/pe:2",
+                    "compute:6/pe:2",
+                    "compute:7/pe:2",
+                    "compute:0/pe:3",
+                    "compute:1/pe:3",
+                    "compute:2/pe:3",
+                    "compute:3/pe:3",
+                    "compute:4/pe:3",
+                    "compute:5/pe:3",
+                    "compute:6/pe:3",
+                    "compute:7/pe:3"
+                  ],
+                  "partition": {
+                    "b": 1,
+                    "k": 32,
+                    "h": 1,
+                    "w": 1
+                  },
+                  "input_dram": "interleave",
+                  "weight_dram": "interleave",
+                  "output_dram": "interleave",
+                  "tile_shape": [
+                    0,
+                    0,
+                    0,
+                    0
+                  ],
+                  "channel_tile": 128,
+                  "weight_policy": "cold",
+                  "dataflow": "output_stationary",
+                  "microtile_shape": [
+                    0,
+                    0,
+                    0,
+                    0
+                  ]
+                },
+                {
+                  "layer_id": "avgpool",
+                  "chiplets": [
+                    "compute:0/pe:0",
+                    "compute:1/pe:0",
+                    "compute:2/pe:0",
+                    "compute:3/pe:0",
+                    "compute:4/pe:0",
+                    "compute:5/pe:0",
+                    "compute:6/pe:0",
+                    "compute:7/pe:0",
+                    "compute:0/pe:1",
+                    "compute:1/pe:1",
+                    "compute:2/pe:1",
+                    "compute:3/pe:1",
+                    "compute:4/pe:1",
+                    "compute:5/pe:1",
+                    "compute:6/pe:1",
+                    "compute:7/pe:1",
+                    "compute:0/pe:2",
+                    "compute:1/pe:2",
+                    "compute:2/pe:2",
+                    "compute:3/pe:2",
+                    "compute:4/pe:2",
+                    "compute:5/pe:2",
+                    "compute:6/pe:2",
+                    "compute:7/pe:2",
+                    "compute:0/pe:3",
+                    "compute:1/pe:3",
+                    "compute:2/pe:3",
+                    "compute:3/pe:3",
+                    "compute:4/pe:3",
+                    "compute:5/pe:3",
+                    "compute:6/pe:3",
+                    "compute:7/pe:3"
+                  ],
+                  "partition": {
+                    "b": 1,
+                    "k": 32,
+                    "h": 1,
+                    "w": 1
+                  },
+                  "input_dram": "interleave",
+                  "weight_dram": "interleave",
+                  "output_dram": "interleave",
+                  "tile_shape": [
+                    0,
+                    0,
+                    0,
+                    0
+                  ],
+                  "channel_tile": 128,
+                  "weight_policy": "cold",
+                  "dataflow": "output_stationary",
+                  "microtile_shape": [
+                    0,
+                    0,
+                    0,
+                    0
+                  ]
+                },
+                {
+                  "layer_id": "flatten",
+                  "chiplets": [
+                    "compute:0/pe:0",
+                    "compute:1/pe:0",
+                    "compute:2/pe:0",
+                    "compute:3/pe:0",
+                    "compute:4/pe:0",
+                    "compute:5/pe:0",
+                    "compute:6/pe:0",
+                    "compute:7/pe:0",
+                    "compute:0/pe:1",
+                    "compute:1/pe:1",
+                    "compute:2/pe:1",
+                    "compute:3/pe:1",
+                    "compute:4/pe:1",
+                    "compute:5/pe:1",
+                    "compute:6/pe:1",
+                    "compute:7/pe:1",
+                    "compute:0/pe:2",
+                    "compute:1/pe:2",
+                    "compute:2/pe:2",
+                    "compute:3/pe:2",
+                    "compute:4/pe:2",
+                    "compute:5/pe:2",
+                    "compute:6/pe:2",
+                    "compute:7/pe:2",
+                    "compute:0/pe:3",
+                    "compute:1/pe:3",
+                    "compute:2/pe:3",
+                    "compute:3/pe:3",
+                    "compute:4/pe:3",
+                    "compute:5/pe:3",
+                    "compute:6/pe:3",
+                    "compute:7/pe:3"
+                  ],
+                  "partition": {
+                    "b": 1,
+                    "k": 32,
+                    "h": 1,
+                    "w": 1
+                  },
+                  "input_dram": "interleave",
+                  "weight_dram": "interleave",
+                  "output_dram": "interleave",
+                  "tile_shape": [
+                    0,
+                    0,
+                    0,
+                    0
+                  ],
+                  "channel_tile": 128,
+                  "weight_policy": "cold",
+                  "dataflow": "output_stationary",
+                  "microtile_shape": [
+                    0,
+                    0,
+                    0,
+                    0
+                  ]
+                },
+                {
+                  "layer_id": "fc",
+                  "chiplets": [
+                    "compute:0/pe:0",
+                    "compute:1/pe:0",
+                    "compute:2/pe:0",
+                    "compute:3/pe:0",
+                    "compute:4/pe:0",
+                    "compute:5/pe:0",
+                    "compute:6/pe:0",
+                    "compute:7/pe:0",
+                    "compute:0/pe:1",
+                    "compute:1/pe:1",
+                    "compute:2/pe:1",
+                    "compute:3/pe:1",
+                    "compute:4/pe:1",
+                    "compute:5/pe:1",
+                    "compute:6/pe:1",
+                    "compute:7/pe:1",
+                    "compute:0/pe:2",
+                    "compute:1/pe:2",
+                    "compute:2/pe:2",
+                    "compute:3/pe:2",
+                    "compute:4/pe:2",
+                    "compute:5/pe:2",
+                    "compute:6/pe:2",
+                    "compute:7/pe:2",
+                    "compute:0/pe:3",
+                    "compute:1/pe:3",
+                    "compute:2/pe:3",
+                    "compute:3/pe:3",
+                    "compute:4/pe:3",
+                    "compute:5/pe:3",
+                    "compute:6/pe:3",
+                    "compute:7/pe:3"
+                  ],
+                  "partition": {
+                    "b": 1,
+                    "k": 32,
+                    "h": 1,
+                    "w": 1
+                  },
+                  "input_dram": "interleave",
+                  "weight_dram": "interleave",
+                  "output_dram": "interleave",
+                  "tile_shape": [
+                    0,
+                    0,
+                    0,
+                    0
+                  ],
+                  "channel_tile": 128,
+                  "weight_policy": "persistent",
+                  "dataflow": "output_stationary",
+                  "microtile_shape": [
+                    0,
+                    0,
+                    0,
+                    0
+                  ]
+                }
+              ],
+              "microbatch_size": 1,
+              "collective": "multicast",
+              "memory_ids": [
+                "memory:0",
+                "memory:1",
+                "memory:2",
+                "memory:3"
+              ],
+              "fusion_stacks": []
+            },
+            "model_hash": "60dff119ed8dd6a0151582a8f8445efb4b711858c32cb6d4055b1e1c00f5467f",
+            "hardware_template_version": "chiplet_single_pe_array_v0_3",
+            "version": 3,
+            "precision_config": {
+              "activation_bits": 8,
+              "weight_bits": 8,
+              "psum_bits": 24
+            },
+            "routing_config": {
+              "algorithm": "template_deterministic"
+            },
+            "scheduler_config": {
+              "algorithm": "resource_calendar"
+            },
+            "preferences": {
+              "latency_weight": 0.3333333333333333,
+              "area_weight": 0.3333333333333333,
+              "power_weight": 0.3333333333333333,
+              "energy_weight": 0
+            },
+            "constraints": {
+              "max_area_mm2": null,
+              "max_power_w": null,
+              "max_latency_s": null,
+              "soft_area_mm2": null,
+              "soft_power_w": null,
+              "soft_latency_s": null
+            },
+            "workload_definition": {
+              "batch_size": 1,
+              "model": "resnet18",
+              "source": "torchvision 0.22.0+cpu FX/meta shapes; weights=None; INT8/INT24 assumption; input=224"
+            },
+            "evaluation_report": null,
+            "remaining_budget": null
+          },
+          "family": "tangram_wide_dp_inner",
+          "targets": [
+            "add",
+            "add_1",
+            "add_2",
+            "add_3",
+            "add_4",
+            "add_5",
+            "add_6",
+            "add_7",
+            "avgpool",
+            "conv1",
+            "fc",
+            "flatten",
+            "layer1_0_conv1",
+            "layer1_0_conv2",
+            "layer1_1_conv1",
+            "layer1_1_conv2",
+            "layer2_0_conv1",
+            "layer2_0_conv2",
+            "layer2_0_downsample_0",
+            "layer2_1_conv1",
+            "layer2_1_conv2",
+            "layer3_0_conv1",
+            "layer3_0_conv2",
+            "layer3_0_downsample_0",
+            "layer3_1_conv1",
+            "layer3_1_conv2",
+            "layer4_0_conv1",
+            "layer4_0_conv2",
+            "layer4_0_downsample_0",
+            "layer4_1_conv1",
+            "layer4_1_conv2",
+            "maxpool"
+          ],
+          "action": {
+            "declared_inner": [
+              32,
+              "balanced",
+              "spread",
+              "interleave",
+              "auto"
+            ],
+            "group_provenance": "widened DP; unchanged boundaries"
+          }
+        },
+        "status": "full_completed",
+        "cost": 0.05149608430588703,
+        "metrics": {
+          "feasible": true,
+          "latency_s": 0.0031112512264062754,
+          "energy_j": 0.011912693178380276,
+          "power_w": 3.8289075074597285,
+          "area_mm2": 106.22171971764706,
+          "dram_read_bytes": 13708396,
+          "dram_write_bytes": 201704,
+          "noc_hop_bytes": 165409664,
+          "nop_hop_bytes": 61793504,
+          "executed_macs": 1814073344,
+          "recompute_macs": 0,
+          "unit_count": 4024,
+          "calendar_backend": "native",
+          "oracle_phase_wall_s": {
+            "compile": 1.375,
+            "communication_and_job_build": 9.608999999938533,
+            "schedule": 3.5630000000819564,
+            "capacity_and_metrics": 2.593000000109896,
+            "diagnostics": 0.6719999997876585
+          },
+          "oracle_process_cpu_s": 17.078125
+        },
+        "feasible": true,
+        "wall_s": 18.027769200038165
+      },
+      "source_identity": "5f2fdce00493d95868b4b0837c03c283d590a0c5a274a34de6a6bc3ec37766de",
+      "proposal_count": 42,
+      "complete_proposal_evaluation": false,
+      "comparison_scope": "widened INMIN Tangram-style adapter + explicit inner refinement; not original executable"
+    }
+  ]
+}

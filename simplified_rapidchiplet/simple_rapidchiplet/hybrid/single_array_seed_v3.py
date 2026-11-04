@@ -22,7 +22,8 @@ VERSION = 'capacity_screened_segment_beam_v3'
 
 
 def generate_seeds_v3(workload, hardware, *, max_candidates=4, beam_width=8,
-                      max_group_layers=4, timeout_s=120., update=lambda **_: None, checkpoint=None):
+                      max_group_layers=4, timeout_s=120., update=lambda **_: None, checkpoint=None,
+                      capacity_screen=True):
     started = time.monotonic()
     memories = tuple(f'memory:{i}' for i in range(hardware.io_count))
     baseline = initial_mapping(workload, hardware.compute_slots, memories, max_group_layers=1)
@@ -30,7 +31,8 @@ def generate_seeds_v3(workload, hardware, *, max_candidates=4, beam_width=8,
         '8fae65512bb780894d8cba5a0f9c6c66f40a9845178e468d435738bde028a57b',
         'upstream_original_engine_executed': False, 'global_optimum': False,
         'physical_validity': 'requires full INMIN oracle', 'beam_width': beam_width,
-        'max_group_layers': max_group_layers, 'timeout_s': timeout_s}
+        'max_group_layers': max_group_layers, 'timeout_s': timeout_s,
+        'whole_output_capacity_screen': capacity_screen}
     output = [SingleArraySeedProposal(baseline, {**common, 'source': 'preserved_original_integer_stripes'},
                                      {'formal_PPA': False})]
     # Cache an actual fitting PE fragment for each local layer/partition choice.
@@ -39,7 +41,8 @@ def generate_seeds_v3(workload, hardware, *, max_candidates=4, beam_width=8,
                 'prefix_transitions': 0, 'timed_out': False}
     beams = {0: [(0., (), ())]}
     identity = stable_hash({'workload': workload.fingerprint, 'hardware': hardware.fingerprint,
-        'algorithm': VERSION, 'beam_width': beam_width, 'max_group_layers': max_group_layers, 'max_candidates': max_candidates})
+        'algorithm': VERSION, 'beam_width': beam_width, 'max_group_layers': max_group_layers, 'max_candidates': max_candidates,
+        'whole_output_capacity_screen': capacity_screen})
     prefix = 0
     checkpoint = Path(checkpoint) if checkpoint else None
     if checkpoint and checkpoint.exists():
@@ -83,7 +86,7 @@ def generate_seeds_v3(workload, hardware, *, max_candidates=4, beam_width=8,
                             for die in dies:
                                 share = sum(slot.startswith(die + '/') for slot in item.chiplets) / len(item.chiplets)
                                 outputs[die] = outputs.get(die, 0) + math.ceil(tensor.bytes * share)
-                        if depth > 1 and max(outputs.values(), default=0) > .75 * hardware.l2_output_bytes:
+                        if capacity_screen and depth > 1 and max(outputs.values(), default=0) > .75 * hardware.l2_output_bytes:
                             counters['capacity_pruned_segments'] += 1
                             segment_cache[key] = None
                             continue
@@ -158,7 +161,9 @@ def generate_seeds_v3(workload, hardware, *, max_candidates=4, beam_width=8,
             continue
         output.append(SingleArraySeedProposal(plan, {**common, **counters, 'source': 'capacity_screened_segment_beam',
             'elapsed_s': time.monotonic() - started}, {'rank_cost_s': value, 'formal_PPA': False,
-            'capacity_screen': 'conservative whole-output bound for multi-layer groups + fitting physical PE fragment; final lifetime oracle still required'}))
+            'capacity_screen': ('conservative whole-output bound for multi-layer groups + fitting physical PE fragment'
+                                if capacity_screen else 'only fitting physical PE fragment; whole-output pruning disabled'),
+            'global_validity': 'final physical lifetime oracle still required'}))
         if len(output) >= max_candidates:
             break
     output[0] = SingleArraySeedProposal(baseline, {**common, **counters,

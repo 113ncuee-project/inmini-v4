@@ -1,0 +1,62 @@
+{
+  "passed": true,
+  "new_full_ppa": 1,
+  "policy_updates": 0,
+  "physical_files_verified": 78,
+  "elapsed_s": 6.030999999959022,
+  "seed": 17,
+  "method": "rl",
+  "analytical_ppa": true,
+  "compared": {
+    "latency_s": {
+      "expected": 0.0036030773846097946,
+      "actual": 0.0036030773846097946,
+      "equal": true
+    },
+    "energy_j": {
+      "expected": 0.01201040993306269,
+      "actual": 0.01201040993306269,
+      "equal": true
+    },
+    "area_mm2": {
+      "expected": 106.22171971764706,
+      "actual": 106.22171971764706,
+      "equal": true
+    },
+    "power_w": {
+      "expected": 3.3333755151538025,
+      "actual": 3.3333755151538025,
+      "equal": true
+    },
+    "executed_macs": {
+      "expected": 1814073344,
+      "actual": 1814073344,
+      "equal": true
+    },
+    "recompute_macs": {
+      "expected": 0,
+      "actual": 0,
+      "equal": true
+    },
+    "dram_read_bytes": {
+      "expected": 12801132,
+      "actual": 12801132,
+      "equal": true
+    },
+    "dram_write_bytes": {
+      "expected": 1000,
+      "actual": 1000,
+      "equal": true
+    },
+    "noc_hop_bytes": {
+      "expected": 96779776,
+      "actual": 96779776,
+      "equal": true
+    },
+    "nop_hop_bytes": {
+      "expected": 49995968,
+      "actual": 49995968,
+      "equal": true
+    }
+  }
+}

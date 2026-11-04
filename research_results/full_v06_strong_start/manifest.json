@@ -1,0 +1,26 @@
+{
+  "files": {
+    "charged_shared_summary.json": "83aace291a8347ed9a7dcb0a6832445f077ce697fb3f0d785b89a6f1e97bfd65",
+    "controller_study_protocol.json": "e6bba54e6eabb17800bfeedc2f0cbcf720c9903c0768c9f688ce8d18a0ae5e6d",
+    "protocol.json": "0c414966a556ecc340dd1dcac83fe7aad029056fdbcca924ba4c3074d18a79c4",
+    "README.md": "90b68e694a6891956ba506e1d0ad066bda65960813dde65a21a023588b7adc0c",
+    "REPORT.md": "1faaa0c1a10279581f60aef1ab271619ca40fc51785e83157b75edf27e1d0910",
+    "single_array_c2_2x1/events.jsonl": "69a8160b4ecdc1c13026c1285184d61e9048bd22b91207c04510c5e1d339405f",
+    "single_array_c2_2x1/no_whole_output_prune_dp_checkpoint.json": "bc5cd3f59e6585a7bdc6552e4ce86314e8e522221264709d8e53c5ba2c7f6e99",
+    "single_array_c2_2x1/proposals.json": "18520ad1aec7515376bfdca17fa8c1dd8b4d6c5f953f664c9d70347df5a98823",
+    "single_array_c2_2x1/status.json": "0b6844ebe7a258f845fc452ba4f58326c9714b17e491ce23fa8c29e782b621f4",
+    "single_array_c2_2x1/summary.json": "840bd0e13d935c6af3ddc0fef53a1450e644ce87c47ad88103fe6bbfcd24b0eb",
+    "single_array_c2_2x1/whole_output_screen_dp_checkpoint.json": "707d7aee4eb61aa7ceef3809c206047d0fd40097e46fed626a3a633a044a4aad",
+    "single_array_c2_2x1/worker/accounting.json": "07f239d7c242c26379ee163cee4133e5ba00e1147fe4a7c7846298bb4dd3b773",
+    "single_array_c8_2x4/events.jsonl": "915c3343681b395d2644aea8989d33433af9754cfd38841c725a8dc4a2e14186",
+    "single_array_c8_2x4/no_whole_output_prune_dp_checkpoint.json": "0cc4826f45f83f35349173f049fc1b5815ac5c13e4fc3b8f862f6e623f350e8e",
+    "single_array_c8_2x4/proposals.json": "7e52716a7b853d8c5aa8d9acb7addd0643486809e0d49dd837eba377c0fc135d",
+    "single_array_c8_2x4/status.json": "0b6844ebe7a258f845fc452ba4f58326c9714b17e491ce23fa8c29e782b621f4",
+    "single_array_c8_2x4/summary.json": "ddd4b7c767d6e97c3c3dca13897bd98255e73ab3c77791e6d190536630963daf",
+    "single_array_c8_2x4/whole_output_screen_dp_checkpoint.json": "1856727cceb2efb287c9ceb92c84b0cea9296e790d1800f5548989f7fd0ec565",
+    "single_array_c8_2x4/worker/accounting.json": "bf1c7eb3c473bd7040993cd87d258bfff28936a42aeb6343200d512a6399e04f",
+    "summary.json": "1e60507be8e537a59cd5c8982c460d69a6ee4399780cd45ceaad565e28c38e5e"
+  },
+  "new_ppa_by_export": 0,
+  "images": 0
+}

@@ -1,0 +1,7 @@
+{
+  "status": "seed_generation",
+  "variant": "no_whole_output_prune",
+  "extension": 0,
+  "seed_prefix_completed": 32,
+  "seed_layer_count": 32
+}

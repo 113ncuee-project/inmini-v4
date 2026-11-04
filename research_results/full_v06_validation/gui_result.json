@@ -1,0 +1,10 @@
+{
+  "passed": true,
+  "fields": 11,
+  "status_api": true,
+  "strict_recommendations": true,
+  "token_required": true,
+  "new_ppa": 8,
+  "out": "C:\\Users\\user\\Desktop\\rapidchiplet\\output\\inmin_v06_20261104\\study_v8\\output\\full_system_gui\\20261104_074315_4aa0fb",
+  "elapsed_s": 16.37796139996499
+}

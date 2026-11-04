@@ -1,0 +1,8 @@
+{
+  "original_case": "C:\\Users\\user\\Desktop\\rapidchiplet\\inputs\\replay_v04\\mobilenet_v2",
+  "files": {
+    "workload.json": "a1b66008d501804929876e0645a71fbf6565add9896ea080d8ff58b340e949aa",
+    "seed_attempts.json": "d43f196ac8a216b99589d0bc5988e10cc7fb01da598a9c2749116a3f09065a0c",
+    "source_identity.json": "6eed72b682fdb294cf0684a3aed4fa7800befd54f4f96dc5eb12f0ba6d09006b"
+  }
+}

@@ -11,6 +11,9 @@ from types import SimpleNamespace
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from run_local_rl_diagnostics import read, write, sources
 from full_system_dse import objective_cost, physical_violation
+from simple_rapidchiplet.hybrid.shared_evidence import verify_physical_sources
+from simple_rapidchiplet.hybrid.full_space import DesignTrial
+from simple_rapidchiplet.hybrid.rl_schema import DesignState
 
 
 def analyze(out):
@@ -26,12 +29,26 @@ def analyze(out):
     common = read(out / 'common.json')
     if not common:
         return dict(passed=False, errors=errors + ['common seed evaluation not completed'], warnings=warnings)
+    inherited = read(out / 'imported_shared.json')
+    if inherited:
+        history = out / 'shared_physical_history'
+        for name, digest in inherited['data_hashes'].items():
+            if hashlib.sha256((history / name).read_bytes()).hexdigest() != digest:
+                errors.append('imported shared history hash mismatch: ' + name)
+        for name in ('common.json', 'screening.json'):
+            if hashlib.sha256((out / name).read_bytes()).hexdigest() != inherited['data_hashes'][name]:
+                errors.append('imported current shared evidence differs: ' + name)
+        try:
+            verify_physical_sources(read(history / 'source_snapshot_manifest.json')['files'], manifest['files'])
+        except ValueError as error:
+            errors.append(str(error))
     shared = read(out / 'shared_start.json', dict(full_ppa=common['full_ppa'], wall_s=common['wall_s']))
     from profile_mapping_oracle import load_workload
     w = load_workload(Path(config.seed_case) / 'workload.json')
     base_macs = sum(l.macs_per_sample for l in w.layers) * w.batch_size
     curves, coverage, stats, architecture_rows, pareto_rows = [], [], [], [], []
     screen = read(out / 'screening.json', dict(rows=[]))
+    canonical_groups = bool(read(out / 'design_space.json', {}).get('decision_identity'))
     for method in config.methods.split(','):
         folder = out / method
         ledger = read(folder / 'worker/accounting.json', [])
@@ -42,6 +59,10 @@ def analyze(out):
         path = folder / 'events.jsonl'
         events = [json.loads(l) for l in path.read_text(encoding='utf-8').splitlines()] if path.exists() else []
         for e in events:
+            expected_hash = (DesignTrial.from_dict(e['action']).fingerprint if canonical_groups else
+                             DesignState.from_dict(e['action']['state']).fingerprint)
+            if expected_hash != e['state_hash']:
+                errors.append(method + ': decision hash mismatch at step ' + str(e['step']))
             ps = e['probabilities']
             if any(p < 0 or not math.isfinite(p) for p in ps) or abs(sum(ps) - 1) > 1e-6:
                 errors.append(method + ': bad probabilities at step ' + str(e['step']))

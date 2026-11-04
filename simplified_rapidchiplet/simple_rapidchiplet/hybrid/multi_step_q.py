@@ -12,11 +12,35 @@ import torch
 from torch import nn
 
 
+def _trunk(size):
+    return nn.Sequential(nn.Linear(size, 128), nn.Tanh(), nn.Linear(128, 64), nn.Tanh(), nn.Linear(64, 2))
+
+
+class GraphResidualQ(nn.Module):
+    """Same base Q initialization plus a zero-initialized graph-edit branch.
+
+    Feature on/off starts with identical base scores when the seed matches.
+    The additional branch only changes decisions after physical observations
+    train it. Its features never become manufactured reward labels.
+    """
+    def __init__(self, size, base_size):
+        super().__init__()
+        self.base_size = base_size
+        self.base = _trunk(base_size)
+        self.graph = nn.Sequential(nn.Linear(size - base_size, 32), nn.Tanh(), nn.Linear(32, 2))
+        nn.init.zeros_(self.graph[-1].weight)
+        nn.init.zeros_(self.graph[-1].bias)
+
+    def forward(self, features):
+        return self.base(features[:, :self.base_size]) + self.graph(features[:, self.base_size:])
+
+
 class MultiStepQ:
-    def __init__(self, size, seed=7, gamma=.9, learning_rate=.001):
+    def __init__(self, size, seed=7, gamma=.9, learning_rate=.001, base_size=None):
         torch.set_num_threads(1)
         torch.manual_seed(seed)
-        self.model = nn.Sequential(nn.Linear(size, 128), nn.Tanh(), nn.Linear(128, 64), nn.Tanh(), nn.Linear(64, 2))
+        self.size, self.base_size, self.learning_rate = size, base_size, learning_rate
+        self.model = GraphResidualQ(size, base_size) if base_size is not None else _trunk(size)
         self.target = copy.deepcopy(self.model)
         self.optimizer = torch.optim.Adam(self.model.parameters(), lr=learning_rate)
         self.gamma = gamma
@@ -77,10 +101,15 @@ class MultiStepQ:
     def save(self, path):
         torch.save(dict(model=self.model.state_dict(), target=self.target.state_dict(), optimizer=self.optimizer.state_dict(),
                         replay=self.replay, updates=self.updates, losses=self.losses, rng=self.rng.getstate(),
-                        gamma=self.gamma, gradient=self.last_gradient_norm), path)
+                        gamma=self.gamma, gradient=self.last_gradient_norm, size=self.size, base_size=self.base_size), path)
 
     def load(self, path):
         data = torch.load(path, map_location='cpu', weights_only=False)
+        if data.get('base_size') != self.base_size:
+            self.base_size = data.get('base_size')
+            self.model = GraphResidualQ(self.size, self.base_size) if self.base_size is not None else _trunk(self.size)
+            self.target = copy.deepcopy(self.model)
+            self.optimizer = torch.optim.Adam(self.model.parameters(), lr=self.learning_rate)
         self.model.load_state_dict(data['model'])
         self.target.load_state_dict(data['target'])
         self.optimizer.load_state_dict(data['optimizer'])

@@ -33,6 +33,11 @@ def main():
                 '--horizon', '4', '--warmup', '3', '--replay-updates', '8']
     full, partial = out / 'full', out / 'resumed'
     run(command(full))
+    refinement = read(full / 'seed_refinement.json')
+    if not refinement or refinement['status'] != 'completed' or refinement['full_ppa'] <= 0:
+        raise AssertionError('core CLI did not execute and charge wider initialization')
+    if any(s['search_full_ppa'] < 7 for s in read(full / 'summary.json').values()):
+        raise AssertionError('initializer consumed the query budget reserved for real search')
     with (out / 'interrupted.log').open('wb') as log:
         process = subprocess.Popen([sys.executable, '-u', '-X', 'utf8', str(script), *command(partial)], stdout=log, stderr=log)
         deadline = time.monotonic() + 120
@@ -84,10 +89,72 @@ def main():
         raise AssertionError('shared 50-layout charge differs across methods')
     if not analyze(screened)['passed']:
         raise AssertionError('shared-screen audit failed')
+    reused = out / 'shared_reused'
+    run(['--seed-case', str(Path(args.seed_case).resolve()), '--out', reused, '--queries', '58', '--seconds', '120',
+         '--shared-case', screened, '--methods', 'rl', '--shortlist', '24', '--replay-updates', '4'])
+    reused_summary = read(reused / 'rl/summary.json')
+    provenance = read(reused / 'imported_shared.json')
+    if reused_summary['common_full_ppa'] != 52 or reused_summary['full_ppa'] != 58 or provenance['additional_full_ppa'] != 0:
+        raise AssertionError('historical common queries not charged exactly')
+    if (reused / 'common_worker').exists() or (reused / 'screen_worker').exists():
+        raise AssertionError('shared history was physically recomputed')
+    if not analyze(reused)['passed']:
+        raise AssertionError('reused shared history audit failed')
+    lp5 = out / 'lp5'
+    run(['--seed-case', str(Path(args.seed_case).resolve()), '--out', lp5, '--queries', '58', '--seconds', '120',
+         '--shared-case', screened, '--methods', 'sa', '--operators', 'gemini5', '--no-boundary-features',
+         '--no-resource-projection', '--warmup', '1', '--horizon', '2', '--sa-elite-restart',
+         '--sa-temperature-reference', 'shared', '--sa-temperature', '10', '--shortlist', '24'])
+    lp_events = [json.loads(line) for line in (lp5 / 'sa/events.jsonl').read_text(encoding='utf-8').splitlines()]
+    if any(e['action']['family'] not in ('A2', 'A4', 'A5', 'A6', 'A8') for e in lp_events):
+        raise AssertionError('Gemini5 arm escaped its declared LP comparison scope')
+    if read(lp5 / 'sa/checkpoint.json')['episode'] < 1 or not analyze(lp5)['passed']:
+        raise AssertionError('SA elite restart/LP5 workflow was not exercised')
+    uniform = out / 'uniform_horizon'
+    run(['--seed-case', str(Path(args.seed_case).resolve()), '--out', uniform, '--queries', '10', '--seconds', '120',
+         '--methods', 'rl', '--architecture-screen', 'off', '--warmup', '0', '--horizon', '2',
+         '--uniform-policy', '--freeze-search-policy', '--no-shared-warmstart', '--shortlist', '24'])
+    uniform_summary = read(uniform / 'rl/summary.json')
+    uniform_events = [json.loads(line) for line in (uniform / 'rl/events.jsonl').read_text(encoding='utf-8').splitlines()]
+    if uniform_summary['policy_updates'] or uniform_summary['algorithm'] != 'uniform_horizon_control':
+        raise AssertionError('uniform causal control secretly trained or was labelled as learned RL')
+    if any(max(e['probabilities']) - min(e['probabilities']) > 1e-10 for e in uniform_events):
+        raise AssertionError('uniform control used non-uniform learned choices')
+    frozen = out / 'frozen_shared_q'
+    run(['--seed-case', str(Path(args.seed_case).resolve()), '--out', frozen, '--queries', '58', '--seconds', '120',
+         '--shared-case', screened, '--methods', 'rl', '--freeze-search-policy', '--warmup', '0',
+         '--shortlist', '24', '--replay-updates', '4'])
+    if read(frozen / 'rl/summary.json')['policy_updates'] != read(frozen / 'rl/shared_warmstart.json')['policy_updates']:
+        raise AssertionError('frozen Q secretly performed search-policy updates')
+    if not analyze(uniform)['passed'] or not analyze(frozen)['passed']:
+        raise AssertionError('causal control ledger/source audit failed')
+    init_stopped = out / 'initializer_stopped'
+    with (out / 'initializer_interrupted.log').open('wb') as log:
+        process = subprocess.Popen([sys.executable, '-u', '-X', 'utf8', str(script), *command(init_stopped)], stdout=log, stderr=log)
+        deadline = time.monotonic() + 120
+        while process.poll() is None and time.monotonic() < deadline:
+            if read(init_stopped / 'status.json', {}).get('phase') == 'wide_seed_refinement':
+                (init_stopped / 'STOP_REQUESTED').touch()
+                break
+            time.sleep(.02)
+        code = process.wait(timeout=60)
+        if code != 130 or read(init_stopped / 'status.json').get('phase') != 'wide_seed_refinement':
+            raise AssertionError('initializer cooperative stop was not recorded')
+    run(['--out', init_stopped, '--resume'])
+    if read(init_stopped / 'summary.json')['rl']['best_state_hash'] != read(full / 'summary.json')['rl']['best_state_hash']:
+        raise AssertionError('initializer stop/resume changed the deterministic best mapping')
+    if not analyze(init_stopped)['passed']:
+        raise AssertionError('initializer stop/resume accounting audit failed')
     write(out / 'result.json', dict(passed=True, elapsed_s=time.perf_counter() - start,
         checks=['3 methods exact-query CLI', 'same trajectory after cooperative stop/resume', 'same Q update count',
                 'no duplicate durable PPA', 'completed resume no new PPA', 'physical/reward/source audits', 'strict infeasible archive',
-                '50 actual architecture PPA', 'identical shared-screen charges for all 3 methods']))
+                '50 actual architecture PPA', 'identical shared-screen charges for all 3 methods',
+                'shared physical history reuse with exact inherited charge and zero new common PPA',
+                'Gemini-style LP5 masking and SA elite restart',
+                'uniform choices with identical RL horizon and zero SGD',
+                'frozen shared Q with zero online updates',
+                'core CLI wider initialization with query reserve and charged shared PPA',
+                'cooperative initialization stop/resume and source/accounting audit']))
     print(json.dumps(read(out / 'result.json')))
 
 

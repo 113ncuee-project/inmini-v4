@@ -207,9 +207,14 @@ def _apply_edit(workload, state, edit, candidates):
             if tensor.producer:
                 item = mapping.mapping_map[tensor.producer]
                 mapping = mapping.replace_layer(replace(item, output_dram=memory))
-            for layer_id in workload.consumers[tensor_id]:
-                item = mapping.mapping_map[layer_id]
-                mapping = mapping.replace_layer(replace(item, input_dram=memory))
+            # Schema3 internal inputs follow the producer's output placement.
+            # Overwriting a consumer's external-input selector here can move
+            # an unrelated model-input edge of a residual Add(image, internal).
+            # Preserve historical engine semantics for its frozen v1/v2 states.
+            if not tensor.producer or state.version < 3:
+                for layer_id in workload.consumers[tensor_id]:
+                    item = mapping.mapping_map[layer_id]
+                    mapping = mapping.replace_layer(replace(item, input_dram=memory))
     elif action == "A9":
         target = params["architecture_candidate_id"]
         if target not in candidates:

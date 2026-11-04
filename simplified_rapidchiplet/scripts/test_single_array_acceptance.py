@@ -9,7 +9,7 @@ import unittest
 
 
 ROOT = Path(__file__).resolve().parents[1]
-PATTERNS = ('test_full_system.py', 'test_calendar_index.py', 'test_replay_mapping_v4.py', 'test_local_rl_diagnostics.py', 'test_single_array*.py', 'test_joint_rl.py', 'test_rl_acceptance.py', 'test_rl_integration.py',
+PATTERNS = ('test_tensor_locality.py', 'test_graph_edit.py', 'test_full_system.py', 'test_calendar_index.py', 'test_replay_mapping_v4.py', 'test_local_rl_diagnostics.py', 'test_single_array*.py', 'test_joint_rl.py', 'test_rl_acceptance.py', 'test_rl_integration.py',
             'test_tangram_seed.py', 'test_gemini_hardware_diagnostics.py', 'test_gui04.py', 'test_gui04_v3.py')
 
 

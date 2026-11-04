@@ -1,0 +1,8 @@
+{
+  "original_case": "C:\\Users\\user\\Desktop\\rapidchiplet\\inputs\\replay_v04\\resnet50",
+  "files": {
+    "workload.json": "94beecb8c41e19e95b3485110df99a4197e129839f1ee6bd01f8db2d4f45ac0c",
+    "seed_attempts.json": "6d4ef46c113edf521e0df16a090f053cc572be44192442b9737e84bc637d362e",
+    "source_identity.json": "e7488b75607b4cf19ff02d5273b9ef7cce3b687acae521044f280ec91785fe57"
+  }
+}

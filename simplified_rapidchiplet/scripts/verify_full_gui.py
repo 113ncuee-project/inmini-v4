@@ -25,11 +25,15 @@ def main():
         if not url.startswith('http://127.0.0.1:'):
             raise AssertionError('local GUI failed to bind: ' + child.stderr.read())
         html = urllib.request.urlopen(url).read().decode('utf-8')
-        for field in ('queries', 'max_fusion_depth', 'architecture_screen', 'max_power', 'max_area', 'max_latency_ms'):
+        for field in ('queries', 'max_fusion_depth', 'architecture_screen', 'max_power', 'max_area', 'max_latency_ms',
+                      'boundary_features', 'resource_projection'):
             if 'name="' + field + '"' not in html:
                 raise AssertionError('missing UI field: ' + field)
+        for field in ('seed_refinement', 'seed_queries', 'seed_seconds'):
+            if 'name="' + field + '"' not in html:
+                raise AssertionError('missing initialization field: ' + field)
         status = json.load(urllib.request.urlopen(url + '/api/status'))
-        if not {'out', 'status', 'summary', 'log'}.issubset(status):
+        if not {'out', 'status', 'summary', 'recommendations', 'log'}.issubset(status):
             raise AssertionError('status API missing fields')
         request = urllib.request.Request(url + '/api/start', b'{}', {'Content-Type': 'application/json'})
         try:
@@ -55,11 +59,13 @@ def main():
                     if current['status']['status'] == 'failed':
                         raise AssertionError(current['log'])
                     full = current['summary']['rl']['full_ppa']
+                    if not current['recommendations']['rl']['strict_feasible'] or not current['recommendations']['rl']['metrics']:
+                        raise AssertionError('GUI failed to expose strict-feasible recommendation')
                     break
                 time.sleep(.25)
             if full != 8:
                 raise AssertionError('GUI did not complete eight actual full PPA')
-        print(json.dumps(dict(passed=True, fields=6, status_api=True, token_required=True, new_ppa=full, out=str(job_out))))
+        print(json.dumps(dict(passed=True, fields=11, status_api=True, strict_recommendations=True, token_required=True, new_ppa=full, out=str(job_out))))
     finally:
         child.terminate()
         child.wait(timeout=10)

@@ -6,6 +6,10 @@ import json
 from run_local_rl_diagnostics import APP, ROOT, sources, sha, write
 from package_replay_v4 import archive
 
+# Frozen experimental engines still package the real workspace's portable
+# inputs/docs, not the enclosing evidence directory as a fake project root.
+ROOT = next((p for p in APP.parents if (p / '.venv/Scripts/python.exe').is_file() and (p / 'inputs').is_dir()), ROOT)
+
 
 def main():
     p = argparse.ArgumentParser(description=__doc__)
@@ -23,6 +27,13 @@ def main():
         path = ROOT / relative
         if path.exists():
             code.append((path, relative))
+    for relative in ('docs/INMIN_GRAPH_EDIT_DEVELOPMENT.md', 'docs/INMIN_GRAPH_EDIT_RESULTS.md'):
+        path = ROOT / relative
+        if path.exists():
+            code.append((path, relative))
+    research_runner = ROOT / 'tmp/inmin_v06_graph/run_graph_study.py'
+    if research_runner.exists():
+        code.append((research_runner, 'research/run_graph_study.py'))
     for path in (ROOT / 'inputs/replay_v04').rglob('*.json'):
         code.append((path, path.relative_to(ROOT).as_posix()))
     result = dict(source_identity=sha(source_files), code=archive(args.out / f'INMIN_Full_Code_{args.tag}.zip', code))
@@ -30,7 +41,9 @@ def main():
     selected_names = {'result.json', 'tests.log', 'summary.json', 'REPORT.md', 'status.json', 'effective_config.json',
         'parent_invocations.jsonl', 'source_snapshot_manifest.json', 'seed_input_manifest.json', 'common.json',
         'shared_start.json', 'screening.json', 'design_space.json', 'audit.json', 'equal_budget.json',
-        'recommendation.json', 'events.jsonl', 'learning.jsonl', 'shared_warmstart.json', 'accounting.json'}
+        'recommendation.json', 'events.jsonl', 'learning.jsonl', 'shared_warmstart.json', 'accounting.json',
+        'imported_shared.json', 'held_out_policy.json', 'protocol.json', 'proposals.json', 'selection.json'}
+    selected_names.update({'seed_refinement.json', 'seed_refinement_invocations.jsonl', 'shared_origin.json', 'shared_protocol.json'})
     for folder in args.evidence:
         folder = folder.resolve()
         if not folder.is_relative_to((ROOT / 'output').resolve()):
