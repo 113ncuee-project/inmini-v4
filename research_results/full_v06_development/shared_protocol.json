@@ -1,0 +1,7 @@
+{
+  "shared_full_ppa": 100,
+  "each_new_full_ppa_ceiling": 64,
+  "each_total_full_ppa_ceiling": 164,
+  "shared_source": "C:\\Users\\user\\Desktop\\rapidchiplet\\output\\inmin_v06_20261104\\study_v8\\strong_shared_inputs",
+  "rule": "all methods/RNGs receive exactly the same measured strong initial archive and pay the same physical history/time"
+}

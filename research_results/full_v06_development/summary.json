@@ -1,0 +1,67 @@
+{
+  "rows": [
+    {
+      "configuration": "F0P0",
+      "seed": 7,
+      "new_full_PPA": 21,
+      "charged_full_PPA": 121,
+      "EDP": 0.05145204755529937,
+      "gain_after_strong_pct": 0.08551475550272469,
+      "search_s": 901.5940872000065,
+      "timeouts": 3,
+      "best_step": 1,
+      "best_phase": "uniform_warmup",
+      "selected_family": "A10",
+      "probability": 0.015625,
+      "policy_updates_before": 1992
+    },
+    {
+      "configuration": "F1P0",
+      "seed": 7,
+      "new_full_PPA": 14,
+      "charged_full_PPA": 114,
+      "EDP": 0.05145204755529937,
+      "gain_after_strong_pct": 0.08551475550272469,
+      "search_s": 903.3259980999865,
+      "timeouts": 3,
+      "best_step": 1,
+      "best_phase": "uniform_warmup",
+      "selected_family": "A10",
+      "probability": 0.015625,
+      "policy_updates_before": 1992
+    },
+    {
+      "configuration": "F0P1",
+      "seed": 7,
+      "new_full_PPA": 13,
+      "charged_full_PPA": 113,
+      "EDP": 0.051078444286907124,
+      "gain_after_strong_pct": 0.8110131568433876,
+      "search_s": 903.4830127998721,
+      "timeouts": 3,
+      "best_step": 5,
+      "best_phase": "uniform_warmup",
+      "selected_family": "C4",
+      "probability": 0.015625,
+      "policy_updates_before": 2088
+    },
+    {
+      "configuration": "F1P1",
+      "seed": 7,
+      "new_full_PPA": 33,
+      "charged_full_PPA": 133,
+      "EDP": 0.05029104094370234,
+      "gain_after_strong_pct": 2.340067945800939,
+      "search_s": 905.2218796000816,
+      "timeouts": 1,
+      "best_step": 18,
+      "best_phase": "learning_search",
+      "selected_family": "A10",
+      "probability": 0.6746948242187499,
+      "policy_updates_before": 2400
+    }
+  ],
+  "new_PPA_by_export": 0,
+  "new_SGD_by_export": 0,
+  "scope": "completed development only; original prospective controls/confirmation were interrupted before execution, not a superiority study"
+}

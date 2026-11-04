@@ -1,0 +1,321 @@
+{
+  "rows": [
+    {
+      "variant": "F0P0",
+      "encoding": "archived_family",
+      "samples": 83,
+      "new_full_ppa": 0,
+      "SGD": 0,
+      "true_positive_count": 0,
+      "predicted_positive_count": 21,
+      "predicted_reward_median": -1.3960479497909546,
+      "true_reward_median": -9.379555364113903,
+      "shifted_reward_mae": 7.023962994313029,
+      "original_reward_mae": 0.43335635660220995,
+      "top_Q": [
+        {
+          "cost": 0.05149608430588703,
+          "Q": 1.0338252782821655,
+          "pred_reward": 0.9447187781333923,
+          "true_reward": 0.0,
+          "architecture": "single_array_c8_2x4",
+          "family": "global_mapping"
+        },
+        {
+          "cost": 0.0515860631822098,
+          "Q": 0.9747937321662903,
+          "pred_reward": 0.8800085783004761,
+          "true_reward": -0.017457707540611038,
+          "architecture": "single_array_c8_2x4",
+          "family": "global_mapping"
+        },
+        {
+          "cost": 0.06307084719542592,
+          "Q": 0.96713787317276,
+          "pred_reward": 0.8752967119216919,
+          "true_reward": -2.027528813230056,
+          "architecture": "single_array_c8_2x4",
+          "family": "global_mapping"
+        },
+        {
+          "cost": 0.06335038674737928,
+          "Q": 0.933819591999054,
+          "pred_reward": 0.8785006999969482,
+          "true_reward": -2.0717523979587398,
+          "architecture": "single_array_c8_2x4",
+          "family": "global_mapping"
+        },
+        {
+          "cost": 0.05731373976003968,
+          "Q": 0.9123630523681641,
+          "pred_reward": 0.8362612128257751,
+          "true_reward": -1.0703460948101404,
+          "architecture": "single_array_c8_2x4",
+          "family": "global_mapping"
+        },
+        {
+          "cost": 0.05724790622702002,
+          "Q": 0.9049217700958252,
+          "pred_reward": 0.8061761856079102,
+          "true_reward": -1.0588529742811594,
+          "architecture": "single_array_c8_2x4",
+          "family": "global_mapping"
+        },
+        {
+          "cost": 0.05204597237700929,
+          "Q": 0.8597065806388855,
+          "pred_reward": 0.7844297885894775,
+          "true_reward": -0.10621640298806509,
+          "architecture": "single_array_c8_2x4",
+          "family": "global_mapping"
+        },
+        {
+          "cost": 0.0515860631822098,
+          "Q": 0.8597065806388855,
+          "pred_reward": 0.7844297885894775,
+          "true_reward": -0.017457707540611038,
+          "architecture": "single_array_c8_2x4",
+          "family": "global_mapping"
+        }
+      ]
+    },
+    {
+      "variant": "F0P0",
+      "encoding": "live_global_family",
+      "samples": 83,
+      "new_full_ppa": 0,
+      "SGD": 0,
+      "true_positive_count": 0,
+      "predicted_positive_count": 21,
+      "predicted_reward_median": -0.8444313406944275,
+      "true_reward_median": -9.379555364113903,
+      "shifted_reward_mae": 7.781814378803399,
+      "original_reward_mae": 0.8063812099767693,
+      "top_Q": [
+        {
+          "cost": 0.05149608430588703,
+          "Q": 1.0338252782821655,
+          "pred_reward": 0.9447187781333923,
+          "true_reward": 0.0,
+          "architecture": "single_array_c8_2x4",
+          "family": "global_mapping"
+        },
+        {
+          "cost": 0.0515860631822098,
+          "Q": 0.9747937321662903,
+          "pred_reward": 0.8800085783004761,
+          "true_reward": -0.017457707540611038,
+          "architecture": "single_array_c8_2x4",
+          "family": "global_mapping"
+        },
+        {
+          "cost": 0.06307084719542592,
+          "Q": 0.96713787317276,
+          "pred_reward": 0.8752967119216919,
+          "true_reward": -2.027528813230056,
+          "architecture": "single_array_c8_2x4",
+          "family": "global_mapping"
+        },
+        {
+          "cost": 0.06335038674737928,
+          "Q": 0.933819591999054,
+          "pred_reward": 0.8785006999969482,
+          "true_reward": -2.0717523979587398,
+          "architecture": "single_array_c8_2x4",
+          "family": "global_mapping"
+        },
+        {
+          "cost": 0.05731373976003968,
+          "Q": 0.9123630523681641,
+          "pred_reward": 0.8362612128257751,
+          "true_reward": -1.0703460948101404,
+          "architecture": "single_array_c8_2x4",
+          "family": "global_mapping"
+        },
+        {
+          "cost": 0.05724790622702002,
+          "Q": 0.9049217700958252,
+          "pred_reward": 0.8061761856079102,
+          "true_reward": -1.0588529742811594,
+          "architecture": "single_array_c8_2x4",
+          "family": "global_mapping"
+        },
+        {
+          "cost": 0.05204597237700929,
+          "Q": 0.8597065806388855,
+          "pred_reward": 0.7844297885894775,
+          "true_reward": -0.10621640298806509,
+          "architecture": "single_array_c8_2x4",
+          "family": "global_mapping"
+        },
+        {
+          "cost": 0.0515860631822098,
+          "Q": 0.8597065806388855,
+          "pred_reward": 0.7844297885894775,
+          "true_reward": -0.017457707540611038,
+          "architecture": "single_array_c8_2x4",
+          "family": "global_mapping"
+        }
+      ]
+    },
+    {
+      "variant": "F1P0",
+      "encoding": "archived_family",
+      "samples": 83,
+      "new_full_ppa": 0,
+      "SGD": 0,
+      "true_positive_count": 0,
+      "predicted_positive_count": 31,
+      "predicted_reward_median": -2.4236576557159424,
+      "true_reward_median": -9.379555364113903,
+      "shifted_reward_mae": 6.60777385077233,
+      "original_reward_mae": 0.5052316923784786,
+      "top_Q": [
+        {
+          "cost": 0.06335038674737928,
+          "Q": 7.628955841064453,
+          "pred_reward": 7.634747505187988,
+          "true_reward": -2.0717523979587398,
+          "architecture": "single_array_c8_2x4",
+          "family": "global_mapping"
+        },
+        {
+          "cost": 0.06307084719542592,
+          "Q": 7.296186447143555,
+          "pred_reward": 7.284753799438477,
+          "true_reward": -2.027528813230056,
+          "architecture": "single_array_c8_2x4",
+          "family": "global_mapping"
+        },
+        {
+          "cost": 0.06402274593943592,
+          "Q": 7.141383171081543,
+          "pred_reward": 7.139956474304199,
+          "true_reward": -2.177326536382074,
+          "architecture": "single_array_c8_2x4",
+          "family": "global_mapping"
+        },
+        {
+          "cost": 0.06307084719542592,
+          "Q": 7.120429515838623,
+          "pred_reward": 7.116317272186279,
+          "true_reward": -2.027528813230056,
+          "architecture": "single_array_c8_2x4",
+          "family": "global_mapping"
+        },
+        {
+          "cost": 0.0515860631822098,
+          "Q": 6.094109535217285,
+          "pred_reward": 6.056921482086182,
+          "true_reward": -0.017457707540611038,
+          "architecture": "single_array_c8_2x4",
+          "family": "global_mapping"
+        },
+        {
+          "cost": 0.05149608430588703,
+          "Q": 5.9570465087890625,
+          "pred_reward": 5.937869071960449,
+          "true_reward": 0.0,
+          "architecture": "single_array_c8_2x4",
+          "family": "global_mapping"
+        },
+        {
+          "cost": 0.05731373976003968,
+          "Q": 5.616327285766602,
+          "pred_reward": 5.593823432922363,
+          "true_reward": -1.0703460948101404,
+          "architecture": "single_array_c8_2x4",
+          "family": "global_mapping"
+        },
+        {
+          "cost": 0.0515860631822098,
+          "Q": 5.438066005706787,
+          "pred_reward": 5.411376476287842,
+          "true_reward": -0.017457707540611038,
+          "architecture": "single_array_c8_2x4",
+          "family": "global_mapping"
+        }
+      ]
+    },
+    {
+      "variant": "F1P0",
+      "encoding": "live_global_family",
+      "samples": 83,
+      "new_full_ppa": 0,
+      "SGD": 0,
+      "true_positive_count": 0,
+      "predicted_positive_count": 19,
+      "predicted_reward_median": -3.903876781463623,
+      "true_reward_median": -9.379555364113903,
+      "shifted_reward_mae": 6.6394183329344685,
+      "original_reward_mae": 1.2991484885164344,
+      "top_Q": [
+        {
+          "cost": 0.06335038674737928,
+          "Q": 7.628955841064453,
+          "pred_reward": 7.634747505187988,
+          "true_reward": -2.0717523979587398,
+          "architecture": "single_array_c8_2x4",
+          "family": "global_mapping"
+        },
+        {
+          "cost": 0.06307084719542592,
+          "Q": 7.296186447143555,
+          "pred_reward": 7.284753799438477,
+          "true_reward": -2.027528813230056,
+          "architecture": "single_array_c8_2x4",
+          "family": "global_mapping"
+        },
+        {
+          "cost": 0.06402274593943592,
+          "Q": 7.141383171081543,
+          "pred_reward": 7.139956474304199,
+          "true_reward": -2.177326536382074,
+          "architecture": "single_array_c8_2x4",
+          "family": "global_mapping"
+        },
+        {
+          "cost": 0.06307084719542592,
+          "Q": 7.120429515838623,
+          "pred_reward": 7.116317272186279,
+          "true_reward": -2.027528813230056,
+          "architecture": "single_array_c8_2x4",
+          "family": "global_mapping"
+        },
+        {
+          "cost": 0.0515860631822098,
+          "Q": 6.094109535217285,
+          "pred_reward": 6.056921482086182,
+          "true_reward": -0.017457707540611038,
+          "architecture": "single_array_c8_2x4",
+          "family": "global_mapping"
+        },
+        {
+          "cost": 0.05149608430588703,
+          "Q": 5.9570465087890625,
+          "pred_reward": 5.937869071960449,
+          "true_reward": 0.0,
+          "architecture": "single_array_c8_2x4",
+          "family": "global_mapping"
+        },
+        {
+          "cost": 0.05731373976003968,
+          "Q": 5.616327285766602,
+          "pred_reward": 5.593823432922363,
+          "true_reward": -1.0703460948101404,
+          "architecture": "single_array_c8_2x4",
+          "family": "global_mapping"
+        },
+        {
+          "cost": 0.0515860631822098,
+          "Q": 5.438066005706787,
+          "pred_reward": 5.411376476287842,
+          "true_reward": -0.017457707540611038,
+          "architecture": "single_array_c8_2x4",
+          "family": "global_mapping"
+        }
+      ]
+    }
+  ],
+  "scope": "read-only measured shared archive diagnostic, not held-out generalization or causal policy proof"
+}

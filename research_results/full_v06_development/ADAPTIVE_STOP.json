@@ -1,0 +1,14 @@
+{
+  "timestamp": "2026-11-04T01:11:49.070598+00:00",
+  "reason": "all four completed development variants add <5%; measured warm-start context shift detected; prioritize corrected representation",
+  "development_costs": {
+    "F0P0": 0.05145204755529937,
+    "F1P0": 0.05145204755529937,
+    "F0P1": 0.051078444286907124,
+    "F1P1": 0.05029104094370234
+  },
+  "best_gain_after_strong_pct": 2.340067945800939,
+  "maximum_shifted_reward_MAE": 7.781814378803399,
+  "pending_controls": "interrupted/not executed; not confirmation evidence; existing PPA checkpoints preserved",
+  "action": "terminate ONLY observed coordinator PID2456 after identity check; ask active CLI to stop after current bounded PPA; never terminate evaluator worker"
+}

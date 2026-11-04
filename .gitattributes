@@ -10,6 +10,7 @@ simplified_rapidchiplet/** -text
 research_results/full_v05_completed/** -text
 research_results/full_v06_validation/** -text
 research_results/full_v06_strong_start/** -text
+research_results/full_v06_development/** -text
 inputs/replay_v04/** -text
 research_tools/** -text
 research/** -text

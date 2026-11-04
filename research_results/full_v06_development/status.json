@@ -1,0 +1,5 @@
+{
+  "status": "interrupted_after_development",
+  "source_identity": "5f2fdce00493d95868b4b0837c03c283d590a0c5a274a34de6a6bc3ec37766de",
+  "reason": "all four completed development variants add <5%; measured warm-start context shift detected; prioritize corrected representation"
+}
