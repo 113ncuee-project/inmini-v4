@@ -1,0 +1,34 @@
+{
+  "seed": 17,
+  "held_out_count": 276,
+  "new_PPA": 0,
+  "SGD": 0,
+  "scope": "original v05 auxiliary immediate-reward head, stricter canonical physical-state exclusion; not future-Q, online policy causality, or a v06 outcome",
+  "initial": {
+    "original_SGD_updates": 0,
+    "n": 276,
+    "spearman": -0.2447814029122345,
+    "pairwise_concordance": 0.42201859229747674,
+    "mse": 19.469761155360185,
+    "selected_top_quartile_mean_utility": -0.9238022135291645,
+    "all_mean_utility": -1.861237635457113
+  },
+  "after_shared": {
+    "original_SGD_updates": 1200,
+    "n": 276,
+    "spearman": 0.322766991039611,
+    "pairwise_concordance": 0.6137051792828685,
+    "mse": 11.96465892735379,
+    "selected_top_quartile_mean_utility": -0.5185137568668244,
+    "all_mean_utility": -1.861237635457113
+  },
+  "final": {
+    "original_SGD_updates": 6000,
+    "n": 276,
+    "spearman": 0.5839069704835212,
+    "pairwise_concordance": 0.7134130146082337,
+    "mse": 12.47284140912701,
+    "selected_top_quartile_mean_utility": -0.3700429355401389,
+    "all_mean_utility": -1.861237635457113
+  }
+}

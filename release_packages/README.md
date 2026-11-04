@@ -10,6 +10,8 @@
 
 以下是歷史Full v0.5（2026-11-03）：
 
+- [原v0.5 Policy重放補充包](INMIN_v05_Policy_Replay_20261104.zip)及[SHA清單](INMIN_v05_Policy_Replay_20261104_package.json)：原兩RNG的初始／共同暖身後／最終模型參數、壓縮事件與預測重算工具。先解壓上面的完整程式包，或使用Git clone；不做PPA、不訓練，也不是可續訓checkpoint。兩組已實際重算通過，輔助reward排序Spearman分別0.113→0.642、0.323→0.584，不能當成future-Q或新v0.6的收益證據。
+
 - [程式 ZIP](INMIN_Full_Code_20261103_full_release.zip)：完整 v3 設計變數＋多步 Double Q／Replay／target network；含新GUI與夜間入口。
 - [測試與數值證據 ZIP](INMIN_Full_Results_20261103_full_release.zip)：154項回歸、50個Toy布局實際PPA、三方法續跑與計帳、GUI實際8次PPA。
 - [SHA256清單](INMIN_Full_20261103_full_release_package.json)。

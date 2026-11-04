@@ -9,7 +9,7 @@
 
 RL分別新增141、204次完整PPA；共同階段52次同額計費。相同wall-time改善與到達品質門檻的時間另見報告。最終總EDP不能直接與原論文不同硬體數字比較。
 
-**較弱起點的風險仍待排除。** RL改變了大量group邊界，原始DP有max-group限制；下一輪會先給所有方法同一個允許全長segment的DP／inner強起點，再驗證額外收益。原seed到8顆Compute共同起點的約73.7%收益發生在RL前，且增加面積與平均功率，不能歸給RL。
+**較弱起點的問題已由新基線證實。** RL改變了大量group邊界，原始DP有max-group限制；新的全長segment-DP／inner共同起點已達EDP0.05149608，甚至低於本資料兩個舊RL最佳值。此收益不屬RL。新方法必須從[相同強起點](../full_v06_strong_start/README.md)驗證額外收益。原seed到8顆Compute共同起點的約73.7%收益發生在RL前，且增加面積與平均功率，不能歸給RL。
 
 每個`7`／`17`資料夾包含共同起點、來源／輸入hash、有效設定、equal-budget審查、完整最佳mapping及三個壓縮的原始事件帳本。`rl/learning.jsonl`是實際更新紀錄，SGD不計成新PPA。壓縮事件可用Python標準庫`gzip.open(..., 'rt', encoding='utf-8')`讀取，包含當時候選機率、Q、選中交易、物理reward與計費。沒有額外PPA或policy更新用於產生本匯出。
 
@@ -35,3 +35,12 @@ RL分別新增141、204次完整PPA；共同階段52次同額計費。相同wall
 ```
 
 `--seed 17`、`--method sa`或`--method random`可選另外五個最佳設計。換行或物理來源已改變時會拒絕；本資料對應的完整已驗證原始程式可由commit `82fd95e`取回。[實際重放驗證](replay_validation.json)已通過：1個新增完整PPA、0SGD，78個物理來源檔案及10個物理量吻合。這個額外評估沒有算進原搜尋收益。
+
+現在也附上每個RNG的 `inference/{initial,after_shared,final}.pt`，可以直接重算即時reward-head的held-out排序，不必重跑PPA或重新訓練：
+
+```powershell
+.venv/Scripts/python.exe -X utf8 research_results/full_v05_completed/replay_policy_predictions.py --seed 7
+.venv/Scripts/python.exe -X utf8 research_results/full_v05_completed/replay_policy_predictions.py --seed 17
+```
+
+權重只含原模型參數、原checkpoint／來源hash與SGD次數；沒有optimizer、replay或續跑狀態，不能用來接續訓練。腳本核對SHA清單，排除所有已訓練的共同／RL物理狀態（包含group顯示名稱的正規化），再用原SA／Random事件特徵評分。`inference/replay_validation.json`保存實際重算結果；這不是新的DNN實驗，也不能以即時reward排序取代future-Q或因果控制。`export_inference.py <workspace>`可從本機原始checkpoint重建這些權重。

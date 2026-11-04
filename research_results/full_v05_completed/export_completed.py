@@ -67,7 +67,7 @@ def main():
     manifest = {str(p.relative_to(target)).replace('\\','/'): hashlib.sha256(p.read_bytes()).hexdigest()
                 for p in sorted(target.rglob('*')) if p.is_file() and p.name != 'manifest.json'}
     (target / 'manifest.json').write_text(json.dumps(dict(files=manifest, new_ppa=0, policy_updates=0,
-        scope='Completed/audited original source336 runs, including fixed-hardware negative controls and cross-model execution checks; independent Fusion-Off diagnostic has its own source/evaluation ledger. No trained policy tensor checkpoint.'), indent=2), encoding='utf-8')
+        scope='Completed/audited original source336 runs, including fixed-hardware negative controls and cross-model execution checks; independent Fusion-Off diagnostic has its own source/evaluation ledger. Prediction-only original neural weights are exported separately; full optimizer/replay continuation checkpoints remain local.'), indent=2), encoding='utf-8')
     print(json.dumps(dict(files=len(manifest), bytes=sum(p.stat().st_size for p in target.rglob('*') if p.is_file()), new_ppa=0)))
 
 
