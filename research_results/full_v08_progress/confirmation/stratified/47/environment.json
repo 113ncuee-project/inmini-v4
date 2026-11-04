@@ -1,0 +1,17 @@
+{
+  "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+  "executable": "C:\\Users\\user\\Desktop\\rapidchiplet\\.venv\\Scripts\\python.exe",
+  "dependencies": {
+    "numpy": "2.3.5",
+    "torch": "2.7.0+cpu",
+    "torchvision": "0.22.0+cpu"
+  },
+  "os": "Windows-11-10.0.26200-SP0",
+  "cpu_count": 16,
+  "ram_bytes": 42619748352,
+  "threads": {
+    "OMP_NUM_THREADS": null,
+    "MKL_NUM_THREADS": null,
+    "OPENBLAS_NUM_THREADS": null
+  }
+}

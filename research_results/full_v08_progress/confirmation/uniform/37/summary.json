@@ -1,0 +1,489 @@
+{
+  "rl": {
+    "method": "rl",
+    "status": "wall_time_budget_exhausted",
+    "common_full_ppa": 100,
+    "search_full_ppa": 91,
+    "full_ppa": 191,
+    "seed_cost": 0.30275783751869356,
+    "best_cost": 0.045022468390082566,
+    "gain_vs_seed_pct": 85.12921456994398,
+    "best": {
+      "feasible": true,
+      "latency_s": 0.0022474611332030875,
+      "energy_j": 0.014418096963724873,
+      "power_w": 6.4152820045328935,
+      "area_mm2": 231.03139247058823,
+      "dram_read_bytes": 13294700,
+      "dram_write_bytes": 1000,
+      "noc_hop_bytes": 176408256,
+      "nop_hop_bytes": 85333360,
+      "executed_macs": 1814073344,
+      "recompute_macs": 0,
+      "unit_count": 3983,
+      "calendar_backend": "native",
+      "oracle_phase_wall_s": {
+        "compile": 0.03100000019185245,
+        "communication_and_job_build": 1.2659999998286366,
+        "schedule": 3.077999999979511,
+        "capacity_and_metrics": 2.7030000002123415,
+        "diagnostics": 0.6719999997876585
+      },
+      "oracle_process_cpu_s": 7.6875
+    },
+    "initial": {
+      "feasible": true,
+      "latency_s": 0.011818170269609494,
+      "energy_j": 0.018438092177364144,
+      "power_w": 1.5601477857175425,
+      "area_mm2": 64.79423152941176,
+      "dram_read_bytes": 54080428,
+      "dram_write_bytes": 2635752,
+      "noc_hop_bytes": 241375552,
+      "nop_hop_bytes": 68313792,
+      "executed_macs": 1814073344,
+      "recompute_macs": 0,
+      "unit_count": 3768,
+      "calendar_backend": "native",
+      "oracle_phase_wall_s": {
+        "compile": 1.9060000001918525,
+        "communication_and_job_build": 12.609999999869615,
+        "schedule": 4.327999999979511,
+        "capacity_and_metrics": 1.8120000001508743,
+        "diagnostics": 1.078999999910593
+      },
+      "oracle_process_cpu_s": 20.8125
+    },
+    "best_step": 66,
+    "best_state_hash": "b7b57f564d5743e945e351fb099bfad15551e6745f309e5feb0ea7dc5be05c95",
+    "best_architecture": "single_array_c15_5x3",
+    "best_fusion_depth": 0,
+    "policy_updates": 0,
+    "search_wall_s": 1801.182046300033,
+    "charged_wall_s": 4031.192680699518,
+    "architecture_coverage": {
+      "single_array_c1_1x1": {
+        "status": "full_evaluated",
+        "feasible": false,
+        "step": 68
+      },
+      "single_array_c2_1x2": {
+        "status": "full_evaluated",
+        "feasible": false,
+        "step": 60
+      },
+      "single_array_c3_1x3": {
+        "status": "full_completed",
+        "shared_screen": true
+      },
+      "single_array_c4_2x2": {
+        "status": "full_evaluated",
+        "feasible": true,
+        "step": 56
+      },
+      "single_array_c5_1x5": {
+        "status": "full_evaluated",
+        "feasible": true,
+        "step": 80
+      },
+      "single_array_c6_2x3": {
+        "status": "full_completed",
+        "shared_screen": true
+      },
+      "single_array_c7_1x7": {
+        "status": "full_evaluated",
+        "feasible": true,
+        "step": 48
+      },
+      "single_array_c8_2x4": {
+        "status": "full_evaluated",
+        "feasible": true,
+        "step": 5
+      },
+      "single_array_c9_3x3": {
+        "status": "full_evaluated",
+        "feasible": true,
+        "step": 44
+      },
+      "single_array_c10_2x5": {
+        "status": "full_evaluated",
+        "feasible": true,
+        "step": 85
+      },
+      "single_array_c11_1x11": {
+        "status": "full_evaluated",
+        "feasible": true,
+        "step": 43
+      },
+      "single_array_c12_3x4": {
+        "status": "full_completed",
+        "shared_screen": true
+      },
+      "single_array_c13_1x13": {
+        "status": "full_completed",
+        "shared_screen": true
+      },
+      "single_array_c14_2x7": {
+        "status": "full_completed",
+        "shared_screen": true
+      },
+      "single_array_c15_3x5": {
+        "status": "full_evaluated",
+        "feasible": true,
+        "step": 75
+      },
+      "single_array_c16_4x4": {
+        "status": "full_completed",
+        "shared_screen": true
+      },
+      "single_array_c2_2x1": {
+        "status": "full_evaluated",
+        "feasible": false,
+        "step": 69
+      },
+      "single_array_c3_3x1": {
+        "status": "full_evaluated",
+        "feasible": false,
+        "step": 88
+      },
+      "single_array_c4_1x4": {
+        "status": "full_completed",
+        "shared_screen": true
+      },
+      "single_array_c4_4x1": {
+        "status": "full_completed",
+        "shared_screen": true
+      },
+      "single_array_c5_5x1": {
+        "status": "full_evaluated",
+        "feasible": true,
+        "step": 20
+      },
+      "single_array_c6_1x6": {
+        "status": "full_completed",
+        "shared_screen": true
+      },
+      "single_array_c6_3x2": {
+        "status": "full_completed",
+        "shared_screen": true
+      },
+      "single_array_c6_6x1": {
+        "status": "full_evaluated",
+        "feasible": true,
+        "step": 52
+      },
+      "single_array_c7_7x1": {
+        "status": "full_completed",
+        "shared_screen": true
+      },
+      "single_array_c8_1x8": {
+        "status": "full_evaluated",
+        "feasible": true,
+        "step": 15
+      },
+      "single_array_c8_4x2": {
+        "status": "full_evaluated",
+        "feasible": true,
+        "step": 72
+      },
+      "single_array_c8_8x1": {
+        "status": "full_completed",
+        "shared_screen": true
+      },
+      "single_array_c9_1x9": {
+        "status": "full_evaluated",
+        "feasible": true,
+        "step": 73
+      },
+      "single_array_c9_9x1": {
+        "status": "full_completed",
+        "shared_screen": true
+      },
+      "single_array_c10_1x10": {
+        "status": "full_completed",
+        "shared_screen": true
+      },
+      "single_array_c10_5x2": {
+        "status": "full_completed",
+        "shared_screen": true
+      },
+      "single_array_c10_10x1": {
+        "status": "full_completed",
+        "shared_screen": true
+      },
+      "single_array_c11_11x1": {
+        "status": "full_completed",
+        "shared_screen": true
+      },
+      "single_array_c12_1x12": {
+        "status": "full_completed",
+        "shared_screen": true
+      },
+      "single_array_c12_2x6": {
+        "status": "full_completed",
+        "shared_screen": true
+      },
+      "single_array_c12_4x3": {
+        "status": "full_evaluated",
+        "feasible": true,
+        "step": 79
+      },
+      "single_array_c12_6x2": {
+        "status": "full_evaluated",
+        "feasible": true,
+        "step": 87
+      },
+      "single_array_c12_12x1": {
+        "status": "full_evaluated",
+        "feasible": true,
+        "step": 16
+      },
+      "single_array_c13_13x1": {
+        "status": "full_evaluated",
+        "feasible": true,
+        "step": 36
+      },
+      "single_array_c14_1x14": {
+        "status": "full_completed",
+        "shared_screen": true
+      },
+      "single_array_c14_7x2": {
+        "status": "full_evaluated",
+        "feasible": true,
+        "step": 34
+      },
+      "single_array_c14_14x1": {
+        "status": "full_evaluated",
+        "feasible": true,
+        "step": 82
+      },
+      "single_array_c15_1x15": {
+        "status": "full_completed",
+        "shared_screen": true
+      },
+      "single_array_c15_5x3": {
+        "status": "full_evaluated",
+        "feasible": true,
+        "step": 91
+      },
+      "single_array_c15_15x1": {
+        "status": "full_evaluated",
+        "feasible": true,
+        "step": 89
+      },
+      "single_array_c16_1x16": {
+        "status": "full_completed",
+        "shared_screen": true
+      },
+      "single_array_c16_2x8": {
+        "status": "full_completed",
+        "shared_screen": true
+      },
+      "single_array_c16_8x2": {
+        "status": "full_completed",
+        "shared_screen": true
+      },
+      "single_array_c16_16x1": {
+        "status": "full_evaluated",
+        "feasible": true,
+        "step": 4
+      }
+    },
+    "gain_after_shared_screen_pct": 12.571083807753514,
+    "gain_before_rl_pct": 82.99099877052483,
+    "latency_improvement_pct": 80.98300259742874,
+    "energy_improvement_pct": 21.802663610579465,
+    "area_improvement_pct": -256.5616676319669,
+    "objective": "edp",
+    "gamma": 0.9,
+    "domain": "v08_stratified_architecture_full_schema3_1",
+    "strict_feasible": true,
+    "algorithm": "uniform_horizon_control",
+    "online_policy_updates_enabled": false,
+    "shared_warmstart_enabled": false,
+    "q_representation": "physical_cost_factored_double_q_v1",
+    "episode_cost_rise_limit": 0.25,
+    "episode_restart_probability": 0.9,
+    "architecture_refresh": {
+      "interval": 4,
+      "tried": [
+        1,
+        8,
+        12,
+        5,
+        10,
+        3,
+        16
+      ],
+      "cycle": 1,
+      "history": [
+        {
+          "cycle": 0,
+          "count": 16,
+          "step": 4,
+          "state_hash": "49fcfadf0811ac7873835bf77b48fdbbbcb0c6dd006e0772e85ec4feaf45b290",
+          "status": "full_completed"
+        },
+        {
+          "cycle": 0,
+          "count": 1,
+          "step": 8,
+          "state_hash": "2b0e5fbdf83214f47f5b21add59b04c4c3e7eccd83f840fc2a6db76797d84c21",
+          "status": "full_completed"
+        },
+        {
+          "cycle": 0,
+          "count": 8,
+          "step": 12,
+          "state_hash": "50a331e70d74a41529de1a2e13b6c0697470fd964a2c69009007e134d530b9eb",
+          "status": "full_completed"
+        },
+        {
+          "cycle": 0,
+          "count": 12,
+          "step": 16,
+          "state_hash": "eedbc8f890cb9b3ff3b7c475ecd3b638aec4b930266f70bd6d58197ae04258d5",
+          "status": "full_completed"
+        },
+        {
+          "cycle": 0,
+          "count": 5,
+          "step": 20,
+          "state_hash": "59ea6426e3b4fb137558fcb73a501c8c7ef169bfd25edda281f639b0b5118ce3",
+          "status": "full_completed"
+        },
+        {
+          "cycle": 0,
+          "count": 10,
+          "step": 24,
+          "state_hash": "9780ad1dbfd940eab7867bd7637d77cdda690f785513814ba46985ee36ac7478",
+          "status": "full_completed"
+        },
+        {
+          "cycle": 0,
+          "count": 3,
+          "step": 28,
+          "state_hash": "b3fe9f8d37afe4e4c18d4e6e38c4bc0dd96b8a166dc46048f8f7caa0d63aba72",
+          "status": "full_completed"
+        },
+        {
+          "cycle": 0,
+          "count": 14,
+          "step": 32,
+          "state_hash": "374a6b69b53c02aadc27862b08239d1ef60c71ff587ae46d6866df2cb84ecdee",
+          "status": "full_completed"
+        },
+        {
+          "cycle": 0,
+          "count": 13,
+          "step": 36,
+          "state_hash": "70a45e85de4f2ac360ab7fef7787fb62fb99f3d4bc723186607b82e020c8af58",
+          "status": "full_completed"
+        },
+        {
+          "cycle": 0,
+          "count": 11,
+          "step": 40,
+          "state_hash": "de2cf9a34a22dd79ecf70bd9a1200c93ff8943fc5d9916ed794da611ca35b669",
+          "status": "full_completed"
+        },
+        {
+          "cycle": 0,
+          "count": 9,
+          "step": 44,
+          "state_hash": "071032aa2fccc0caf5b76763203d39abe6c50241319f1ad90902cb17c8bbf134",
+          "status": "full_completed"
+        },
+        {
+          "cycle": 0,
+          "count": 7,
+          "step": 48,
+          "state_hash": "8296e9162031cce8bb2e6b65c2aed830393bb7ed80e422b5917e3b2856db10a9",
+          "status": "full_completed"
+        },
+        {
+          "cycle": 0,
+          "count": 6,
+          "step": 52,
+          "state_hash": "b8e1630dd88c6c51a1019011c248b1162d534e62e2dc3f56ae0fbee7e3b31eef",
+          "status": "full_completed"
+        },
+        {
+          "cycle": 0,
+          "count": 4,
+          "step": 56,
+          "state_hash": "5fe3488cd05e987fef6a6fddfcfa856dceb30d0ceaf0d5290cd443a6d854b6a4",
+          "status": "full_completed"
+        },
+        {
+          "cycle": 0,
+          "count": 2,
+          "step": 60,
+          "state_hash": "da930168269a4720a176c9c128c85827d49fd826cc3a2e7d95069abdb8014863",
+          "status": "full_completed"
+        },
+        {
+          "cycle": 0,
+          "count": 15,
+          "step": 64,
+          "state_hash": "fb23f675ee57f421909196644f2668e39bc22060fa74ad76c89db7e2ea59cae8",
+          "status": "full_completed"
+        },
+        {
+          "cycle": 1,
+          "count": 1,
+          "step": 68,
+          "state_hash": "6eb6c8f7aba0b87729f20094969fbbca14509c3ef5d0a91159c19ef39a906e95",
+          "status": "full_completed"
+        },
+        {
+          "cycle": 1,
+          "count": 8,
+          "step": 72,
+          "state_hash": "931d21a7f14ed1822ee7710c66fa5c4ef12dc8668a02aa8025e08000b4616334",
+          "status": "full_completed"
+        },
+        {
+          "cycle": 1,
+          "count": 12,
+          "step": 76,
+          "state_hash": "e7201631659b59ac9d4df29781afd3b4ffe3a82995eff86063741c9cd4cfefe1",
+          "status": "full_completed"
+        },
+        {
+          "cycle": 1,
+          "count": 5,
+          "step": 80,
+          "state_hash": "238e7b61933e28fb87ccae11f7d92bbf656de31d45bb2045b833d1ef9e44b24b",
+          "status": "full_completed"
+        },
+        {
+          "cycle": 1,
+          "count": 10,
+          "step": 84,
+          "state_hash": "a95c0e2fd0254f0562ab3438a87819e35384f06f2ef260b244f50efe7913054c",
+          "status": "full_completed"
+        },
+        {
+          "cycle": 1,
+          "count": 3,
+          "step": 88,
+          "state_hash": "a9a0646facf5f8dbdd37cf5e8fa12714a687e5106d3eaeab4e90acafc05cc39f",
+          "status": "full_completed"
+        },
+        {
+          "cycle": 1,
+          "count": 16,
+          "step": 92,
+          "state_hash": "d82fcef7daf67448f2b873fcd0d8d876f512e0a25aa2922b325a2b9c995bd880",
+          "status": "timeout"
+        }
+      ],
+      "pending_count": null
+    },
+    "cost_rank_weight": 0.0,
+    "feature_evaluation": "selected candidate only; no unused neural feature overhead",
+    "recommended_cost": 0.045022468390082566,
+    "note": "best_* and gain fields describe penalized search elite; recommendation.json contains only strict-feasible designs"
+  }
+}

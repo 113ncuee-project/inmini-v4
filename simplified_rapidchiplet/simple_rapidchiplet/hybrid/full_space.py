@@ -25,6 +25,7 @@ from .resource_projection import ResourceProjector
 from .lp_five import propose_five
 from .temporal_projection import TemporalProjector
 from .tensor_locality import TensorLocalityEncoder
+from .service_features import ServiceFeatureEncoder, NAMES as SERVICE_NAMES
 
 
 FAMILIES = tuple('A' + str(i) for i in (*range(1, 11), 12)) + tuple('C' + str(i) for i in range(1, 10)) + (
@@ -66,11 +67,12 @@ class DesignTrial:
 
 
 class FullDesignSpace:
-    version = 'v07_cost_value_full_schema3_1'
+    version = 'v08_stratified_architecture_full_schema3_1'
 
     def __init__(self, workload, candidates, *, shortlist=64, max_depth=4, inner=True,
                  composites=True, guidance=False, fusion=True, legacy_generator=False,
-                 boundary_features=True, resource_projection=True, operators='full', architecture_scaling='proportional'):
+                 boundary_features=True, resource_projection=True, operators='full', architecture_scaling='proportional',
+                 service_features=False):
         self.w = workload
         self.candidates = {c.id: c for c in candidates}
         self.shortlist, self.max_depth = shortlist, max_depth
@@ -79,6 +81,8 @@ class FullDesignSpace:
         self.boundary_features, self.resource_projection = boundary_features, resource_projection
         self.operators = operators
         self.architecture_scaling = architecture_scaling
+        self.service_features = service_features
+        self.service_encoder = ServiceFeatureEncoder(workload, self.candidates)
         if architecture_scaling not in ('legacy', 'proportional'):
             raise ValueError('unknown architecture quota scaling')
         if operators not in ('full', 'gemini5'):
@@ -99,7 +103,8 @@ class FullDesignSpace:
 
     @property
     def graph_feature_names(self):
-        return (*self.boundaries.names, *OBSERVED_NAMES, *self.locality.names)
+        old = (*self.boundaries.names, *OBSERVED_NAMES, *self.locality.names) if self.boundary_features else ()
+        return (*old, *(self.service_encoder.names if self.service_features else ()))
 
     @property
     def after_design_indices(self):
@@ -118,6 +123,10 @@ class FullDesignSpace:
             result.extend(range(base + boundary, base + 2 * boundary))
             offset = base + len(self.boundaries.names) + len(OBSERVED_NAMES)
             result.extend(range(offset + locality, offset + 2 * locality))
+        if self.service_features:
+            start = base + (len(self.boundaries.names) + len(OBSERVED_NAMES) + len(self.locality.names)
+                            if self.boundary_features else 0)
+            result.extend(range(start + len(SERVICE_NAMES), start + 2*len(SERVICE_NAMES)))
         return tuple(result)
 
     def domain(self):
@@ -126,6 +135,8 @@ class FullDesignSpace:
             architecture_quota_scaling=self.architecture_scaling,
             after_cost_features=dict(indices=self.after_design_indices,
                 role='absolute after-design inputs for optional cost-factored Q; no measured after PPA or before-state dependence'),
+            local_service_features=dict(enabled=self.service_features, version=self.service_encoder.version,
+                scope='label-free local fragments/shared resources; not full PPA, feasibility proof or reward'),
             comparison_scope='full schema3' if self.operators == 'full' else 'Gemini-style OP1-OP5 only; grouping/architecture/inner decisions fixed for this comparison',
             decision_identity='all physical decisions with ordered group labels canonicalized; exact oracle inputs unchanged',
             families=FAMILIES, partition='all nonempty integer B/K/H/W supported by schema3; B=1',
@@ -620,5 +631,7 @@ class FullDesignSpace:
                                                       after_key=trial.fingerprint))
                 vector.extend(self.boundaries.observed_edit(base, report, trial.state, trial.targets))
                 vector.extend(self.locality.encode(base, report, trial.state))
+            if self.service_features:
+                vector.extend(self.service_encoder.encode(base, trial.state))
             result.append(np.clip(vector, -8, 8))
         return np.asarray(result, dtype=np.float32)

@@ -1,0 +1,41 @@
+{
+  "created_utc": "2026-11-04T06:44:22.957352+00:00",
+  "previous_source_identity": "b6bf8e77f95b1e47fff56491b248fd9ac55a8884aa505d5e12dcac75bdda2f05",
+  "source_identity": "9ee5237e2f5ab48bb98d6cb388f88427170faafec4e8c7218edf3e2cb3651562",
+  "source_files": 212,
+  "changed": [
+    "full_system_dse.py",
+    "full_system_gui.py",
+    "scripts/test_full_system_workflow.py",
+    "scripts/test_single_array_acceptance.py",
+    "scripts/verify_full_gui.py",
+    "simple_rapidchiplet/hybrid/architecture_refresh.py",
+    "simple_rapidchiplet/hybrid/cost_value_q.py",
+    "simple_rapidchiplet/hybrid/full_space.py",
+    "simple_rapidchiplet/hybrid/service_features.py",
+    "simple_rapidchiplet/hybrid/shared_evidence.py",
+    "simple_rapidchiplet/hybrid/temporal_projection.py",
+    "tests/test_architecture_refresh.py",
+    "tests/test_cost_ranking.py"
+  ],
+  "regression": 188,
+  "regression_source_reuse": {
+    "donor": "C:\\Users\\user\\Desktop\\rapidchiplet\\output\\inmin_v08_20261104\\study_v2",
+    "tested_source": "7d98cc432b43049f36901f42ef59329e22304b611abc485a36b86c0705ab9b40",
+    "current_source": "9ee5237e2f5ab48bb98d6cb388f88427170faafec4e8c7218edf3e2cb3651562",
+    "tests": 188,
+    "difference": [
+      "scripts/test_full_system_workflow.py"
+    ],
+    "new_regression_PPA": 0,
+    "scope": "identical regression code/tests/native binaries; original result retained verbatim; changed CLI harness rerun separately"
+  },
+  "actual_CLI_s": 313.59985729982145,
+  "actual_GUI_PPA": 8,
+  "development": {
+    "new_full_PPA": 56,
+    "gain_after_shared_pct": 16.473232859200635,
+    "best_EDP": 0.04301301442480798
+  },
+  "scope": "software QA passed; first real development arm audited. Matched controls/independent seeds still running; no RL superiority preclaim"
+}

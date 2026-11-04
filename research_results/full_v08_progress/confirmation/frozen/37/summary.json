@@ -1,0 +1,448 @@
+{
+  "rl": {
+    "method": "rl",
+    "status": "wall_time_budget_exhausted",
+    "common_full_ppa": 100,
+    "search_full_ppa": 64,
+    "full_ppa": 164,
+    "seed_cost": 0.30275783751869356,
+    "best_cost": 0.044404874767416266,
+    "gain_vs_seed_pct": 85.3332038795942,
+    "best": {
+      "feasible": true,
+      "latency_s": 0.0023286204623046655,
+      "energy_j": 0.013724697152982687,
+      "power_w": 5.893917611373722,
+      "area_mm2": 180.04632367058824,
+      "dram_read_bytes": 13256812,
+      "dram_write_bytes": 1000,
+      "noc_hop_bytes": 169366208,
+      "nop_hop_bytes": 88538080,
+      "executed_macs": 1814073344,
+      "recompute_macs": 0,
+      "unit_count": 4024,
+      "calendar_backend": "native",
+      "oracle_phase_wall_s": {
+        "compile": 2.1719999997876585,
+        "communication_and_job_build": 8.688000000081956,
+        "schedule": 4.343000000109896,
+        "capacity_and_metrics": 3.703999999910593,
+        "diagnostics": 0.921000000089407
+      },
+      "oracle_process_cpu_s": 19.25
+    },
+    "initial": {
+      "feasible": true,
+      "latency_s": 0.011818170269609494,
+      "energy_j": 0.018438092177364144,
+      "power_w": 1.5601477857175425,
+      "area_mm2": 64.79423152941176,
+      "dram_read_bytes": 54080428,
+      "dram_write_bytes": 2635752,
+      "noc_hop_bytes": 241375552,
+      "nop_hop_bytes": 68313792,
+      "executed_macs": 1814073344,
+      "recompute_macs": 0,
+      "unit_count": 3768,
+      "calendar_backend": "native",
+      "oracle_phase_wall_s": {
+        "compile": 1.9060000001918525,
+        "communication_and_job_build": 12.609999999869615,
+        "schedule": 4.327999999979511,
+        "capacity_and_metrics": 1.8120000001508743,
+        "diagnostics": 1.078999999910593
+      },
+      "oracle_process_cpu_s": 20.8125
+    },
+    "best_step": 53,
+    "best_state_hash": "2a268f5eaefb5156c364bb6d6c3ba4a077273ba45bab46fe7bb0bce7225af8cb",
+    "best_architecture": "single_array_c15_3x5",
+    "best_fusion_depth": 0,
+    "policy_updates": 1992,
+    "search_wall_s": 1802.8031810000539,
+    "charged_wall_s": 4032.813815999776,
+    "architecture_coverage": {
+      "single_array_c1_1x1": {
+        "status": "full_evaluated",
+        "feasible": false,
+        "step": 8
+      },
+      "single_array_c2_1x2": {
+        "status": "full_evaluated",
+        "feasible": false,
+        "step": 60
+      },
+      "single_array_c3_1x3": {
+        "status": "full_evaluated",
+        "feasible": false,
+        "step": 28
+      },
+      "single_array_c4_2x2": {
+        "status": "full_evaluated",
+        "feasible": false,
+        "step": 56
+      },
+      "single_array_c5_1x5": {
+        "status": "full_evaluated",
+        "feasible": true,
+        "step": 20
+      },
+      "single_array_c6_2x3": {
+        "status": "full_completed",
+        "shared_screen": true
+      },
+      "single_array_c7_1x7": {
+        "status": "full_evaluated",
+        "feasible": true,
+        "step": 48
+      },
+      "single_array_c8_2x4": {
+        "status": "full_evaluated",
+        "feasible": true,
+        "step": 63
+      },
+      "single_array_c9_3x3": {
+        "status": "full_evaluated",
+        "feasible": true,
+        "step": 47
+      },
+      "single_array_c10_2x5": {
+        "status": "full_evaluated",
+        "feasible": true,
+        "step": 25
+      },
+      "single_array_c11_1x11": {
+        "status": "full_evaluated",
+        "feasible": true,
+        "step": 41
+      },
+      "single_array_c12_3x4": {
+        "status": "full_evaluated",
+        "feasible": true,
+        "step": 50
+      },
+      "single_array_c13_1x13": {
+        "status": "full_evaluated",
+        "feasible": true,
+        "step": 38
+      },
+      "single_array_c14_2x7": {
+        "status": "full_evaluated",
+        "feasible": true,
+        "step": 34
+      },
+      "single_array_c15_3x5": {
+        "status": "full_evaluated",
+        "feasible": true,
+        "step": 55
+      },
+      "single_array_c16_4x4": {
+        "status": "full_completed",
+        "shared_screen": true
+      },
+      "single_array_c2_2x1": {
+        "status": "full_completed",
+        "shared_screen": true
+      },
+      "single_array_c3_3x1": {
+        "status": "full_completed",
+        "shared_screen": true
+      },
+      "single_array_c4_1x4": {
+        "status": "full_evaluated",
+        "feasible": true,
+        "step": 43
+      },
+      "single_array_c4_4x1": {
+        "status": "full_completed",
+        "shared_screen": true
+      },
+      "single_array_c5_5x1": {
+        "status": "full_completed",
+        "shared_screen": true
+      },
+      "single_array_c6_1x6": {
+        "status": "full_completed",
+        "shared_screen": true
+      },
+      "single_array_c6_3x2": {
+        "status": "full_completed",
+        "shared_screen": true
+      },
+      "single_array_c6_6x1": {
+        "status": "full_evaluated",
+        "feasible": true,
+        "step": 52
+      },
+      "single_array_c7_7x1": {
+        "status": "full_evaluated",
+        "feasible": true,
+        "step": 18
+      },
+      "single_array_c8_1x8": {
+        "status": "full_evaluated",
+        "feasible": true,
+        "step": 61
+      },
+      "single_array_c8_4x2": {
+        "status": "full_completed",
+        "shared_screen": true
+      },
+      "single_array_c8_8x1": {
+        "status": "full_completed",
+        "shared_screen": true
+      },
+      "single_array_c9_1x9": {
+        "status": "full_evaluated",
+        "feasible": true,
+        "step": 19
+      },
+      "single_array_c9_9x1": {
+        "status": "full_completed",
+        "shared_screen": true
+      },
+      "single_array_c10_1x10": {
+        "status": "full_completed",
+        "shared_screen": true
+      },
+      "single_array_c10_5x2": {
+        "status": "full_completed",
+        "shared_screen": true
+      },
+      "single_array_c10_10x1": {
+        "status": "full_completed",
+        "shared_screen": true
+      },
+      "single_array_c11_11x1": {
+        "status": "full_completed",
+        "shared_screen": true
+      },
+      "single_array_c12_1x12": {
+        "status": "full_completed",
+        "shared_screen": true
+      },
+      "single_array_c12_2x6": {
+        "status": "full_completed",
+        "shared_screen": true
+      },
+      "single_array_c12_4x3": {
+        "status": "full_completed",
+        "shared_screen": true
+      },
+      "single_array_c12_6x2": {
+        "status": "full_evaluated",
+        "feasible": true,
+        "step": 17
+      },
+      "single_array_c12_12x1": {
+        "status": "full_completed",
+        "shared_screen": true
+      },
+      "single_array_c13_13x1": {
+        "status": "full_completed",
+        "shared_screen": true
+      },
+      "single_array_c14_1x14": {
+        "status": "full_evaluated",
+        "feasible": true,
+        "step": 51
+      },
+      "single_array_c14_7x2": {
+        "status": "full_completed",
+        "shared_screen": true
+      },
+      "single_array_c14_14x1": {
+        "status": "full_completed",
+        "shared_screen": true
+      },
+      "single_array_c15_1x15": {
+        "status": "full_evaluated",
+        "feasible": true,
+        "step": 64
+      },
+      "single_array_c15_5x3": {
+        "status": "full_evaluated",
+        "feasible": true,
+        "step": 42
+      },
+      "single_array_c15_15x1": {
+        "status": "full_completed",
+        "shared_screen": true
+      },
+      "single_array_c16_1x16": {
+        "status": "full_completed",
+        "shared_screen": true
+      },
+      "single_array_c16_2x8": {
+        "status": "full_evaluated",
+        "feasible": true,
+        "step": 29
+      },
+      "single_array_c16_8x2": {
+        "status": "full_completed",
+        "shared_screen": true
+      },
+      "single_array_c16_16x1": {
+        "status": "full_evaluated",
+        "feasible": true,
+        "step": 4
+      }
+    },
+    "gain_after_shared_screen_pct": 13.77038591196359,
+    "gain_before_rl_pct": 82.99099877052483,
+    "latency_improvement_pct": 80.29626914165614,
+    "energy_improvement_pct": 25.563355357166195,
+    "area_improvement_pct": -177.87400115836022,
+    "objective": "edp",
+    "gamma": 0.9,
+    "domain": "v08_stratified_architecture_full_schema3_1",
+    "strict_feasible": true,
+    "algorithm": "frozen_shared_q_control",
+    "online_policy_updates_enabled": false,
+    "shared_warmstart_enabled": true,
+    "q_representation": "physical_cost_factored_double_q_v1",
+    "episode_cost_rise_limit": 0.25,
+    "episode_restart_probability": 0.9,
+    "architecture_refresh": {
+      "interval": 4,
+      "tried": [
+        16,
+        1,
+        8,
+        12,
+        5,
+        10,
+        3,
+        14,
+        13,
+        11,
+        9,
+        7,
+        6,
+        4,
+        2,
+        15
+      ],
+      "cycle": 0,
+      "history": [
+        {
+          "cycle": 0,
+          "count": 16,
+          "step": 4,
+          "state_hash": "49fcfadf0811ac7873835bf77b48fdbbbcb0c6dd006e0772e85ec4feaf45b290",
+          "status": "full_completed"
+        },
+        {
+          "cycle": 0,
+          "count": 1,
+          "step": 8,
+          "state_hash": "2b0e5fbdf83214f47f5b21add59b04c4c3e7eccd83f840fc2a6db76797d84c21",
+          "status": "full_completed"
+        },
+        {
+          "cycle": 0,
+          "count": 8,
+          "step": 12,
+          "state_hash": "50a331e70d74a41529de1a2e13b6c0697470fd964a2c69009007e134d530b9eb",
+          "status": "full_completed"
+        },
+        {
+          "cycle": 0,
+          "count": 12,
+          "step": 16,
+          "state_hash": "dcc16400035c6b9f569c448d1681806a7b3377c470392e0001dbe47864dea76f",
+          "status": "full_completed"
+        },
+        {
+          "cycle": 0,
+          "count": 5,
+          "step": 20,
+          "state_hash": "22b9068074f4f6a8a7db5c0c234b34c015295031a5289e02418c1b251bedd579",
+          "status": "full_completed"
+        },
+        {
+          "cycle": 0,
+          "count": 10,
+          "step": 24,
+          "state_hash": "88765e90e262e2186701951c393ec2c86d686dc0ccf131f5b1f63d32d4ce3e1e",
+          "status": "full_completed"
+        },
+        {
+          "cycle": 0,
+          "count": 3,
+          "step": 28,
+          "state_hash": "add3f743cd56e21edb1e04751f34a37fc782162833d5713dc109451c5e89b9a8",
+          "status": "full_completed"
+        },
+        {
+          "cycle": 0,
+          "count": 14,
+          "step": 32,
+          "state_hash": "959eedd7cce8b8e12d37f51e8035de9b7533ae17c62bc88029f2b6d9fcd81370",
+          "status": "full_completed"
+        },
+        {
+          "cycle": 0,
+          "count": 13,
+          "step": 36,
+          "state_hash": "7006e3298e92ff163d7f9890734f4bdcc66b1e0382597332db501a3c970cc283",
+          "status": "full_completed"
+        },
+        {
+          "cycle": 0,
+          "count": 11,
+          "step": 40,
+          "state_hash": "beb57689179f288d58e29fecd8f13282ed061d8bf1dae6e3939b12cbf935bcfe",
+          "status": "full_completed"
+        },
+        {
+          "cycle": 0,
+          "count": 9,
+          "step": 44,
+          "state_hash": "0ddeae7ea9218d5ccf6aded58346727d11a4e61be30e15e637879d53c70280e7",
+          "status": "full_completed"
+        },
+        {
+          "cycle": 0,
+          "count": 7,
+          "step": 48,
+          "state_hash": "8296e9162031cce8bb2e6b65c2aed830393bb7ed80e422b5917e3b2856db10a9",
+          "status": "full_completed"
+        },
+        {
+          "cycle": 0,
+          "count": 6,
+          "step": 52,
+          "state_hash": "a0a3d6d2f80cd6b52af5751f5a7ec1633321a5de3afb87fc29879c9e7a69e5d7",
+          "status": "full_completed"
+        },
+        {
+          "cycle": 0,
+          "count": 4,
+          "step": 56,
+          "state_hash": "dc7f94a67a093588e4b71c12b4ad18e0e12290fd3b934cd5d3cbf448e518ed61",
+          "status": "full_completed"
+        },
+        {
+          "cycle": 0,
+          "count": 2,
+          "step": 60,
+          "state_hash": "ac51374ed8090d8cc98b034ada79ddb38c2b59bf0f042602c995c778a4c3f0eb",
+          "status": "full_completed"
+        },
+        {
+          "cycle": 0,
+          "count": 15,
+          "step": 64,
+          "state_hash": "c03291da7e8ddc9766f9b77e16b9988f203dfc02818bb4609a559ff8a85a6f86",
+          "status": "full_completed"
+        }
+      ],
+      "pending_count": null
+    },
+    "cost_rank_weight": 0.0,
+    "feature_evaluation": "all candidates for neural selection/TD",
+    "recommended_cost": 0.044404874767416266,
+    "note": "best_* and gain fields describe penalized search elite; recommendation.json contains only strict-feasible designs"
+  }
+}

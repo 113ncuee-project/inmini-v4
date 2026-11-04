@@ -1,0 +1,137 @@
+﻿group,scope,axis,budget,id,best_EDP
+development/7,all completed arms,q,146,development/controls/7/sa,0.05060347254695546
+development/7,all completed arms,q,146,development/controls/7/random,0.035657045459747544
+development/7,all completed arms,q,146,development/frozen/7/rl,0.044697498476440785
+development/7,all completed arms,q,146,development/stratified/7/rl,0.04301301442480798
+development/7,all completed arms,q,146,development/uniform/7/rl,0.042469314246014196
+development/7,all completed arms,seconds,3875.1615209996235,development/controls/7/sa,0.05060347254695546
+development/7,all completed arms,seconds,3875.1615209996235,development/controls/7/random,0.03490599181039195
+development/7,all completed arms,seconds,3875.1615209996235,development/frozen/7/rl,0.044697498476440785
+development/7,all completed arms,seconds,3875.1615209996235,development/stratified/7/rl,0.04301301442480798
+development/7,all completed arms,seconds,3875.1615209996235,development/uniform/7/rl,0.035414422193450805
+development/7,pair: development/controls/7/sa versus development/controls/7/random,q,146,development/controls/7/sa,0.05060347254695546
+development/7,pair: development/controls/7/sa versus development/controls/7/random,q,146,development/controls/7/random,0.035657045459747544
+development/7,pair: development/controls/7/sa versus development/controls/7/random,seconds,3875.1615209996235,development/controls/7/sa,0.05060347254695546
+development/7,pair: development/controls/7/sa versus development/controls/7/random,seconds,3875.1615209996235,development/controls/7/random,0.03490599181039195
+development/7,pair: development/controls/7/sa versus development/frozen/7/rl,q,146,development/controls/7/sa,0.05060347254695546
+development/7,pair: development/controls/7/sa versus development/frozen/7/rl,q,146,development/frozen/7/rl,0.044697498476440785
+development/7,pair: development/controls/7/sa versus development/frozen/7/rl,seconds,4032.312844899716,development/controls/7/sa,0.05060347254695546
+development/7,pair: development/controls/7/sa versus development/frozen/7/rl,seconds,4032.312844899716,development/frozen/7/rl,0.044697498476440785
+development/7,pair: development/controls/7/sa versus development/stratified/7/rl,q,146,development/controls/7/sa,0.05060347254695546
+development/7,pair: development/controls/7/sa versus development/stratified/7/rl,q,146,development/stratified/7/rl,0.04301301442480798
+development/7,pair: development/controls/7/sa versus development/stratified/7/rl,seconds,4032.312844899716,development/controls/7/sa,0.05060347254695546
+development/7,pair: development/controls/7/sa versus development/stratified/7/rl,seconds,4032.312844899716,development/stratified/7/rl,0.04301301442480798
+development/7,pair: development/controls/7/sa versus development/uniform/7/rl,q,146,development/controls/7/sa,0.05060347254695546
+development/7,pair: development/controls/7/sa versus development/uniform/7/rl,q,146,development/uniform/7/rl,0.042469314246014196
+development/7,pair: development/controls/7/sa versus development/uniform/7/rl,seconds,3966.0490628997795,development/controls/7/sa,0.05060347254695546
+development/7,pair: development/controls/7/sa versus development/uniform/7/rl,seconds,3966.0490628997795,development/uniform/7/rl,0.03537176913906781
+development/7,pair: development/controls/7/random versus development/frozen/7/rl,q,146,development/controls/7/random,0.035657045459747544
+development/7,pair: development/controls/7/random versus development/frozen/7/rl,q,146,development/frozen/7/rl,0.044697498476440785
+development/7,pair: development/controls/7/random versus development/frozen/7/rl,seconds,3875.1615209996235,development/controls/7/random,0.03490599181039195
+development/7,pair: development/controls/7/random versus development/frozen/7/rl,seconds,3875.1615209996235,development/frozen/7/rl,0.044697498476440785
+development/7,pair: development/controls/7/random versus development/stratified/7/rl,q,156,development/controls/7/random,0.035657045459747544
+development/7,pair: development/controls/7/random versus development/stratified/7/rl,q,156,development/stratified/7/rl,0.04301301442480798
+development/7,pair: development/controls/7/random versus development/stratified/7/rl,seconds,3875.1615209996235,development/controls/7/random,0.03490599181039195
+development/7,pair: development/controls/7/random versus development/stratified/7/rl,seconds,3875.1615209996235,development/stratified/7/rl,0.04301301442480798
+development/7,pair: development/controls/7/random versus development/uniform/7/rl,q,196,development/controls/7/random,0.03490599181039195
+development/7,pair: development/controls/7/random versus development/uniform/7/rl,q,196,development/uniform/7/rl,0.03537176913906781
+development/7,pair: development/controls/7/random versus development/uniform/7/rl,seconds,3875.1615209996235,development/controls/7/random,0.03490599181039195
+development/7,pair: development/controls/7/random versus development/uniform/7/rl,seconds,3875.1615209996235,development/uniform/7/rl,0.035414422193450805
+development/7,pair: development/frozen/7/rl versus development/stratified/7/rl,q,146,development/frozen/7/rl,0.044697498476440785
+development/7,pair: development/frozen/7/rl versus development/stratified/7/rl,q,146,development/stratified/7/rl,0.04301301442480798
+development/7,pair: development/frozen/7/rl versus development/stratified/7/rl,seconds,4032.35629969975,development/frozen/7/rl,0.044697498476440785
+development/7,pair: development/frozen/7/rl versus development/stratified/7/rl,seconds,4032.35629969975,development/stratified/7/rl,0.04301301442480798
+development/7,pair: development/frozen/7/rl versus development/uniform/7/rl,q,146,development/frozen/7/rl,0.044697498476440785
+development/7,pair: development/frozen/7/rl versus development/uniform/7/rl,q,146,development/uniform/7/rl,0.042469314246014196
+development/7,pair: development/frozen/7/rl versus development/uniform/7/rl,seconds,3966.0490628997795,development/frozen/7/rl,0.044697498476440785
+development/7,pair: development/frozen/7/rl versus development/uniform/7/rl,seconds,3966.0490628997795,development/uniform/7/rl,0.03537176913906781
+development/7,pair: development/stratified/7/rl versus development/uniform/7/rl,q,156,development/stratified/7/rl,0.04301301442480798
+development/7,pair: development/stratified/7/rl versus development/uniform/7/rl,q,156,development/uniform/7/rl,0.042469314246014196
+development/7,pair: development/stratified/7/rl versus development/uniform/7/rl,seconds,3966.0490628997795,development/stratified/7/rl,0.04301301442480798
+development/7,pair: development/stratified/7/rl versus development/uniform/7/rl,seconds,3966.0490628997795,development/uniform/7/rl,0.03537176913906781
+confirmation/37,all completed arms,q,164,confirmation/frozen/37/rl,0.044404874767416266
+confirmation/37,all completed arms,q,164,confirmation/stratified/37/rl,0.04089140035010053
+confirmation/37,all completed arms,q,164,confirmation/stratified/37/sa,0.04797783290244706
+confirmation/37,all completed arms,q,164,confirmation/stratified/37/random,0.04926761971194577
+confirmation/37,all completed arms,q,164,confirmation/uniform/37/rl,0.048342419597821366
+confirmation/37,all completed arms,seconds,3260.023283199873,confirmation/frozen/37/rl,0.050349592191422446
+confirmation/37,all completed arms,seconds,3260.023283199873,confirmation/stratified/37/rl,0.04089769624956754
+confirmation/37,all completed arms,seconds,3260.023283199873,confirmation/stratified/37/sa,0.04766623934195835
+confirmation/37,all completed arms,seconds,3260.023283199873,confirmation/stratified/37/random,0.05009187883558598
+confirmation/37,all completed arms,seconds,3260.023283199873,confirmation/uniform/37/rl,0.050349592191422446
+confirmation/37,pair: confirmation/frozen/37/rl versus confirmation/stratified/37/rl,q,164,confirmation/frozen/37/rl,0.044404874767416266
+confirmation/37,pair: confirmation/frozen/37/rl versus confirmation/stratified/37/rl,q,164,confirmation/stratified/37/rl,0.04089140035010053
+confirmation/37,pair: confirmation/frozen/37/rl versus confirmation/stratified/37/rl,seconds,4031.7744269997347,confirmation/frozen/37/rl,0.044404874767416266
+confirmation/37,pair: confirmation/frozen/37/rl versus confirmation/stratified/37/rl,seconds,4031.7744269997347,confirmation/stratified/37/rl,0.03640269707992832
+confirmation/37,pair: confirmation/frozen/37/rl versus confirmation/stratified/37/sa,q,164,confirmation/frozen/37/rl,0.044404874767416266
+confirmation/37,pair: confirmation/frozen/37/rl versus confirmation/stratified/37/sa,q,164,confirmation/stratified/37/sa,0.04797783290244706
+confirmation/37,pair: confirmation/frozen/37/rl versus confirmation/stratified/37/sa,seconds,3260.023283199873,confirmation/frozen/37/rl,0.050349592191422446
+confirmation/37,pair: confirmation/frozen/37/rl versus confirmation/stratified/37/sa,seconds,3260.023283199873,confirmation/stratified/37/sa,0.04766623934195835
+confirmation/37,pair: confirmation/frozen/37/rl versus confirmation/stratified/37/random,q,164,confirmation/frozen/37/rl,0.044404874767416266
+confirmation/37,pair: confirmation/frozen/37/rl versus confirmation/stratified/37/random,q,164,confirmation/stratified/37/random,0.04926761971194577
+confirmation/37,pair: confirmation/frozen/37/rl versus confirmation/stratified/37/random,seconds,3950.9133649996947,confirmation/frozen/37/rl,0.044404874767416266
+confirmation/37,pair: confirmation/frozen/37/rl versus confirmation/stratified/37/random,seconds,3950.9133649996947,confirmation/stratified/37/random,0.047065590780475654
+confirmation/37,pair: confirmation/frozen/37/rl versus confirmation/uniform/37/rl,q,164,confirmation/frozen/37/rl,0.044404874767416266
+confirmation/37,pair: confirmation/frozen/37/rl versus confirmation/uniform/37/rl,q,164,confirmation/uniform/37/rl,0.048342419597821366
+confirmation/37,pair: confirmation/frozen/37/rl versus confirmation/uniform/37/rl,seconds,4030.0562240995932,confirmation/frozen/37/rl,0.044404874767416266
+confirmation/37,pair: confirmation/frozen/37/rl versus confirmation/uniform/37/rl,seconds,4030.0562240995932,confirmation/uniform/37/rl,0.045022468390082566
+confirmation/37,pair: confirmation/stratified/37/rl versus confirmation/stratified/37/sa,q,178,confirmation/stratified/37/rl,0.03640269707992832
+confirmation/37,pair: confirmation/stratified/37/rl versus confirmation/stratified/37/sa,q,178,confirmation/stratified/37/sa,0.04797783290244706
+confirmation/37,pair: confirmation/stratified/37/rl versus confirmation/stratified/37/sa,seconds,3260.023283199873,confirmation/stratified/37/rl,0.04089769624956754
+confirmation/37,pair: confirmation/stratified/37/rl versus confirmation/stratified/37/sa,seconds,3260.023283199873,confirmation/stratified/37/sa,0.04766623934195835
+confirmation/37,pair: confirmation/stratified/37/rl versus confirmation/stratified/37/random,q,178,confirmation/stratified/37/rl,0.03640269707992832
+confirmation/37,pair: confirmation/stratified/37/rl versus confirmation/stratified/37/random,q,178,confirmation/stratified/37/random,0.04708286067010665
+confirmation/37,pair: confirmation/stratified/37/rl versus confirmation/stratified/37/random,seconds,3950.9133649996947,confirmation/stratified/37/rl,0.037012217756356186
+confirmation/37,pair: confirmation/stratified/37/rl versus confirmation/stratified/37/random,seconds,3950.9133649996947,confirmation/stratified/37/random,0.047065590780475654
+confirmation/37,pair: confirmation/stratified/37/rl versus confirmation/uniform/37/rl,q,178,confirmation/stratified/37/rl,0.03640269707992832
+confirmation/37,pair: confirmation/stratified/37/rl versus confirmation/uniform/37/rl,q,178,confirmation/uniform/37/rl,0.045022468390082566
+confirmation/37,pair: confirmation/stratified/37/rl versus confirmation/uniform/37/rl,seconds,4030.0562240995932,confirmation/stratified/37/rl,0.03640269707992832
+confirmation/37,pair: confirmation/stratified/37/rl versus confirmation/uniform/37/rl,seconds,4030.0562240995932,confirmation/uniform/37/rl,0.045022468390082566
+confirmation/37,pair: confirmation/stratified/37/sa versus confirmation/stratified/37/random,q,196,confirmation/stratified/37/sa,0.04766623934195835
+confirmation/37,pair: confirmation/stratified/37/sa versus confirmation/stratified/37/random,q,196,confirmation/stratified/37/random,0.047065590780475654
+confirmation/37,pair: confirmation/stratified/37/sa versus confirmation/stratified/37/random,seconds,3260.023283199873,confirmation/stratified/37/sa,0.04766623934195835
+confirmation/37,pair: confirmation/stratified/37/sa versus confirmation/stratified/37/random,seconds,3260.023283199873,confirmation/stratified/37/random,0.05009187883558598
+confirmation/37,pair: confirmation/stratified/37/sa versus confirmation/uniform/37/rl,q,191,confirmation/stratified/37/sa,0.04766623934195835
+confirmation/37,pair: confirmation/stratified/37/sa versus confirmation/uniform/37/rl,q,191,confirmation/uniform/37/rl,0.045022468390082566
+confirmation/37,pair: confirmation/stratified/37/sa versus confirmation/uniform/37/rl,seconds,3260.023283199873,confirmation/stratified/37/sa,0.04766623934195835
+confirmation/37,pair: confirmation/stratified/37/sa versus confirmation/uniform/37/rl,seconds,3260.023283199873,confirmation/uniform/37/rl,0.050349592191422446
+confirmation/37,pair: confirmation/stratified/37/random versus confirmation/uniform/37/rl,q,191,confirmation/stratified/37/random,0.04708286067010665
+confirmation/37,pair: confirmation/stratified/37/random versus confirmation/uniform/37/rl,q,191,confirmation/uniform/37/rl,0.045022468390082566
+confirmation/37,pair: confirmation/stratified/37/random versus confirmation/uniform/37/rl,seconds,3950.9133649996947,confirmation/stratified/37/random,0.047065590780475654
+confirmation/37,pair: confirmation/stratified/37/random versus confirmation/uniform/37/rl,seconds,3950.9133649996947,confirmation/uniform/37/rl,0.045022468390082566
+confirmation/47,all completed arms,q,158,confirmation/stratified/47/rl,0.0421568542280287
+confirmation/47,all completed arms,q,158,confirmation/stratified/47/sa,0.04281572689175235
+confirmation/47,all completed arms,q,158,confirmation/stratified/47/random,0.04813837284698751
+confirmation/47,all completed arms,seconds,4032.3863125997595,confirmation/stratified/47/rl,0.0421568542280287
+confirmation/47,all completed arms,seconds,4032.3863125997595,confirmation/stratified/47/sa,0.04281572689175235
+confirmation/47,all completed arms,seconds,4032.3863125997595,confirmation/stratified/47/random,0.0481322120521476
+confirmation/47,pair: confirmation/stratified/47/rl versus confirmation/stratified/47/sa,q,158,confirmation/stratified/47/rl,0.0421568542280287
+confirmation/47,pair: confirmation/stratified/47/rl versus confirmation/stratified/47/sa,q,158,confirmation/stratified/47/sa,0.04281572689175235
+confirmation/47,pair: confirmation/stratified/47/rl versus confirmation/stratified/47/sa,seconds,4032.3863125997595,confirmation/stratified/47/rl,0.0421568542280287
+confirmation/47,pair: confirmation/stratified/47/rl versus confirmation/stratified/47/sa,seconds,4032.3863125997595,confirmation/stratified/47/sa,0.04281572689175235
+confirmation/47,pair: confirmation/stratified/47/rl versus confirmation/stratified/47/random,q,158,confirmation/stratified/47/rl,0.0421568542280287
+confirmation/47,pair: confirmation/stratified/47/rl versus confirmation/stratified/47/random,q,158,confirmation/stratified/47/random,0.04813837284698751
+confirmation/47,pair: confirmation/stratified/47/rl versus confirmation/stratified/47/random,seconds,4032.3863125997595,confirmation/stratified/47/rl,0.0421568542280287
+confirmation/47,pair: confirmation/stratified/47/rl versus confirmation/stratified/47/random,seconds,4032.3863125997595,confirmation/stratified/47/random,0.0481322120521476
+confirmation/47,pair: confirmation/stratified/47/sa versus confirmation/stratified/47/random,q,164,confirmation/stratified/47/sa,0.04281572689175235
+confirmation/47,pair: confirmation/stratified/47/sa versus confirmation/stratified/47/random,q,164,confirmation/stratified/47/random,0.0481322120521476
+confirmation/47,pair: confirmation/stratified/47/sa versus confirmation/stratified/47/random,seconds,4032.4204356996343,confirmation/stratified/47/sa,0.04281572689175235
+confirmation/47,pair: confirmation/stratified/47/sa versus confirmation/stratified/47/random,seconds,4032.4204356996343,confirmation/stratified/47/random,0.0481322120521476
+extended_development/continued7,all completed arms,q,213,extended_development/controls_7/sa,0.04713325960533341
+extended_development/continued7,all completed arms,q,213,extended_development/controls_7/random,0.03456717271461317
+extended_development/continued7,all completed arms,q,213,extended_development/stratified_7/rl,0.04001946911883095
+extended_development/continued7,all completed arms,seconds,4972.63299319963,extended_development/controls_7/sa,0.05019798400267131
+extended_development/continued7,all completed arms,seconds,4972.63299319963,extended_development/controls_7/random,0.032964994007185326
+extended_development/continued7,all completed arms,seconds,4972.63299319963,extended_development/stratified_7/rl,0.04021621485463332
+extended_development/continued7,pair: extended_development/controls_7/sa versus extended_development/controls_7/random,q,213,extended_development/controls_7/sa,0.04713325960533341
+extended_development/continued7,pair: extended_development/controls_7/sa versus extended_development/controls_7/random,q,213,extended_development/controls_7/random,0.03456717271461317
+extended_development/continued7,pair: extended_development/controls_7/sa versus extended_development/controls_7/random,seconds,4972.63299319963,extended_development/controls_7/sa,0.05019798400267131
+extended_development/continued7,pair: extended_development/controls_7/sa versus extended_development/controls_7/random,seconds,4972.63299319963,extended_development/controls_7/random,0.032964994007185326
+extended_development/continued7,pair: extended_development/controls_7/sa versus extended_development/stratified_7/rl,q,213,extended_development/controls_7/sa,0.04713325960533341
+extended_development/continued7,pair: extended_development/controls_7/sa versus extended_development/stratified_7/rl,q,213,extended_development/stratified_7/rl,0.04001946911883095
+extended_development/continued7,pair: extended_development/controls_7/sa versus extended_development/stratified_7/rl,seconds,5830.050172999734,extended_development/controls_7/sa,0.04713325960533341
+extended_development/continued7,pair: extended_development/controls_7/sa versus extended_development/stratified_7/rl,seconds,5830.050172999734,extended_development/stratified_7/rl,0.039315256452936535
+extended_development/continued7,pair: extended_development/controls_7/random versus extended_development/stratified_7/rl,q,259,extended_development/controls_7/random,0.0329836046746789
+extended_development/continued7,pair: extended_development/controls_7/random versus extended_development/stratified_7/rl,q,259,extended_development/stratified_7/rl,0.039315256452936535
+extended_development/continued7,pair: extended_development/controls_7/random versus extended_development/stratified_7/rl,seconds,4972.63299319963,extended_development/controls_7/random,0.032964994007185326
+extended_development/continued7,pair: extended_development/controls_7/random versus extended_development/stratified_7/rl,seconds,4972.63299319963,extended_development/stratified_7/rl,0.04021621485463332

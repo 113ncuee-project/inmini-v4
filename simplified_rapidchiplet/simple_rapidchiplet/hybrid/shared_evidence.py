@@ -37,7 +37,8 @@ def verify_physical_sources(donor_files, current_files):
                 prefix + 'hybrid/rl_actions.py'}
     extra = {prefix + 'hybrid/tensor_boundary.py', prefix + 'hybrid/resource_projection.py',
              prefix + 'hybrid/shared_evidence.py', prefix + 'hybrid/lp_five.py', prefix + 'hybrid/temporal_projection.py',
-             prefix + 'hybrid/tensor_locality.py', prefix + 'hybrid/cost_value_q.py'}
+             prefix + 'hybrid/tensor_locality.py', prefix + 'hybrid/cost_value_q.py',
+             prefix + 'hybrid/architecture_refresh.py', prefix + 'hybrid/service_features.py'}
     def physical(name):
         return (name.startswith(prefix) and name not in excluded and name not in extra
                 and Path(name).suffix in ('.py', '.cpp', '.h', '.dll', '.so', '.json', '.yaml', '.toml')) or name == 'scripts/profile_mapping_oracle.py'

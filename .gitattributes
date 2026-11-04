@@ -18,3 +18,5 @@ research/** -text
 research_results/full_v07_development/** -text
 
 run_inmin_full_overnight.ps1 -text
+
+research_results/full_v08_progress/** -text

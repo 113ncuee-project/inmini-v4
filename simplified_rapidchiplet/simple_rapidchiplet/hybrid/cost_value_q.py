@@ -49,9 +49,12 @@ class CostValueNetwork(nn.Module):
 class CostValueQ:
     representation='physical_cost_factored_double_q_v1'
 
-    def __init__(self,size,after_indices,seed=7,gamma=.9,learning_rate=.001,**ignored):
+    def __init__(self,size,after_indices,seed=7,gamma=.9,learning_rate=.001,ranking_weight=0.,**ignored):
         torch.set_num_threads(1);torch.manual_seed(seed)
         self.size,self.after_indices,self.gamma=size,tuple(after_indices),gamma
+        if not math.isfinite(ranking_weight) or ranking_weight < 0:
+            raise ValueError('ranking weight must be finite and nonnegative')
+        self.ranking_weight=ranking_weight
         self.model=CostValueNetwork(size,self.after_indices)
         self.target=copy.deepcopy(self.model)
         self.optimizer=torch.optim.Adam(self.model.parameters(),lr=learning_rate)
@@ -83,6 +86,20 @@ class CostValueQ:
         self.losses=self.losses[-256:]
         if self.updates%64==0:self.target.load_state_dict(self.model.state_dict())
 
+    def _physical_loss(self,prediction,target):
+        loss=nn.functional.smooth_l1_loss(prediction,target,beta=1.)
+        if self.ranking_weight and len(target)>1:
+            truth=target[:,None]-target[None,:]
+            # Nearby measured physical costs need a useful ordering even when
+            # their absolute loss is dwarfed by poor/high-cost architectures.
+            # No unmeasured or control labels, synthetic reward, or extra PPA.
+            mask=(truth.abs()>1e-6)&(truth.abs()<=3.)
+            if mask.any():
+                difference=prediction[:,None]-prediction[None,:]
+                loss=loss+self.ranking_weight*nn.functional.smooth_l1_loss(
+                    difference[mask]/.25,truth[mask]/.25,beta=1.)
+        return loss
+
     def pretrain(self,feature,after_cost,updates=24):
         self.cost_replay.append((np.asarray(feature,np.float32),-potential(after_cost)))
         self.cost_replay=self.cost_replay[-4096:]
@@ -90,7 +107,7 @@ class CostValueQ:
             batch=self.rng.sample(self.cost_replay,min(32,len(self.cost_replay)))
             x=torch.tensor(np.stack([row[0] for row in batch]))
             y=torch.tensor([row[1] for row in batch],dtype=torch.float32)
-            self._step(nn.functional.smooth_l1_loss(self.model(x)[:,1],y,beta=1.))
+            self._step(self._physical_loss(self.model(x)[:,1],y))
 
     def observe(self,feature,reward,next_features,terminal=False,updates=24,*,before_cost,next_cost):
         p,pnext=potential(before_cost),potential(next_cost)
@@ -117,14 +134,14 @@ class CostValueQ:
             physical=self.rng.sample(self.cost_replay,min(32,len(self.cost_replay)))
             px=torch.tensor(np.stack([row[0] for row in physical]))
             py=torch.tensor([row[1] for row in physical],dtype=torch.float32)
-            vloss=nn.functional.smooth_l1_loss(self.model(px)[:,1],py,beta=1.)
+            vloss=self._physical_loss(self.model(px)[:,1],py)
             self._step(qloss+.5*vloss)
 
     def save(self,path):
         torch.save(dict(representation=self.representation,size=self.size,after_indices=self.after_indices,
             model=self.model.state_dict(),target=self.target.state_dict(),optimizer=self.optimizer.state_dict(),
             replay=self.replay,cost_replay=self.cost_replay,updates=self.updates,losses=self.losses,
-            rng=self.rng.getstate(),gamma=self.gamma,gradient=self.last_gradient_norm),path)
+            rng=self.rng.getstate(),gamma=self.gamma,gradient=self.last_gradient_norm,ranking_weight=self.ranking_weight),path)
 
     def load(self,path):
         data=torch.load(path,map_location='cpu',weights_only=False)
@@ -134,3 +151,4 @@ class CostValueQ:
         self.optimizer.load_state_dict(data['optimizer']);self.replay=data['replay'];self.cost_replay=data['cost_replay']
         self.updates,self.losses=data['updates'],data['losses'];self.rng.setstate(data['rng'])
         self.gamma,self.last_gradient_norm=data['gamma'],data['gradient']
+        self.ranking_weight=data.get('ranking_weight',0.)

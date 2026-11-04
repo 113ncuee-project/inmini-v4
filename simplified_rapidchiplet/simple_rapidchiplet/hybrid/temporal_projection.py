@@ -90,6 +90,9 @@ class TemporalProjector:
         dynamic += layer.macs_per_sample * .024e-12 + dram_weights * 8 * 8.75e-12
         idle_w = self.idle_power(architecture)
         return dict(time_s=service, energy_j=dynamic + idle_w * service,
+                    pe_service_time_s=tiles * max(mac_s, l1_s),
+                    shared_l2_time_s=shared_l2_s, vector_time_s=vector_s,
+                    dynamic_energy_j=dynamic,
                     fitting_tile=tile, largest_shard=shape, estimated_fragments=repetitions,
                     logical_stage_bytes=repetitions * l2_unit,
                     staging_burst_proxy_s=burst_s,

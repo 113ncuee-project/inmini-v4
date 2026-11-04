@@ -1,0 +1,306 @@
+{
+  "rows": [
+    {
+      "seed": 7,
+      "scope": "completed endpoint; unequal actual queries/time",
+      "method": "rl",
+      "budget": null,
+      "EDP": 0.04301301442480798,
+      "new_PPA": 56,
+      "search_seconds": 1803.8564661999699
+    },
+    {
+      "seed": 7,
+      "scope": "completed endpoint; unequal actual queries/time",
+      "method": "sa",
+      "budget": null,
+      "EDP": 0.05060347254695546,
+      "new_PPA": 46,
+      "search_seconds": 1802.9002457000315
+    },
+    {
+      "seed": 7,
+      "scope": "completed endpoint; unequal actual queries/time",
+      "method": "random",
+      "budget": null,
+      "EDP": 0.03490599181039195,
+      "new_PPA": 96,
+      "search_seconds": 1646.3840375998989
+    },
+    {
+      "seed": 7,
+      "scope": "same q budget across all3 main methods",
+      "method": "rl",
+      "budget": 146,
+      "EDP": 0.04301301442480798
+    },
+    {
+      "seed": 7,
+      "scope": "same q budget across all3 main methods",
+      "method": "sa",
+      "budget": 146,
+      "EDP": 0.05060347254695546
+    },
+    {
+      "seed": 7,
+      "scope": "same q budget across all3 main methods",
+      "method": "random",
+      "budget": 146,
+      "EDP": 0.035657045459747544
+    },
+    {
+      "seed": 7,
+      "scope": "same seconds budget across all3 main methods",
+      "method": "rl",
+      "budget": 3875.1615209996235,
+      "EDP": 0.04301301442480798
+    },
+    {
+      "seed": 7,
+      "scope": "same seconds budget across all3 main methods",
+      "method": "sa",
+      "budget": 3875.1615209996235,
+      "EDP": 0.05060347254695546
+    },
+    {
+      "seed": 7,
+      "scope": "same seconds budget across all3 main methods",
+      "method": "random",
+      "budget": 3875.1615209996235,
+      "EDP": 0.03490599181039195
+    },
+    {
+      "seed": 37,
+      "scope": "completed endpoint; unequal actual queries/time",
+      "method": "rl",
+      "budget": null,
+      "EDP": 0.03640269707992832,
+      "new_PPA": 78,
+      "search_seconds": 1803.0120300999843
+    },
+    {
+      "seed": 37,
+      "scope": "completed endpoint; unequal actual queries/time",
+      "method": "sa",
+      "budget": null,
+      "EDP": 0.04766623934195835,
+      "new_PPA": 96,
+      "search_seconds": 1031.190337400185
+    },
+    {
+      "seed": 37,
+      "scope": "completed endpoint; unequal actual queries/time",
+      "method": "random",
+      "budget": null,
+      "EDP": 0.047065590780475654,
+      "new_PPA": 96,
+      "search_seconds": 1722.293019299861
+    },
+    {
+      "seed": 37,
+      "scope": "same q budget across all3 main methods",
+      "method": "rl",
+      "budget": 178,
+      "EDP": 0.03640269707992832
+    },
+    {
+      "seed": 37,
+      "scope": "same q budget across all3 main methods",
+      "method": "sa",
+      "budget": 178,
+      "EDP": 0.04797783290244706
+    },
+    {
+      "seed": 37,
+      "scope": "same q budget across all3 main methods",
+      "method": "random",
+      "budget": 178,
+      "EDP": 0.04708286067010665
+    },
+    {
+      "seed": 37,
+      "scope": "same seconds budget across all3 main methods",
+      "method": "rl",
+      "budget": 3260.023283199873,
+      "EDP": 0.04089769624956754
+    },
+    {
+      "seed": 37,
+      "scope": "same seconds budget across all3 main methods",
+      "method": "sa",
+      "budget": 3260.023283199873,
+      "EDP": 0.04766623934195835
+    },
+    {
+      "seed": 37,
+      "scope": "same seconds budget across all3 main methods",
+      "method": "random",
+      "budget": 3260.023283199873,
+      "EDP": 0.05009187883558598
+    },
+    {
+      "seed": 47,
+      "scope": "completed endpoint; unequal actual queries/time",
+      "method": "rl",
+      "budget": null,
+      "EDP": 0.0421568542280287,
+      "new_PPA": 58,
+      "search_seconds": 1803.117714999942
+    },
+    {
+      "seed": 47,
+      "scope": "completed endpoint; unequal actual queries/time",
+      "method": "sa",
+      "budget": null,
+      "EDP": 0.04281572689175235,
+      "new_PPA": 64,
+      "search_seconds": 1803.4818797998596
+    },
+    {
+      "seed": 47,
+      "scope": "completed endpoint; unequal actual queries/time",
+      "method": "random",
+      "budget": null,
+      "EDP": 0.0481322120521476,
+      "new_PPA": 65,
+      "search_seconds": 1803.8625368999783
+    },
+    {
+      "seed": 47,
+      "scope": "same q budget across all3 main methods",
+      "method": "rl",
+      "budget": 158,
+      "EDP": 0.0421568542280287
+    },
+    {
+      "seed": 47,
+      "scope": "same q budget across all3 main methods",
+      "method": "sa",
+      "budget": 158,
+      "EDP": 0.04281572689175235
+    },
+    {
+      "seed": 47,
+      "scope": "same q budget across all3 main methods",
+      "method": "random",
+      "budget": 158,
+      "EDP": 0.04813837284698751
+    },
+    {
+      "seed": 47,
+      "scope": "same seconds budget across all3 main methods",
+      "method": "rl",
+      "budget": 4032.3863125997595,
+      "EDP": 0.0421568542280287
+    },
+    {
+      "seed": 47,
+      "scope": "same seconds budget across all3 main methods",
+      "method": "sa",
+      "budget": 4032.3863125997595,
+      "EDP": 0.04281572689175235
+    },
+    {
+      "seed": 47,
+      "scope": "same seconds budget across all3 main methods",
+      "method": "random",
+      "budget": 4032.3863125997595,
+      "EDP": 0.0481322120521476
+    }
+  ],
+  "aggregates": [
+    {
+      "scope": "completed endpoint; unequal actual queries/time",
+      "method": "rl",
+      "n": 3,
+      "mean_EDP": 0.040524188577588334,
+      "median_EDP": 0.0421568542280287,
+      "sample_std_EDP": 0.0035948952272076206,
+      "min_EDP": 0.03640269707992832,
+      "max_EDP": 0.04301301442480798
+    },
+    {
+      "scope": "completed endpoint; unequal actual queries/time",
+      "method": "sa",
+      "n": 3,
+      "mean_EDP": 0.04702847959355538,
+      "median_EDP": 0.04766623934195835,
+      "sample_std_EDP": 0.003932848677491415,
+      "min_EDP": 0.04281572689175235,
+      "max_EDP": 0.05060347254695546
+    },
+    {
+      "scope": "completed endpoint; unequal actual queries/time",
+      "method": "random",
+      "n": 3,
+      "mean_EDP": 0.04336793154767173,
+      "median_EDP": 0.047065590780475654,
+      "sample_std_EDP": 0.007347634879490934,
+      "min_EDP": 0.03490599181039195,
+      "max_EDP": 0.0481322120521476
+    },
+    {
+      "scope": "same q budget across all3 main methods",
+      "method": "rl",
+      "n": 3,
+      "mean_EDP": 0.040524188577588334,
+      "median_EDP": 0.0421568542280287,
+      "sample_std_EDP": 0.0035948952272076206,
+      "min_EDP": 0.03640269707992832,
+      "max_EDP": 0.04301301442480798
+    },
+    {
+      "scope": "same q budget across all3 main methods",
+      "method": "sa",
+      "n": 3,
+      "mean_EDP": 0.04713234411371829,
+      "median_EDP": 0.04797783290244706,
+      "sample_std_EDP": 0.0039621186335637715,
+      "min_EDP": 0.04281572689175235,
+      "max_EDP": 0.05060347254695546
+    },
+    {
+      "scope": "same q budget across all3 main methods",
+      "method": "random",
+      "n": 3,
+      "mean_EDP": 0.04362609299228057,
+      "median_EDP": 0.04708286067010665,
+      "sample_std_EDP": 0.006921547184027133,
+      "min_EDP": 0.035657045459747544,
+      "max_EDP": 0.04813837284698751
+    },
+    {
+      "scope": "same seconds budget across all3 main methods",
+      "method": "rl",
+      "n": 3,
+      "mean_EDP": 0.04202252163413474,
+      "median_EDP": 0.0421568542280287,
+      "sample_std_EDP": 0.0010640379128406803,
+      "min_EDP": 0.04089769624956754,
+      "max_EDP": 0.04301301442480798
+    },
+    {
+      "scope": "same seconds budget across all3 main methods",
+      "method": "sa",
+      "n": 3,
+      "mean_EDP": 0.04702847959355538,
+      "median_EDP": 0.04766623934195835,
+      "sample_std_EDP": 0.003932848677491415,
+      "min_EDP": 0.04281572689175235,
+      "max_EDP": 0.05060347254695546
+    },
+    {
+      "scope": "same seconds budget across all3 main methods",
+      "method": "random",
+      "n": 3,
+      "mean_EDP": 0.04437669423270851,
+      "median_EDP": 0.0481322120521476,
+      "sample_std_EDP": 0.008260189268690063,
+      "min_EDP": 0.03490599181039195,
+      "max_EDP": 0.05009187883558598
+    }
+  ],
+  "new_PPA": 0,
+  "new_SGD": 0,
+  "scope": "3 fixed shared-start RNG trajectories; development7 is not fresh confirmation. Floors differ across RNG but match all3 methods within each RNG. No independence or statistical-significance claim"
+}

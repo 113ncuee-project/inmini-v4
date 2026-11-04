@@ -27,6 +27,7 @@ from replay_mapping_dse import compact, cost, append
 from simple_rapidchiplet.hybrid.full_space import FullDesignSpace, DesignTrial, decision_hash
 from simple_rapidchiplet.hybrid.multi_step_q import MultiStepQ
 from simple_rapidchiplet.hybrid.cost_value_q import CostValueQ
+from simple_rapidchiplet.hybrid.architecture_refresh import ArchitectureRefresh
 from simple_rapidchiplet.hybrid.rl_actions import validate_state
 from simple_rapidchiplet.hybrid.rl_schema import DesignState
 from simple_rapidchiplet.hybrid.search import _rng_tuple, plan_from_dict
@@ -122,7 +123,8 @@ def execute(args):
                            inner=not args.no_inner, composites=not args.no_composites,
                            guidance=args.guidance, fusion=not args.fusion_off, legacy_generator=args.legacy_generator,
                            boundary_features=not args.no_boundary_features, resource_projection=not args.no_resource_projection,
-                           operators=args.operators, architecture_scaling=args.architecture_scaling)
+                           operators=args.operators, architecture_scaling=args.architecture_scaling,
+                           service_features=args.service_features)
     write(out / 'design_space.json', space.domain())
     # Architecture enumeration is a shared outer phase, paid once physically
     # and charged identically to every comparator. No layout is pruned from
@@ -236,7 +238,8 @@ def execute(args):
             inner=not args.no_inner, composites=not args.no_composites, guidance=args.guidance,
             fusion=not args.fusion_off, legacy_generator=args.legacy_generator,
             boundary_features=not args.no_boundary_features, resource_projection=not args.no_resource_projection,
-            operators=args.operators, architecture_scaling=args.architecture_scaling)
+            operators=args.operators, architecture_scaling=args.architecture_scaling,
+            service_features=args.service_features)
         folder = out / method
         folder.mkdir(exist_ok=True)
         saved = read(folder / 'checkpoint.json', {})
@@ -268,14 +271,17 @@ def execute(args):
             accept_rng.setstate(_rng_tuple(saved['accept_rng']))
         space.calls = saved.get('generator_calls', 0)
         cached_trials = [DesignTrial.from_dict(t) for t in saved.get('candidate_set', ())]
+        proposal_kind = saved.get('proposal_kind', 'ordinary')
+        refresh = ArchitectureRefresh.restore(args.architecture_refresh_interval, saved.get('architecture_refresh'))
         policy_revision = saved.get('policy_revision', 0)
         policy_history = saved.get('policy_history', [])
         # Feature dimension is declarative, independent of which action family
         # happens to be present at startup.
         started = time.perf_counter()
         size = space.features(initial, initial_metrics, reference, [DesignTrial(initial, 'A2')]).shape[1]
-        graph_size = len(space.graph_feature_names) if space.boundary_features else 0
-        policy = (CostValueQ(size, space.after_design_indices, args.seed, gamma=args.gamma) if args.cost_value_q else
+        graph_size = len(space.graph_feature_names)
+        policy = (CostValueQ(size, space.after_design_indices, args.seed, gamma=args.gamma,
+                            ranking_weight=args.cost_rank_weight) if args.cost_value_q else
                   MultiStepQ(size, args.seed, gamma=args.gamma, base_size=size - graph_size if graph_size else None))
         if saved.get('policy_file'):
             policy.load(folder / saved['policy_file'])
@@ -331,6 +337,7 @@ def execute(args):
                 policy_revision=policy_revision, policy_history=policy_history,
                 policy_updates=policy.updates, pending_transition=pending, coverage=coverage, best_step=best_step,
                 candidate_set=[t.to_dict() for t in cached_trials], source_identity=manifest['identity'],
+                proposal_kind=proposal_kind, architecture_refresh=refresh.to_dict(),
                 best_feasible=dict(state=feasible_state.to_dict(), metrics=feasible_m, cost=feasible_cost) if feasible_state else None))
             # Only explicitly recorded generations created by this runner are
             # retired, after the new checkpoint is durable. Initial Q remains.
@@ -355,9 +362,18 @@ def execute(args):
                 # Each point is a charged oracle action, shared by all methods.
                 phase = 'uniform_warmup' if pool.full_evaluations < args.warmup else 'learning_search'
                 cached_trials = [t for t in cached_trials if t.fingerprint not in visited]
+                # Periodic outer frames are shared by all selectors. Transfer
+                # the paid elite template, not a known control's design. The
+                # request below remains one real complete mapping evaluation.
+                if refresh.due(steps) and proposal_kind != 'architecture_refresh':
+                    cached_trials, generation = refresh.proposals(space, elite, visited)
+                    cached_trials = list(cached_trials)
+                    proposal_kind = 'architecture_refresh' if cached_trials else 'ordinary'
+                    append(folder / 'proposal_ledger.jsonl', dict(step=steps + 1, **generation))
                 if not cached_trials:
                     cached_trials, generation = space.propose(current, current_m, rng, visited)
                     cached_trials = list(cached_trials)
+                    proposal_kind = 'ordinary'
                     append(folder / 'proposal_ledger.jsonl', dict(step=steps + 1, **generation))
                 if not cached_trials:
                     stop_reason = 'proposal_stalled'
@@ -395,6 +411,7 @@ def execute(args):
                     behavior_probability=float(probabilities[chosen]), probabilities=probabilities.tolist(),
                     q_values=q.tolist(), selected_index=chosen, candidate_hashes=[t.fingerprint for t in cached_trials],
                     episode=episode, epoch_steps=epoch_steps, policy_updates_before=updates_before,
+                    proposal_kind=proposal_kind, architecture_refresh_count=refresh.pending_count,
                     before_cost=before, source_identity=manifest['identity'])
                 write(folder / 'pending_trial.json', request)
                 full_before = pool.full_evaluations
@@ -464,7 +481,11 @@ def execute(args):
                         reason=str(error), feasible=None, cost=None, reward=None, improved_global_best=False, accepted=False)
                 # Generate successor candidates only once per accepted state.
                 # Rejected/invalid trials reuse the untried set at the same base.
-                cached_trials = [] if outcome['accepted'] or phase == 'architecture_screen' else [t for t in cached_trials if t.fingerprint not in visited]
+                if proposal_kind == 'architecture_refresh':
+                    refresh.finish(step=steps, state_hash=trial.fingerprint, status=outcome['status'])
+                    cached_trials, proposal_kind = [], 'ordinary'
+                else:
+                    cached_trials = [] if outcome['accepted'] or phase == 'architecture_screen' else [t for t in cached_trials if t.fingerprint not in visited]
                 event = {**request, **outcome, 'best_cost': elite_cost, 'new_full_ppa': pool.full_evaluations - full_before,
                     'charged_full_ppa': common_charge + pool.full_evaluations, 'evaluation_wall_s': time.perf_counter() - tick,
                     'search_wall_s': elapsed + time.perf_counter() - started, 'policy_updates_after': policy.updates,
@@ -521,6 +542,8 @@ def execute(args):
             summary['algorithm'] = 'one_step_action_value_rl'
         summary['episode_cost_rise_limit'] = args.episode_cost_rise
         summary['episode_restart_probability'] = args.episode_restart_probability
+        summary['architecture_refresh'] = refresh.to_dict()
+        summary['cost_rank_weight'] = args.cost_rank_weight
         summary['feature_evaluation'] = 'all candidates for neural selection/TD' if method=='rl' and not(args.uniform_policy and args.freeze_search_policy) else 'selected candidate only; no unused neural feature overhead'
         summary['recommended_cost'] = feasible_cost
         summary['note'] = 'best_* and gain fields describe penalized search elite; recommendation.json contains only strict-feasible designs'
@@ -583,6 +606,12 @@ def main():
     p.add_argument('--no-boundary-features', action='store_true')
     p.add_argument('--cost-value-q', action='store_true', help='factor exact measured before cost from Q; learn an invariant after-design cost head and a genuine multi-step continuation branch')
     p.add_argument('--architecture-scaling', choices=('legacy','proportional'), default='proportional', help='additional architecture shortcut; all original integer PE quotas remain reachable')
+    p.add_argument('--architecture-refresh-interval', type=int, default=0,
+        help='every N decisions transfer the verified elite across one label-free stratified chiplet count; all its rectangles remain selectable, 0 disables')
+    p.add_argument('--service-features', action='store_true',
+        help='observe label-free local fitting/kernel/shared-L2/VPU demand in both before/after states; full PPA remains mandatory')
+    p.add_argument('--cost-rank-weight',type=float,default=0.,
+        help='optional nearby-physical-cost pairwise auxiliary loss; actual PPA reward and Double-Q target are unchanged')
     p.add_argument('--episode-cost-rise',type=float,help='end a learning episode when measured cost exceeds elite by this fraction; default off; all legal actions remain evaluable')
     p.add_argument('--episode-restart-probability',type=float,default=.9,help='probability of reset after measured excess; values below1 retain worse-intermediate exploration')
     p.add_argument('--no-resource-projection', action='store_true')
@@ -594,6 +623,14 @@ def main():
     p.add_argument('--resume', action='store_true')
     p.add_argument('--frozen-child', action='store_true', help=argparse.SUPPRESS)
     args = p.parse_args()
+    if args.architecture_refresh_interval < 0:
+        p.error('architecture-refresh-interval must be nonnegative')
+    if args.architecture_refresh_interval and args.operators == 'gemini5':
+        p.error('Gemini5 comparison fixes architecture; disable architecture refresh')
+    if not math.isfinite(args.cost_rank_weight) or args.cost_rank_weight < 0:
+        p.error('cost-rank-weight must be finite and nonnegative')
+    if args.cost_rank_weight and not args.cost_value_q:
+        p.error('cost-rank-weight requires cost-value-q')
     if args.episode_cost_rise is not None and (not math.isfinite(args.episode_cost_rise) or args.episode_cost_rise < 0):
         p.error('episode-cost-rise must be a nonnegative finite fraction')
     if not math.isfinite(args.episode_restart_probability) or not 0 <= args.episode_restart_probability <= 1:

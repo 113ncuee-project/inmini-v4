@@ -1,0 +1,49 @@
+﻿id,gain_target_pct,charged_PPA,charged_s,result
+development/controls/7/sa,5,,,not reached within completed budget
+development/controls/7/sa,10,,,not reached within completed budget
+development/controls/7/sa,20,,,not reached within completed budget
+development/controls/7/random,5,113,2346.4228826996405,reached
+development/controls/7/random,10,127,2501.153117199661,reached
+development/controls/7/random,20,127,2501.153117199661,reached
+development/frozen/7/rl,5,128,3216.4406905998476,reached
+development/frozen/7/rl,10,128,3216.4406905998476,reached
+development/frozen/7/rl,20,,,not reached within completed budget
+development/stratified/7/rl,5,112,2497.2091922997497,reached
+development/stratified/7/rl,10,112,2497.2091922997497,reached
+development/stratified/7/rl,20,,,not reached within completed budget
+development/uniform/7/rl,5,112,2336.4604104997125,reached
+development/uniform/7/rl,10,112,2336.4604104997125,reached
+development/uniform/7/rl,20,176,3577.9203353999183,reached
+confirmation/frozen/37/rl,5,149,3661.056793799624,reached
+confirmation/frozen/37/rl,10,153,3788.75872579962,reached
+confirmation/frozen/37/rl,20,,,not reached within completed budget
+confirmation/stratified/37/rl,5,142,2992.864735199604,reached
+confirmation/stratified/37/rl,10,142,2992.864735199604,reached
+confirmation/stratified/37/rl,20,142,2992.864735199604,reached
+confirmation/stratified/37/sa,5,137,2677.2235180998687,reached
+confirmation/stratified/37/sa,10,,,not reached within completed budget
+confirmation/stratified/37/sa,20,,,not reached within completed budget
+confirmation/stratified/37/random,5,173,3710.000436499715,reached
+confirmation/stratified/37/random,10,,,not reached within completed budget
+confirmation/stratified/37/random,20,,,not reached within completed budget
+confirmation/stratified/47/rl,5,112,2349.4894777997397,reached
+confirmation/stratified/47/rl,10,112,2349.4894777997397,reached
+confirmation/stratified/47/rl,20,,,not reached within completed budget
+confirmation/stratified/47/sa,5,113,2404.5949648995884,reached
+confirmation/stratified/47/sa,10,113,2404.5949648995884,reached
+confirmation/stratified/47/sa,20,,,not reached within completed budget
+confirmation/stratified/47/random,5,134,3088.6789481996093,reached
+confirmation/stratified/47/random,10,,,not reached within completed budget
+confirmation/stratified/47/random,20,,,not reached within completed budget
+confirmation/uniform/37/rl,5,159,3498.31513349968,reached
+confirmation/uniform/37/rl,10,166,3591.2526683995966,reached
+confirmation/uniform/37/rl,20,,,not reached within completed budget
+extended_development/controls_7/sa,5,196,5447.899163399823,reached
+extended_development/controls_7/sa,10,,,not reached within completed budget
+extended_development/controls_7/sa,20,,,not reached within completed budget
+extended_development/controls_7/random,5,113,2346.4228826996405,reached
+extended_development/controls_7/random,10,127,2501.153117199661,reached
+extended_development/controls_7/random,20,127,2501.153117199661,reached
+extended_development/stratified_7/rl,5,112,2497.2091922997497,reached
+extended_development/stratified_7/rl,10,112,2497.2091922997497,reached
+extended_development/stratified_7/rl,20,196,4795.327652899781,reached

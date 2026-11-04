@@ -1,0 +1,81 @@
+{
+  "passed": true,
+  "results": [
+    {
+      "seed": 7,
+      "held_out": 109,
+      "stages": {
+        "initial": {
+          "after_cost_spearman": -0.25634324900379946,
+          "after_potential_MAE": 28.856127874888873,
+          "same_arch_group_concordance": 0.46582984658298465,
+          "original_SGD": 0
+        },
+        "after_shared": {
+          "after_cost_spearman": 0.3745343341673617,
+          "after_potential_MAE": 3.244591388200814,
+          "same_arch_group_concordance": 0.5815899581589958,
+          "original_SGD": 1992
+        },
+        "final": {
+          "after_cost_spearman": 0.10374386062459458,
+          "after_potential_MAE": 4.509090971418791,
+          "same_arch_group_concordance": 0.6889818688981869,
+          "original_SGD": 3240
+        }
+      }
+    },
+    {
+      "seed": 37,
+      "held_out": 154,
+      "stages": {
+        "initial": {
+          "after_cost_spearman": -0.22325304777689586,
+          "after_potential_MAE": 26.93443053351238,
+          "same_arch_group_concordance": 0.6366197183098592,
+          "original_SGD": 0
+        },
+        "after_shared": {
+          "after_cost_spearman": 0.1461701613825309,
+          "after_potential_MAE": 2.6978684803323256,
+          "same_arch_group_concordance": 0.7059154929577465,
+          "original_SGD": 1992
+        },
+        "final": {
+          "after_cost_spearman": 0.7753956708088436,
+          "after_potential_MAE": 2.1139931198243977,
+          "same_arch_group_concordance": 0.5988732394366197,
+          "original_SGD": 3768
+        }
+      }
+    },
+    {
+      "seed": 47,
+      "held_out": 102,
+      "stages": {
+        "initial": {
+          "after_cost_spearman": -0.2282492840006747,
+          "after_potential_MAE": 27.70882211228513,
+          "same_arch_group_concordance": 0.5429487179487179,
+          "original_SGD": 0
+        },
+        "after_shared": {
+          "after_cost_spearman": 0.39631891434051736,
+          "after_potential_MAE": 3.244783698703755,
+          "same_arch_group_concordance": 0.5192307692307693,
+          "original_SGD": 1992
+        },
+        "final": {
+          "after_cost_spearman": 0.7045272702112686,
+          "after_potential_MAE": 2.1648964424308166,
+          "same_arch_group_concordance": 0.5583333333333333,
+          "original_SGD": 3312
+        }
+      }
+    }
+  ],
+  "new_PPA": 0,
+  "new_SGD": 0,
+  "images": 0,
+  "scope": "safe inference-only weights and exact original public payloads; same corpus/exclusion/metrics reproduced; not future-Q, original candidate-pool, new search or independent statistical superiority"
+}

@@ -1,0 +1,20 @@
+[
+  {
+    "seed": 7,
+    "learned": "development/stratified/7",
+    "controls": "development/controls/7",
+    "reference": "learning/seed7.json"
+  },
+  {
+    "seed": 37,
+    "learned": "confirmation/stratified/37",
+    "controls": "confirmation/stratified/37",
+    "reference": "learning/seed37.json"
+  },
+  {
+    "seed": 47,
+    "learned": "confirmation/stratified/47",
+    "controls": "confirmation/stratified/47",
+    "reference": "learning/seed47.json"
+  }
+]

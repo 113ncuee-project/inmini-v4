@@ -1,0 +1,124 @@
+{
+  "stages": [
+    {
+      "stage": "real_CLI_all_optional_branches_resume",
+      "return_code": 0,
+      "wall_s": 314.3103608000092
+    },
+    {
+      "stage": "actual_GUI",
+      "return_code": 0,
+      "wall_s": 19.26965430006385
+    },
+    {
+      "stage": "development/stratified/7",
+      "return_code": 0,
+      "wall_s": 1819.2888200001325
+    },
+    {
+      "stage": "audit development/stratified/7",
+      "return_code": 0,
+      "wall_s": 9.004990600049496
+    },
+    {
+      "stage": "development/controls/7",
+      "return_code": 0,
+      "wall_s": 3466.156138099963
+    },
+    {
+      "stage": "audit development/controls/7",
+      "return_code": 0,
+      "wall_s": 8.85394089994952
+    },
+    {
+      "stage": "development/frozen/7",
+      "return_code": 0,
+      "wall_s": 1815.2071525999345
+    },
+    {
+      "stage": "audit development/frozen/7",
+      "return_code": 0,
+      "wall_s": 5.3206225000321865
+    },
+    {
+      "stage": "development/uniform/7",
+      "return_code": 0,
+      "wall_s": 1749.2377171001863
+    },
+    {
+      "stage": "audit development/uniform/7",
+      "return_code": 0,
+      "wall_s": 7.886526999995112
+    },
+    {
+      "stage": "extend stratified",
+      "return_code": 0,
+      "wall_s": 1807.6557224001735
+    },
+    {
+      "stage": "audit extension stratified",
+      "return_code": 0,
+      "wall_s": 8.96883919998072
+    },
+    {
+      "stage": "extend controls",
+      "return_code": 0,
+      "wall_s": 2891.5689601001795
+    },
+    {
+      "stage": "audit extension controls",
+      "return_code": 0,
+      "wall_s": 13.054630799917504
+    },
+    {
+      "stage": "confirmation/stratified/37",
+      "return_code": 0,
+      "wall_s": 4569.093225199962
+    },
+    {
+      "stage": "audit confirmation/stratified/37",
+      "return_code": 0,
+      "wall_s": 13.100424200063571
+    },
+    {
+      "stage": "heldout confirmation/stratified/37",
+      "return_code": 0,
+      "wall_s": 5.9036125999409705
+    },
+    {
+      "stage": "confirmation/frozen/37",
+      "return_code": 0,
+      "wall_s": 1815.6709991998505
+    },
+    {
+      "stage": "audit confirmation/frozen/37",
+      "return_code": 0,
+      "wall_s": 8.020795000018552
+    },
+    {
+      "stage": "confirmation/uniform/37",
+      "return_code": 0,
+      "wall_s": 1817.1470920001157
+    },
+    {
+      "stage": "audit confirmation/uniform/37",
+      "return_code": 0,
+      "wall_s": 7.414033300010487
+    },
+    {
+      "stage": "confirmation/stratified/47",
+      "return_code": 0,
+      "wall_s": 5424.147031300003
+    },
+    {
+      "stage": "audit confirmation/stratified/47",
+      "return_code": 0,
+      "wall_s": 25.68776710005477
+    },
+    {
+      "stage": "heldout confirmation/stratified/47",
+      "return_code": 0,
+      "wall_s": 14.872933800099418
+    }
+  ]
+}

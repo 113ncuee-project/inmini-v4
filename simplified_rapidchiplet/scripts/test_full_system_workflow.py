@@ -15,6 +15,9 @@ def main():
     p.add_argument('--out', required=True)
     p.add_argument('--cost-value-q', action='store_true')
     p.add_argument('--episode-cost-rise',type=float)
+    p.add_argument('--architecture-refresh-interval',type=int,default=0)
+    p.add_argument('--service-features',action='store_true')
+    p.add_argument('--cost-rank-weight',type=float,default=0.)
     args = p.parse_args()
     out = Path(args.out).resolve()
     if out.exists():
@@ -22,11 +25,20 @@ def main():
     out.mkdir(parents=True)
     script = APP / 'full_system_dse.py'
     start = time.perf_counter()
-    def run(arguments, expected=0):
+    def configured(arguments):
         if args.cost_value_q and '--resume' not in arguments and '--cost-value-q' not in arguments:
             arguments = [*arguments, '--cost-value-q']
         if args.episode_cost_rise is not None and '--resume' not in arguments and '--episode-cost-rise' not in arguments:
             arguments = [*arguments, '--episode-cost-rise', str(args.episode_cost_rise)]
+        if '--resume' not in arguments:
+            if args.architecture_refresh_interval and '--operators' not in arguments and '--architecture-refresh-interval' not in arguments:
+                arguments=[*arguments,'--architecture-refresh-interval',str(args.architecture_refresh_interval)]
+            if args.service_features and '--service-features' not in arguments: arguments=[*arguments,'--service-features']
+            if args.cost_rank_weight and '--cost-rank-weight' not in arguments: arguments=[*arguments,'--cost-rank-weight',str(args.cost_rank_weight)]
+        return arguments
+
+    def run(arguments, expected=0):
+        arguments=configured(arguments)
         result = subprocess.run([sys.executable, '-u', '-X', 'utf8', str(script), *map(str, arguments)], capture_output=True, text=True, encoding='utf-8')
         with (out / 'commands.log').open('a', encoding='utf-8') as stream:
             stream.write(json.dumps(list(map(str, arguments))) + '\n' + result.stdout + result.stderr + '\n')
@@ -34,10 +46,10 @@ def main():
             raise AssertionError(result.stdout + result.stderr)
 
     def command(target):
-        return ['--seed-case', str(Path(args.seed_case).resolve()), '--out', str(target), '--queries', '14', '--seconds', '240',
+        return configured(['--seed-case', str(Path(args.seed_case).resolve()), '--out', str(target), '--queries', '14', '--seconds', '240',
                 '--architecture-screen', 'off', '--methods', 'rl,sa,random', '--eval-timeout', '20', '--shortlist', '24',
                 '--horizon', '4', '--warmup', '3', '--replay-updates', '8', *(['--cost-value-q'] if args.cost_value_q else []),
-                *(['--episode-cost-rise',str(args.episode_cost_rise)] if args.episode_cost_rise is not None else [])]
+                *(['--episode-cost-rise',str(args.episode_cost_rise)] if args.episode_cost_rise is not None else [])])
     full, partial = out / 'full', out / 'resumed'
     run(command(full))
     refinement = read(full / 'seed_refinement.json')
@@ -65,6 +77,10 @@ def main():
             raise AssertionError(method + ': resumed action sequence differs')
         if a['elite'] != b['elite'] or a['policy_updates'] != b['policy_updates']:
             raise AssertionError(method + ': resumed best state/updates differ')
+        if a.get('architecture_refresh') != b.get('architecture_refresh'):
+            raise AssertionError(method + ': architecture schedule changed after resume')
+        if args.architecture_refresh_interval and not a['architecture_refresh']['history']:
+            raise AssertionError(method + ': actual CLI never evaluated a scheduled architecture transfer')
         ledger = read(partial / method / 'worker/accounting.json')
         keys = [r['durable_key'] for r in ledger if r.get('full_evaluations')]
         if len(set(keys)) != len(keys):
@@ -182,9 +198,25 @@ def main():
         trained = torch.load(full / 'rl' / checkpoint['policy_file'], map_location='cpu', weights_only=False)
         if trained.get('representation') != 'physical_cost_factored_double_q_v1' or not trained['cost_replay']:
             raise AssertionError('CLI did not train the declared physical cost representation')
+        nonterminal_source='full'
         if not any(not row[3] for row in trained['replay']):
-            raise AssertionError('cost-value CLI validation lacked a genuine nonterminal Bellman transition')
-    write(out / 'result.json', dict(passed=True, cost_value_q=args.cost_value_q, episode_cost_rise=args.episode_cost_rise, elapsed_s=time.perf_counter() - start,
+            # Strict cost resets plus a tiny query ceiling can legitimately
+            # terminate every episode. Exercise continuation explicitly rather
+            # than claiming those terminal transitions tested a future target.
+            continuation=out/'physical_continuation'
+            run(['--seed-case',str(Path(args.seed_case).resolve()),'--out',continuation,
+                 '--queries','10','--seconds','90','--architecture-screen','off','--seed-refinement','off',
+                 '--methods','rl','--warmup','0','--horizon','8','--episode-restart-probability','0',
+                 '--replay-updates','4'])
+            cp=read(continuation/'rl/checkpoint.json')
+            data=torch.load(continuation/'rl'/cp['policy_file'],map_location='cpu',weights_only=False)
+            if not any(not row[3] for row in data['replay']) or not analyze(continuation)['passed']:
+                raise AssertionError('explicit actual CLI failed to exercise nonterminal Bellman continuation')
+            nonterminal_source='physical_continuation: measured reset probability0, same real oracle'
+    write(out / 'result.json', dict(passed=True, cost_value_q=args.cost_value_q, episode_cost_rise=args.episode_cost_rise,
+        architecture_refresh_interval=args.architecture_refresh_interval,service_features=args.service_features,
+        cost_rank_weight=args.cost_rank_weight,nonterminal_source=nonterminal_source if args.cost_value_q else None,
+        elapsed_s=time.perf_counter() - start,
         checks=['3 methods exact-query CLI', 'same trajectory after cooperative stop/resume', 'same Q update count',
                 'no duplicate durable PPA', 'completed resume no new PPA', 'physical/reward/source audits', 'strict infeasible archive',
                 '50 actual architecture PPA', 'identical shared-screen charges for all 3 methods',

@@ -1,0 +1,96 @@
+{
+  "passed": true,
+  "created_utc": "2026-11-04T07:03:13.183127+00:00",
+  "source_identity": "9ee5237e2f5ab48bb98d6cb388f88427170faafec4e8c7218edf3e2cb3651562",
+  "launcher_sha256": "0a632236ca39af02be1bd2f96fa320f3d28de6c34d5fb55e8289ebd948ee645a",
+  "scenarios": [
+    {
+      "name": "new_shared_initialization",
+      "command": [
+        "powershell.exe",
+        "-NoProfile",
+        "-ExecutionPolicy",
+        "Bypass",
+        "-File",
+        "C:\\Users\\user\\Desktop\\rapidchiplet\\run_inmin_full_overnight.ps1",
+        "-Models",
+        "resnet18",
+        "-Seeds",
+        "7,37",
+        "-OutputRoot",
+        "output\\inmin_v08_20261104\\overnight_launcher_validation\\fresh",
+        "-MaxArea",
+        "150",
+        "-MaxPower",
+        "6.5",
+        "-MaxLatencyMs",
+        "5.25",
+        "-DryRun"
+      ],
+      "stdout": "Model=resnet18 RNG=7 Methods=rl,sa,random Output=C:\\Users\\user\\Desktop\\rapidchiplet\\output\\inmin_v08_20261104\\overnight_launcher_validation\\fresh\\resnet18\\7\n-u -X utf8 C:\\Users\\user\\Desktop\\rapidchiplet\\simplified_rapidchiplet\\full_system_dse.py --seed-case C:\\Users\\user\\Desktop\\rapidchiplet\\inputs\\replay_v04\\resnet18 --out C:\\Users\\user\\Desktop\\rapidchiplet\\output\\inmin_v08_20261104\\overnight_launcher_validation\\fresh\\resnet18\\7 --methods rl,sa,random --seed 7 --queries 512 --seconds 3600 --eval-timeout 600 --screen-seconds 3600 --architecture-screen all --objective edp --max-fusion-depth 4 --architecture-refresh-interval 4 --seed-refinement wide --seed-queries 48 --seed-seconds 3600 --seed-dp-seconds 1800 --max-power 6.5 --max-area 150 --max-latency-ms 5.25 --cost-value-q --episode-cost-rise 0.25 --episode-restart-probability 0.9\nModel=resnet18 RNG=37 Methods=rl,sa,random Output=C:\\Users\\user\\Desktop\\rapidchiplet\\output\\inmin_v08_20261104\\overnight_launcher_validation\\fresh\\resnet18\\37\n-u -X utf8 C:\\Users\\user\\Desktop\\rapidchiplet\\simplified_rapidchiplet\\full_system_dse.py --seed-case C:\\Users\\user\\Desktop\\rapidchiplet\\inputs\\replay_v04\\resnet18 --out C:\\Users\\user\\Desktop\\rapidchiplet\\output\\inmin_v08_20261104\\overnight_launcher_validation\\fresh\\resnet18\\37 --methods rl,sa,random --seed 37 --queries 512 --seconds 3600 --eval-timeout 600 --screen-seconds 3600 --architecture-screen all --objective edp --max-fusion-depth 4 --architecture-refresh-interval 4 --seed-refinement wide --seed-queries 48 --seed-seconds 3600 --seed-dp-seconds 1800 --shared-case C:\\Users\\user\\Desktop\\rapidchiplet\\output\\inmin_v08_20261104\\overnight_launcher_validation\\fresh\\resnet18\\7 --max-power 6.5 --max-area 150 --max-latency-ms 5.25 --cost-value-q --episode-cost-rise 0.25 --episode-restart-probability 0.9\n",
+      "stderr": "",
+      "PPA_started": 0
+    },
+    {
+      "name": "independent_optout",
+      "command": [
+        "powershell.exe",
+        "-NoProfile",
+        "-ExecutionPolicy",
+        "Bypass",
+        "-File",
+        "C:\\Users\\user\\Desktop\\rapidchiplet\\run_inmin_full_overnight.ps1",
+        "-Models",
+        "resnet18",
+        "-Seeds",
+        "7,37",
+        "-OutputRoot",
+        "output\\inmin_v08_20261104\\overnight_launcher_validation\\independent",
+        "-IndependentInitialization",
+        "-DryRun"
+      ],
+      "stdout": "Model=resnet18 RNG=7 Methods=rl,sa,random Output=C:\\Users\\user\\Desktop\\rapidchiplet\\output\\inmin_v08_20261104\\overnight_launcher_validation\\independent\\resnet18\\7\n-u -X utf8 C:\\Users\\user\\Desktop\\rapidchiplet\\simplified_rapidchiplet\\full_system_dse.py --seed-case C:\\Users\\user\\Desktop\\rapidchiplet\\inputs\\replay_v04\\resnet18 --out C:\\Users\\user\\Desktop\\rapidchiplet\\output\\inmin_v08_20261104\\overnight_launcher_validation\\independent\\resnet18\\7 --methods rl,sa,random --seed 7 --queries 512 --seconds 3600 --eval-timeout 600 --screen-seconds 3600 --architecture-screen all --objective edp --max-fusion-depth 4 --architecture-refresh-interval 4 --seed-refinement wide --seed-queries 48 --seed-seconds 3600 --seed-dp-seconds 1800 --cost-value-q --episode-cost-rise 0.25 --episode-restart-probability 0.9\nModel=resnet18 RNG=37 Methods=rl,sa,random Output=C:\\Users\\user\\Desktop\\rapidchiplet\\output\\inmin_v08_20261104\\overnight_launcher_validation\\independent\\resnet18\\37\n-u -X utf8 C:\\Users\\user\\Desktop\\rapidchiplet\\simplified_rapidchiplet\\full_system_dse.py --seed-case C:\\Users\\user\\Desktop\\rapidchiplet\\inputs\\replay_v04\\resnet18 --out C:\\Users\\user\\Desktop\\rapidchiplet\\output\\inmin_v08_20261104\\overnight_launcher_validation\\independent\\resnet18\\37 --methods rl,sa,random --seed 37 --queries 512 --seconds 3600 --eval-timeout 600 --screen-seconds 3600 --architecture-screen all --objective edp --max-fusion-depth 4 --architecture-refresh-interval 4 --seed-refinement wide --seed-queries 48 --seed-seconds 3600 --seed-dp-seconds 1800 --cost-value-q --episode-cost-rise 0.25 --episode-restart-probability 0.9\n",
+      "stderr": "",
+      "PPA_started": 0
+    },
+    {
+      "name": "legacy_resume",
+      "command": [
+        "powershell.exe",
+        "-NoProfile",
+        "-ExecutionPolicy",
+        "Bypass",
+        "-File",
+        "C:\\Users\\user\\Desktop\\rapidchiplet\\run_inmin_full_overnight.ps1",
+        "-Resume",
+        "-OutputRoot",
+        "output\\inmin_v08_20261104\\overnight_launcher_validation\\legacy_resume",
+        "-DryRun"
+      ],
+      "stdout": "Model=resnet18 RNG=7 Methods=rl,sa,random Output=C:\\Users\\user\\Desktop\\rapidchiplet\\output\\inmin_v08_20261104\\overnight_launcher_validation\\legacy_resume\\resnet18\\7\n-u -X utf8 C:\\Users\\user\\Desktop\\rapidchiplet\\simplified_rapidchiplet\\full_system_dse.py --seed-case C:\\Users\\user\\Desktop\\rapidchiplet\\inputs\\replay_v04\\resnet18 --out C:\\Users\\user\\Desktop\\rapidchiplet\\output\\inmin_v08_20261104\\overnight_launcher_validation\\legacy_resume\\resnet18\\7 --methods rl,sa,random --seed 7 --queries 96 --seconds 1200 --eval-timeout 180 --screen-seconds 600 --architecture-screen all --objective edp --max-fusion-depth 4 --architecture-refresh-interval 0 --seed-refinement wide --seed-queries 48 --seed-seconds 1200 --seed-dp-seconds 600\nModel=resnet18 RNG=37 Methods=rl,sa,random Output=C:\\Users\\user\\Desktop\\rapidchiplet\\output\\inmin_v08_20261104\\overnight_launcher_validation\\legacy_resume\\resnet18\\37\n-u -X utf8 C:\\Users\\user\\Desktop\\rapidchiplet\\simplified_rapidchiplet\\full_system_dse.py --seed-case C:\\Users\\user\\Desktop\\rapidchiplet\\inputs\\replay_v04\\resnet18 --out C:\\Users\\user\\Desktop\\rapidchiplet\\output\\inmin_v08_20261104\\overnight_launcher_validation\\legacy_resume\\resnet18\\37 --methods rl,sa,random --seed 37 --queries 96 --seconds 1200 --eval-timeout 180 --screen-seconds 600 --architecture-screen all --objective edp --max-fusion-depth 4 --architecture-refresh-interval 0 --seed-refinement wide --seed-queries 48 --seed-seconds 1200 --seed-dp-seconds 600\n",
+      "stderr": "",
+      "PPA_started": 0
+    },
+    {
+      "name": "current_resume",
+      "command": [
+        "powershell.exe",
+        "-NoProfile",
+        "-ExecutionPolicy",
+        "Bypass",
+        "-File",
+        "C:\\Users\\user\\Desktop\\rapidchiplet\\run_inmin_full_overnight.ps1",
+        "-Resume",
+        "-OutputRoot",
+        "output\\inmin_v08_20261104\\overnight_launcher_validation\\current_resume",
+        "-DryRun"
+      ],
+      "stdout": "Model=resnet18 RNG=7 Methods=rl,sa,random Output=C:\\Users\\user\\Desktop\\rapidchiplet\\output\\inmin_v08_20261104\\overnight_launcher_validation\\current_resume\\resnet18\\7\n-u -X utf8 C:\\Users\\user\\Desktop\\rapidchiplet\\simplified_rapidchiplet\\full_system_dse.py --seed-case C:\\Users\\user\\Desktop\\rapidchiplet\\inputs\\replay_v04\\resnet18 --out C:\\Users\\user\\Desktop\\rapidchiplet\\output\\inmin_v08_20261104\\overnight_launcher_validation\\current_resume\\resnet18\\7 --methods rl,sa,random --seed 7 --queries 96 --seconds 1200 --eval-timeout 180 --screen-seconds 600 --architecture-screen all --objective edp --max-fusion-depth 4 --architecture-refresh-interval 4 --seed-refinement wide --seed-queries 48 --seed-seconds 3600 --seed-dp-seconds 1800 --max-power 6.5 --max-area 150 --max-latency-ms 5.25 --cost-value-q --episode-cost-rise 0.25 --episode-restart-probability 0.9\nModel=resnet18 RNG=37 Methods=rl,sa,random Output=C:\\Users\\user\\Desktop\\rapidchiplet\\output\\inmin_v08_20261104\\overnight_launcher_validation\\current_resume\\resnet18\\37\n-u -X utf8 C:\\Users\\user\\Desktop\\rapidchiplet\\simplified_rapidchiplet\\full_system_dse.py --seed-case C:\\Users\\user\\Desktop\\rapidchiplet\\inputs\\replay_v04\\resnet18 --out C:\\Users\\user\\Desktop\\rapidchiplet\\output\\inmin_v08_20261104\\overnight_launcher_validation\\current_resume\\resnet18\\37 --methods rl,sa,random --seed 37 --queries 96 --seconds 1200 --eval-timeout 180 --screen-seconds 600 --architecture-screen all --objective edp --max-fusion-depth 4 --architecture-refresh-interval 4 --seed-refinement wide --seed-queries 48 --seed-seconds 3600 --seed-dp-seconds 1800 --shared-case C:\\Users\\user\\Desktop\\rapidchiplet\\output\\inmin_v08_20261104\\overnight_launcher_validation\\current_resume\\resnet18\\7 --max-power 6.5 --max-area 150 --max-latency-ms 5.25 --cost-value-q --episode-cost-rise 0.25 --episode-restart-probability 0.9\n",
+      "stderr": "",
+      "PPA_started": 0
+    }
+  ],
+  "new_PPA": 0,
+  "new_SGD": 0,
+  "scope": "real PowerShell command generation, new/legacy saved-protocol semantics, cross-RNG shared initialization and optout, invariant caps, no output mutation; not a new overnight PPA execution"
+}

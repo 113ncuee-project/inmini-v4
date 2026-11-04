@@ -1,6 +1,6 @@
-# INMIN Full v0.7：本機操作與完整搜尋空間
+# INMIN Full v0.8：本機操作與完整搜尋空間
 
-更新：2026-11-04。程式來源 `b6bf8e77f95b1e47fff56491b248fd9ac55a8884aa505d5e12dcac75bdda2f05`。182項回歸、完整CLI與實際GUI已通過；新RL技術的收益另由實驗對照驗證。[驗證證據](INMIN_FULL_SYSTEM_VALIDATION.md) · [技術與協定](INMIN_GRAPH_EDIT_DEVELOPMENT.md) · [新成本Q結果](INMIN_COST_VALUE_RESULTS.md) · [歷史結果](INMIN_GRAPH_EDIT_RESULTS.md) · [RACE-RL參考核對](INMIN_RACE_REFERENCE_AUDIT.md)。
+更新：2026-11-04。程式來源 `9ee5237e2f5ab48bb98d6cb388f88427170faafec4e8c7218edf3e2cb3651562`。188項回歸覆蓋、完整CLI與實際GUI已通過；新RL技術的收益另由實驗對照驗證。[驗證證據](INMIN_FULL_SYSTEM_VALIDATION.md) · [技術與協定](INMIN_GRAPH_EDIT_DEVELOPMENT.md) · [新版分層探索](INMIN_STRATIFIED_SEARCH.md) · [前版成本Q結果](INMIN_COST_VALUE_RESULTS.md) · [歷史結果](INMIN_GRAPH_EDIT_RESULTS.md) · [RACE-RL參考核對](INMIN_RACE_REFERENCE_AUDIT.md)。
 
 ## 最短啟動方式
 
@@ -18,7 +18,7 @@ py -3.12 -m venv .venv
 ## 一次完整長跑
 
 ```powershell
-.venv/Scripts/python.exe -u -X utf8 simplified_rapidchiplet/full_system_dse.py --seed-case inputs/replay_v04/resnet18 --out output/r18_long --methods rl,sa,random --queries 512 --seconds 7200 --eval-timeout 600 --seed 7 --cost-value-q --episode-cost-rise .25
+.venv/Scripts/python.exe -u -X utf8 simplified_rapidchiplet/full_system_dse.py --seed-case inputs/replay_v04/resnet18 --out output/r18_long --methods rl,sa,random --queries 512 --seconds 7200 --eval-timeout 600 --seed 7 --cost-value-q --episode-cost-rise .25 --architecture-refresh-interval 4 --seed-seconds 3600 --seed-dp-seconds 1800
 ```
 
 `--queries`是每方法**含共同階段**的完整PPA上限；`--seconds`是每方法搜尋時間上限，包含候選、特徵、SGD與Oracle。共同reference／seed、架構與起點強化實際只做一次，再對各方法同額計費。初始化另外有有界預算，總端到端時間會更長。7200秒不是保證完成512次或已收斂；報告列出實際查詢與時間。
@@ -28,7 +28,11 @@ py -3.12 -m venv .venv
 .\run_inmin_full_overnight.ps1 -Resume -OutputRoot output/full_system_overnight -KeepAwake
 ```
 
-腳本預設cost-Q、量測後0.25惡化reset／機率0.9及600秒單次oracle；可用 -Policy transition、-DisableCostRestart 做對照。預設三RNG×三方法，搜尋上限合計九小時，另加共同階段。可指定多個模型；請先選擇符合可用時間的組合。腳本執行期間暫時避免自動睡眠；電腦要保持開機。一般本機執行不需要對話或LLM服務。
+腳本預設cost-Q、量測後0.25惡化reset／機率0.9、每4步顆數分層探索及600秒單次oracle；可用 -Policy transition、-DisableCostRestart、-ArchitectureRefreshInterval 0 做對照。預設三RNG×三方法，搜尋上限合計九小時，另加共同階段。每個模型的第一個RNG生成共同起點，後續RNG預設重用同一份已支付起點與共同觀察，重新初始化自己的網路、optimizer及RNG；不導入任何搜尋結果或訓練policy。每一方法仍繼承完整共同查詢與時間帳。若要重新生成不同起點，使用 -IndependentInitialization，並分開報告起點與隨機性。每個模型的第一個RNG生成共同起點，後續RNG預設重用同一份已支付起點與共同觀察，重新初始化自己的網路、optimizer及RNG；不導入任何搜尋結果或訓練policy。每一方法仍繼承完整共同查詢與時間帳。若要重新生成不同起點，使用 -IndependentInitialization，並分開報告起點與隨機性。每個模型的第一個RNG生成共同起點，後續RNG預設重用同一份已支付起點與共同觀察，重新初始化自己的網路、optimizer及RNG；不導入任何搜尋結果或訓練policy。每一方法仍繼承完整共同查詢與時間帳。若要重新生成不同起點，使用 -IndependentInitialization，並分開報告起點與隨機性。可指定多個模型；請先選擇符合可用時間的組合。腳本執行期間暫時避免自動睡眠；電腦要保持開機。一般本機執行不需要對話或LLM服務。
+
+夜間腳本可另指定 `-SeedQueries 48 -SeedSeconds 3600 -SeedDPSeconds 1800` 延長初始化；`-ScreenSeconds` 控制共同架構篩選。這些是有界計算預算，不保證窮舉完成。硬限制可事前指定 `-MaxArea 150 -MaxPower 6.5 -MaxLatencyMs 5`，0表示不設定；不能看到輸贏後才加限制。`-DryRun`只列命令，不啟動PPA或建立實驗目錄。
+
+GUI保留相容預設：顆數探索間隔為0；要使用本輪v0.8協定，將 `architecture_refresh_interval` 設為4，並選cost-value Q與成本惡化上限0.25。Python CLI同樣須明示 `--architecture-refresh-interval 4`。既有實驗按凍結來源和原設定續跑；更換程式後請開新輸出目錄。
 
 ## 停止、續跑與延長
 
@@ -54,7 +58,7 @@ New-Item output/r18_long/STOP_REQUESTED -ItemType File -Force
 3. 預設 `--seed-refinement wide`：允許全連續segment長度、beam16，同時保留／關閉保守whole-output容量剪枝；再測宣告的q8 P/K/balanced及q16/32 inner mapping。DP與內層分數只產生候選，真正排名仍由完整PPA決定。
 4. 保留原始起點與所有已驗證seed；所有方法從共同最好設計出發，取得同一份已支付觀察。原seed→共同起點與共同起點→搜尋後改善分開報告。
 
-額外強化預設最多48次PPA、1200秒評估／600秒DP段，進展中的DP可由prefix checkpoint延長；小query budget會保留搜尋份額而略過額外強化。可用 `--seed-queries`、`--seed-seconds`、`--seed-dp-seconds`調整新實驗。`--shared-case`只重用來源、輸入與數值環境等價的共同物理歷史，繼承原查詢與時間，重新計算當前特徵；不導入別的方法搜尋結果或訓練policy。
+Python CLI／GUI的額外強化預設最多48次PPA、1200秒評估／600秒DP段；夜間腳本改用3600秒評估／1800秒DP，進展中的DP可由prefix checkpoint延長；小query budget會保留搜尋份額而略過額外強化。可用 `--seed-queries`、`--seed-seconds`、`--seed-dp-seconds`調整新實驗。`--shared-case`只重用來源、輸入與數值環境等價的共同物理歷史，繼承原查詢與時間，重新計算當前特徵；不導入別的方法搜尋結果或訓練policy。
 
 ## 完整v3有效搜尋變數
 
@@ -97,6 +101,12 @@ terminal不bootstrap；timeout／容量失敗不提供虛構PPA reward。epsilon
 
 `--no-boundary-features`、`--no-resource-projection`可分開消融；`--no-composites`保留完整原子變數。`--freeze-search-policy`、`--uniform-policy --freeze-search-policy --no-shared-warmstart`為因果控制。`--operators gemini5`是固定其他變數的五類LP語義對照，並非原版Gemini執行檔或預設搜尋域。
 
+## v0.8的顆數分層探索
+
+每4次決策用已完整驗證的elite作為mapping模板，依尚未嘗試顆數的maximin距離排定下一顆數；同顆數的所有合法矩形與保留／同比例PE份額一起交給選擇器。顆數排程是非學習的外層協調，RL學習其中mapping／layout選擇，普通步驟仍開放原完整動作。Random、SA、凍結Q與均勻策略使用相同機制。失敗或timeout只記嘗試，不能偽造PPA成本；不代表每個layout已成功完成評估。
+
+這修正前版RL只實評少數架構的問題，但本身不證明線上RL有效。每步保存實際候選、Q分數、選擇機率、物理reward、學習更新、架構frame及checkpoint；同源同起點的對照才能區分協調器與學習器收益。可選的 `--service-features`、`--cost-rank-weight` 不是本輪主實驗設定；先前離線開發診斷未提供足夠採用理由。
+
 ## 結果、限制及可重現性
 
 預設EDP=Energy×Latency；也支援latency、energy與原balanced。`--max-area`、`--max-power`、`--max-latency-ms`是硬限制；推薦JSON只提供strict-feasible設計，沒有時 `state=null`，closest另列。
@@ -109,4 +119,4 @@ terminal不bootstrap；timeout／容量失敗不提供虛構PPA reward。epsilon
 
 同一專案的昂貴實驗由全域鎖序列化；另一個工作持鎖時，新工作會明確失敗，請查看正在執行的實驗。新版來源與結果凍結後續跑，避免混入中途修改。native calendar與Python fallback保留相同物理定義。
 
-原v0.5的兩RNG有正面結果，但固定2顆對照由Random勝出；一次可行的Fusion配對也顯示Fusion On流量較高、EDP稍差。新強起點／F/P／凍結policy研究尚在執行，不能先宣稱新特徵有益或已打敗原版論文。請以[逐組數字](INMIN_GRAPH_EDIT_RESULTS.md)及完整mapping判讀。
+原v0.5的兩RNG有正面結果，但固定2顆對照由Random勝出；一次可行的Fusion配對也顯示Fusion On流量較高、EDP稍差。v0.7完整開發對照由Random取得較低EDP；v0.8分層探索的匹配對照與獨立種子仍在進行，不能先宣稱穩定優勢或已打敗原版論文。請以[逐組數字](INMIN_GRAPH_EDIT_RESULTS.md)及完整mapping判讀。

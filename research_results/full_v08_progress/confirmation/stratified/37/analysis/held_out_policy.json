@@ -1,0 +1,30 @@
+{
+  "held_out_count": 154,
+  "new_ppa": 0,
+  "policy_updates": 0,
+  "scope": "control-arm immediate physical rewards; candidate hashes trained by RL/shared screen excluded; auxiliary reward ranking does not prove future-Q or search superiority",
+  "initial": {
+    "n": 154,
+    "spearman": -0.08289878787326123,
+    "pairwise_concordance": 0.47139219015280137,
+    "mse": 752.0500439360598,
+    "selected_top_quartile_mean_utility": -4.3081809145406575,
+    "all_mean_utility": -2.829020505572185
+  },
+  "after_shared": {
+    "n": 154,
+    "spearman": 0.2131309945105988,
+    "pairwise_concordance": 0.5732597623089983,
+    "mse": 20.08701800075639,
+    "selected_top_quartile_mean_utility": -1.6868522062623548,
+    "all_mean_utility": -2.829020505572185
+  },
+  "final": {
+    "n": 154,
+    "spearman": 0.7416023473709371,
+    "pairwise_concordance": 0.7721561969439729,
+    "mse": 18.178644033770397,
+    "selected_top_quartile_mean_utility": -0.1553491421442556,
+    "all_mean_utility": -2.829020505572185
+  }
+}

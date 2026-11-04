@@ -1,0 +1,19 @@
+{
+  "failure": "workflow harness omitted optional flags on first interrupted launch:308D full versus260D interrupted; no genuine same-config resume comparison",
+  "source": "3ad877a6913c959542932ff59776942f36cfeb369fb9431024537c4550466f9b",
+  "new_DNN_PPA": 0,
+  "raw_local_Toy_worker_completions": {
+    "workflow\\full\\common_worker\\accounting.json": 2,
+    "workflow\\full\\random\\worker\\accounting.json": 7,
+    "workflow\\full\\rl\\worker\\accounting.json": 7,
+    "workflow\\full\\sa\\worker\\accounting.json": 7,
+    "workflow\\full\\seed_refinement\\wide_dp\\single_array_c1_1x1\\worker\\accounting.json": 5,
+    "workflow\\resumed\\common_worker\\accounting.json": 2,
+    "workflow\\resumed\\random\\worker\\accounting.json": 7,
+    "workflow\\resumed\\rl\\worker\\accounting.json": 7,
+    "workflow\\resumed\\sa\\worker\\accounting.json": 7,
+    "workflow\\resumed\\seed_refinement\\wide_dp\\single_array_c1_1x1\\worker\\accounting.json": 5
+  },
+  "raw_local_Toy_full_PPA_sum": 56,
+  "fixed_in": "new immutable study_v2; preserve study_v1"
+}

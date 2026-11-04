@@ -1,19 +1,22 @@
-# Full v0.7 驗證
+# Full v0.8 驗證
 
-2026-11-04；來源 `b6bf8e77f95b1e47fff56491b248fd9ac55a8884aa505d5e12dcac75bdda2f05`，208個來源檔。根目錄程式與本輪已驗證凍結engine逐byte一致；舊來源與歷史報告完整保留。
+2026-11-04；目前來源 `9ee5237e2f5ab48bb98d6cb388f88427170faafec4e8c7218edf3e2cb3651562`，212個來源檔。根目錄程式與已驗證凍結engine逐byte一致；舊來源與歷史報告完整保留。
 
-|驗證|結果|本機原始證據|
+|驗證|實際結果|本機原始證據|
 |---|---|---|
-|完整回歸|182項，零failure/error；來源穩定|`output/inmin_v07_20261104/study_v4/acceptance/result.json`、`tests.log`|
-|實際CLI|201.035秒通過；三方法、真實50布局、嚴格限制、共享計費|`study_v4/workflow/result.json`、`commands.log`|
-|成本拆分Q|絕對after觀察對before/progress/action family不變；實際非terminal Bellman；錯誤reward拒絕；exact save/resume|`tests/test_cost_value.py`與CLI checkpoint|
-|量測後reset|真實Toy PPA觸發、負reward保留、後續回到verified elite；續跑軌跡及Q更新一致|`tests/test_episode_cost.py`、workflow/measured_restart|
-|架構轉移|全部50布局資源、IO、比例份額及idle守恆|`tests/test_full_system.py`|
-|實際GUI|15欄位、token/狀態/嚴格推薦API，8個完整Toy PPA|`study_v4/gui_result.json`|
-|安全更新|從逐byte5f2升級；12個變更檔原版備份；新來源208檔核對|`output/releases/20261104_cost_value_release/promotion.json`|
+|回歸覆蓋|188項，零failure/error。實際執行於來源7d98；該次測試涵蓋的核心／測試／native檔與9ee逐byte相同，原結果原樣保留|`output/inmin_v08_20261104/study_v3/acceptance/result.json`、`UNCHANGED_SOURCE_REUSE.json`|
+|新版實際CLI|313.599857秒通過；本次以9ee重新執行，包含全部可選service/rank/refresh分支、真實50布局、嚴格限制、共享計費及三方法精確stop/resume|`study_v3/workflow/result.json`、`commands.log`|
+|真實非terminal學習|額外實評Toy continuation，檢查Double-Q replay與正確bootstrap；未將全terminal短測冒充覆蓋|`study_v3/workflow/physical_continuation`|
+|顆數frame|maximin排程、全部同顆數矩形／兩類quota、失敗計帳與精確保存恢復|`tests/test_architecture_refresh.py`與CLI checkpoint|
+|可選成本排序／service|排序輔助損失與exact save/load；service是局部描述而非PPA。主研究均關閉|`tests/test_cost_ranking.py`、CLI可選分支|
+|實際GUI|16欄位、嚴格推薦API，8個完整Toy PPA|`study_v3/gui_result.json`|
+|安全更新|從逐byteb6升級；13個變更／新增檔原版備份，新來源212檔核對|`output/releases/20261104_stratified_release/promotion.json`|
+|夜間啟動器|實際DryRun通過：初始化延長、refresh4、事前硬限制及跨RNG共享初始化命令；0新PPA|`run_inmin_full_overnight.ps1`，另見下述界線|
 
-`study_v4`相對路徑位於 `output/inmin_v07_20261104`。不修改實驗期間的engine、protocol或orchestrator。共享歷史只在78個物理來源、輸入與數值環境相符時重用；query及時間原額繼承。非神經控制只計算選中候選的描述，避免無用途的整批feature成本。
+上表 `study_v3` 相對路徑位於 `output/inmin_v08_20261104`。188項結果不是宣稱在9ee再執行一次；兩版本唯一不同是獨立CLI測試harness，而該harness已在9ee真正重跑。前兩個CLI驗收失敗及來源保留，詳見新版設計說明。夜間啟動器位於來源包之外，DryRun驗證了命令組裝；未假稱已另跑整晚多模型研究。
 
-既有實驗延長、舊最佳mapping完整PPA重放、R50相同reference/seed僅計1次共同PPA等歷史驗證保留在 [v0.6報告](history/INMIN_FULL_SYSTEM_VALIDATION_v06.md)。未把這些舊測試重新命名為新來源的新增PPA。
+主要物理compiler、communication、hardware、calendar及能量計算與前版一致。研究只重用78個物理來源、輸入與數值環境相符的共同歷史；原查詢與時間完整繼承，不重用控制方法搜尋標籤或policy。相同來源的凍結checkpoint續跑不更改演算法設定。
 
-驗收證明軟體流程、物理資源與計帳一致性，不證明晶片量測準確、全域最佳或統計優勢。新開發組RL改善16.06%，Random24.42%，凍結Q0.89%；完整數字與限制見 [新結果報告](INMIN_COST_VALUE_RESULTS.md)。另外的架構refresh修正版仍需自身QA與新PPA，沒有混入這份通過結果。
+軟體驗收證明流程、資源與計帳一致性，不證明晶片量測精度、全域最佳或統計優勢。第一個已審計開發RL arm完成56新完整PPA，在強共同起點之後降低16.47% EDP；匹配控制及獨立種子尚未全部完成。請以[分層探索說明](INMIN_STRATIFIED_SEARCH.md)與原始數字為準。
+
+前版實際182項／201.035秒CLI／GUI驗證保留於 [v0.7歷史報告](history/INMIN_FULL_SYSTEM_VALIDATION_v07.md)；歷史長跑、完整PPA回放及延長測試也保留，未重新記為新版新增PPA。

@@ -1,0 +1,61 @@
+{
+  "representation": "physical_cost_factored_double_q_v1",
+  "source_checkpoint_sha256": "b8763388cf4d31ffa0baafad985bdb63393badb7f382ad66d4fcff60fc79e03c",
+  "training_rows": 55,
+  "nonterminal_rows": 31,
+  "input_max_abs": 4.451562404632568,
+  "input_mean_column_std": 0.09328217804431915,
+  "continuation_std": 3.33200089741581e-09,
+  "continuation_range": 2.2351741790771484e-08,
+  "cost_head_std": 3.1363911628723145,
+  "future_Adam_steps_after_V_only_warmup": [
+    1992,
+    1992,
+    1992,
+    1992,
+    1992,
+    1992
+  ],
+  "bootstrapped_continuation_target_std": 3.899553935898365,
+  "continuation_target_MAE": 1.492790167432002,
+  "activations": [
+    {
+      "layer": "Linear",
+      "mean_column_std": 0.2365066409111023,
+      "almost_constant_columns": 0,
+      "columns": 128,
+      "abs_over_099_fraction": null
+    },
+    {
+      "layer": "Tanh",
+      "mean_column_std": 0.0034913821145892143,
+      "almost_constant_columns": 0,
+      "columns": 128,
+      "abs_over_099_fraction": 0.9039772748947144
+    },
+    {
+      "layer": "Linear",
+      "mean_column_std": 0.012581611052155495,
+      "almost_constant_columns": 0,
+      "columns": 64,
+      "abs_over_099_fraction": null
+    },
+    {
+      "layer": "Tanh",
+      "mean_column_std": 1.3272104304462573e-08,
+      "almost_constant_columns": 64,
+      "columns": 64,
+      "abs_over_099_fraction": 1.0
+    },
+    {
+      "layer": "Linear",
+      "mean_column_std": 3.33200089741581e-09,
+      "almost_constant_columns": 1,
+      "columns": 1,
+      "abs_over_099_fraction": null
+    }
+  ],
+  "new_PPA": 0,
+  "new_SGD": 0,
+  "scope": "training activation and current Double-Q bootstrap diagnostic; targets are not measured optimal returns or a held-out search result"
+}

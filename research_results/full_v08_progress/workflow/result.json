@@ -1,0 +1,27 @@
+{
+  "passed": true,
+  "cost_value_q": true,
+  "episode_cost_rise": 0.25,
+  "architecture_refresh_interval": 2,
+  "service_features": true,
+  "cost_rank_weight": 1.0,
+  "nonterminal_source": "physical_continuation: measured reset probability0, same real oracle",
+  "elapsed_s": 313.59985729982145,
+  "checks": [
+    "3 methods exact-query CLI",
+    "same trajectory after cooperative stop/resume",
+    "same Q update count",
+    "no duplicate durable PPA",
+    "completed resume no new PPA",
+    "physical/reward/source audits",
+    "strict infeasible archive",
+    "50 actual architecture PPA",
+    "identical shared-screen charges for all 3 methods",
+    "shared physical history reuse with exact inherited charge and zero new common PPA",
+    "Gemini-style LP5 masking and SA elite restart",
+    "uniform choices with identical RL horizon and zero SGD",
+    "frozen shared Q with zero online updates",
+    "core CLI wider initialization with query reserve and charged shared PPA",
+    "cooperative initialization stop/resume and source/accounting audit"
+  ]
+}

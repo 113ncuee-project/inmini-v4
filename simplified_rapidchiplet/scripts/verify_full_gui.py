@@ -27,7 +27,7 @@ def main():
         html = urllib.request.urlopen(url).read().decode('utf-8')
         for field in ('queries', 'max_fusion_depth', 'architecture_screen', 'max_power', 'max_area', 'max_latency_ms',
                       'boundary_features', 'resource_projection', 'cost_value_q', 'architecture_scaling',
-                      'episode_cost_rise','episode_restart_probability'):
+                      'episode_cost_rise','episode_restart_probability','architecture_refresh_interval'):
             if 'name="' + field + '"' not in html:
                 raise AssertionError('missing UI field: ' + field)
         for field in ('seed_refinement', 'seed_queries', 'seed_seconds'):
@@ -49,7 +49,7 @@ def main():
             token = json.loads(re.search(r"'X-INMIN-Token':(\"[^\"]+\")", html).group(1))
             data = dict(model='resnet18', objective='edp', methods='rl', architecture_screen='off', queries='8', seconds='90',
                         eval_timeout='20', seed='7', max_fusion_depth='4', cost_value_q='on', architecture_scaling='proportional',
-                        episode_cost_rise='.25',episode_restart_probability='.9')
+                        episode_cost_rise='.25',episode_restart_probability='.9',architecture_refresh_interval='2')
             request = urllib.request.Request(url + '/api/start', json.dumps(data).encode(),
                 {'Content-Type': 'application/json', 'X-INMIN-Token': token})
             job = json.load(urllib.request.urlopen(request))
@@ -64,13 +64,15 @@ def main():
                     effective=json.loads((job_out/'effective_config.json').read_text(encoding='utf-8'))
                     if effective.get('episode_cost_rise')!=.25 or effective.get('episode_restart_probability')!=.9:
                         raise AssertionError('GUI did not forward measured episode controls')
+                    if effective.get('architecture_refresh_interval')!=2:
+                        raise AssertionError('GUI did not forward architecture refresh schedule')
                     if not current['recommendations']['rl']['strict_feasible'] or not current['recommendations']['rl']['metrics']:
                         raise AssertionError('GUI failed to expose strict-feasible recommendation')
                     break
                 time.sleep(.25)
             if full != 8:
                 raise AssertionError('GUI did not complete eight actual full PPA')
-        print(json.dumps(dict(passed=True, fields=15, cost_value_q=True, episode_controls=True, status_api=True, strict_recommendations=True, token_required=True, new_ppa=full, out=str(job_out))))
+        print(json.dumps(dict(passed=True, fields=16, cost_value_q=True, episode_controls=True, architecture_refresh=True, status_api=True, strict_recommendations=True, token_required=True, new_ppa=full, out=str(job_out))))
     finally:
         child.terminate()
         child.wait(timeout=10)
