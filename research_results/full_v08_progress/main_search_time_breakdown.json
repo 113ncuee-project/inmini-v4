@@ -1,0 +1,135 @@
+{
+  "rows": [
+    {
+      "seed": "7",
+      "method": "rl",
+      "new_PPA": 56,
+      "search_s": 1803.856,
+      "worker_call_s": 1559.782,
+      "other_search_overhead_s": 244.074,
+      "timeouts": [
+        {
+          "timeout_s": 21.35496100015007,
+          "elapsed_s": 23.67200000002049,
+          "phase": "learning_search"
+        }
+      ]
+    },
+    {
+      "seed": "7",
+      "method": "sa",
+      "new_PPA": 46,
+      "search_s": 1802.9,
+      "worker_call_s": 1732.918,
+      "other_search_overhead_s": 69.982,
+      "timeouts": [
+        {
+          "timeout_s": 424.4207747001201,
+          "elapsed_s": 426.7029999999795,
+          "phase": "learning_search"
+        }
+      ]
+    },
+    {
+      "seed": "7",
+      "method": "random",
+      "new_PPA": 96,
+      "search_s": 1646.384,
+      "worker_call_s": 1593.262,
+      "other_search_overhead_s": 53.122,
+      "timeouts": [
+        {
+          "timeout_s": 600.0,
+          "elapsed_s": 602.3280000002123,
+          "phase": "learning_search"
+        }
+      ]
+    },
+    {
+      "seed": "37",
+      "method": "rl",
+      "new_PPA": 78,
+      "search_s": 1803.012,
+      "worker_call_s": 1662.286,
+      "other_search_overhead_s": 140.726,
+      "timeouts": [
+        {
+          "timeout_s": 8.447340899845585,
+          "elapsed_s": 10.827999999979511,
+          "phase": "learning_search"
+        }
+      ]
+    },
+    {
+      "seed": "37",
+      "method": "sa",
+      "new_PPA": 96,
+      "search_s": 1031.19,
+      "worker_call_s": 963.812,
+      "other_search_overhead_s": 67.378,
+      "timeouts": []
+    },
+    {
+      "seed": "37",
+      "method": "random",
+      "new_PPA": 96,
+      "search_s": 1722.293,
+      "worker_call_s": 1663.496,
+      "other_search_overhead_s": 58.797,
+      "timeouts": [
+        {
+          "timeout_s": 600.0,
+          "elapsed_s": 602.4220000000205,
+          "phase": "learning_search"
+        }
+      ]
+    },
+    {
+      "seed": "47",
+      "method": "rl",
+      "new_PPA": 58,
+      "search_s": 1803.118,
+      "worker_call_s": 1610.89,
+      "other_search_overhead_s": 192.228,
+      "timeouts": [
+        {
+          "timeout_s": 9.308862299891189,
+          "elapsed_s": 11.655999999959022,
+          "phase": "learning_search"
+        }
+      ]
+    },
+    {
+      "seed": "47",
+      "method": "sa",
+      "new_PPA": 64,
+      "search_s": 1803.482,
+      "worker_call_s": 1720.865,
+      "other_search_overhead_s": 82.617,
+      "timeouts": [
+        {
+          "timeout_s": 89.06126950029284,
+          "elapsed_s": 91.45299999997951,
+          "phase": "learning_search"
+        }
+      ]
+    },
+    {
+      "seed": "47",
+      "method": "random",
+      "new_PPA": 65,
+      "search_s": 1803.863,
+      "worker_call_s": 1717.662,
+      "other_search_overhead_s": 86.201,
+      "timeouts": [
+        {
+          "timeout_s": 62.984471099684015,
+          "elapsed_s": 65.46900000004098,
+          "phase": "learning_search"
+        }
+      ]
+    }
+  ],
+  "new_PPA": 0,
+  "new_SGD": 0
+}

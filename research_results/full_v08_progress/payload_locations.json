@@ -79,6 +79,14 @@
     "path": "main_matched_3seeds.json",
     "gzip": false
   },
+  "all_controls_matched_3seeds.json": {
+    "path": "all_controls_matched_3seeds.json",
+    "gzip": false
+  },
+  "main_search_time_breakdown.json": {
+    "path": "main_search_time_breakdown.json",
+    "gzip": false
+  },
   "public_learning_replay_result.json": {
     "path": "public_learning_replay_result.json",
     "gzip": false
@@ -415,6 +423,66 @@
     "path": "confirmation/frozen/37/rl/worker/accounting.json.gz",
     "gzip": true
   },
+  "confirmation/frozen/47/summary.json": {
+    "path": "confirmation/frozen/47/summary.json",
+    "gzip": false
+  },
+  "confirmation/frozen/47/effective_config.json": {
+    "path": "confirmation/frozen/47/effective_config.json",
+    "gzip": false
+  },
+  "confirmation/frozen/47/environment.json": {
+    "path": "confirmation/frozen/47/environment.json",
+    "gzip": false
+  },
+  "confirmation/frozen/47/source_snapshot_manifest.json": {
+    "path": "confirmation/frozen/47/source_snapshot_manifest.json",
+    "gzip": false
+  },
+  "confirmation/frozen/47/seed_input_manifest.json": {
+    "path": "confirmation/frozen/47/seed_input_manifest.json",
+    "gzip": false
+  },
+  "confirmation/frozen/47/shared_start.json": {
+    "path": "confirmation/frozen/47/shared_start.json",
+    "gzip": false
+  },
+  "confirmation/frozen/47/common.json": {
+    "path": "confirmation/frozen/47/common.json",
+    "gzip": false
+  },
+  "confirmation/frozen/47/analysis/audit.json": {
+    "path": "confirmation/frozen/47/analysis/audit.json",
+    "gzip": false
+  },
+  "confirmation/frozen/47/screening.json": {
+    "path": "shared_payloads/ccd9e52a07cfae2635a5a20a0651df63a5a1ec7971f79a5179de92c3339eba3b.json.gz",
+    "gzip": true
+  },
+  "confirmation/frozen/47/rl/summary.json": {
+    "path": "confirmation/frozen/47/rl/summary.json.gz",
+    "gzip": true
+  },
+  "confirmation/frozen/47/rl/events.jsonl": {
+    "path": "confirmation/frozen/47/rl/events.jsonl.gz",
+    "gzip": true
+  },
+  "confirmation/frozen/47/rl/proposal_ledger.jsonl": {
+    "path": "confirmation/frozen/47/rl/proposal_ledger.jsonl.gz",
+    "gzip": true
+  },
+  "confirmation/frozen/47/rl/recommendation.json": {
+    "path": "confirmation/frozen/47/rl/recommendation.json.gz",
+    "gzip": true
+  },
+  "confirmation/frozen/47/rl/shared_warmstart.json": {
+    "path": "confirmation/frozen/47/rl/shared_warmstart.json.gz",
+    "gzip": true
+  },
+  "confirmation/frozen/47/rl/worker/accounting.json": {
+    "path": "confirmation/frozen/47/rl/worker/accounting.json.gz",
+    "gzip": true
+  },
   "confirmation/stratified/37/summary.json": {
     "path": "confirmation/stratified/37/summary.json",
     "gzip": false
@@ -689,6 +757,66 @@
   },
   "confirmation/uniform/37/rl/worker/accounting.json": {
     "path": "confirmation/uniform/37/rl/worker/accounting.json.gz",
+    "gzip": true
+  },
+  "confirmation/uniform/47/summary.json": {
+    "path": "confirmation/uniform/47/summary.json",
+    "gzip": false
+  },
+  "confirmation/uniform/47/effective_config.json": {
+    "path": "confirmation/uniform/47/effective_config.json",
+    "gzip": false
+  },
+  "confirmation/uniform/47/environment.json": {
+    "path": "confirmation/uniform/47/environment.json",
+    "gzip": false
+  },
+  "confirmation/uniform/47/source_snapshot_manifest.json": {
+    "path": "confirmation/uniform/47/source_snapshot_manifest.json",
+    "gzip": false
+  },
+  "confirmation/uniform/47/seed_input_manifest.json": {
+    "path": "confirmation/uniform/47/seed_input_manifest.json",
+    "gzip": false
+  },
+  "confirmation/uniform/47/shared_start.json": {
+    "path": "confirmation/uniform/47/shared_start.json",
+    "gzip": false
+  },
+  "confirmation/uniform/47/common.json": {
+    "path": "confirmation/uniform/47/common.json",
+    "gzip": false
+  },
+  "confirmation/uniform/47/analysis/audit.json": {
+    "path": "confirmation/uniform/47/analysis/audit.json",
+    "gzip": false
+  },
+  "confirmation/uniform/47/screening.json": {
+    "path": "shared_payloads/ccd9e52a07cfae2635a5a20a0651df63a5a1ec7971f79a5179de92c3339eba3b.json.gz",
+    "gzip": true
+  },
+  "confirmation/uniform/47/rl/summary.json": {
+    "path": "confirmation/uniform/47/rl/summary.json.gz",
+    "gzip": true
+  },
+  "confirmation/uniform/47/rl/events.jsonl": {
+    "path": "confirmation/uniform/47/rl/events.jsonl.gz",
+    "gzip": true
+  },
+  "confirmation/uniform/47/rl/proposal_ledger.jsonl": {
+    "path": "confirmation/uniform/47/rl/proposal_ledger.jsonl.gz",
+    "gzip": true
+  },
+  "confirmation/uniform/47/rl/recommendation.json": {
+    "path": "confirmation/uniform/47/rl/recommendation.json.gz",
+    "gzip": true
+  },
+  "confirmation/uniform/47/rl/shared_warmstart.json": {
+    "path": "confirmation/uniform/47/rl/shared_warmstart.json.gz",
+    "gzip": true
+  },
+  "confirmation/uniform/47/rl/worker/accounting.json": {
+    "path": "confirmation/uniform/47/rl/worker/accounting.json.gz",
     "gzip": true
   },
   "extended_development/controls_7/summary.json": {

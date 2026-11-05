@@ -1,10 +1,10 @@
 {
   "status": {
-    "status": "running",
-    "stage": "confirmation/frozen/47",
-    "source_identity": "9ee5237e2f5ab48bb98d6cb388f88427170faafec4e8c7218edf3e2cb3651562"
+    "status": "completed",
+    "source_identity": "9ee5237e2f5ab48bb98d6cb388f88427170faafec4e8c7218edf3e2cb3651562",
+    "finished_utc": "2026-11-04T14:31:32.792557+00:00"
   },
-  "generated_utc": "2026-11-04T13:47:43.185090+00:00",
+  "generated_utc": "2026-11-04T14:33:14.869818+00:00",
   "rows": [
     {
       "phase": "development",
@@ -190,6 +190,37 @@
       "NoP_hop_B": 88538080,
       "SGD": 1992,
       "timeouts": 1,
+      "audit_passed": true
+    },
+    {
+      "phase": "confirmation",
+      "case": "confirmation/frozen/47",
+      "seed": 47,
+      "method": "rl",
+      "source": "9ee5237e2f5ab48bb98d6cb388f88427170faafec4e8c7218edf3e2cb3651562",
+      "algorithm": "frozen_shared_q_control",
+      "Q": "physical_cost_factored_double_q_v1",
+      "gamma": 0.9,
+      "horizon": 8,
+      "architecture_scaling": "proportional",
+      "continuation": false,
+      "reference_only": false,
+      "strict_feasible": true,
+      "EDP": 0.04429042557846774,
+      "gain_after_shared_pct": 13.992634244999358,
+      "charged_full_PPA": 165,
+      "new_full_PPA": 65,
+      "search_s": 1802.9830806001555,
+      "charged_s": 4032.993715699762,
+      "latency_ms": 2.6460270703905078,
+      "energy_mJ": 12.04720777011786,
+      "area_mm2": 120.03088244705881,
+      "average_power_W": 4.552941995540469,
+      "DRAM_read_B": 13402650,
+      "NoC_hop_B": 163765472,
+      "NoP_hop_B": 73735232,
+      "SGD": 1992,
+      "timeouts": 0,
       "audit_passed": true
     },
     {
@@ -407,6 +438,37 @@
       "NoP_hop_B": 85333360,
       "SGD": 0,
       "timeouts": 0,
+      "audit_passed": true
+    },
+    {
+      "phase": "confirmation",
+      "case": "confirmation/uniform/47",
+      "seed": 47,
+      "method": "rl",
+      "source": "9ee5237e2f5ab48bb98d6cb388f88427170faafec4e8c7218edf3e2cb3651562",
+      "algorithm": "uniform_horizon_control",
+      "Q": "physical_cost_factored_double_q_v1",
+      "gamma": 0.9,
+      "horizon": 8,
+      "architecture_scaling": "proportional",
+      "continuation": false,
+      "reference_only": false,
+      "strict_feasible": true,
+      "EDP": 0.04249344695992017,
+      "gain_after_shared_pct": 17.482178436113983,
+      "charged_full_PPA": 177,
+      "new_full_PPA": 77,
+      "search_s": 1802.9070242999587,
+      "charged_s": 4032.91766049969,
+      "latency_ms": 2.434336658007781,
+      "energy_mJ": 12.56354363063113,
+      "area_mm2": 133.8400451764706,
+      "average_power_W": 5.160972123269473,
+      "DRAM_read_B": 13119902,
+      "NoC_hop_B": 170204992,
+      "NoP_hop_B": 83686400,
+      "SGD": 0,
+      "timeouts": 1,
       "audit_passed": true
     },
     {
@@ -1309,6 +1371,14 @@
       "scope": "all completed arms",
       "axis": "q",
       "budget": 158,
+      "id": "confirmation/frozen/47/rl",
+      "best_EDP": 0.04429042557846774
+    },
+    {
+      "group": "confirmation/47",
+      "scope": "all completed arms",
+      "axis": "q",
+      "budget": 158,
       "id": "confirmation/stratified/47/rl",
       "best_EDP": 0.0421568542280287
     },
@@ -1331,8 +1401,24 @@
     {
       "group": "confirmation/47",
       "scope": "all completed arms",
+      "axis": "q",
+      "budget": 158,
+      "id": "confirmation/uniform/47/rl",
+      "best_EDP": 0.04249344695992017
+    },
+    {
+      "group": "confirmation/47",
+      "scope": "all completed arms",
       "axis": "seconds",
-      "budget": 4032.3863125997595,
+      "budget": 4031.353576499736,
+      "id": "confirmation/frozen/47/rl",
+      "best_EDP": 0.04429042557846774
+    },
+    {
+      "group": "confirmation/47",
+      "scope": "all completed arms",
+      "axis": "seconds",
+      "budget": 4031.353576499736,
       "id": "confirmation/stratified/47/rl",
       "best_EDP": 0.0421568542280287
     },
@@ -1340,7 +1426,7 @@
       "group": "confirmation/47",
       "scope": "all completed arms",
       "axis": "seconds",
-      "budget": 4032.3863125997595,
+      "budget": 4031.353576499736,
       "id": "confirmation/stratified/47/sa",
       "best_EDP": 0.04281572689175235
     },
@@ -1348,9 +1434,145 @@
       "group": "confirmation/47",
       "scope": "all completed arms",
       "axis": "seconds",
-      "budget": 4032.3863125997595,
+      "budget": 4031.353576499736,
       "id": "confirmation/stratified/47/random",
       "best_EDP": 0.0481322120521476
+    },
+    {
+      "group": "confirmation/47",
+      "scope": "all completed arms",
+      "axis": "seconds",
+      "budget": 4031.353576499736,
+      "id": "confirmation/uniform/47/rl",
+      "best_EDP": 0.04249344695992017
+    },
+    {
+      "group": "confirmation/47",
+      "scope": "pair: confirmation/frozen/47/rl versus confirmation/stratified/47/rl",
+      "axis": "q",
+      "budget": 158,
+      "id": "confirmation/frozen/47/rl",
+      "best_EDP": 0.04429042557846774
+    },
+    {
+      "group": "confirmation/47",
+      "scope": "pair: confirmation/frozen/47/rl versus confirmation/stratified/47/rl",
+      "axis": "q",
+      "budget": 158,
+      "id": "confirmation/stratified/47/rl",
+      "best_EDP": 0.0421568542280287
+    },
+    {
+      "group": "confirmation/47",
+      "scope": "pair: confirmation/frozen/47/rl versus confirmation/stratified/47/rl",
+      "axis": "seconds",
+      "budget": 4031.353576499736,
+      "id": "confirmation/frozen/47/rl",
+      "best_EDP": 0.04429042557846774
+    },
+    {
+      "group": "confirmation/47",
+      "scope": "pair: confirmation/frozen/47/rl versus confirmation/stratified/47/rl",
+      "axis": "seconds",
+      "budget": 4031.353576499736,
+      "id": "confirmation/stratified/47/rl",
+      "best_EDP": 0.0421568542280287
+    },
+    {
+      "group": "confirmation/47",
+      "scope": "pair: confirmation/frozen/47/rl versus confirmation/stratified/47/sa",
+      "axis": "q",
+      "budget": 164,
+      "id": "confirmation/frozen/47/rl",
+      "best_EDP": 0.04429042557846774
+    },
+    {
+      "group": "confirmation/47",
+      "scope": "pair: confirmation/frozen/47/rl versus confirmation/stratified/47/sa",
+      "axis": "q",
+      "budget": 164,
+      "id": "confirmation/stratified/47/sa",
+      "best_EDP": 0.04281572689175235
+    },
+    {
+      "group": "confirmation/47",
+      "scope": "pair: confirmation/frozen/47/rl versus confirmation/stratified/47/sa",
+      "axis": "seconds",
+      "budget": 4031.353576499736,
+      "id": "confirmation/frozen/47/rl",
+      "best_EDP": 0.04429042557846774
+    },
+    {
+      "group": "confirmation/47",
+      "scope": "pair: confirmation/frozen/47/rl versus confirmation/stratified/47/sa",
+      "axis": "seconds",
+      "budget": 4031.353576499736,
+      "id": "confirmation/stratified/47/sa",
+      "best_EDP": 0.04281572689175235
+    },
+    {
+      "group": "confirmation/47",
+      "scope": "pair: confirmation/frozen/47/rl versus confirmation/stratified/47/random",
+      "axis": "q",
+      "budget": 165,
+      "id": "confirmation/frozen/47/rl",
+      "best_EDP": 0.04429042557846774
+    },
+    {
+      "group": "confirmation/47",
+      "scope": "pair: confirmation/frozen/47/rl versus confirmation/stratified/47/random",
+      "axis": "q",
+      "budget": 165,
+      "id": "confirmation/stratified/47/random",
+      "best_EDP": 0.0481322120521476
+    },
+    {
+      "group": "confirmation/47",
+      "scope": "pair: confirmation/frozen/47/rl versus confirmation/stratified/47/random",
+      "axis": "seconds",
+      "budget": 4031.353576499736,
+      "id": "confirmation/frozen/47/rl",
+      "best_EDP": 0.04429042557846774
+    },
+    {
+      "group": "confirmation/47",
+      "scope": "pair: confirmation/frozen/47/rl versus confirmation/stratified/47/random",
+      "axis": "seconds",
+      "budget": 4031.353576499736,
+      "id": "confirmation/stratified/47/random",
+      "best_EDP": 0.0481322120521476
+    },
+    {
+      "group": "confirmation/47",
+      "scope": "pair: confirmation/frozen/47/rl versus confirmation/uniform/47/rl",
+      "axis": "q",
+      "budget": 165,
+      "id": "confirmation/frozen/47/rl",
+      "best_EDP": 0.04429042557846774
+    },
+    {
+      "group": "confirmation/47",
+      "scope": "pair: confirmation/frozen/47/rl versus confirmation/uniform/47/rl",
+      "axis": "q",
+      "budget": 165,
+      "id": "confirmation/uniform/47/rl",
+      "best_EDP": 0.04249344695992017
+    },
+    {
+      "group": "confirmation/47",
+      "scope": "pair: confirmation/frozen/47/rl versus confirmation/uniform/47/rl",
+      "axis": "seconds",
+      "budget": 4031.353576499736,
+      "id": "confirmation/frozen/47/rl",
+      "best_EDP": 0.04429042557846774
+    },
+    {
+      "group": "confirmation/47",
+      "scope": "pair: confirmation/frozen/47/rl versus confirmation/uniform/47/rl",
+      "axis": "seconds",
+      "budget": 4031.353576499736,
+      "id": "confirmation/uniform/47/rl",
+      "best_EDP": 0.04249344695992017
     },
     {
       "group": "confirmation/47",
@@ -1415,6 +1637,38 @@
       "budget": 4032.3863125997595,
       "id": "confirmation/stratified/47/random",
       "best_EDP": 0.0481322120521476
+    },
+    {
+      "group": "confirmation/47",
+      "scope": "pair: confirmation/stratified/47/rl versus confirmation/uniform/47/rl",
+      "axis": "q",
+      "budget": 158,
+      "id": "confirmation/stratified/47/rl",
+      "best_EDP": 0.0421568542280287
+    },
+    {
+      "group": "confirmation/47",
+      "scope": "pair: confirmation/stratified/47/rl versus confirmation/uniform/47/rl",
+      "axis": "q",
+      "budget": 158,
+      "id": "confirmation/uniform/47/rl",
+      "best_EDP": 0.04249344695992017
+    },
+    {
+      "group": "confirmation/47",
+      "scope": "pair: confirmation/stratified/47/rl versus confirmation/uniform/47/rl",
+      "axis": "seconds",
+      "budget": 4031.7858384996653,
+      "id": "confirmation/stratified/47/rl",
+      "best_EDP": 0.0421568542280287
+    },
+    {
+      "group": "confirmation/47",
+      "scope": "pair: confirmation/stratified/47/rl versus confirmation/uniform/47/rl",
+      "axis": "seconds",
+      "budget": 4031.7858384996653,
+      "id": "confirmation/uniform/47/rl",
+      "best_EDP": 0.04249344695992017
     },
     {
       "group": "confirmation/47",
@@ -1447,6 +1701,70 @@
       "budget": 4032.4204356996343,
       "id": "confirmation/stratified/47/random",
       "best_EDP": 0.0481322120521476
+    },
+    {
+      "group": "confirmation/47",
+      "scope": "pair: confirmation/stratified/47/sa versus confirmation/uniform/47/rl",
+      "axis": "q",
+      "budget": 164,
+      "id": "confirmation/stratified/47/sa",
+      "best_EDP": 0.04281572689175235
+    },
+    {
+      "group": "confirmation/47",
+      "scope": "pair: confirmation/stratified/47/sa versus confirmation/uniform/47/rl",
+      "axis": "q",
+      "budget": 164,
+      "id": "confirmation/uniform/47/rl",
+      "best_EDP": 0.04249344695992017
+    },
+    {
+      "group": "confirmation/47",
+      "scope": "pair: confirmation/stratified/47/sa versus confirmation/uniform/47/rl",
+      "axis": "seconds",
+      "budget": 4031.7858384996653,
+      "id": "confirmation/stratified/47/sa",
+      "best_EDP": 0.04281572689175235
+    },
+    {
+      "group": "confirmation/47",
+      "scope": "pair: confirmation/stratified/47/sa versus confirmation/uniform/47/rl",
+      "axis": "seconds",
+      "budget": 4031.7858384996653,
+      "id": "confirmation/uniform/47/rl",
+      "best_EDP": 0.04249344695992017
+    },
+    {
+      "group": "confirmation/47",
+      "scope": "pair: confirmation/stratified/47/random versus confirmation/uniform/47/rl",
+      "axis": "q",
+      "budget": 165,
+      "id": "confirmation/stratified/47/random",
+      "best_EDP": 0.0481322120521476
+    },
+    {
+      "group": "confirmation/47",
+      "scope": "pair: confirmation/stratified/47/random versus confirmation/uniform/47/rl",
+      "axis": "q",
+      "budget": 165,
+      "id": "confirmation/uniform/47/rl",
+      "best_EDP": 0.04249344695992017
+    },
+    {
+      "group": "confirmation/47",
+      "scope": "pair: confirmation/stratified/47/random versus confirmation/uniform/47/rl",
+      "axis": "seconds",
+      "budget": 4031.7858384996653,
+      "id": "confirmation/stratified/47/random",
+      "best_EDP": 0.0481322120521476
+    },
+    {
+      "group": "confirmation/47",
+      "scope": "pair: confirmation/stratified/47/random versus confirmation/uniform/47/rl",
+      "axis": "seconds",
+      "budget": 4031.7858384996653,
+      "id": "confirmation/uniform/47/rl",
+      "best_EDP": 0.04249344695992017
     },
     {
       "group": "extended_development/continued7",
@@ -1721,6 +2039,27 @@
       "result": "not reached within completed budget"
     },
     {
+      "id": "confirmation/frozen/47/rl",
+      "gain_target_pct": 5,
+      "charged_PPA": 124,
+      "charged_s": 2871.721164799761,
+      "result": "reached"
+    },
+    {
+      "id": "confirmation/frozen/47/rl",
+      "gain_target_pct": 10,
+      "charged_PPA": 124,
+      "charged_s": 2871.721164799761,
+      "result": "reached"
+    },
+    {
+      "id": "confirmation/frozen/47/rl",
+      "gain_target_pct": 20,
+      "charged_PPA": null,
+      "charged_s": null,
+      "result": "not reached within completed budget"
+    },
+    {
       "id": "confirmation/stratified/37/rl",
       "gain_target_pct": 5,
       "charged_PPA": 142,
@@ -1862,6 +2201,27 @@
     },
     {
       "id": "confirmation/uniform/37/rl",
+      "gain_target_pct": 20,
+      "charged_PPA": null,
+      "charged_s": null,
+      "result": "not reached within completed budget"
+    },
+    {
+      "id": "confirmation/uniform/47/rl",
+      "gain_target_pct": 5,
+      "charged_PPA": 113,
+      "charged_s": 2350.5453918997664,
+      "result": "reached"
+    },
+    {
+      "id": "confirmation/uniform/47/rl",
+      "gain_target_pct": 10,
+      "charged_PPA": 113,
+      "charged_s": 2350.5453918997664,
+      "result": "reached"
+    },
+    {
+      "id": "confirmation/uniform/47/rl",
       "gain_target_pct": 20,
       "charged_PPA": null,
       "charged_s": null,

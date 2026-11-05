@@ -1,0 +1,442 @@
+{
+  "rl": {
+    "method": "rl",
+    "status": "wall_time_budget_exhausted",
+    "common_full_ppa": 100,
+    "search_full_ppa": 65,
+    "full_ppa": 165,
+    "seed_cost": 0.30275783751869356,
+    "best_cost": 0.04429042557846774,
+    "gain_vs_seed_pct": 85.37100610129274,
+    "best": {
+      "feasible": true,
+      "latency_s": 0.0026460270703905077,
+      "energy_j": 0.012047207770117859,
+      "power_w": 4.552941995540469,
+      "area_mm2": 120.03088244705881,
+      "dram_read_bytes": 13402650,
+      "dram_write_bytes": 201704,
+      "noc_hop_bytes": 163765472,
+      "nop_hop_bytes": 73735232,
+      "executed_macs": 1814073344,
+      "recompute_macs": 0,
+      "unit_count": 3910,
+      "calendar_backend": "native",
+      "oracle_phase_wall_s": {
+        "compile": 1.7339999999385327,
+        "communication_and_job_build": 10.672000000020489,
+        "schedule": 2.827999999979511,
+        "capacity_and_metrics": 3.219000000040978,
+        "diagnostics": 0.8589999999385327
+      },
+      "oracle_process_cpu_s": 18.84375
+    },
+    "initial": {
+      "feasible": true,
+      "latency_s": 0.011818170269609494,
+      "energy_j": 0.018438092177364144,
+      "power_w": 1.5601477857175425,
+      "area_mm2": 64.79423152941176,
+      "dram_read_bytes": 54080428,
+      "dram_write_bytes": 2635752,
+      "noc_hop_bytes": 241375552,
+      "nop_hop_bytes": 68313792,
+      "executed_macs": 1814073344,
+      "recompute_macs": 0,
+      "unit_count": 3768,
+      "calendar_backend": "native",
+      "oracle_phase_wall_s": {
+        "compile": 1.9060000001918525,
+        "communication_and_job_build": 12.609999999869615,
+        "schedule": 4.327999999979511,
+        "capacity_and_metrics": 1.8120000001508743,
+        "diagnostics": 1.078999999910593
+      },
+      "oracle_process_cpu_s": 20.8125
+    },
+    "best_step": 25,
+    "best_state_hash": "8b6249de777c651963024e02df8e0dca74979702163767bc9bfcad603a585044",
+    "best_architecture": "single_array_c10_2x5",
+    "best_fusion_depth": 0,
+    "policy_updates": 1992,
+    "search_wall_s": 1802.9830806001555,
+    "charged_wall_s": 4032.993715699762,
+    "architecture_coverage": {
+      "single_array_c1_1x1": {
+        "status": "full_evaluated",
+        "feasible": false,
+        "step": 8
+      },
+      "single_array_c2_1x2": {
+        "status": "full_evaluated",
+        "feasible": false,
+        "step": 64
+      },
+      "single_array_c3_1x3": {
+        "status": "full_evaluated",
+        "feasible": false,
+        "step": 32
+      },
+      "single_array_c4_2x2": {
+        "status": "full_completed",
+        "shared_screen": true
+      },
+      "single_array_c5_1x5": {
+        "status": "full_completed",
+        "shared_screen": true
+      },
+      "single_array_c6_2x3": {
+        "status": "full_completed",
+        "shared_screen": true
+      },
+      "single_array_c7_1x7": {
+        "status": "full_evaluated",
+        "feasible": true,
+        "step": 52
+      },
+      "single_array_c8_2x4": {
+        "status": "full_evaluated",
+        "feasible": true,
+        "step": 23
+      },
+      "single_array_c9_3x3": {
+        "status": "full_evaluated",
+        "feasible": true,
+        "step": 48
+      },
+      "single_array_c10_2x5": {
+        "status": "full_evaluated",
+        "feasible": true,
+        "step": 65
+      },
+      "single_array_c11_1x11": {
+        "status": "full_evaluated",
+        "feasible": true,
+        "step": 45
+      },
+      "single_array_c12_3x4": {
+        "status": "full_completed",
+        "shared_screen": true
+      },
+      "single_array_c13_1x13": {
+        "status": "full_evaluated",
+        "feasible": true,
+        "step": 40
+      },
+      "single_array_c14_2x7": {
+        "status": "full_completed",
+        "shared_screen": true
+      },
+      "single_array_c15_3x5": {
+        "status": "full_completed",
+        "shared_screen": true
+      },
+      "single_array_c16_4x4": {
+        "status": "full_completed",
+        "shared_screen": true
+      },
+      "single_array_c2_2x1": {
+        "status": "full_completed",
+        "shared_screen": true
+      },
+      "single_array_c3_3x1": {
+        "status": "full_completed",
+        "shared_screen": true
+      },
+      "single_array_c4_1x4": {
+        "status": "full_evaluated",
+        "feasible": false,
+        "step": 60
+      },
+      "single_array_c4_4x1": {
+        "status": "full_completed",
+        "shared_screen": true
+      },
+      "single_array_c5_5x1": {
+        "status": "full_evaluated",
+        "feasible": true,
+        "step": 16
+      },
+      "single_array_c6_1x6": {
+        "status": "full_evaluated",
+        "feasible": true,
+        "step": 56
+      },
+      "single_array_c6_3x2": {
+        "status": "full_completed",
+        "shared_screen": true
+      },
+      "single_array_c6_6x1": {
+        "status": "full_completed",
+        "shared_screen": true
+      },
+      "single_array_c7_7x1": {
+        "status": "full_completed",
+        "shared_screen": true
+      },
+      "single_array_c8_1x8": {
+        "status": "full_evaluated",
+        "feasible": true,
+        "step": 28
+      },
+      "single_array_c8_4x2": {
+        "status": "full_completed",
+        "shared_screen": true
+      },
+      "single_array_c8_8x1": {
+        "status": "full_completed",
+        "shared_screen": true
+      },
+      "single_array_c9_1x9": {
+        "status": "full_completed",
+        "shared_screen": true
+      },
+      "single_array_c9_9x1": {
+        "status": "full_completed",
+        "shared_screen": true
+      },
+      "single_array_c10_1x10": {
+        "status": "full_completed",
+        "shared_screen": true
+      },
+      "single_array_c10_5x2": {
+        "status": "full_completed",
+        "shared_screen": true
+      },
+      "single_array_c10_10x1": {
+        "status": "full_evaluated",
+        "feasible": true,
+        "step": 1
+      },
+      "single_array_c11_11x1": {
+        "status": "full_completed",
+        "shared_screen": true
+      },
+      "single_array_c12_1x12": {
+        "status": "full_evaluated",
+        "feasible": true,
+        "step": 47
+      },
+      "single_array_c12_2x6": {
+        "status": "full_completed",
+        "shared_screen": true
+      },
+      "single_array_c12_4x3": {
+        "status": "full_completed",
+        "shared_screen": true
+      },
+      "single_array_c12_6x2": {
+        "status": "full_completed",
+        "shared_screen": true
+      },
+      "single_array_c12_12x1": {
+        "status": "full_completed",
+        "shared_screen": true
+      },
+      "single_array_c13_13x1": {
+        "status": "full_completed",
+        "shared_screen": true
+      },
+      "single_array_c14_1x14": {
+        "status": "full_evaluated",
+        "feasible": true,
+        "step": 19
+      },
+      "single_array_c14_7x2": {
+        "status": "full_completed",
+        "shared_screen": true
+      },
+      "single_array_c14_14x1": {
+        "status": "full_evaluated",
+        "feasible": true,
+        "step": 20
+      },
+      "single_array_c15_1x15": {
+        "status": "full_evaluated",
+        "feasible": true,
+        "step": 36
+      },
+      "single_array_c15_5x3": {
+        "status": "full_completed",
+        "shared_screen": true
+      },
+      "single_array_c15_15x1": {
+        "status": "full_completed",
+        "shared_screen": true
+      },
+      "single_array_c16_1x16": {
+        "status": "full_evaluated",
+        "feasible": true,
+        "step": 51
+      },
+      "single_array_c16_2x8": {
+        "status": "full_completed",
+        "shared_screen": true
+      },
+      "single_array_c16_8x2": {
+        "status": "full_completed",
+        "shared_screen": true
+      },
+      "single_array_c16_16x1": {
+        "status": "full_completed",
+        "shared_screen": true
+      }
+    },
+    "gain_after_shared_screen_pct": 13.992634244999358,
+    "gain_before_rl_pct": 82.99099877052483,
+    "latency_improvement_pct": 77.61051829491082,
+    "energy_improvement_pct": 34.661310648463775,
+    "area_improvement_pct": -85.24933410557347,
+    "objective": "edp",
+    "gamma": 0.9,
+    "domain": "v08_stratified_architecture_full_schema3_1",
+    "strict_feasible": true,
+    "algorithm": "frozen_shared_q_control",
+    "online_policy_updates_enabled": false,
+    "shared_warmstart_enabled": true,
+    "q_representation": "physical_cost_factored_double_q_v1",
+    "episode_cost_rise_limit": 0.25,
+    "episode_restart_probability": 0.9,
+    "architecture_refresh": {
+      "interval": 4,
+      "tried": [
+        16,
+        1,
+        12,
+        5,
+        14,
+        10,
+        8,
+        3,
+        15,
+        13,
+        11,
+        9,
+        7,
+        6,
+        4,
+        2
+      ],
+      "cycle": 0,
+      "history": [
+        {
+          "cycle": 0,
+          "count": 16,
+          "step": 4,
+          "state_hash": "eb4c7f531faa3f1bac86b841df45c67f8a6bf4c8aed120a5d8d5266a1d840920",
+          "status": "full_completed"
+        },
+        {
+          "cycle": 0,
+          "count": 1,
+          "step": 8,
+          "state_hash": "a4e88985e2c1f1a8bd74a7180aa18fd50ab6566ac1ae7c90e8c781ddac58b774",
+          "status": "full_completed"
+        },
+        {
+          "cycle": 0,
+          "count": 12,
+          "step": 12,
+          "state_hash": "be73f46adcce46d5851fc454438c5a5cbc0a0f66990cc38ba642e989b222ed51",
+          "status": "full_completed"
+        },
+        {
+          "cycle": 0,
+          "count": 5,
+          "step": 16,
+          "state_hash": "ec189fb4871a76cb7a86d5ed780388b2211096cef261337c0c3817083ab36f09",
+          "status": "full_completed"
+        },
+        {
+          "cycle": 0,
+          "count": 14,
+          "step": 20,
+          "state_hash": "ae6d44789165d301525d77fca029130253a0491b17cbc0ae4bd705ff5e4b5c27",
+          "status": "full_completed"
+        },
+        {
+          "cycle": 0,
+          "count": 10,
+          "step": 24,
+          "state_hash": "a92cbee503441cfc650171356b598f30ab42c8bb258e76c072808e23ccb2eee8",
+          "status": "full_completed"
+        },
+        {
+          "cycle": 0,
+          "count": 8,
+          "step": 28,
+          "state_hash": "ce1812ae74dc20a3eda3979561d6b965149464a3ebf1f3bfcd6b0c6433d230f0",
+          "status": "full_completed"
+        },
+        {
+          "cycle": 0,
+          "count": 3,
+          "step": 32,
+          "state_hash": "0790829bf8103ecb81db16000e5c85b4396f26c69cabbac08ba2fcb288c2723c",
+          "status": "full_completed"
+        },
+        {
+          "cycle": 0,
+          "count": 15,
+          "step": 36,
+          "state_hash": "2e9758d9c0ffafca2cd30e6d75649b6d4d13777ba616ef2635842b325e4cb153",
+          "status": "full_completed"
+        },
+        {
+          "cycle": 0,
+          "count": 13,
+          "step": 40,
+          "state_hash": "28aaa0728e091539abc8329cb19fd5d9f8dabc309b0bbec4bfd7f0711266ef7b",
+          "status": "full_completed"
+        },
+        {
+          "cycle": 0,
+          "count": 11,
+          "step": 44,
+          "state_hash": "b9d607cc245524a23d919725377a6091bd6667ccb6617703ba32a025a5c5cd20",
+          "status": "full_completed"
+        },
+        {
+          "cycle": 0,
+          "count": 9,
+          "step": 48,
+          "state_hash": "27dcb84a8e791d73eb11925cd5b28fdec94167c95cff166098029011e3a5c9ab",
+          "status": "full_completed"
+        },
+        {
+          "cycle": 0,
+          "count": 7,
+          "step": 52,
+          "state_hash": "d4afdab93528b8899d838ad39af010227d0c6cce40b31b30abe93bc60b8fe343",
+          "status": "full_completed"
+        },
+        {
+          "cycle": 0,
+          "count": 6,
+          "step": 56,
+          "state_hash": "39504bce2f973d796d98f7f100549f256dd818c6bb2389fa387d600577552de8",
+          "status": "full_completed"
+        },
+        {
+          "cycle": 0,
+          "count": 4,
+          "step": 60,
+          "state_hash": "d7b5905cc9602bf0c0910a893b13f635b0a6d77b4367b3b1f459438f19815415",
+          "status": "full_completed"
+        },
+        {
+          "cycle": 0,
+          "count": 2,
+          "step": 64,
+          "state_hash": "54114a099406ff053bd0664d7d256700da3575d1acd0356c2fd9cacca228d44b",
+          "status": "full_completed"
+        }
+      ],
+      "pending_count": null
+    },
+    "cost_rank_weight": 0.0,
+    "feature_evaluation": "all candidates for neural selection/TD",
+    "recommended_cost": 0.04429042557846774,
+    "note": "best_* and gain fields describe penalized search elite; recommendation.json contains only strict-feasible designs"
+  }
+}

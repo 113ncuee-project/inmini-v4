@@ -17,6 +17,9 @@ development/uniform/7/rl,20,176,3577.9203353999183,reached
 confirmation/frozen/37/rl,5,149,3661.056793799624,reached
 confirmation/frozen/37/rl,10,153,3788.75872579962,reached
 confirmation/frozen/37/rl,20,,,not reached within completed budget
+confirmation/frozen/47/rl,5,124,2871.721164799761,reached
+confirmation/frozen/47/rl,10,124,2871.721164799761,reached
+confirmation/frozen/47/rl,20,,,not reached within completed budget
 confirmation/stratified/37/rl,5,142,2992.864735199604,reached
 confirmation/stratified/37/rl,10,142,2992.864735199604,reached
 confirmation/stratified/37/rl,20,142,2992.864735199604,reached
@@ -38,6 +41,9 @@ confirmation/stratified/47/random,20,,,not reached within completed budget
 confirmation/uniform/37/rl,5,159,3498.31513349968,reached
 confirmation/uniform/37/rl,10,166,3591.2526683995966,reached
 confirmation/uniform/37/rl,20,,,not reached within completed budget
+confirmation/uniform/47/rl,5,113,2350.5453918997664,reached
+confirmation/uniform/47/rl,10,113,2350.5453918997664,reached
+confirmation/uniform/47/rl,20,,,not reached within completed budget
 extended_development/controls_7/sa,5,196,5447.899163399823,reached
 extended_development/controls_7/sa,10,,,not reached within completed budget
 extended_development/controls_7/sa,20,,,not reached within completed budget

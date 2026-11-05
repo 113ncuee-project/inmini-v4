@@ -1,0 +1,452 @@
+{
+  "rl": {
+    "method": "rl",
+    "status": "wall_time_budget_exhausted",
+    "common_full_ppa": 100,
+    "search_full_ppa": 77,
+    "full_ppa": 177,
+    "seed_cost": 0.30275783751869356,
+    "best_cost": 0.04249344695992017,
+    "gain_vs_seed_pct": 85.96454271566249,
+    "best": {
+      "feasible": true,
+      "latency_s": 0.002434336658007781,
+      "energy_j": 0.01256354363063113,
+      "power_w": 5.160972123269473,
+      "area_mm2": 133.8400451764706,
+      "dram_read_bytes": 13119902,
+      "dram_write_bytes": 201704,
+      "noc_hop_bytes": 170204992,
+      "nop_hop_bytes": 83686400,
+      "executed_macs": 1814073344,
+      "recompute_macs": 0,
+      "unit_count": 4264,
+      "calendar_backend": "native",
+      "oracle_phase_wall_s": {
+        "compile": 2.077999999979511,
+        "communication_and_job_build": 12.577999999979511,
+        "schedule": 5.594000000040978,
+        "capacity_and_metrics": 4.968000000109896,
+        "diagnostics": 1.0
+      },
+      "oracle_process_cpu_s": 25.8125
+    },
+    "initial": {
+      "feasible": true,
+      "latency_s": 0.011818170269609494,
+      "energy_j": 0.018438092177364144,
+      "power_w": 1.5601477857175425,
+      "area_mm2": 64.79423152941176,
+      "dram_read_bytes": 54080428,
+      "dram_write_bytes": 2635752,
+      "noc_hop_bytes": 241375552,
+      "nop_hop_bytes": 68313792,
+      "executed_macs": 1814073344,
+      "recompute_macs": 0,
+      "unit_count": 3768,
+      "calendar_backend": "native",
+      "oracle_phase_wall_s": {
+        "compile": 1.9060000001918525,
+        "communication_and_job_build": 12.609999999869615,
+        "schedule": 4.327999999979511,
+        "capacity_and_metrics": 1.8120000001508743,
+        "diagnostics": 1.078999999910593
+      },
+      "oracle_process_cpu_s": 20.8125
+    },
+    "best_step": 45,
+    "best_state_hash": "40d0d082a80489b88c0c096fd98b2edc79617538368773c1061e69f620abed25",
+    "best_architecture": "single_array_c12_2x6",
+    "best_fusion_depth": 0,
+    "policy_updates": 0,
+    "search_wall_s": 1802.9070242999587,
+    "charged_wall_s": 4032.91766049969,
+    "architecture_coverage": {
+      "single_array_c1_1x1": {
+        "status": "full_evaluated",
+        "feasible": false,
+        "step": 68
+      },
+      "single_array_c2_1x2": {
+        "status": "full_completed",
+        "shared_screen": true
+      },
+      "single_array_c3_1x3": {
+        "status": "full_evaluated",
+        "feasible": false,
+        "step": 35
+      },
+      "single_array_c4_2x2": {
+        "status": "full_completed",
+        "shared_screen": true
+      },
+      "single_array_c5_1x5": {
+        "status": "full_completed",
+        "shared_screen": true
+      },
+      "single_array_c6_2x3": {
+        "status": "full_completed",
+        "shared_screen": true
+      },
+      "single_array_c7_1x7": {
+        "status": "full_evaluated",
+        "feasible": true,
+        "step": 74
+      },
+      "single_array_c8_2x4": {
+        "status": "full_evaluated",
+        "feasible": true,
+        "step": 11
+      },
+      "single_array_c9_3x3": {
+        "status": "full_completed",
+        "shared_screen": true
+      },
+      "single_array_c10_2x5": {
+        "status": "full_completed",
+        "shared_screen": true
+      },
+      "single_array_c11_1x11": {
+        "status": "full_evaluated",
+        "feasible": true,
+        "step": 40
+      },
+      "single_array_c12_3x4": {
+        "status": "full_completed",
+        "shared_screen": true
+      },
+      "single_array_c13_1x13": {
+        "status": "full_completed",
+        "shared_screen": true
+      },
+      "single_array_c14_2x7": {
+        "status": "full_evaluated",
+        "feasible": true,
+        "step": 27
+      },
+      "single_array_c15_3x5": {
+        "status": "full_evaluated",
+        "feasible": true,
+        "step": 33
+      },
+      "single_array_c16_4x4": {
+        "status": "full_completed",
+        "shared_screen": true
+      },
+      "single_array_c2_2x1": {
+        "status": "full_evaluated",
+        "feasible": false,
+        "step": 64
+      },
+      "single_array_c3_3x1": {
+        "status": "full_evaluated",
+        "feasible": false,
+        "step": 60
+      },
+      "single_array_c4_1x4": {
+        "status": "full_evaluated",
+        "feasible": false,
+        "step": 20
+      },
+      "single_array_c4_4x1": {
+        "status": "full_evaluated",
+        "feasible": false,
+        "step": 53
+      },
+      "single_array_c5_5x1": {
+        "status": "full_evaluated",
+        "feasible": true,
+        "step": 56
+      },
+      "single_array_c6_1x6": {
+        "status": "full_evaluated",
+        "feasible": true,
+        "step": 52
+      },
+      "single_array_c6_3x2": {
+        "status": "full_completed",
+        "shared_screen": true
+      },
+      "single_array_c6_6x1": {
+        "status": "full_completed",
+        "shared_screen": true
+      },
+      "single_array_c7_7x1": {
+        "status": "full_completed",
+        "shared_screen": true
+      },
+      "single_array_c8_1x8": {
+        "status": "full_evaluated",
+        "feasible": true,
+        "step": 51
+      },
+      "single_array_c8_4x2": {
+        "status": "full_completed",
+        "shared_screen": true
+      },
+      "single_array_c8_8x1": {
+        "status": "full_completed",
+        "shared_screen": true
+      },
+      "single_array_c9_1x9": {
+        "status": "full_evaluated",
+        "feasible": true,
+        "step": 44
+      },
+      "single_array_c9_9x1": {
+        "status": "full_completed",
+        "shared_screen": true
+      },
+      "single_array_c10_1x10": {
+        "status": "full_completed",
+        "shared_screen": true
+      },
+      "single_array_c10_5x2": {
+        "status": "full_evaluated",
+        "feasible": true,
+        "step": 71
+      },
+      "single_array_c10_10x1": {
+        "status": "full_evaluated",
+        "feasible": true,
+        "step": 28
+      },
+      "single_array_c11_11x1": {
+        "status": "full_completed",
+        "shared_screen": true
+      },
+      "single_array_c12_1x12": {
+        "status": "full_evaluated",
+        "feasible": true,
+        "step": 12
+      },
+      "single_array_c12_2x6": {
+        "status": "full_evaluated",
+        "feasible": true,
+        "step": 75
+      },
+      "single_array_c12_4x3": {
+        "status": "full_completed",
+        "shared_screen": true
+      },
+      "single_array_c12_6x2": {
+        "status": "full_completed",
+        "shared_screen": true
+      },
+      "single_array_c12_12x1": {
+        "status": "full_completed",
+        "shared_screen": true
+      },
+      "single_array_c13_13x1": {
+        "status": "full_evaluated",
+        "feasible": true,
+        "step": 36
+      },
+      "single_array_c14_1x14": {
+        "status": "full_completed",
+        "shared_screen": true
+      },
+      "single_array_c14_7x2": {
+        "status": "full_completed",
+        "shared_screen": true
+      },
+      "single_array_c14_14x1": {
+        "status": "full_completed",
+        "shared_screen": true
+      },
+      "single_array_c15_1x15": {
+        "status": "full_completed",
+        "shared_screen": true
+      },
+      "single_array_c15_5x3": {
+        "status": "full_completed",
+        "shared_screen": true
+      },
+      "single_array_c15_15x1": {
+        "status": "full_completed",
+        "shared_screen": true
+      },
+      "single_array_c16_1x16": {
+        "status": "full_evaluated",
+        "feasible": true,
+        "step": 77
+      },
+      "single_array_c16_2x8": {
+        "status": "full_completed",
+        "shared_screen": true
+      },
+      "single_array_c16_8x2": {
+        "status": "full_completed",
+        "shared_screen": true
+      },
+      "single_array_c16_16x1": {
+        "status": "full_completed",
+        "shared_screen": true
+      }
+    },
+    "gain_after_shared_screen_pct": 17.482178436113983,
+    "gain_before_rl_pct": 82.99099877052483,
+    "latency_improvement_pct": 79.40174661159101,
+    "energy_improvement_pct": 31.860934907056215,
+    "area_improvement_pct": -106.56166763196686,
+    "objective": "edp",
+    "gamma": 0.9,
+    "domain": "v08_stratified_architecture_full_schema3_1",
+    "strict_feasible": true,
+    "algorithm": "uniform_horizon_control",
+    "online_policy_updates_enabled": false,
+    "shared_warmstart_enabled": false,
+    "q_representation": "physical_cost_factored_double_q_v1",
+    "episode_cost_rise_limit": 0.25,
+    "episode_restart_probability": 0.9,
+    "architecture_refresh": {
+      "interval": 4,
+      "tried": [
+        1,
+        7,
+        16
+      ],
+      "cycle": 1,
+      "history": [
+        {
+          "cycle": 0,
+          "count": 16,
+          "step": 4,
+          "state_hash": "eb4c7f531faa3f1bac86b841df45c67f8a6bf4c8aed120a5d8d5266a1d840920",
+          "status": "full_completed"
+        },
+        {
+          "cycle": 0,
+          "count": 1,
+          "step": 8,
+          "state_hash": "a4e88985e2c1f1a8bd74a7180aa18fd50ab6566ac1ae7c90e8c781ddac58b774",
+          "status": "full_completed"
+        },
+        {
+          "cycle": 0,
+          "count": 12,
+          "step": 12,
+          "state_hash": "bc2b393406b8666c957663057197c4a3ec64c410d28225e4e32b997824327be2",
+          "status": "full_completed"
+        },
+        {
+          "cycle": 0,
+          "count": 7,
+          "step": 16,
+          "state_hash": "3d2c413605fbb021f751e0b1c7b16655c199cfb8f0c90174136f3e7beb821105",
+          "status": "full_completed"
+        },
+        {
+          "cycle": 0,
+          "count": 4,
+          "step": 20,
+          "state_hash": "311041f8c6c973e3f73cdc6a525ed5747994587a73a2f829a3de4e5200bc38df",
+          "status": "full_completed"
+        },
+        {
+          "cycle": 0,
+          "count": 14,
+          "step": 24,
+          "state_hash": "f3ba4f6e8584f968233691141909717d823e4af8f28a2543a7270dfe8fd69b9d",
+          "status": "full_completed"
+        },
+        {
+          "cycle": 0,
+          "count": 10,
+          "step": 28,
+          "state_hash": "c5d44b842e5c732c9ca5118a5ff1c843a4e20f6830424554ec11de02c494b81d",
+          "status": "full_completed"
+        },
+        {
+          "cycle": 0,
+          "count": 15,
+          "step": 32,
+          "state_hash": "5191ca1491f03d115420cba3ca5cbb0d89c87ba85e2d0a9553647a506dc38554",
+          "status": "full_completed"
+        },
+        {
+          "cycle": 0,
+          "count": 13,
+          "step": 36,
+          "state_hash": "fe901488818662d4eb4fc21edc6a5c203e9493e3defc9cbace2ac2a09b187b21",
+          "status": "full_completed"
+        },
+        {
+          "cycle": 0,
+          "count": 11,
+          "step": 40,
+          "state_hash": "82841b4f2d56dbf31cc53d12529a52c282d939d78f78b3876c68e4cfd11734f7",
+          "status": "full_completed"
+        },
+        {
+          "cycle": 0,
+          "count": 9,
+          "step": 44,
+          "state_hash": "71fb34b02b548d15098580b2530ad675a41351060e3d31ada04310b388431438",
+          "status": "full_completed"
+        },
+        {
+          "cycle": 0,
+          "count": 8,
+          "step": 48,
+          "state_hash": "728632ca86deecfd98d022f97fcea54451477566c71434bfc65209fb5424b9be",
+          "status": "full_completed"
+        },
+        {
+          "cycle": 0,
+          "count": 6,
+          "step": 52,
+          "state_hash": "5a60847af3e059e999cddb42619122a256d19a07948345aa1e89482c0a5f6973",
+          "status": "full_completed"
+        },
+        {
+          "cycle": 0,
+          "count": 5,
+          "step": 56,
+          "state_hash": "afd5e7486164af47ba7a98450b1aed4fc5e43ff617dee8597564bc711e2f650d",
+          "status": "full_completed"
+        },
+        {
+          "cycle": 0,
+          "count": 3,
+          "step": 60,
+          "state_hash": "413dba91a097de9a070b67a8bdd6a60658ad61929545009935543562e3db2f52",
+          "status": "full_completed"
+        },
+        {
+          "cycle": 0,
+          "count": 2,
+          "step": 64,
+          "state_hash": "341352ec3055e0c38b22aba1a1a69df41ef6540cb21181041077dd216270bb01",
+          "status": "full_completed"
+        },
+        {
+          "cycle": 1,
+          "count": 1,
+          "step": 68,
+          "state_hash": "b2968a40923b489f5a3d1a68b7a6582c20a5bb1cf4d61fd2659e982fd827c192",
+          "status": "full_completed"
+        },
+        {
+          "cycle": 1,
+          "count": 7,
+          "step": 72,
+          "state_hash": "bbad47662416f4015c757decc0aa1f5d0d3c2b4ae0f463627cf64b86ff5519f2",
+          "status": "full_completed"
+        },
+        {
+          "cycle": 1,
+          "count": 16,
+          "step": 76,
+          "state_hash": "9bfecbe701fde16d3ac6ea66d10681e9c7ebb49751ab088cff42335f0b53ef3c",
+          "status": "full_completed"
+        }
+      ],
+      "pending_count": null
+    },
+    "cost_rank_weight": 0.0,
+    "feature_evaluation": "selected candidate only; no unused neural feature overhead",
+    "recommended_cost": 0.04249344695992017,
+    "note": "best_* and gain fields describe penalized search elite; recommendation.json contains only strict-feasible designs"
+  }
+}

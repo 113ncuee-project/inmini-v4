@@ -119,6 +119,26 @@
       "stage": "heldout confirmation/stratified/47",
       "return_code": 0,
       "wall_s": 14.872933800099418
+    },
+    {
+      "stage": "confirmation/frozen/47",
+      "return_code": 0,
+      "wall_s": 1830.592409499921
+    },
+    {
+      "stage": "audit confirmation/frozen/47",
+      "return_code": 0,
+      "wall_s": 5.823533599963412
+    },
+    {
+      "stage": "confirmation/uniform/47",
+      "return_code": 0,
+      "wall_s": 1817.7245998000726
+    },
+    {
+      "stage": "audit confirmation/uniform/47",
+      "return_code": 0,
+      "wall_s": 9.72433579992503
     }
   ]
 }
