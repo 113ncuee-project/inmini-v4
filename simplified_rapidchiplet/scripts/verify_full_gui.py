@@ -13,6 +13,7 @@ import urllib.request
 def main():
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument('--seed-case', help='Optional Toy archive to run a real eight-query GUI job')
+    p.add_argument('--residual-cost-q',action='store_true')
     args = p.parse_args()
     app = Path(__file__).resolve().parents[1]
     command = [sys.executable, '-u', '-X', 'utf8', str(app / 'full_system_gui.py'), '--port', '0', '--no-browser']
@@ -48,7 +49,7 @@ def main():
         if args.seed_case:
             token = json.loads(re.search(r"'X-INMIN-Token':(\"[^\"]+\")", html).group(1))
             data = dict(model='resnet18', objective='edp', methods='rl', architecture_screen='off', queries='8', seconds='90',
-                        eval_timeout='20', seed='7', max_fusion_depth='4', cost_value_q='on', architecture_scaling='proportional',
+                        eval_timeout='20', seed='7', max_fusion_depth='4', cost_value_q='residual' if args.residual_cost_q else 'on', architecture_scaling='proportional',
                         episode_cost_rise='.25',episode_restart_probability='.9',architecture_refresh_interval='2')
             request = urllib.request.Request(url + '/api/start', json.dumps(data).encode(),
                 {'Content-Type': 'application/json', 'X-INMIN-Token': token})
@@ -66,13 +67,15 @@ def main():
                         raise AssertionError('GUI did not forward measured episode controls')
                     if effective.get('architecture_refresh_interval')!=2:
                         raise AssertionError('GUI did not forward architecture refresh schedule')
+                    if bool(effective.get('residual_cost_q'))!=args.residual_cost_q:
+                        raise AssertionError('GUI did not forward residual policy choice')
                     if not current['recommendations']['rl']['strict_feasible'] or not current['recommendations']['rl']['metrics']:
                         raise AssertionError('GUI failed to expose strict-feasible recommendation')
                     break
                 time.sleep(.25)
             if full != 8:
                 raise AssertionError('GUI did not complete eight actual full PPA')
-        print(json.dumps(dict(passed=True, fields=16, cost_value_q=True, episode_controls=True, architecture_refresh=True, status_api=True, strict_recommendations=True, token_required=True, new_ppa=full, out=str(job_out))))
+        print(json.dumps(dict(passed=True, fields=16, cost_value_q=True, residual_cost_q=args.residual_cost_q, episode_controls=True, architecture_refresh=True, status_api=True, strict_recommendations=True, token_required=True, new_ppa=full, out=str(job_out))))
     finally:
         child.terminate()
         child.wait(timeout=10)

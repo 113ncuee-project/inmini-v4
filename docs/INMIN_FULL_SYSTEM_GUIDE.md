@@ -1,10 +1,10 @@
-# INMIN Full v0.8：本機操作與完整搜尋空間
+# INMIN Full v0.9：本機操作與完整搜尋空間
 
-更新：2026-11-04。程式來源 `9ee5237e2f5ab48bb98d6cb388f88427170faafec4e8c7218edf3e2cb3651562`。188項回歸覆蓋、完整CLI與實際GUI已通過；新RL技術的收益另由實驗對照驗證。[驗證證據](INMIN_FULL_SYSTEM_VALIDATION.md) · [技術與協定](INMIN_GRAPH_EDIT_DEVELOPMENT.md) · [新版分層探索](INMIN_STRATIFIED_SEARCH.md) · [前版成本Q結果](INMIN_COST_VALUE_RESULTS.md) · [歷史結果](INMIN_GRAPH_EDIT_RESULTS.md) · [RACE-RL參考核對](INMIN_RACE_REFERENCE_AUDIT.md)。
+更新：2026-11-04。程式來源 `b771758cbeba3788922270f05e4eb9f459b7336c0031f88e775151b45a1d89b4`。204項回歸、明記來源的CLI涵蓋證據、實際GUI與並行精確恢復已通過；新RL技術的收益另由實驗對照驗證。[驗證證據](INMIN_FULL_SYSTEM_VALIDATION.md) · [技術與協定](INMIN_GRAPH_EDIT_DEVELOPMENT.md) · [新版分層探索](INMIN_STRATIFIED_SEARCH.md) · [前版成本Q結果](INMIN_COST_VALUE_RESULTS.md) · [歷史結果](INMIN_GRAPH_EDIT_RESULTS.md) · [RACE-RL參考核對](INMIN_RACE_REFERENCE_AUDIT.md)。
 
 ## 最短啟動方式
 
-專案根目錄有 `.venv` 時，雙擊 `start_inmin_full_gui.cmd`；本機介面為 `http://127.0.0.1:8766`。可設定模型、目標、完整查詢上限、時間、Fusion深度與PPA硬限制，並停止／續跑。本版GUI保留舊Q作對照；要用新設定，選「起點校正多步Q」，Episode容許Cost惡化比例填0.25，重啟機率0.9。GUI顯示嚴格可行的整組設計數字；沒有合法推薦時會明確顯示。
+專案根目錄有 `.venv` 時，雙擊 `start_inmin_full_gui.cmd`；本機介面為 `http://127.0.0.1:8766`。可設定模型、目標、完整查詢上限、時間、Fusion深度與PPA硬限制，並停止／續跑。本版GUI保留舊Q作對照；要用新設定，選「固定先驗＋線上修正Q（實驗）」，Episode容許Cost惡化比例填0.25，重啟機率0.9。GUI顯示嚴格可行的整組設計數字；沒有合法推薦時會明確顯示。
 
 新環境使用Python3.12：
 
@@ -18,7 +18,7 @@ py -3.12 -m venv .venv
 ## 一次完整長跑
 
 ```powershell
-.venv/Scripts/python.exe -u -X utf8 simplified_rapidchiplet/full_system_dse.py --seed-case inputs/replay_v04/resnet18 --out output/r18_long --methods rl,sa,random --queries 512 --seconds 7200 --eval-timeout 600 --seed 7 --cost-value-q --episode-cost-rise .25 --architecture-refresh-interval 4 --seed-seconds 3600 --seed-dp-seconds 1800
+.venv/Scripts/python.exe -u -X utf8 simplified_rapidchiplet/full_system_dse.py --seed-case inputs/replay_v04/resnet18 --out output/r18_long --methods rl,sa,random --queries 512 --seconds 7200 --eval-timeout 600 --seed 7 --cost-value-q --residual-cost-q --episode-cost-rise .25 --architecture-refresh-interval 4 --seed-seconds 3600 --seed-dp-seconds 1800
 ```
 
 `--queries`是每方法**含共同階段**的完整PPA上限；`--seconds`是每方法搜尋時間上限，包含候選、特徵、SGD與Oracle。共同reference／seed、架構與起點強化實際只做一次，再對各方法同額計費。初始化另外有有界預算，總端到端時間會更長。7200秒不是保證完成512次或已收斂；報告列出實際查詢與時間。
@@ -84,7 +84,7 @@ Python CLI／GUI的額外強化預設最多48次PPA、1200秒評估／600秒DP�
 
 ## RL及本版技術
 
-建議使用 `--cost-value-q --episode-cost-rise .25`；未指定新旗標的原transition-Q仍保留相容性。新Q使用 `Q=phi(before)+V(after)+H(before,action)`、`phi=10 log(C)`。V僅取65個絕對after-design特徵，以實際完整PPA成本訓練；H以Double-Q target學習continuation。成本超過elite的1.25倍後以90%機率結束episode，仍保留實際負reward及10%較差中間狀態的探索。
+新實驗控制器指定 `--cost-value-q --residual-cost-q --episode-cost-rise .25`，使用`Q=phi(before)+V0(after)+R(before,action)+H(before,action)`、`phi=10 log(C)`。V0僅取65個絕對after-design特徵並在共享暖身後固定，R以自身完整PPA擬合殘差，H以Double-Q target學習多步價值。只指定`--cost-value-q`則保留舊CostQ控制；原transition-Q亦保留。成本超過elite的1.25倍後以90%機率結束episode，保留負reward及10%較差中間狀態探索。
 
 外層為action-conditioned Double Q：gamma=.9、target network、replay、每8個合法步驟回到elite；每個實際新可行PPA預設24次minibatch SGD。完整物理成本差提供reward：
 
@@ -120,3 +120,9 @@ terminal不bootstrap；timeout／容量失敗不提供虛構PPA reward。epsilon
 同一專案的昂貴實驗由全域鎖序列化；另一個工作持鎖時，新工作會明確失敗，請查看正在執行的實驗。新版來源與結果凍結後續跑，避免混入中途修改。native calendar與Python fallback保留相同物理定義。
 
 原v0.5的兩RNG有正面結果，但固定2顆對照由Random勝出；一次可行的Fusion配對也顯示Fusion On流量較高、EDP稍差。v0.7完整開發對照由Random取得較低EDP；v0.8分層探索的匹配對照與獨立種子仍在進行，不能先宣稱穩定優勢或已打敗原版論文。請以[逐組數字](INMIN_GRAPH_EDIT_RESULTS.md)及完整mapping判讀。
+
+## 固定先驗與殘差多步Q
+
+新選項 `--residual-cost-q`需要同時指定`--cost-value-q`，保留全部V3有效變數與同一PPA。固定共享成本先驗V0，以自己的新PPA訓練殘差R，H使用LayerNorm／SiLU與真正Double-Q target。GUI選項、完整公式、LOO選擇、gamma0／凍結消融及限制見[設計說明](INMIN_RESIDUAL_RL_DESIGN.md)。
+
+新多種子啟動器為`run_inmin_full_parallel.ps1`，使用`-Policy residual`；完整長跑、Stop／Resume範例見根README。原串行`run_inmin_full_overnight.ps1`保留舊CostQ控制設定。研究優勢與功能驗收分開，不因測試通過就宣稱DNN改善。

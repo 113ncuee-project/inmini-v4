@@ -1,0 +1,22 @@
+{
+  "minibatch": 32,
+  "nonterminal": 23,
+  "max_target_absolute_difference": 1.716613766689079e-06,
+  "successor_argmax_identical": true,
+  "times": {
+    "loop": {
+      "wall_s": 0.7438052999787033,
+      "cpu_s": 0.734375,
+      "iterations": 16
+    },
+    "batch": {
+      "wall_s": 0.3251191999297589,
+      "cpu_s": 0.328125,
+      "iterations": 16
+    }
+  },
+  "loop_over_batch_wall_ratio": 2.2877926008042597,
+  "new_PPA": 0,
+  "new_SGD": 0,
+  "scope": "one saved minibatch target computation only; not total training or DSE acceleration; no code adopted"
+}

@@ -1,0 +1,19 @@
+{
+  "source_identity": "b771758cbeba3788922270f05e4eb9f459b7336c0031f88e775151b45a1d89b4",
+  "source_files": 218,
+  "images": 0,
+  "code": {
+    "path": "C:\\Users\\user\\Desktop\\rapidchiplet\\output\\uploads\\INMIN_Full_Code_20261105_v09_learning_r1.zip",
+    "bytes": 2442646,
+    "files": 316,
+    "sha256": "7d418f9b9018d7d5b23cc01b13745b839b2491db973031309b7198a8406ee404",
+    "crc_and_sha_verified": true
+  },
+  "validation": {
+    "path": "C:\\Users\\user\\Desktop\\rapidchiplet\\output\\uploads\\INMIN_Full_Validation_20261105_v09_learning_r1.zip",
+    "bytes": 1842322,
+    "files": 154,
+    "sha256": "2cedfd31942467d1f99efddd743d0c34c2a6569a4265378f4cfd1a4a6551beb7",
+    "crc_and_sha_verified": true
+  }
+}

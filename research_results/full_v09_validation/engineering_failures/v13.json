@@ -1,0 +1,14 @@
+{
+  "status": "failed_parallel_readiness_no_DNN",
+  "source": "fc69465e14ec57277e21af843d957fec32ea84e0bdb0eb4b110ae8294337b95b",
+  "passed_regression": 202,
+  "passed_CLI_seconds": 319.0134193,
+  "passed_GUI_Toy_PPA": 8,
+  "root_cause": "ScreenOff+SeedRefinementOff correctly writes no screening.json; coordinator incorrectly required that nonexistent0-query file for shared readiness",
+  "actual_first_case_status": "completed all3methods",
+  "first_case_new_Toy_search_PPA": 90,
+  "new_DNN_PPA": 0,
+  "fix_source": "b771758cbeba3788922270f05e4eb9f459b7336c0031f88e775151b45a1d89b4",
+  "frozen_source_unchanged": true,
+  "created_utc": "2026-11-05T00:46:55.982072+00:00"
+}

@@ -1,0 +1,10 @@
+{
+  "reference": "C:\\Users\\user\\Desktop\\rapidchiplet\\output\\inmin_v13_20261105\\qa_repaired_study_v1",
+  "actual_source": "fc69465e14ec57277e21af843d957fec32ea84e0bdb0eb4b110ae8294337b95b",
+  "changed_files_outside_serial_CLI": [
+    "scripts/run_parallel_full_suite.py",
+    "tests/test_full_cohort.py"
+  ],
+  "workflow_result_sha256": "b3f367dfb8d2f9aaac36babcd09f37ca56f610cd4eea1dd9273402fac01bb626",
+  "scope": "actual319.013s serial CLI passed on fc694; every driver, learner, physical, GUI and CLI harness file unchanged; new coordinator readiness and unit checks get separate actual validation"
+}

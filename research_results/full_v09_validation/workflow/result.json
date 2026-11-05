@@ -1,0 +1,39 @@
+{
+  "passed": true,
+  "cost_value_q": true,
+  "episode_cost_rise": 0.25,
+  "residual_cost_q": true,
+  "architecture_refresh_interval": 2,
+  "service_features": false,
+  "cost_rank_weight": 0.0,
+  "nonterminal_source": "full",
+  "elapsed_s": 319.0134192998521,
+  "checks": [
+    "3 methods exact-query CLI",
+    "same trajectory after cooperative stop/resume",
+    "same Q update count",
+    "no duplicate durable PPA",
+    "completed resume no new PPA",
+    "physical/reward/source audits",
+    "strict infeasible archive",
+    "50 actual architecture PPA",
+    "identical shared-screen charges for all 3 methods",
+    "shared physical history reuse with exact inherited charge and zero new common PPA",
+    "Gemini-style LP5 masking and SA elite restart",
+    "uniform choices with identical RL horizon and zero SGD",
+    "frozen shared Q with zero online updates",
+    "core CLI wider initialization with query reserve and charged shared PPA",
+    "cooperative initialization stop/resume and source/accounting audit"
+  ],
+  "validation_reuse": {
+    "reference": "C:\\Users\\user\\Desktop\\rapidchiplet\\output\\inmin_v13_20261105\\qa_repaired_study_v1",
+    "actual_source": "fc69465e14ec57277e21af843d957fec32ea84e0bdb0eb4b110ae8294337b95b",
+    "changed_files_outside_serial_CLI": [
+      "scripts/run_parallel_full_suite.py",
+      "tests/test_full_cohort.py"
+    ],
+    "workflow_result_sha256": "b3f367dfb8d2f9aaac36babcd09f37ca56f610cd4eea1dd9273402fac01bb626",
+    "scope": "actual319.013s serial CLI passed on fc694; every driver, learner, physical, GUI and CLI harness file unchanged; new coordinator readiness and unit checks get separate actual validation"
+  },
+  "elapsed_s_role": "original actual CLI run, not a new execution"
+}

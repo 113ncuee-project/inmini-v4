@@ -1,0 +1,26 @@
+{
+  "stages": [
+    {
+      "stage": "full_regression",
+      "return_code": 0,
+      "wall_s": 73.80515930010006
+    },
+    {
+      "stage": "reuse passed serial CLI coverage with exact unchanged runtime/harness proof",
+      "return_code": 0,
+      "new_PPA": 0,
+      "new_SGD": 0,
+      "actual_reference": "C:\\Users\\user\\Desktop\\rapidchiplet\\output\\inmin_v13_20261105\\qa_repaired_study_v1\\workflow\\result.json"
+    },
+    {
+      "stage": "actual_GUI_residual",
+      "return_code": 0,
+      "wall_s": 18.611402600072324
+    },
+    {
+      "stage": "actual_parallel_physical_serial_and_resume_equivalence",
+      "return_code": 0,
+      "wall_s": 276.5242429000791
+    }
+  ]
+}

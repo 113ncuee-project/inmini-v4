@@ -1,0 +1,98 @@
+[
+  {
+    "arguments": [
+      "-Out",
+      "C:\\Users\\user\\Desktop\\rapidchiplet\\output\\inmin_v12_20261104\\parallel_launcher_validation\\not_created",
+      "-EngineApp",
+      "C:\\Users\\user\\Desktop\\rapidchiplet\\output\\inmin_v12_20261104\\continuation_study_v1\\engine",
+      "-Models",
+      "resnet18,resnet50,mobilenet_v2",
+      "-Seeds",
+      "7,37",
+      "-Jobs",
+      "3",
+      "-Policy",
+      "residual",
+      "-Queries",
+      "612",
+      "-Seconds",
+      "14400",
+      "-EvalTimeout",
+      "900",
+      "-MaxArea",
+      "200",
+      "-MaxPower",
+      "8.5",
+      "-MaxLatencyMs",
+      "4.2",
+      "-EpisodeCostRise",
+      "0.25",
+      "-DryRun"
+    ],
+    "return_code": 0,
+    "stdout": "{\n    \"policy\":  \"residual\",\n    \"models\":  \"resnet18,resnet50,mobilenet_v2\",\n    \"timing\":  \"Independent RNG cases concurrently; per-case physical oracle and all PPA costs retained. Not isolated single-search speedup.\",\n    \"arguments\":  [\n                      \"-u\",\n                      \"-X\",\n                      \"utf8\",\n                      \"C:\\\\Users\\\\user\\\\Desktop\\\\rapidchiplet\\\\output\\\\inmin_v12_20261104\\\\continuation_study_v1\\\\engine\\\\scripts\\\\run_parallel_full_suite.py\",\n                      \"--out\",\n                      \"C:\\\\Users\\\\user\\\\Desktop\\\\rapidchiplet\\\\output\\\\inmin_v12_20261104\\\\parallel_launcher_validation\\\\not_created\",\n                      \"--models\",\n                      \"resnet18,resnet50,mobilenet_v2\",\n                      \"--seeds\",\n                      \"7,37\",\n                      \"--methods\",\n                      \"rl,sa,random\",\n                      \"--jobs\",\n                      \"3\",\n                      \"--queries\",\n                      \"612\",\n                      \"--seconds\",\n                      \"14400\",\n                      \"--eval-timeout\",\n                      \"900\",\n                      \"--policy\",\n                      \"residual\",\n                      \"--objective\",\n                      \"edp\",\n                      \"--architecture-screen\",\n                      \"all\",\n                      \"--screen-seconds\",\n                      \"3600\",\n                      \"--seed-refinement\",\n                      \"wide\",\n                      \"--seed-queries\",\n                      \"48\",\n                      \"--seed-seconds\",\n                      \"3600\",\n                      \"--seed-dp-seconds\",\n                      \"1800\",\n                      \"--architecture-refresh-interval\",\n                      \"4\",\n                      \"--episode-cost-rise\",\n                      \"0.25\",\n                      \"--max-fusion-depth\",\n                      \"4\",\n                      \"--max-area\",\n                      \"200\",\n                      \"--max-power\",\n                      \"8.5\",\n                      \"--max-latency-ms\",\n                      \"4.2\"\n                  ],\n    \"new_SGD\":  0,\n    \"python\":  \"C:\\\\Users\\\\user\\\\Desktop\\\\rapidchiplet\\\\.venv\\\\Scripts\\\\python.exe\",\n    \"new_PPA\":  0,\n    \"seeds\":  \"7,37\",\n    \"jobs\":  3,\n    \"action\":  \"fresh_concurrent_cases\"\n}\n",
+    "stderr": ""
+  },
+  {
+    "arguments": [
+      "-Out",
+      "C:\\Users\\user\\Desktop\\rapidchiplet\\output\\inmin_v12_20261104\\parallel_launcher_validation\\saved_protocol_fixture",
+      "-Resume",
+      "-Policy",
+      "transition",
+      "-Jobs",
+      "4",
+      "-Queries",
+      "7",
+      "-DryRun"
+    ],
+    "return_code": 0,
+    "stdout": "{\n    \"source_identity\":  \"SYNTHETIC_LAUNCHER_FIXTURE_NOT_A_SCIENTIFIC_RESULT\",\n    \"action\":  \"resume_saved_protocol\",\n    \"timing\":  \"Independent RNG cases concurrently; per-case physical oracle and all PPA costs retained. Not isolated single-search speedup.\",\n    \"arguments\":  [\n                      \"-u\",\n                      \"-X\",\n                      \"utf8\",\n                      \"C:\\\\Users\\\\user\\\\Desktop\\\\rapidchiplet\\\\output\\\\inmin_v12_20261104\\\\parallel_launcher_validation\\\\saved_protocol_fixture\\\\engine\\\\scripts\\\\run_parallel_full_suite.py\",\n                      \"--out\",\n                      \"C:\\\\Users\\\\user\\\\Desktop\\\\rapidchiplet\\\\output\\\\inmin_v12_20261104\\\\parallel_launcher_validation\\\\saved_protocol_fixture\",\n                      \"--resume\"\n                  ],\n    \"new_SGD\":  0,\n    \"python\":  \"C:\\\\Users\\\\user\\\\Desktop\\\\rapidchiplet\\\\.venv\\\\Scripts\\\\python.exe\",\n    \"cases\":  [\n                  {\n                      \"id\":  \"saved\",\n                      \"arguments\":  [\n                                        \"--cost-value-q\",\n                                        \"--residual-cost-q\",\n                                        \"--gamma\",\n                                        \"0\",\n                                        \"--queries\",\n                                        \"292\",\n                                        \"--max-area\",\n                                        \"200\"\n                                    ]\n                  }\n              ],\n    \"new_PPA\":  0,\n    \"jobs\":  2\n}\n",
+    "stderr": ""
+  },
+  {
+    "arguments": [
+      "-Out",
+      "C:\\Users\\user\\Desktop\\rapidchiplet\\output\\inmin_v12_20261104\\parallel_launcher_validation\\saved_protocol_fixture",
+      "-Stop",
+      "-DryRun"
+    ],
+    "return_code": 0,
+    "stdout": "{\n    \"path\":  \"C:\\\\Users\\\\user\\\\Desktop\\\\rapidchiplet\\\\output\\\\inmin_v12_20261104\\\\parallel_launcher_validation\\\\saved_protocol_fixture\\\\STOP_REQUESTED\",\n    \"new_PPA\":  0,\n    \"action\":  \"request_cooperative_stop\",\n    \"new_SGD\":  0\n}\n",
+    "stderr": ""
+  },
+  {
+    "arguments": [
+      "-Out",
+      "C:\\Users\\user\\Desktop\\rapidchiplet\\output\\inmin_v12_20261104\\parallel_launcher_validation\\saved_protocol_fixture",
+      "-Stop"
+    ],
+    "return_code": 0,
+    "stdout": "Stop requested; active evaluations checkpoint normally. Resume with the same output.\n",
+    "stderr": ""
+  },
+  {
+    "arguments": [
+      "-Out",
+      "C:\\Users\\user\\Desktop\\rapidchiplet\\tmp\\forbidden_parallel_output",
+      "-EngineApp",
+      "C:\\Users\\user\\Desktop\\rapidchiplet\\output\\inmin_v12_20261104\\continuation_study_v1\\engine",
+      "-DryRun"
+    ],
+    "return_code": 1,
+    "stdout": "",
+    "stderr": "Output must be a case directory inside this project output.\nAt C:\\Users\\user\\Desktop\\rapidchiplet\\tmp\\inmin_v12_continuation\\run_inmin_full_parallel.ps1:48 char:87\n+ ... oreCase)) { throw 'Output must be a case directory inside this projec ...\n+                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n    + CategoryInfo          : OperationStopped: (Output must be ...project output.:String) [], RuntimeException\n    + FullyQualifiedErrorId : Output must be a case directory inside this project output.\n \n"
+  },
+  {
+    "arguments": [
+      "-Out",
+      "C:\\Users\\user\\Desktop\\rapidchiplet\\output\\inmin_v12_20261104\\parallel_launcher_validation\\saved_protocol_fixture",
+      "-Resume",
+      "-Stop",
+      "-DryRun"
+    ],
+    "return_code": 1,
+    "stdout": "",
+    "stderr": "Choose Resume or Stop for this invocation.\nAt C:\\Users\\user\\Desktop\\rapidchiplet\\tmp\\inmin_v12_continuation\\run_inmin_full_parallel.ps1:49 char:27\n+ ... me -and $Stop) { throw 'Choose Resume or Stop for this invocation.' }\n+                      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n    + CategoryInfo          : OperationStopped: (Choose Resume o...his invocation.:String) [], RuntimeException\n    + FullyQualifiedErrorId : Choose Resume or Stop for this invocation.\n \n"
+  }
+]

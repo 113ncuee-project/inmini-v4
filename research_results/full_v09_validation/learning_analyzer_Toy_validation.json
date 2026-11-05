@@ -1,0 +1,94 @@
+{
+  "created_utc": "2026-11-05T00:38:57.735113+00:00",
+  "source_identity": "fc69465e14ec57277e21af843d957fec32ea84e0bdb0eb4b110ae8294337b95b",
+  "control_source": "fc69465e14ec57277e21af843d957fec32ea84e0bdb0eb4b110ae8294337b95b",
+  "random_seed": 7,
+  "development_only": false,
+  "held_out_count": 3,
+  "models": {
+    "initial": {
+      "checkpoint_sha256": "5b5c476520979031367b37122672d927a9f5c7125132cfb635fe6563fd2964f2",
+      "SGD": 0,
+      "after_cost_spearman": 1.0,
+      "after_potential_MAE": 14.200516121916863,
+      "best_actual_control_rank": 1,
+      "same_architecture_and_group": {
+        "non_tied_pairs": 1,
+        "concordance": 1.0
+      },
+      "continuation_std": 0.0,
+      "continuation_range": 0.0,
+      "residual": {
+        "enabled": true,
+        "observations": 0,
+        "fits": 0,
+        "linear_candidates_fitted": 0,
+        "capacity": 128,
+        "selected_basis": null,
+        "selected_ridge": null,
+        "training_LOO_MSE": null,
+        "scope": "own measured labels only; training-only LOO, no control labels or added PPA"
+      }
+    },
+    "after_shared": {
+      "checkpoint_sha256": "6fac5ee61cc0bfd6334ca542d80e4f932fa84e338694bc9e080781328adc3f4c",
+      "SGD": 40,
+      "after_cost_spearman": -1.0,
+      "after_potential_MAE": 12.70602903933117,
+      "best_actual_control_rank": 3,
+      "same_architecture_and_group": {
+        "non_tied_pairs": 1,
+        "concordance": 0.0
+      },
+      "continuation_std": 0.0,
+      "continuation_range": 0.0,
+      "residual": {
+        "enabled": true,
+        "observations": 0,
+        "fits": 0,
+        "linear_candidates_fitted": 0,
+        "capacity": 128,
+        "selected_basis": null,
+        "selected_ridge": null,
+        "training_LOO_MSE": null,
+        "scope": "own measured labels only; training-only LOO, no control labels or added PPA"
+      }
+    },
+    "final": {
+      "checkpoint_sha256": "f17266ac56c8242288208380d61a51d5e8d43b0933e851caaaeaceeab4983f8c",
+      "SGD": 96,
+      "after_cost_spearman": -1.0,
+      "after_potential_MAE": 12.70602903933117,
+      "best_actual_control_rank": 3,
+      "same_architecture_and_group": {
+        "non_tied_pairs": 1,
+        "concordance": 0.0
+      },
+      "continuation_std": 0.14254704117774963,
+      "continuation_range": 0.302465558052063,
+      "residual": {
+        "enabled": true,
+        "observations": 7,
+        "fits": 0,
+        "linear_candidates_fitted": 0,
+        "capacity": 128,
+        "selected_basis": null,
+        "selected_ridge": null,
+        "training_LOO_MSE": null,
+        "scope": "own measured labels only; training-only LOO, no control labels or added PPA"
+      }
+    }
+  },
+  "continuation_changes_argmax_pools": 0,
+  "recorded_nonterminal_pools": 1,
+  "heldout_state_hashes": [
+    "572febc56b494f2f946de6008816d0ebf49891d3a892059c06d406b8323b7b38",
+    "100cc435e7821b1013f9b091a828879e821bc107e259f44e1905f31028b097cd",
+    "df8e94462f53c5b9cc0417bb46ff2b65dd45521acc10d4e35da03ff9545dfa59"
+  ],
+  "new_PPA": 0,
+  "new_SGD": 0,
+  "images": 0,
+  "script_sha256": "3bd7497cba635b3a2cb52e0a6f36b260d3acfb3c9aba2293188810ec2373fe1c",
+  "scope": "same unseen canonical control corpus at3model stages; after-cost prediction includes frozenV+learnedR and excludes known before term. H ranking changes are not scored as accurate future returns. Legacy control labels may have guided earlier algorithm development; explicit development-only. Not new DSE or causal search efficacy."
+}

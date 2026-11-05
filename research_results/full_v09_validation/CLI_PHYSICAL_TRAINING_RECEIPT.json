@@ -1,0 +1,29 @@
+{
+  "rows": [
+    {
+      "case": "full",
+      "actual_source": "fc69465e14ec57277e21af843d957fec32ea84e0bdb0eb4b110ae8294337b95b",
+      "source_checkpoint_sha256": "f17266ac56c8242288208380d61a51d5e8d43b0933e851caaaeaceeab4983f8c",
+      "representation": "frozen_prior_residual_normalized_continuation_q_v2",
+      "observed_transitions": 7,
+      "nonterminal_transitions": 1,
+      "SGD": 96,
+      "residual_fits": 0,
+      "shared_value_bitwise_frozen": true
+    },
+    {
+      "case": "physical_residual_adaptation",
+      "actual_source": "fc69465e14ec57277e21af843d957fec32ea84e0bdb0eb4b110ae8294337b95b",
+      "source_checkpoint_sha256": "5a051475a8fe92a37b1382136f9d395bea858ea9aa8b6fc54295b74231ac0159",
+      "representation": "frozen_prior_residual_normalized_continuation_q_v2",
+      "observed_transitions": 20,
+      "nonterminal_transitions": 8,
+      "SGD": 80,
+      "residual_fits": 13,
+      "shared_value_bitwise_frozen": true
+    }
+  ],
+  "new_PPA_by_export": 0,
+  "new_SGD_by_export": 0,
+  "scope": "actual Tiny/Toy functional learning, not ResNet performance"
+}

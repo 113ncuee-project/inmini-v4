@@ -1,0 +1,18 @@
+{
+  "passed": true,
+  "actual_PowerShell_invocations": 6,
+  "new_PPA": 0,
+  "new_SGD": 0,
+  "checks": [
+    "numeric caps and invariant formatting",
+    "all3 models",
+    "resume reads saved protocol despite conflicting defaults",
+    "DryRun never launches Python or creates experiment",
+    "cooperative stop path",
+    "output containment",
+    "incompatible invocation rejected"
+  ],
+  "saved_resume_fixture": "synthetic shell-only fixture, not an executed cohort",
+  "script_sha256": "73bd8ad2a33c826ea9b6c1f95d8fe0b5ec2533d3c6d108bbe7b9c5fc5f4a38f9",
+  "elapsed_s": 2.8616603000555187
+}

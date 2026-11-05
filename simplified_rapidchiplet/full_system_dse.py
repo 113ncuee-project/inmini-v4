@@ -23,10 +23,12 @@ APP = Path(__file__).resolve().parent
 sys.path.insert(0, str(APP / 'scripts'))
 from run_local_rl_diagnostics import read, write, sources, sha, lock, environment
 from profile_mapping_oracle import load_workload
+from full_cohort import admission
 from replay_mapping_dse import compact, cost, append
 from simple_rapidchiplet.hybrid.full_space import FullDesignSpace, DesignTrial, decision_hash
 from simple_rapidchiplet.hybrid.multi_step_q import MultiStepQ
 from simple_rapidchiplet.hybrid.cost_value_q import CostValueQ
+from simple_rapidchiplet.hybrid.residual_cost_q import ResidualCostQ
 from simple_rapidchiplet.hybrid.architecture_refresh import ArchitectureRefresh
 from simple_rapidchiplet.hybrid.rl_actions import validate_state
 from simple_rapidchiplet.hybrid.rl_schema import DesignState
@@ -280,7 +282,9 @@ def execute(args):
         started = time.perf_counter()
         size = space.features(initial, initial_metrics, reference, [DesignTrial(initial, 'A2')]).shape[1]
         graph_size = len(space.graph_feature_names)
-        policy = (CostValueQ(size, space.after_design_indices, args.seed, gamma=args.gamma,
+        policy = (ResidualCostQ(size,space.after_design_indices,space.residual_local_indices,args.seed,gamma=args.gamma,
+                               correction_enabled=not args.no_residual_correction,capacity=args.residual_replay,basis=args.residual_basis)
+                  if args.residual_cost_q else CostValueQ(size, space.after_design_indices, args.seed, gamma=args.gamma,
                             ranking_weight=args.cost_rank_weight) if args.cost_value_q else
                   MultiStepQ(size, args.seed, gamma=args.gamma, base_size=size - graph_size if graph_size else None))
         if saved.get('policy_file'):
@@ -413,6 +417,9 @@ def execute(args):
                     episode=episode, epoch_steps=epoch_steps, policy_updates_before=updates_before,
                     proposal_kind=proposal_kind, architecture_refresh_count=refresh.pending_count,
                     before_cost=before, source_identity=manifest['identity'])
+                if method == 'rl' and args.residual_cost_q:
+                    request['residual_model'] = policy.diagnostics()
+                    request['predicted_immediate_reward'] = float(policy.predict_reward([selected_features],before)[0])
                 write(folder / 'pending_trial.json', request)
                 full_before = pool.full_evaluations
                 tick = time.perf_counter()
@@ -537,7 +544,9 @@ def execute(args):
             'frozen_initial_q_control' if args.freeze_search_policy else 'multistep_double_q') if method == 'rl' else method
         summary['online_policy_updates_enabled'] = method == 'rl' and not args.freeze_search_policy
         summary['shared_warmstart_enabled'] = method == 'rl' and not args.no_shared_warmstart
-        summary['q_representation'] = (CostValueQ.representation if args.cost_value_q else 'original_transition_double_q') if method == 'rl' else None
+        summary['q_representation'] = (policy.representation if args.cost_value_q else 'original_transition_double_q') if method == 'rl' else None
+        if method == 'rl' and args.residual_cost_q:
+            summary['residual_model'] = policy.diagnostics()
         if method == 'rl' and not (args.uniform_policy or args.freeze_search_policy) and (args.gamma == 0 or args.horizon == 1):
             summary['algorithm'] = 'one_step_action_value_rl'
         summary['episode_cost_rise_limit'] = args.episode_cost_rise
@@ -605,6 +614,10 @@ def main():
     p.add_argument('--guidance', action='store_true')
     p.add_argument('--no-boundary-features', action='store_true')
     p.add_argument('--cost-value-q', action='store_true', help='factor exact measured before cost from Q; learn an invariant after-design cost head and a genuine multi-step continuation branch')
+    p.add_argument('--residual-cost-q',action='store_true',help='freeze shared physical cost prior; adapt measured residual with training-only LOO and retain genuine Double-Q continuation')
+    p.add_argument('--residual-basis',choices=('auto','full','local','after'),default='auto')
+    p.add_argument('--residual-replay',type=int,default=128,help='bounded own measured observations used for residual fits; full physical history remains saved')
+    p.add_argument('--no-residual-correction',action='store_true',help='ablation: same frozen prior and trainable continuation, residual adaptation disabled')
     p.add_argument('--architecture-scaling', choices=('legacy','proportional'), default='proportional', help='additional architecture shortcut; all original integer PE quotas remain reachable')
     p.add_argument('--architecture-refresh-interval', type=int, default=0,
         help='every N decisions transfer the verified elite across one label-free stratified chiplet count; all its rectangles remain selectable, 0 disables')
@@ -621,8 +634,18 @@ def main():
     p.add_argument('--operators', choices=('full', 'gemini5'), default='full')
     p.add_argument('--fusion-off', action='store_true')
     p.add_argument('--resume', action='store_true')
+    p.add_argument('--ppa-cohort',help=argparse.SUPPRESS)
+    p.add_argument('--ppa-slot',type=int,default=0,help=argparse.SUPPRESS)
     p.add_argument('--frozen-child', action='store_true', help=argparse.SUPPRESS)
     args = p.parse_args()
+    if args.residual_cost_q and not args.cost_value_q:
+        p.error('residual-cost-q requires cost-value-q')
+    if args.no_residual_correction and not args.residual_cost_q:
+        p.error('no-residual-correction requires residual-cost-q')
+    if args.residual_cost_q and args.cost_rank_weight:
+        p.error('residual-cost-q experiment fixes the original shared-prior loss; disable cost-rank-weight')
+    if not 8 <= args.residual_replay <= 512:
+        p.error('residual-replay must be8..512')
     if args.architecture_refresh_interval < 0:
         p.error('architecture-refresh-interval must be nonnegative')
     if args.architecture_refresh_interval and args.operators == 'gemini5':
@@ -654,7 +677,8 @@ def main():
     # Isolated development copies share the real project's serial oracle lock.
     # A copied APP must not silently create a second heavy-experiment lane.
     workspace = next((p for p in APP.parents if (p / '.venv/Scripts/python.exe').is_file() and (p / 'inputs').is_dir()), APP.parent)
-    with lock(workspace / 'output/.local_rl_diagnostics.lock'), lock(out / 'run.lock'):
+    admission_path,admission_slot = args.ppa_cohort,args.ppa_slot
+    with admission(workspace,out,APP,admission_path,admission_slot), lock(out / 'run.lock'):
         if args.resume:
             saved = read(out / 'effective_config.json')
             if not saved:
@@ -662,6 +686,9 @@ def main():
             for k, v in saved.items():
                 setattr(args, k, v)
             args.resume = True
+            # Host admission is separate from the immutable algorithm setup.
+            # Serial resume must not depend on an old coordinator being alive.
+            args.ppa_cohort,args.ppa_slot = admission_path,admission_slot
         else:
             if any(f.name != 'run.lock' for f in out.iterdir()):
                 raise ValueError('output not empty; choose a new output or --resume')
@@ -714,6 +741,7 @@ def main():
                 status.update(status='failed', return_code=code)
             write(out / 'status.json', status)
             append(out / 'parent_invocations.jsonl', dict(started_unix=began, finished_unix=time.time(), return_code=code,
+                host_cohort=admission_path,host_slot=admission_slot if admission_path else None,
                 wall_s=time.perf_counter() - tick, scope='child startup + common + search + cleanup; source copy and historical seed generation separate'))
             return code
 

@@ -1,0 +1,13 @@
+{
+  "passed": true,
+  "fields": 16,
+  "cost_value_q": true,
+  "residual_cost_q": true,
+  "episode_controls": true,
+  "architecture_refresh": true,
+  "status_api": true,
+  "strict_recommendations": true,
+  "token_required": true,
+  "new_ppa": 8,
+  "out": "C:\\Users\\user\\Desktop\\rapidchiplet\\output\\inmin_v13_20261105\\qa_repaired_study_v1\\output\\full_system_gui\\20261105_084017_f05cf2"
+}

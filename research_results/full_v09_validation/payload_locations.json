@@ -1,0 +1,747 @@
+{
+  "protocol.json": {
+    "path": "protocol.json",
+    "original_sha256": "dda9ff0edd2eff8afc916719d9dfd7c8826c75494f6b4e24a834d1332c52cb42",
+    "gzip": false
+  },
+  "status.json": {
+    "path": "status.json",
+    "original_sha256": "0660fb83a794c10f144f23df03f10c3ac741e65c5dcd3bbb1b5269ea752e3963",
+    "gzip": false
+  },
+  "execution.json": {
+    "path": "execution.json",
+    "original_sha256": "7fdfa7ef076619f95fef599ed8e090c11d4b18bd422836efbdb4374655806dbc",
+    "gzip": false
+  },
+  "compatibility_proof.json": {
+    "path": "compatibility_proof.json",
+    "original_sha256": "d6c2861775b77fe539c9c9724c2f0604b9162058d31ee75439f720544828c51f",
+    "gzip": false
+  },
+  "gui_result.json": {
+    "path": "gui_result.json",
+    "original_sha256": "8da763c3c84442f69b9a9260b9f90ebe743c1a8cf327b2d6fadf7b4bd7d2c3fa",
+    "gzip": false
+  },
+  "acceptance/result.json": {
+    "path": "acceptance/result.json",
+    "original_sha256": "6bb26a04c131217eb2f208e58f93b9fe95066388fe319ad9273415d36a5049ac",
+    "gzip": false
+  },
+  "acceptance/tests.log": {
+    "path": "acceptance/tests.log",
+    "original_sha256": "535cf6fde9a5669ccd39145dc6b98f2f2e477388f54f034925feaf0df018a0c5",
+    "gzip": false
+  },
+  "workflow/result.json": {
+    "path": "workflow/result.json",
+    "original_sha256": "95513bc630ba055b45ab5c546c8f9fb8940abec4d2234907e2534bd487944d25",
+    "gzip": false
+  },
+  "workflow/UNCHANGED_SOURCE_REUSE.json": {
+    "path": "workflow/UNCHANGED_SOURCE_REUSE.json",
+    "original_sha256": "a91a9fb4a002ca9ba85f0d3eb5183e8473a310d5520ef8061bc7be173023117e",
+    "gzip": false
+  },
+  "parallel_workflow/result.json": {
+    "path": "parallel_workflow/result.json",
+    "original_sha256": "528450c1ee0b5ee18184b528ac517c22fd2eebcd1188f82b596a675e82a92ef4",
+    "gzip": false
+  },
+  "parallel_workflow/commands.log": {
+    "path": "parallel_workflow/commands.log",
+    "original_sha256": "4c90b526fa1d4c06e3f1f1dd6718577b7fbd449e53c66b5beece14af158b0c71",
+    "gzip": false
+  },
+  "actual_serial_reference/protocol.json": {
+    "path": "actual_serial_reference/protocol.json",
+    "original_sha256": "cd30120783ec17a42f9f97953a0abd3a6a290ae44721840eb7f26bb6d14fbf63",
+    "gzip": false
+  },
+  "actual_serial_reference/workflow/result.json": {
+    "path": "actual_serial_reference/workflow/result.json",
+    "original_sha256": "b3f367dfb8d2f9aaac36babcd09f37ca56f610cd4eea1dd9273402fac01bb626",
+    "gzip": false
+  },
+  "actual_serial_reference/workflow/commands.log": {
+    "path": "actual_serial_reference/workflow/commands.log",
+    "original_sha256": "adf97ce90969021d6520de69238ef0ec3aebd3510684e23d043abdccab48d9a0",
+    "gzip": false
+  },
+  "actual_serial_reference/gui_result.json": {
+    "path": "actual_serial_reference/gui_result.json",
+    "original_sha256": "7ddf1f15eba020cbbfb74d555e6ac462fd68895a11564eea17f23e65d3892010",
+    "gzip": false
+  },
+  "actual_serial_reference/historical_source/scripts/run_parallel_full_suite.py": {
+    "path": "actual_serial_reference/historical_source/scripts/run_parallel_full_suite.py",
+    "original_sha256": "4f1e198c3d5baca0744e7dc0f350b7fe321bb892cf683a8bb637eec4c0710500",
+    "gzip": false
+  },
+  "actual_serial_reference/historical_source/tests/test_full_cohort.py": {
+    "path": "actual_serial_reference/historical_source/tests/test_full_cohort.py",
+    "original_sha256": "a46df71f9941f500e2a278486cca29b0090092c307c2831b9579e62d230c50f2",
+    "gzip": false
+  },
+  "engineering_failures/v12.json": {
+    "path": "engineering_failures/v12.json",
+    "original_sha256": "fc3020cdeb2ec566f5ca1f7cf1e82da8f1f6fc20797e124e05d328809b8363b6",
+    "gzip": false
+  },
+  "engineering_failures/v13.json": {
+    "path": "engineering_failures/v13.json",
+    "original_sha256": "b504711ba5c2be16d26d54a3aba08897f3352c4882d5d73119cd1f17827d3ab5",
+    "gzip": false
+  },
+  "parallel_cases/parallel/cases/toy/7/status.json": {
+    "path": "parallel_cases/parallel/cases/toy/7/status.json",
+    "original_sha256": "954eda5ed72687f18645b024c3e5883972d5ca09622504d3dc21d06e93c8ec67",
+    "gzip": false
+  },
+  "parallel_cases/parallel/cases/toy/7/summary.json": {
+    "path": "parallel_cases/parallel/cases/toy/7/summary.json",
+    "original_sha256": "94d3967ade9c935ec05acdb264688d0c2b51cc9a56f96f584ea2ff63e896e339",
+    "gzip": false
+  },
+  "parallel_cases/parallel/cases/toy/7/effective_config.json": {
+    "path": "parallel_cases/parallel/cases/toy/7/effective_config.json",
+    "original_sha256": "f46fe56c5908ee4884868829f48efbbcdceac0c076411a6a2de09786dd210ffd",
+    "gzip": false
+  },
+  "parallel_cases/parallel/cases/toy/7/environment.json": {
+    "path": "parallel_cases/parallel/cases/toy/7/environment.json",
+    "original_sha256": "92f2bb77bfcd4cead00823efc2f3e0e4cbe2d572a91b0d1b60cd22d81597f924",
+    "gzip": false
+  },
+  "parallel_cases/parallel/cases/toy/7/source_snapshot_manifest.json": {
+    "path": "parallel_cases/parallel/cases/toy/7/source_snapshot_manifest.json",
+    "original_sha256": "e9281a255b7aa28f5f60c436c6f36230719e929d5accd405aded78cabf783137",
+    "gzip": false
+  },
+  "parallel_cases/parallel/cases/toy/7/seed_input_manifest.json": {
+    "path": "parallel_cases/parallel/cases/toy/7/seed_input_manifest.json",
+    "original_sha256": "2da0d15ba2c1be16f410fee1737d0d7bca961890d4b7482ebb973f5e36647d83",
+    "gzip": false
+  },
+  "parallel_cases/parallel/cases/toy/7/shared_start.json": {
+    "path": "parallel_cases/parallel/cases/toy/7/shared_start.json",
+    "original_sha256": "30cb4cabaf14275215fd2204cd124de08967dca031321be43b06e736ec2eccdc",
+    "gzip": false
+  },
+  "parallel_cases/parallel/cases/toy/7/analysis/audit.json": {
+    "path": "parallel_cases/parallel/cases/toy/7/analysis/audit.json",
+    "original_sha256": "be06f6d056e10decc4bdea30cd0c97077eab3427c64b9120e0b5e02c63c733a8",
+    "gzip": false
+  },
+  "parallel_cases/parallel/cases/toy/7/analysis/held_out_policy.json": {
+    "path": "parallel_cases/parallel/cases/toy/7/analysis/held_out_policy.json",
+    "original_sha256": "790d9245a6ccde776e04284aa4eb122c5c5996ecaa4ca17485a4fb1d95415fcc",
+    "gzip": false
+  },
+  "parallel_cases/parallel/cases/toy/7/rl/events.jsonl": {
+    "path": "parallel_cases/parallel/cases/toy/7/rl/events.jsonl.gz",
+    "original_sha256": "7271321a89b75363c6efe2db44dc150e316b624b7590b26e5bdd8908ad6fa202",
+    "gzip": true
+  },
+  "parallel_cases/parallel/cases/toy/7/rl/learning.jsonl": {
+    "path": "parallel_cases/parallel/cases/toy/7/rl/learning.jsonl.gz",
+    "original_sha256": "31da045efbb8283fbfa1a964de72f33623c5b269179ff96878854374d9466e20",
+    "gzip": true
+  },
+  "parallel_cases/parallel/cases/toy/7/rl/recommendation.json": {
+    "path": "parallel_cases/parallel/cases/toy/7/rl/recommendation.json.gz",
+    "original_sha256": "9f11de7c382a8072d89c959915492c055ce517d1951b4193a9bbd30e019d3138",
+    "gzip": true
+  },
+  "parallel_cases/parallel/cases/toy/7/rl/worker/accounting.json": {
+    "path": "parallel_cases/parallel/cases/toy/7/rl/worker/accounting.json.gz",
+    "original_sha256": "875cc90692d18c23521f1a0978b01676b61c374e1693bc6c6a01860fcc393c3f",
+    "gzip": true
+  },
+  "parallel_cases/parallel/cases/toy/7/sa/events.jsonl": {
+    "path": "parallel_cases/parallel/cases/toy/7/sa/events.jsonl.gz",
+    "original_sha256": "5c1770c9b9990195ffc5827b347670aebd83c103ae739756f8bc04583c32bf71",
+    "gzip": true
+  },
+  "parallel_cases/parallel/cases/toy/7/sa/recommendation.json": {
+    "path": "parallel_cases/parallel/cases/toy/7/sa/recommendation.json.gz",
+    "original_sha256": "684cd950cd4dda59af32424b7be7cc4f98dba0a0a20c96c8449a8098c8c2f065",
+    "gzip": true
+  },
+  "parallel_cases/parallel/cases/toy/7/sa/worker/accounting.json": {
+    "path": "parallel_cases/parallel/cases/toy/7/sa/worker/accounting.json.gz",
+    "original_sha256": "196dc07722823af751607305abbf2e299e539ec9f82cd7a8b81bbf478704e775",
+    "gzip": true
+  },
+  "parallel_cases/parallel/cases/toy/7/random/events.jsonl": {
+    "path": "parallel_cases/parallel/cases/toy/7/random/events.jsonl.gz",
+    "original_sha256": "5f71a90d1609acf66fb9ca4e849629e8507eec4e0bffc6a1791ff7e2b5abed66",
+    "gzip": true
+  },
+  "parallel_cases/parallel/cases/toy/7/random/recommendation.json": {
+    "path": "parallel_cases/parallel/cases/toy/7/random/recommendation.json.gz",
+    "original_sha256": "2f764e9dcf5f40873c3f16f862869a3bff6464290a7239374629a0eb62cf9c96",
+    "gzip": true
+  },
+  "parallel_cases/parallel/cases/toy/7/random/worker/accounting.json": {
+    "path": "parallel_cases/parallel/cases/toy/7/random/worker/accounting.json.gz",
+    "original_sha256": "23ae502f12f2754d8b00956570603be41052cd1e58e12fb8183df9131adb92a2",
+    "gzip": true
+  },
+  "parallel_cases/parallel/cases/toy/37/status.json": {
+    "path": "parallel_cases/parallel/cases/toy/37/status.json",
+    "original_sha256": "74c4e2797c393681da75ee10bcfb1d006d43561ea9f0d9e641f54a663623e34b",
+    "gzip": false
+  },
+  "parallel_cases/parallel/cases/toy/37/summary.json": {
+    "path": "parallel_cases/parallel/cases/toy/37/summary.json",
+    "original_sha256": "fbf23f71537aaaedd91591de03a32f778c8afecefbec18326bf0d2db4a8376c5",
+    "gzip": false
+  },
+  "parallel_cases/parallel/cases/toy/37/effective_config.json": {
+    "path": "parallel_cases/parallel/cases/toy/37/effective_config.json",
+    "original_sha256": "f124cc31172d433a438f3101384e603a0c78eda2f8364b4485d85bb561bda50c",
+    "gzip": false
+  },
+  "parallel_cases/parallel/cases/toy/37/environment.json": {
+    "path": "parallel_cases/parallel/cases/toy/37/environment.json",
+    "original_sha256": "92f2bb77bfcd4cead00823efc2f3e0e4cbe2d572a91b0d1b60cd22d81597f924",
+    "gzip": false
+  },
+  "parallel_cases/parallel/cases/toy/37/source_snapshot_manifest.json": {
+    "path": "parallel_cases/parallel/cases/toy/37/source_snapshot_manifest.json",
+    "original_sha256": "e9281a255b7aa28f5f60c436c6f36230719e929d5accd405aded78cabf783137",
+    "gzip": false
+  },
+  "parallel_cases/parallel/cases/toy/37/seed_input_manifest.json": {
+    "path": "parallel_cases/parallel/cases/toy/37/seed_input_manifest.json",
+    "original_sha256": "2da0d15ba2c1be16f410fee1737d0d7bca961890d4b7482ebb973f5e36647d83",
+    "gzip": false
+  },
+  "parallel_cases/parallel/cases/toy/37/shared_start.json": {
+    "path": "parallel_cases/parallel/cases/toy/37/shared_start.json",
+    "original_sha256": "30cb4cabaf14275215fd2204cd124de08967dca031321be43b06e736ec2eccdc",
+    "gzip": false
+  },
+  "parallel_cases/parallel/cases/toy/37/analysis/audit.json": {
+    "path": "parallel_cases/parallel/cases/toy/37/analysis/audit.json",
+    "original_sha256": "a9c33be39b8e8cceb7fe9ffedd0b245da1740eb502ac8f1656036d62feea1418",
+    "gzip": false
+  },
+  "parallel_cases/parallel/cases/toy/37/analysis/held_out_policy.json": {
+    "path": "parallel_cases/parallel/cases/toy/37/analysis/held_out_policy.json",
+    "original_sha256": "98e2155dcec4e82ba1383e61c63e77dc1719d0b01a8b40a95b0c5b654b06e180",
+    "gzip": false
+  },
+  "parallel_cases/parallel/cases/toy/37/rl/events.jsonl": {
+    "path": "parallel_cases/parallel/cases/toy/37/rl/events.jsonl.gz",
+    "original_sha256": "5289c547d0b057783c587f5975258a3bd893c7e23543add5d9b8893154ad0ea0",
+    "gzip": true
+  },
+  "parallel_cases/parallel/cases/toy/37/rl/learning.jsonl": {
+    "path": "parallel_cases/parallel/cases/toy/37/rl/learning.jsonl.gz",
+    "original_sha256": "cb81fb4403cd10c1c20ed98bd60c635b8402819ae700d2d1e89cb50192559e76",
+    "gzip": true
+  },
+  "parallel_cases/parallel/cases/toy/37/rl/recommendation.json": {
+    "path": "parallel_cases/parallel/cases/toy/37/rl/recommendation.json.gz",
+    "original_sha256": "9a1db558846cd41e5554206b8aade35663d280d8f03c47b27c77692344ec9aa4",
+    "gzip": true
+  },
+  "parallel_cases/parallel/cases/toy/37/rl/worker/accounting.json": {
+    "path": "parallel_cases/parallel/cases/toy/37/rl/worker/accounting.json.gz",
+    "original_sha256": "03429bbf3ecd2f2392a5d714ef2d747597715eb33eff66a859d13cf55e77ab7e",
+    "gzip": true
+  },
+  "parallel_cases/parallel/cases/toy/37/sa/events.jsonl": {
+    "path": "parallel_cases/parallel/cases/toy/37/sa/events.jsonl.gz",
+    "original_sha256": "8c57123f4b315ac8fe39ada4113f6b3d944b27ca606eb7247c2d8633783d16f0",
+    "gzip": true
+  },
+  "parallel_cases/parallel/cases/toy/37/sa/recommendation.json": {
+    "path": "parallel_cases/parallel/cases/toy/37/sa/recommendation.json.gz",
+    "original_sha256": "749353bab77e7cc28cfe6c73f954b636a44e38a665685954cfd761a2ce1ea3d5",
+    "gzip": true
+  },
+  "parallel_cases/parallel/cases/toy/37/sa/worker/accounting.json": {
+    "path": "parallel_cases/parallel/cases/toy/37/sa/worker/accounting.json.gz",
+    "original_sha256": "4e3952542be85145047c4f81cb9a98eac86ee9caf1d5ff5bf1d06b16ec168351",
+    "gzip": true
+  },
+  "parallel_cases/parallel/cases/toy/37/random/events.jsonl": {
+    "path": "parallel_cases/parallel/cases/toy/37/random/events.jsonl.gz",
+    "original_sha256": "46633152047cf7ae3334c69a30327132c4d9856444cbdd12209298fc99b1684c",
+    "gzip": true
+  },
+  "parallel_cases/parallel/cases/toy/37/random/recommendation.json": {
+    "path": "parallel_cases/parallel/cases/toy/37/random/recommendation.json.gz",
+    "original_sha256": "650e128e21b4a3463eb36b8f8192d190499571082625489cd1316d4610357e19",
+    "gzip": true
+  },
+  "parallel_cases/parallel/cases/toy/37/random/worker/accounting.json": {
+    "path": "parallel_cases/parallel/cases/toy/37/random/worker/accounting.json.gz",
+    "original_sha256": "28ae1563b899df4994b4d5c75868ed483381b08a55ae4b71dd306fd15001694e",
+    "gzip": true
+  },
+  "parallel_cases/serial_7/status.json": {
+    "path": "parallel_cases/serial_7/status.json",
+    "original_sha256": "007515f915fb5d18b02575cb4bda072e49ff75bbe91624e45adc0e1e4ad492b8",
+    "gzip": false
+  },
+  "parallel_cases/serial_7/summary.json": {
+    "path": "parallel_cases/serial_7/summary.json",
+    "original_sha256": "ff477db6dabaad371d29544cd94ef8ebd60e430ad545c651ce25491eaea5c921",
+    "gzip": false
+  },
+  "parallel_cases/serial_7/effective_config.json": {
+    "path": "parallel_cases/serial_7/effective_config.json",
+    "original_sha256": "4ddc4f7f78f1f3218d9100d1c3dbc4be92322b18075e48032ee9e32720130409",
+    "gzip": false
+  },
+  "parallel_cases/serial_7/environment.json": {
+    "path": "parallel_cases/serial_7/environment.json",
+    "original_sha256": "92f2bb77bfcd4cead00823efc2f3e0e4cbe2d572a91b0d1b60cd22d81597f924",
+    "gzip": false
+  },
+  "parallel_cases/serial_7/source_snapshot_manifest.json": {
+    "path": "parallel_cases/serial_7/source_snapshot_manifest.json",
+    "original_sha256": "e9281a255b7aa28f5f60c436c6f36230719e929d5accd405aded78cabf783137",
+    "gzip": false
+  },
+  "parallel_cases/serial_7/seed_input_manifest.json": {
+    "path": "parallel_cases/serial_7/seed_input_manifest.json",
+    "original_sha256": "2a58a09f0c609633d4a7b791d65907b5cd223d036eb8f4555a957232a5b46924",
+    "gzip": false
+  },
+  "parallel_cases/serial_7/shared_start.json": {
+    "path": "parallel_cases/serial_7/shared_start.json",
+    "original_sha256": "30cb4cabaf14275215fd2204cd124de08967dca031321be43b06e736ec2eccdc",
+    "gzip": false
+  },
+  "parallel_cases/serial_7/rl/events.jsonl": {
+    "path": "parallel_cases/serial_7/rl/events.jsonl.gz",
+    "original_sha256": "97383a2bac25c5ac3502b25f272eb24c392d9a46cbf71f129851e17ea296a389",
+    "gzip": true
+  },
+  "parallel_cases/serial_7/rl/learning.jsonl": {
+    "path": "parallel_cases/serial_7/rl/learning.jsonl.gz",
+    "original_sha256": "31da045efbb8283fbfa1a964de72f33623c5b269179ff96878854374d9466e20",
+    "gzip": true
+  },
+  "parallel_cases/serial_7/rl/recommendation.json": {
+    "path": "parallel_cases/serial_7/rl/recommendation.json.gz",
+    "original_sha256": "dbc5ca27302924315f950e7bd4993a47b80918ff45f039376c7e2ff46ce8cb6e",
+    "gzip": true
+  },
+  "parallel_cases/serial_7/rl/worker/accounting.json": {
+    "path": "parallel_cases/serial_7/rl/worker/accounting.json.gz",
+    "original_sha256": "cc408bdcc6b4db7c47ce64ab1164319437a8679caf0d6ed7c2ad03f6afab108a",
+    "gzip": true
+  },
+  "parallel_cases/serial_7/sa/events.jsonl": {
+    "path": "parallel_cases/serial_7/sa/events.jsonl.gz",
+    "original_sha256": "eafd0ede994af0e9485f8c2c381d1399fa542909c53f75ecb85446696cdcc358",
+    "gzip": true
+  },
+  "parallel_cases/serial_7/sa/recommendation.json": {
+    "path": "parallel_cases/serial_7/sa/recommendation.json.gz",
+    "original_sha256": "6d3683af4d4bc7553bfb1daa682effe5a5eac3e234e901054a06f164e1caa785",
+    "gzip": true
+  },
+  "parallel_cases/serial_7/sa/worker/accounting.json": {
+    "path": "parallel_cases/serial_7/sa/worker/accounting.json.gz",
+    "original_sha256": "b79d8dc89af46944cd0f25677d8979adc2f8aa7fdf6fa308511cb4ff1f3823c6",
+    "gzip": true
+  },
+  "parallel_cases/serial_7/random/events.jsonl": {
+    "path": "parallel_cases/serial_7/random/events.jsonl.gz",
+    "original_sha256": "718518b59c8146ab008b392706f886e624c02b0d9ad91ac26098561e86e2e01d",
+    "gzip": true
+  },
+  "parallel_cases/serial_7/random/recommendation.json": {
+    "path": "parallel_cases/serial_7/random/recommendation.json.gz",
+    "original_sha256": "bfcd5efd9e84b343229ce0cea2f7f3eb4a4c47f58a2379bf481808ed90aa2a5b",
+    "gzip": true
+  },
+  "parallel_cases/serial_7/random/worker/accounting.json": {
+    "path": "parallel_cases/serial_7/random/worker/accounting.json.gz",
+    "original_sha256": "b02e3ef2b498112d81449abd4feb0eaa6101b453b8d675e06c348d6c211fbff5",
+    "gzip": true
+  },
+  "parallel_cases/serial_37/status.json": {
+    "path": "parallel_cases/serial_37/status.json",
+    "original_sha256": "a667fbcd344ac3b73c200d413593b9a18b79af096a1602d8e402663c6457c28a",
+    "gzip": false
+  },
+  "parallel_cases/serial_37/summary.json": {
+    "path": "parallel_cases/serial_37/summary.json",
+    "original_sha256": "d496298ef7837e038b2a0254dbfa9be24c757680ae4db214ab4547e096652f15",
+    "gzip": false
+  },
+  "parallel_cases/serial_37/effective_config.json": {
+    "path": "parallel_cases/serial_37/effective_config.json",
+    "original_sha256": "c84d9389238e15ebcba90f480b52a7b0dd8ea7b875f5349bd672a72fca0fee01",
+    "gzip": false
+  },
+  "parallel_cases/serial_37/environment.json": {
+    "path": "parallel_cases/serial_37/environment.json",
+    "original_sha256": "92f2bb77bfcd4cead00823efc2f3e0e4cbe2d572a91b0d1b60cd22d81597f924",
+    "gzip": false
+  },
+  "parallel_cases/serial_37/source_snapshot_manifest.json": {
+    "path": "parallel_cases/serial_37/source_snapshot_manifest.json",
+    "original_sha256": "e9281a255b7aa28f5f60c436c6f36230719e929d5accd405aded78cabf783137",
+    "gzip": false
+  },
+  "parallel_cases/serial_37/seed_input_manifest.json": {
+    "path": "parallel_cases/serial_37/seed_input_manifest.json",
+    "original_sha256": "2a58a09f0c609633d4a7b791d65907b5cd223d036eb8f4555a957232a5b46924",
+    "gzip": false
+  },
+  "parallel_cases/serial_37/shared_start.json": {
+    "path": "parallel_cases/serial_37/shared_start.json",
+    "original_sha256": "30cb4cabaf14275215fd2204cd124de08967dca031321be43b06e736ec2eccdc",
+    "gzip": false
+  },
+  "parallel_cases/serial_37/rl/events.jsonl": {
+    "path": "parallel_cases/serial_37/rl/events.jsonl.gz",
+    "original_sha256": "9f5db5c14947791d0c61bc135c8e6d7d61c4e3703179a54acb499e3aa9f4c1b7",
+    "gzip": true
+  },
+  "parallel_cases/serial_37/rl/learning.jsonl": {
+    "path": "parallel_cases/serial_37/rl/learning.jsonl.gz",
+    "original_sha256": "cb81fb4403cd10c1c20ed98bd60c635b8402819ae700d2d1e89cb50192559e76",
+    "gzip": true
+  },
+  "parallel_cases/serial_37/rl/recommendation.json": {
+    "path": "parallel_cases/serial_37/rl/recommendation.json.gz",
+    "original_sha256": "9a1db558846cd41e5554206b8aade35663d280d8f03c47b27c77692344ec9aa4",
+    "gzip": true
+  },
+  "parallel_cases/serial_37/rl/worker/accounting.json": {
+    "path": "parallel_cases/serial_37/rl/worker/accounting.json.gz",
+    "original_sha256": "e8897e453b8f885e8e5901ac531dc958c317b0c653df8f0709ae5a2bd9b266e1",
+    "gzip": true
+  },
+  "parallel_cases/serial_37/sa/events.jsonl": {
+    "path": "parallel_cases/serial_37/sa/events.jsonl.gz",
+    "original_sha256": "deed16b8acf957e8434ff31d46259c6f3cf65eab0f9b858c6e58deb84cb520a0",
+    "gzip": true
+  },
+  "parallel_cases/serial_37/sa/recommendation.json": {
+    "path": "parallel_cases/serial_37/sa/recommendation.json.gz",
+    "original_sha256": "2572042167a61473ef6ebcd62e08f56ebdea8c5853b6b4476bab66e7e8965b47",
+    "gzip": true
+  },
+  "parallel_cases/serial_37/sa/worker/accounting.json": {
+    "path": "parallel_cases/serial_37/sa/worker/accounting.json.gz",
+    "original_sha256": "7b5a02c3262129225e09842245c469e78e9a36fba9bc08273789fa043c606b10",
+    "gzip": true
+  },
+  "parallel_cases/serial_37/random/events.jsonl": {
+    "path": "parallel_cases/serial_37/random/events.jsonl.gz",
+    "original_sha256": "5f9bf6e22aee024bb743ba244db057982741d9afd1fc276ad341062c79c85d8b",
+    "gzip": true
+  },
+  "parallel_cases/serial_37/random/recommendation.json": {
+    "path": "parallel_cases/serial_37/random/recommendation.json.gz",
+    "original_sha256": "c100fdcfc8054d83f513572e3c1c1d2dd1b9edaadb7eeb17ee5586fb59d188f3",
+    "gzip": true
+  },
+  "parallel_cases/serial_37/random/worker/accounting.json": {
+    "path": "parallel_cases/serial_37/random/worker/accounting.json.gz",
+    "original_sha256": "6f6b5c661237051966f5053e57913ae106476feff044f98fd1c399ce09e5153d",
+    "gzip": true
+  },
+  "parallel_cases/resumed/cases/toy/7/status.json": {
+    "path": "parallel_cases/resumed/cases/toy/7/status.json",
+    "original_sha256": "358977b6f4ea787e454c6a968639826891ac4b91f60aa2dc9f980e233a7d4e32",
+    "gzip": false
+  },
+  "parallel_cases/resumed/cases/toy/7/summary.json": {
+    "path": "parallel_cases/resumed/cases/toy/7/summary.json",
+    "original_sha256": "36892b1db98c190a8ed01b0bbd31db4ca9953bb2a05e4ed2ada2ee319a6fcb0c",
+    "gzip": false
+  },
+  "parallel_cases/resumed/cases/toy/7/effective_config.json": {
+    "path": "parallel_cases/resumed/cases/toy/7/effective_config.json",
+    "original_sha256": "48f37502a2c0a7ac8cf6cab12f608cdb3cebf794eda42ce19cffcbe0c80dfda9",
+    "gzip": false
+  },
+  "parallel_cases/resumed/cases/toy/7/environment.json": {
+    "path": "parallel_cases/resumed/cases/toy/7/environment.json",
+    "original_sha256": "92f2bb77bfcd4cead00823efc2f3e0e4cbe2d572a91b0d1b60cd22d81597f924",
+    "gzip": false
+  },
+  "parallel_cases/resumed/cases/toy/7/source_snapshot_manifest.json": {
+    "path": "parallel_cases/resumed/cases/toy/7/source_snapshot_manifest.json",
+    "original_sha256": "e9281a255b7aa28f5f60c436c6f36230719e929d5accd405aded78cabf783137",
+    "gzip": false
+  },
+  "parallel_cases/resumed/cases/toy/7/seed_input_manifest.json": {
+    "path": "parallel_cases/resumed/cases/toy/7/seed_input_manifest.json",
+    "original_sha256": "e2e435a0fd77078678d007a7c525b183bc0c71035002d0e1ac01c18dd5ca9a7e",
+    "gzip": false
+  },
+  "parallel_cases/resumed/cases/toy/7/shared_start.json": {
+    "path": "parallel_cases/resumed/cases/toy/7/shared_start.json",
+    "original_sha256": "30cb4cabaf14275215fd2204cd124de08967dca031321be43b06e736ec2eccdc",
+    "gzip": false
+  },
+  "parallel_cases/resumed/cases/toy/7/analysis/audit.json": {
+    "path": "parallel_cases/resumed/cases/toy/7/analysis/audit.json",
+    "original_sha256": "be06f6d056e10decc4bdea30cd0c97077eab3427c64b9120e0b5e02c63c733a8",
+    "gzip": false
+  },
+  "parallel_cases/resumed/cases/toy/7/analysis/held_out_policy.json": {
+    "path": "parallel_cases/resumed/cases/toy/7/analysis/held_out_policy.json",
+    "original_sha256": "790d9245a6ccde776e04284aa4eb122c5c5996ecaa4ca17485a4fb1d95415fcc",
+    "gzip": false
+  },
+  "parallel_cases/resumed/cases/toy/7/rl/events.jsonl": {
+    "path": "parallel_cases/resumed/cases/toy/7/rl/events.jsonl.gz",
+    "original_sha256": "dd7e16e186b6590464585808ffa76ad3afd6adfa09fb219ce619a92d8e75670c",
+    "gzip": true
+  },
+  "parallel_cases/resumed/cases/toy/7/rl/learning.jsonl": {
+    "path": "parallel_cases/resumed/cases/toy/7/rl/learning.jsonl.gz",
+    "original_sha256": "31da045efbb8283fbfa1a964de72f33623c5b269179ff96878854374d9466e20",
+    "gzip": true
+  },
+  "parallel_cases/resumed/cases/toy/7/rl/recommendation.json": {
+    "path": "parallel_cases/resumed/cases/toy/7/rl/recommendation.json.gz",
+    "original_sha256": "dbc5ca27302924315f950e7bd4993a47b80918ff45f039376c7e2ff46ce8cb6e",
+    "gzip": true
+  },
+  "parallel_cases/resumed/cases/toy/7/rl/worker/accounting.json": {
+    "path": "parallel_cases/resumed/cases/toy/7/rl/worker/accounting.json.gz",
+    "original_sha256": "ef3c13f4300d887984120d402b830688dc3176d2a27ac2049b11c10213a1c83e",
+    "gzip": true
+  },
+  "parallel_cases/resumed/cases/toy/7/sa/events.jsonl": {
+    "path": "parallel_cases/resumed/cases/toy/7/sa/events.jsonl.gz",
+    "original_sha256": "20dea4e46be4736f0191b2ebfb1bf4e47f4ab4a8cef661bb2194a03d6770b10a",
+    "gzip": true
+  },
+  "parallel_cases/resumed/cases/toy/7/sa/recommendation.json": {
+    "path": "parallel_cases/resumed/cases/toy/7/sa/recommendation.json.gz",
+    "original_sha256": "834e5e862d764494ce9f5f2e005ca8244f992d50d2d4d4827c4edda54f64d953",
+    "gzip": true
+  },
+  "parallel_cases/resumed/cases/toy/7/sa/worker/accounting.json": {
+    "path": "parallel_cases/resumed/cases/toy/7/sa/worker/accounting.json.gz",
+    "original_sha256": "5648abbd9b53c77d22fd14be491e6e31f0270d41c550eda24c97f67a5ebc0778",
+    "gzip": true
+  },
+  "parallel_cases/resumed/cases/toy/7/random/events.jsonl": {
+    "path": "parallel_cases/resumed/cases/toy/7/random/events.jsonl.gz",
+    "original_sha256": "40022863a910ebb04adb02545bd73cca54492d57950edb21f0fdd758180b916a",
+    "gzip": true
+  },
+  "parallel_cases/resumed/cases/toy/7/random/recommendation.json": {
+    "path": "parallel_cases/resumed/cases/toy/7/random/recommendation.json.gz",
+    "original_sha256": "bfcd5efd9e84b343229ce0cea2f7f3eb4a4c47f58a2379bf481808ed90aa2a5b",
+    "gzip": true
+  },
+  "parallel_cases/resumed/cases/toy/7/random/worker/accounting.json": {
+    "path": "parallel_cases/resumed/cases/toy/7/random/worker/accounting.json.gz",
+    "original_sha256": "4adc2090f0156c4d5f1ae49bc31a78faa05f4c59b4e244d6b2a72138b6ff0395",
+    "gzip": true
+  },
+  "parallel_cases/resumed/cases/toy/37/status.json": {
+    "path": "parallel_cases/resumed/cases/toy/37/status.json",
+    "original_sha256": "533efa5ca8b87e362d64e31db45dc5b498c7d492c94a04cb6066f234d154d2f0",
+    "gzip": false
+  },
+  "parallel_cases/resumed/cases/toy/37/summary.json": {
+    "path": "parallel_cases/resumed/cases/toy/37/summary.json",
+    "original_sha256": "28802976b7f80158610d825aab819c5b5b3a01af1369f3c227fab4afcb845d2b",
+    "gzip": false
+  },
+  "parallel_cases/resumed/cases/toy/37/effective_config.json": {
+    "path": "parallel_cases/resumed/cases/toy/37/effective_config.json",
+    "original_sha256": "3aebe29316ed3e19c548cda0389d0219fba5b03b62ed4aa96df02faab448b6b0",
+    "gzip": false
+  },
+  "parallel_cases/resumed/cases/toy/37/environment.json": {
+    "path": "parallel_cases/resumed/cases/toy/37/environment.json",
+    "original_sha256": "92f2bb77bfcd4cead00823efc2f3e0e4cbe2d572a91b0d1b60cd22d81597f924",
+    "gzip": false
+  },
+  "parallel_cases/resumed/cases/toy/37/source_snapshot_manifest.json": {
+    "path": "parallel_cases/resumed/cases/toy/37/source_snapshot_manifest.json",
+    "original_sha256": "e9281a255b7aa28f5f60c436c6f36230719e929d5accd405aded78cabf783137",
+    "gzip": false
+  },
+  "parallel_cases/resumed/cases/toy/37/seed_input_manifest.json": {
+    "path": "parallel_cases/resumed/cases/toy/37/seed_input_manifest.json",
+    "original_sha256": "e2e435a0fd77078678d007a7c525b183bc0c71035002d0e1ac01c18dd5ca9a7e",
+    "gzip": false
+  },
+  "parallel_cases/resumed/cases/toy/37/shared_start.json": {
+    "path": "parallel_cases/resumed/cases/toy/37/shared_start.json",
+    "original_sha256": "30cb4cabaf14275215fd2204cd124de08967dca031321be43b06e736ec2eccdc",
+    "gzip": false
+  },
+  "parallel_cases/resumed/cases/toy/37/analysis/audit.json": {
+    "path": "parallel_cases/resumed/cases/toy/37/analysis/audit.json",
+    "original_sha256": "a9c33be39b8e8cceb7fe9ffedd0b245da1740eb502ac8f1656036d62feea1418",
+    "gzip": false
+  },
+  "parallel_cases/resumed/cases/toy/37/analysis/held_out_policy.json": {
+    "path": "parallel_cases/resumed/cases/toy/37/analysis/held_out_policy.json",
+    "original_sha256": "98e2155dcec4e82ba1383e61c63e77dc1719d0b01a8b40a95b0c5b654b06e180",
+    "gzip": false
+  },
+  "parallel_cases/resumed/cases/toy/37/rl/events.jsonl": {
+    "path": "parallel_cases/resumed/cases/toy/37/rl/events.jsonl.gz",
+    "original_sha256": "f51acedd579f4561cc43087c9221bca43ad07cc12a82530c77355df99ab5cd93",
+    "gzip": true
+  },
+  "parallel_cases/resumed/cases/toy/37/rl/learning.jsonl": {
+    "path": "parallel_cases/resumed/cases/toy/37/rl/learning.jsonl.gz",
+    "original_sha256": "cb81fb4403cd10c1c20ed98bd60c635b8402819ae700d2d1e89cb50192559e76",
+    "gzip": true
+  },
+  "parallel_cases/resumed/cases/toy/37/rl/recommendation.json": {
+    "path": "parallel_cases/resumed/cases/toy/37/rl/recommendation.json.gz",
+    "original_sha256": "9a1db558846cd41e5554206b8aade35663d280d8f03c47b27c77692344ec9aa4",
+    "gzip": true
+  },
+  "parallel_cases/resumed/cases/toy/37/rl/worker/accounting.json": {
+    "path": "parallel_cases/resumed/cases/toy/37/rl/worker/accounting.json.gz",
+    "original_sha256": "e28d09160471580e96bbe233beef64deac38bdd4a71360db7fe0a305533663c8",
+    "gzip": true
+  },
+  "parallel_cases/resumed/cases/toy/37/sa/events.jsonl": {
+    "path": "parallel_cases/resumed/cases/toy/37/sa/events.jsonl.gz",
+    "original_sha256": "66702f03945322d846ab301f8a9ed4a02b4a2082cbe3a60bdc8c94a8f599269e",
+    "gzip": true
+  },
+  "parallel_cases/resumed/cases/toy/37/sa/recommendation.json": {
+    "path": "parallel_cases/resumed/cases/toy/37/sa/recommendation.json.gz",
+    "original_sha256": "e717433d7a55c934cde6ca372f072b93cb107d9ff699c553ff07db9f23439ec9",
+    "gzip": true
+  },
+  "parallel_cases/resumed/cases/toy/37/sa/worker/accounting.json": {
+    "path": "parallel_cases/resumed/cases/toy/37/sa/worker/accounting.json.gz",
+    "original_sha256": "9c5cce0f0f94872633c8788a90dfb4af99285ad6683ca12d9e1855d260208c98",
+    "gzip": true
+  },
+  "parallel_cases/resumed/cases/toy/37/random/events.jsonl": {
+    "path": "parallel_cases/resumed/cases/toy/37/random/events.jsonl.gz",
+    "original_sha256": "4a9265a86e085f6d0eb48f94e3ea174459049cb04a2f15d9603c3f977689ff25",
+    "gzip": true
+  },
+  "parallel_cases/resumed/cases/toy/37/random/recommendation.json": {
+    "path": "parallel_cases/resumed/cases/toy/37/random/recommendation.json.gz",
+    "original_sha256": "6f964c86788cafacc69e729b1f2be2c255d582090e39a7d7faa78d269f9afcb0",
+    "gzip": true
+  },
+  "parallel_cases/resumed/cases/toy/37/random/worker/accounting.json": {
+    "path": "parallel_cases/resumed/cases/toy/37/random/worker/accounting.json.gz",
+    "original_sha256": "2d37186483b5b40c9a15b07d3ddc9c4ec6ac0996a981a3c39fe875fbc6420e7b",
+    "gzip": true
+  },
+  "launcher/result.json": {
+    "path": "launcher/result.json",
+    "original_sha256": "93f1d6e22457064b9cc70edfc35575b04c4d4ecd4b11701ba341a6bd7160f396",
+    "gzip": false
+  },
+  "launcher/commands.json": {
+    "path": "launcher/commands.json",
+    "original_sha256": "621e603e9f3daac6c903d9993ebd245707a9f4362d718a518bdc815968824fe8",
+    "gzip": false
+  },
+  "launcher/run_inmin_full_parallel.ps1": {
+    "path": "launcher/run_inmin_full_parallel.ps1",
+    "original_sha256": "73bd8ad2a33c826ea9b6c1f95d8fe0b5ec2533d3c6d108bbe7b9c5fc5f4a38f9",
+    "gzip": false
+  },
+  "launcher/verify_parallel_launcher.py": {
+    "path": "launcher/verify_parallel_launcher.py",
+    "original_sha256": "78af6e1f29db964840c8ff66f9de29b610865940c775cd456321e6282af12729",
+    "gzip": false
+  },
+  "offline_development/legacy_7/result.json": {
+    "path": "offline_development/legacy_7/result.json",
+    "original_sha256": "72b525b242313f0879169d9f9caf572f6222a7207a065bce3f03cf4655d42281",
+    "gzip": false
+  },
+  "offline_development/legacy_7/replay_continuation.py": {
+    "path": "offline_development/legacy_7/replay_continuation.py",
+    "original_sha256": "930f7cc09294ed5c2102d1efe8f23f01684c1cf82114804f4a42693c884ea88b",
+    "gzip": false
+  },
+  "offline_development/normalized_7/result.json": {
+    "path": "offline_development/normalized_7/result.json",
+    "original_sha256": "fd25ae58cba9fda0384591b4a4c44d643657d2b46f977ae3d41f9fdb603087b2",
+    "gzip": false
+  },
+  "offline_development/normalized_7/replay_continuation.py": {
+    "path": "offline_development/normalized_7/replay_continuation.py",
+    "original_sha256": "930f7cc09294ed5c2102d1efe8f23f01684c1cf82114804f4a42693c884ea88b",
+    "gzip": false
+  },
+  "offline_development/legacy_37/result.json": {
+    "path": "offline_development/legacy_37/result.json",
+    "original_sha256": "6b29cbd4b0ddf3495a8a2dd91186df4a78e69ee5c86f3cff7a756aaa80e0dbf3",
+    "gzip": false
+  },
+  "offline_development/legacy_37/replay_continuation.py": {
+    "path": "offline_development/legacy_37/replay_continuation.py",
+    "original_sha256": "930f7cc09294ed5c2102d1efe8f23f01684c1cf82114804f4a42693c884ea88b",
+    "gzip": false
+  },
+  "offline_development/normalized_37/result.json": {
+    "path": "offline_development/normalized_37/result.json",
+    "original_sha256": "b08e92a25acb34ea0c73ef1efd58b6c0ab6c296d3217115dc8639b201c3d08ae",
+    "gzip": false
+  },
+  "offline_development/normalized_37/replay_continuation.py": {
+    "path": "offline_development/normalized_37/replay_continuation.py",
+    "original_sha256": "930f7cc09294ed5c2102d1efe8f23f01684c1cf82114804f4a42693c884ea88b",
+    "gzip": false
+  },
+  "offline_development/legacy_47_v2/result.json": {
+    "path": "offline_development/legacy_47_v2/result.json",
+    "original_sha256": "af1548f319554eb6f9f05e5bbef2e72d645ef5d66043ded817123b10eed8a55c",
+    "gzip": false
+  },
+  "offline_development/legacy_47_v2/replay_continuation.py": {
+    "path": "offline_development/legacy_47_v2/replay_continuation.py",
+    "original_sha256": "930f7cc09294ed5c2102d1efe8f23f01684c1cf82114804f4a42693c884ea88b",
+    "gzip": false
+  },
+  "offline_development/normalized_47_v2/result.json": {
+    "path": "offline_development/normalized_47_v2/result.json",
+    "original_sha256": "33c4baadf3874908ccab87536e5f08a75907bed6b067e38fd9fa4d187d341cf3",
+    "gzip": false
+  },
+  "offline_development/normalized_47_v2/replay_continuation.py": {
+    "path": "offline_development/normalized_47_v2/replay_continuation.py",
+    "original_sha256": "930f7cc09294ed5c2102d1efe8f23f01684c1cf82114804f4a42693c884ea88b",
+    "gzip": false
+  },
+  "offline_development/bellman_batch_benchmark.json": {
+    "path": "offline_development/bellman_batch_benchmark.json",
+    "original_sha256": "6c8064e8fad987d91ab90ee2d2d85329a1ec683975467ee3b875e32e40dcbd37",
+    "gzip": false
+  },
+  "offline_development/benchmark_bellman_batch.py": {
+    "path": "offline_development/benchmark_bellman_batch.py",
+    "original_sha256": "aa850d1e9d49c15e73fbe06ec0120789866e261c49c2dc1b09a42f69e4ddd295",
+    "gzip": false
+  },
+  "learning_analyzer_Toy_validation.json": {
+    "path": "learning_analyzer_Toy_validation.json",
+    "original_sha256": "37c388f26c1ef4a5625491e752d10a24a1e959da5473fe6854670a8c0bcbde93",
+    "gzip": false
+  },
+  "promotion.json": {
+    "path": "promotion.json",
+    "original_sha256": "d95c25aa3805393591c11f709ea24d252827a2e634e6d9c5053b19bf622daa14",
+    "gzip": false
+  }
+}

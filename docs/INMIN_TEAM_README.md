@@ -1,6 +1,6 @@
 # 組員閱讀入口：程式、實驗與論文證據
 
-目前可執行完整空間版本為Full v0.8；新學習器原型另外凍結驗證。先依根目錄README安裝Python3.12依賴，再使用GUI或夜間腳本。實驗由本機程式執行，不需要Codex或LLM持續連線。所有報告使用文字、JSON、數字表格。
+目前可執行完整空間版本為Full v0.9，來源b771758c／218檔；固定先驗＋線上修正多步Q已通過204回歸、明記來源的CLI驗收、實際GUI與並行精確恢復，新的DNN對照仍在執行。先依根目錄README安裝Python3.12依賴，再使用GUI或`run_inmin_full_parallel.ps1 -Policy residual`。本機Python實驗不需要Codex或LLM持續連線；所有報告使用文字、JSON、數字表格。
 
 ## 建議閱讀順序
 
@@ -9,6 +9,7 @@
 3. [分層搜尋及完整數字](INMIN_STRATIFIED_SEARCH.md)：共享起點、RL／Random／SA／凍結／均勻控制與面積功率取捨。
 4. [RL有沒有學到](INMIN_POLICY_LEARNING_RESULTS.md)：共享後與線上訓練後的相同未訓練設計排序；同架構／分組內檢查。
 5. [RACE-RL參考核對](INMIN_RACE_REFERENCE_AUDIT.md)：與同學原生RACE的演算法／硬體差異。對方完整ZIP／Word並未隨專案公開。
+6. [本版學習修復與因果控制](INMIN_RESIDUAL_RL_DESIGN.md)：V0／R／H的責任、真正Double-Q target、cold Adam、完整V3變數，以及尚未證明的研究優勢。
 
 ## 主要程式在哪裡
 

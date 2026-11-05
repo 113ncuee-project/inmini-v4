@@ -20,3 +20,9 @@ research_results/full_v07_development/** -text
 run_inmin_full_overnight.ps1 -text
 
 research_results/full_v08_progress/** -text
+
+research_results/full_v09_validation/** -text
+
+run_inmin_full_parallel.ps1 -text
+
+run_inmin_full_parallel.cmd -text

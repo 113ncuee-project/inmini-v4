@@ -1,0 +1,4458 @@
+{
+  "state": {
+    "architecture_candidate_id": "single_array_c1_1x1",
+    "mapping": {
+      "groups": [
+        {
+          "id": "seed_conv0_conv1_add",
+          "layer_ids": [
+            "conv0",
+            "conv1",
+            "add"
+          ],
+          "mode": "temporal"
+        }
+      ],
+      "layer_mappings": [
+        {
+          "layer_id": "conv0",
+          "chiplets": [
+            "compute:0/pe:15",
+            "compute:0/pe:14",
+            "compute:0/pe:13",
+            "compute:0/pe:12",
+            "compute:0/pe:11",
+            "compute:0/pe:10",
+            "compute:0/pe:9",
+            "compute:0/pe:8",
+            "compute:0/pe:7",
+            "compute:0/pe:6",
+            "compute:0/pe:5",
+            "compute:0/pe:4",
+            "compute:0/pe:3",
+            "compute:0/pe:2",
+            "compute:0/pe:1",
+            "compute:0/pe:0"
+          ],
+          "partition": {
+            "b": 1,
+            "k": 1,
+            "h": 4,
+            "w": 4
+          },
+          "input_dram": "interleave",
+          "weight_dram": "interleave",
+          "output_dram": "interleave",
+          "tile_shape": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "channel_tile": 128,
+          "weight_policy": "cold",
+          "dataflow": "output_stationary",
+          "microtile_shape": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "layer_id": "conv1",
+          "chiplets": [
+            "compute:0/pe:15",
+            "compute:0/pe:14",
+            "compute:0/pe:13",
+            "compute:0/pe:12",
+            "compute:0/pe:11",
+            "compute:0/pe:10",
+            "compute:0/pe:9",
+            "compute:0/pe:8",
+            "compute:0/pe:7",
+            "compute:0/pe:6",
+            "compute:0/pe:5",
+            "compute:0/pe:4",
+            "compute:0/pe:3",
+            "compute:0/pe:2",
+            "compute:0/pe:1",
+            "compute:0/pe:0"
+          ],
+          "partition": {
+            "b": 1,
+            "k": 1,
+            "h": 4,
+            "w": 4
+          },
+          "input_dram": "interleave",
+          "weight_dram": "interleave",
+          "output_dram": "interleave",
+          "tile_shape": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "channel_tile": 128,
+          "weight_policy": "cold",
+          "dataflow": "output_stationary",
+          "microtile_shape": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "layer_id": "add",
+          "chiplets": [
+            "compute:0/pe:15",
+            "compute:0/pe:14",
+            "compute:0/pe:13",
+            "compute:0/pe:12",
+            "compute:0/pe:11",
+            "compute:0/pe:10",
+            "compute:0/pe:9",
+            "compute:0/pe:8",
+            "compute:0/pe:7",
+            "compute:0/pe:6",
+            "compute:0/pe:5",
+            "compute:0/pe:4",
+            "compute:0/pe:3",
+            "compute:0/pe:2",
+            "compute:0/pe:1",
+            "compute:0/pe:0"
+          ],
+          "partition": {
+            "b": 1,
+            "k": 1,
+            "h": 4,
+            "w": 4
+          },
+          "input_dram": "interleave",
+          "weight_dram": "interleave",
+          "output_dram": "interleave",
+          "tile_shape": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "channel_tile": 128,
+          "weight_policy": "cold",
+          "dataflow": "output_stationary",
+          "microtile_shape": [
+            0,
+            0,
+            0,
+            0
+          ]
+        }
+      ],
+      "microbatch_size": 1,
+      "collective": "multicast",
+      "memory_ids": [
+        "memory:0",
+        "memory:1"
+      ],
+      "fusion_stacks": []
+    },
+    "model_hash": "1e5c0dc26f8a7870aa9e504732e796218ea9e375e7a31d4442f7ac46b598d30d",
+    "hardware_template_version": "chiplet_single_pe_array_v0_3",
+    "version": 3,
+    "precision_config": {
+      "activation_bits": 8,
+      "weight_bits": 8,
+      "psum_bits": 24
+    },
+    "routing_config": {
+      "algorithm": "template_deterministic"
+    },
+    "scheduler_config": {
+      "algorithm": "resource_calendar"
+    },
+    "preferences": {
+      "latency_weight": 0.3333333333333333,
+      "area_weight": 0.3333333333333333,
+      "power_weight": 0.3333333333333333,
+      "energy_weight": 0
+    },
+    "constraints": {
+      "max_area_mm2": null,
+      "max_power_w": null,
+      "max_latency_s": null,
+      "soft_area_mm2": null,
+      "soft_power_w": null,
+      "soft_latency_s": null
+    },
+    "workload_definition": {
+      "batch_size": 1,
+      "model": "toy_residual",
+      "source": "hand-checkable fixture"
+    },
+    "evaluation_report": null,
+    "remaining_budget": null
+  },
+  "metrics": {
+    "model": "toy_residual",
+    "hardware_profile": "chiplet_single_pe_array_v0_3",
+    "evaluator_identity": "2177bb3b6dc91b866f055d59ba983ff217cf1e298676137ee3385154143b5775",
+    "backend": "single_array_python_resource_calendar_v1",
+    "native_rapidchiplet_executed": false,
+    "architecture_candidate_id": "single_array_c1_1x1",
+    "feasible": true,
+    "executable": true,
+    "violations": [],
+    "latency_s": 9.324489257812496e-06,
+    "energy_j": 3.3884309629011964e-06,
+    "power_w": 0.36339051600732014,
+    "area_mm2": 32.39711576470588,
+    "area_definition": "compute+IO+external DRAM silicon proxy; external device/area uncalibrated M, not physical measurement",
+    "power_definition": "modeled compute/IO/DRAM idle plus workload dynamic energy divided by batch1 E2E latency; not peak/TDP",
+    "energy_components": {
+      "sram_j": 1.8403511999999993e-07,
+      "noc_j": 5.360640000000001e-08,
+      "mac_j": 2.940000000000001e-10,
+      "vector_j": 4.1159999999999984e-11,
+      "nop_j": 5.780735999999991e-08,
+      "dram_j": 1.5854999999999995e-07,
+      "router_j": 9.881599999999999e-09,
+      "l2_j": 1.4677200000000004e-08,
+      "idle_j": 2.9095381229011963e-06
+    },
+    "compute_chiplets": 1,
+    "io_chiplets": 2,
+    "physical_cores": 0,
+    "pes": 16,
+    "compute_slots": [
+      "compute:0/pe:0",
+      "compute:0/pe:1",
+      "compute:0/pe:2",
+      "compute:0/pe:3",
+      "compute:0/pe:4",
+      "compute:0/pe:5",
+      "compute:0/pe:6",
+      "compute:0/pe:7",
+      "compute:0/pe:8",
+      "compute:0/pe:9",
+      "compute:0/pe:10",
+      "compute:0/pe:11",
+      "compute:0/pe:12",
+      "compute:0/pe:13",
+      "compute:0/pe:14",
+      "compute:0/pe:15"
+    ],
+    "logical_macs": 12250,
+    "executed_macs": 12250,
+    "recompute_macs": 0,
+    "pruned_macs": 0,
+    "dram_read_bytes": 2020,
+    "dram_write_bytes": 245,
+    "nop_hop_bytes": 6176,
+    "noc_hop_bytes": 16752,
+    "l1_l2_service_bytes": 6560,
+    "unit_count": 48,
+    "transfer_count": 150,
+    "weight_reuse": {
+      "policy_by_layer": {
+        "conv0": "cold",
+        "conv1": "cold",
+        "add": "cold"
+      },
+      "cold_weight_read_bytes": 250,
+      "actual_weight_read_bytes": 250,
+      "saved_weight_read_bytes": 0,
+      "removed_transfers": 0,
+      "storage": "full exact region per receiving core until last reader; capacity checked; group scope"
+    },
+    "communication_cohort_version": "single_array_consumer_cohort_v1",
+    "resource_busy_s": {
+      "link:io:0>compute:0": 4.146091796874997e-06,
+      "link:memory:0>io:0": 4.146091796874997e-06,
+      "io:0:controller": 4.574909179687498e-06,
+      "compute:0:nop_switch": 8.076489257812507e-06,
+      "io:0:nop_switch": 4.574909179687498e-06,
+      "compute:0:dma": 8.076489257812507e-06,
+      "compute:0:l2_rw": 8.834489257812497e-06,
+      "link:io:1>compute:0": 3.068490234374998e-06,
+      "link:memory:1>io:1": 3.068490234374998e-06,
+      "io:1:controller": 3.5015800781249975e-06,
+      "io:1:nop_switch": 3.5015800781249975e-06,
+      "compute:0/pe:15:l1_rw": 3.8e-08,
+      "link:compute:0/l2_gateway:3>compute:0/pe:15": 1.08e-07,
+      "compute:0/pe:15:mac": 1e-08,
+      "link:compute:0/pe:15>compute:0/l2_gateway:3": 4.2e-08,
+      "compute:0:vpu": 1.2299999999999998e-07,
+      "compute:0/pe:14:l1_rw": 5.7e-08,
+      "link:compute:0/pe:15>compute:0/pe:14": 2.7000000000000004e-08,
+      "compute:0/pe:14:mac": 2e-08,
+      "link:compute:0/pe:14>compute:0/pe:15": 1e-08,
+      "compute:0/pe:13:l1_rw": 5.7e-08,
+      "link:compute:0/l2_gateway:2>compute:0/pe:12": 1.1e-07,
+      "link:compute:0/pe:12>compute:0/pe:13": 5.9e-08,
+      "compute:0/pe:13:mac": 2e-08,
+      "link:compute:0/pe:13>compute:0/pe:12": 2.6e-08,
+      "link:compute:0/pe:12>compute:0/l2_gateway:2": 4.8000000000000006e-08,
+      "compute:0/pe:12:l1_rw": 5.1e-08,
+      "compute:0/pe:12:mac": 2e-08,
+      "compute:0/pe:11:l1_rw": 5.7e-08,
+      "link:compute:0/pe:15>compute:0/pe:11": 5.9e-08,
+      "compute:0/pe:11:mac": 2e-08,
+      "link:compute:0/pe:11>compute:0/pe:15": 2.6e-08,
+      "compute:0/pe:10:l1_rw": 8.800000000000001e-08,
+      "link:compute:0/pe:11>compute:0/pe:10": 3.1999999999999995e-08,
+      "compute:0/pe:10:mac": 4e-08,
+      "link:compute:0/pe:10>compute:0/pe:11": 1.6e-08,
+      "compute:0/pe:9:l1_rw": 8.800000000000001e-08,
+      "link:compute:0/pe:13>compute:0/pe:9": 3.1999999999999995e-08,
+      "compute:0/pe:9:mac": 4e-08,
+      "link:compute:0/pe:9>compute:0/pe:13": 1.6e-08,
+      "compute:0/pe:8:l1_rw": 8.199999999999999e-08,
+      "link:compute:0/pe:12>compute:0/pe:8": 2.8000000000000003e-08,
+      "compute:0/pe:8:mac": 4e-08,
+      "link:compute:0/pe:8>compute:0/pe:12": 1.4e-08,
+      "compute:0/pe:7:l1_rw": 5.7e-08,
+      "link:compute:0/l2_gateway:1>compute:0/pe:3": 1.1e-07,
+      "link:compute:0/pe:3>compute:0/pe:7": 2.7000000000000004e-08,
+      "compute:0/pe:7:mac": 2e-08,
+      "link:compute:0/pe:7>compute:0/pe:3": 1e-08,
+      "link:compute:0/pe:3>compute:0/l2_gateway:1": 4.8000000000000006e-08,
+      "compute:0/pe:6:l1_rw": 8.800000000000001e-08,
+      "link:compute:0/pe:3>compute:0/pe:2": 6e-08,
+      "link:compute:0/pe:2>compute:0/pe:6": 3.1999999999999995e-08,
+      "compute:0/pe:6:mac": 4e-08,
+      "link:compute:0/pe:6>compute:0/pe:2": 1.6e-08,
+      "link:compute:0/pe:2>compute:0/pe:3": 3.0000000000000004e-08,
+      "compute:0/pe:5:l1_rw": 8.800000000000001e-08,
+      "link:compute:0/l2_gateway:0>compute:0/pe:0": 1.1299999999999999e-07,
+      "link:compute:0/pe:0>compute:0/pe:1": 6e-08,
+      "link:compute:0/pe:1>compute:0/pe:5": 3.1999999999999995e-08,
+      "compute:0/pe:5:mac": 4e-08,
+      "link:compute:0/pe:5>compute:0/pe:1": 1.6e-08,
+      "link:compute:0/pe:1>compute:0/pe:0": 3.0000000000000004e-08,
+      "link:compute:0/pe:0>compute:0/l2_gateway:0": 5.6e-08,
+      "compute:0/pe:4:l1_rw": 8.199999999999999e-08,
+      "link:compute:0/pe:0>compute:0/pe:4": 2.8000000000000003e-08,
+      "compute:0/pe:4:mac": 4e-08,
+      "link:compute:0/pe:4>compute:0/pe:0": 1.4e-08,
+      "compute:0/pe:3:l1_rw": 5.1e-08,
+      "compute:0/pe:3:mac": 2e-08,
+      "compute:0/pe:2:l1_rw": 8.199999999999999e-08,
+      "compute:0/pe:2:mac": 4e-08,
+      "compute:0/pe:1:l1_rw": 8.199999999999999e-08,
+      "compute:0/pe:1:mac": 4e-08,
+      "compute:0/pe:0:l1_rw": 7.7e-08,
+      "compute:0/pe:0:mac": 4e-08,
+      "link:compute:0>io:0": 4.2881738281249997e-07,
+      "link:io:0>memory:0": 4.2881738281249997e-07,
+      "link:compute:0>io:1": 4.3308984374999996e-07,
+      "link:io:1>memory:1": 4.3308984374999996e-07
+    },
+    "buffer_peak_bytes": {
+      "compute:0:WL2": 225,
+      "compute:0:AL2": 110,
+      "compute:0:OL2": 305,
+      "compute:0/pe:0:WL1": 225,
+      "compute:0/pe:0:AL1": 45,
+      "compute:0/pe:0:OL1": 60,
+      "compute:0/pe:1:WL1": 225,
+      "compute:0/pe:1:AL1": 60,
+      "compute:0/pe:1:OL1": 60,
+      "compute:0/pe:2:WL1": 225,
+      "compute:0/pe:2:AL1": 60,
+      "compute:0/pe:2:OL1": 60,
+      "compute:0/pe:3:WL1": 225,
+      "compute:0/pe:3:AL1": 30,
+      "compute:0/pe:3:OL1": 30,
+      "compute:0/pe:4:WL1": 225,
+      "compute:0/pe:4:AL1": 60,
+      "compute:0/pe:4:OL1": 60,
+      "compute:0/pe:5:WL1": 225,
+      "compute:0/pe:5:AL1": 80,
+      "compute:0/pe:5:OL1": 60,
+      "compute:0/pe:6:WL1": 225,
+      "compute:0/pe:6:AL1": 80,
+      "compute:0/pe:6:OL1": 60,
+      "compute:0/pe:7:WL1": 225,
+      "compute:0/pe:7:AL1": 40,
+      "compute:0/pe:7:OL1": 30,
+      "compute:0/pe:8:WL1": 225,
+      "compute:0/pe:8:AL1": 60,
+      "compute:0/pe:8:OL1": 60,
+      "compute:0/pe:9:WL1": 225,
+      "compute:0/pe:9:AL1": 80,
+      "compute:0/pe:9:OL1": 60,
+      "compute:0/pe:10:WL1": 225,
+      "compute:0/pe:10:AL1": 80,
+      "compute:0/pe:10:OL1": 60,
+      "compute:0/pe:11:WL1": 225,
+      "compute:0/pe:11:AL1": 40,
+      "compute:0/pe:11:OL1": 30,
+      "compute:0/pe:12:WL1": 225,
+      "compute:0/pe:12:AL1": 30,
+      "compute:0/pe:12:OL1": 30,
+      "compute:0/pe:13:WL1": 225,
+      "compute:0/pe:13:AL1": 40,
+      "compute:0/pe:13:OL1": 30,
+      "compute:0/pe:14:WL1": 225,
+      "compute:0/pe:14:AL1": 40,
+      "compute:0/pe:14:OL1": 30,
+      "compute:0/pe:15:WL1": 225,
+      "compute:0/pe:15:AL1": 20,
+      "compute:0/pe:15:OL1": 15,
+      "compute:0:quant_params": 40
+    },
+    "compute_utilization": 0.00032073849554218014,
+    "calibration_status": "single_array_v0_2_uncalibrated",
+    "physical_limit_certified": false,
+    "oracle_source_sha256": {
+      "actions.py": "19eb9077a46ba814c8800a6d2864b81cf5e743b535d7b92eb18fd6bfcb87a1e9",
+      "architecture.py": "6a17effa93658a9b54b46bfbce950666b3e5deead38a2430fcfb93cabbf4a1cc",
+      "architecture_refresh.py": "97d27c736ba78cf9ee9599a0b1c83ffb63bd58d1ac9f2ce5d453c2a91a2fb3d7",
+      "auto_proposals.py": "a1195f07710f07c6da001aeea76c40ddf0b0019703809b2baf5816465de71335",
+      "auto_runtime.py": "9961fc1097e21bd2a499ba964b83fe4bfed5f2da27676e32d033db54960a72d4",
+      "calendar_index.py": "5137ae9706fc4e1545f52a5a81e7e72c663702e1aa996b2168edafaae8a4fe88",
+      "communication.py": "0e84b57d3966d8d11475f8087348be27f31b6b780b1e0016bc8ce7a6c2707b4f",
+      "costs.py": "c54fea5702f28efb70fc91169f7590e2eae4d7c61ee9c71486b98798d4d2c6b2",
+      "cost_value_q.py": "c81ec4d9e98c756757ab425ce59dd83787cdaf5fbfbbbaf7475bc19abaf3e9b5",
+      "dataflow.py": "2c76aea44586576d9015fe99bbdce58b8eac63bb690d5ff54f997ca481386c4a",
+      "depth_first.py": "420591145bd13552d2db42128b4ea5de46041cbcb6c462fc3acc40ea2fcde2ac",
+      "diagnostics.py": "8043a0e902251e941da9b713ddf97667b0a6c2ea61560fb6e7997d13bf07fee8",
+      "evaluator.py": "adc777093fb7e423d1402d9b28c02c90901faf80701f262474f556eb248cc54b",
+      "full_space.py": "d45dd24e6ea84d8d26cddc914297969dc9a884e1251dc2ca25f7d50945fd503f",
+      "fusion_planner.py": "23c77572b39ba2700cab5e0cff30baa6b1c4b1c309de3d71ffff7745a6203a8b",
+      "gemini_network.py": "bfc8a52da365c20d148b4cfa8491d1791a13155b2b058897d3338fdec9bf014b",
+      "hardware.py": "3bfd600547d057fc4b8c9e9701608af412aae7e4a93ff062e444e4f1e3375feb",
+      "lp_five.py": "a427f9cb1041e289abf502444b619be6082b47ec8b723b312215ed776b2272eb",
+      "mapping.py": "7286be8c681d37232299b663dfdc752417d1c5e25e47ef1ed0973a864a7e70a9",
+      "mapping_proposals_v4.py": "72bd8c5a18c29a861a45cbaf0292c4046f0c9fce477a1d32bbb511cdf24130c6",
+      "models.py": "8dd72843b0dea7c20c9c3e4f266750cfa3e1f070e42c789bedeb96eda218d6f7",
+      "multi_step_q.py": "775982abdd66ce669983d8662534e26b66daa0703e28382136753e4e4c8b808d",
+      "native_schedule.py": "327eb2fde9f0c3dfce83f82c6d4175fa5ed1c5b4f70871def1729c0dbfd9f254",
+      "ondie.py": "52774ff7e17a77b6af800b956f9d519dcbb0e051dba75ca1ed2c359b6ccccf86",
+      "patterns.py": "07bd6ca9b1f591c2840a3640e6e38081c81f1873d49d34996476a49b87d56b96",
+      "planner.py": "cb7eaae241f5143632b8989458fe874f9d6c5f0b305c9240088646958cb41cd5",
+      "preferences.py": "c7b399556e2c4ab83d5ed05eabe2d32f4ddca2f8746c2478a9b40deccd402fc1",
+      "rapid_backend.py": "ea440d5188d446c25670c85336029ed08cd27507b6509a4fe902130686db6510",
+      "replay_q.py": "361de51cba273240524bdbe2a161e7dea3ffc03b81366d065d87e50a15119270",
+      "report.py": "0d929ea280b98ba1c912a8bed7d32eaa22a83966aa3624f793221dcb4944c555",
+      "residual_cost_q.py": "f1b2228736c4aa8878ff246c90c8b6c52915884284749c4ad96484c53d0bb9a4",
+      "resource_projection.py": "bc92f1cfaf3996a67be97ee84b119d5784730980de5b5dbfb532538c822751fb",
+      "reuse.py": "c38e510cf4d3c14f87224d934cff412e5f5dd76788377e83eed59df4d9282d6c",
+      "rl_actions.py": "18f64c3408d605eaa60dbf8863472116d7b85afbd9466eea50cbf56adb9ca80e",
+      "rl_report.py": "344c7a2461d21466896dfdc95032061f9927637c922edc2b0832ed283626203b",
+      "rl_schema.py": "7aa8b1ee4e7a24c15e0fc25af04cfe7031d6b1f81e092be22cd3bb473c741692",
+      "rl_search.py": "eabe7c37026ed8c9cf3fee042a6378a39bc7b7577709097ee02a2cdf16ec8d56",
+      "scheduler.py": "1285ef94b571eef168635ffa973d179bb95f3bd0179f6e88bf7ccf171a0cfe77",
+      "search.py": "ae8cc263f536a1689ebc1e562f507a3e0eba4b721a4b41c7b0511a877ac302c7",
+      "search_space.py": "53850332ea220a185c90aaab82aa41b9b1e9a2970123e5b5fc776795f43656b8",
+      "service_features.py": "2e0fee054629c54d44d2eabe540a3f88271efee841b61239a1044d3070c51005",
+      "shared_evidence.py": "55c42fab3b2ad87b6ac5997d7c42547104cee7e6c2dd9f73b210449ed72274c6",
+      "single_array_communication.py": "3399ddedda51f9232e1d755f703f8420995cc9ef0ee7f1f30b7864f3eb9307f0",
+      "single_array_compiler.py": "82ea64220cba4ea8cb89c78388c92fbc01695773993e50a0f5903685314682c2",
+      "single_array_evaluator.py": "1eaf5c00bf3b13a20cf5701417cfd0a23a9c41fabe229044f8c0a82ffc0acf9e",
+      "single_array_hardware.py": "be213c129a66eb3530aa3097a699ca554517f6dbf6d49bfa3d0377e87fec0c3e",
+      "single_array_proposals.py": "2f9ccf1d95edce0c7a5e0de61ed00d5d74a82f6d0ce6575c8f0f8e3bd7bde731",
+      "single_array_runtime.py": "cdad8f929965815f3d10962aab009af8426081f2f5f12eea7cab98a12c4c2236",
+      "single_array_seed.py": "f292c2bc98417a8d4de7c30c8a9898b3378a06ba65a32685be721e59474c4450",
+      "single_array_seed_v3.py": "c92600a37353c740ac2f248189e0375bc834c4d68405a3e2e79faf3e5889cc3b",
+      "tangram_seed.py": "2efbbd15d07bd88e527ed74c6ac7c9281b0d255096064661982138cd9fe57b9f",
+      "target_bottleneck.py": "c148033713d1a6aab67274b753f353c39bdcac4fa2e8f653d20baa4da8be743b",
+      "temporal_projection.py": "3148874596ed71a43cbd5793ead7d4cd01d287e28a5b7fe14e7839aaa68ef505",
+      "tensor_boundary.py": "6d8a5d466a3c492ef3660a6a6872d8db46790df924d91f094d1f9b2e02c8b468",
+      "tensor_locality.py": "88f031105806c535b0e36f56c058ba5b7a94c4c090244af1a323cd60a6b6f70b",
+      "traffic_planner.py": "326bcf58869932ec468d6a2238008c11991773c53a8f6bf3ff280de25118c415",
+      "visualization.py": "16802cf13e7f2494be32e8d79e3e9af54c5f07553f11e868d1f5f07fe401b3f9",
+      "workload.py": "168a613d68d587000783b82b66a89e7f77acb237a82e11959c70ae5069eaa9a5",
+      "__init__.py": "a31df95f9f42e00e5fd98e493ba87cd8017d1641020af0bffbfa1c2dcd6a7308"
+    },
+    "timing_model": "finite-buffer atomic routed flow reservations; full-channel PE tiles; serialized L2 RW/VPU; data-dependent stalls not modeled",
+    "diagnostics": {
+      "diagnostics_version": "bottleneck_single_array_v1",
+      "evidence_quality": "partial",
+      "critical_path": [
+        "transfer16:cohort1",
+        "transfer17:cohort1",
+        "transfer23:cohort1",
+        "transfer24:cohort1",
+        "transfer37",
+        "transfer38",
+        "read:conv0:mb0:s0:t0:p0",
+        "compute:conv0:mb0:s0:t0:p0",
+        "psum:conv0:mb0:s0:t0:p0",
+        "quant:conv0:mb0:s0:t0:p0",
+        "conv0:mb0:s0:t0:p0",
+        "transfer18:cohort1",
+        "transfer19:cohort1",
+        "transfer25:cohort1",
+        "transfer26:cohort1",
+        "read:conv0:mb0:s1:t0:p0",
+        "compute:conv0:mb0:s1:t0:p0",
+        "psum:conv0:mb0:s1:t0:p0",
+        "quant:conv0:mb0:s1:t0:p0",
+        "conv0:mb0:s1:t0:p0",
+        "transfer20:cohort1",
+        "transfer21:cohort1",
+        "transfer27:cohort1",
+        "transfer28:cohort1",
+        "read:conv0:mb0:s2:t0:p0",
+        "compute:conv0:mb0:s2:t0:p0",
+        "psum:conv0:mb0:s2:t0:p0",
+        "quant:conv0:mb0:s2:t0:p0",
+        "conv0:mb0:s2:t0:p0",
+        "transfer22:cohort1",
+        "transfer29:cohort1",
+        "read:conv0:mb0:s3:t0:p0",
+        "compute:conv0:mb0:s3:t0:p0",
+        "psum:conv0:mb0:s3:t0:p0",
+        "quant:conv0:mb0:s3:t0:p0",
+        "conv0:mb0:s3:t0:p0",
+        "transfer30:cohort1",
+        "transfer31:cohort1",
+        "transfer39:cohort1",
+        "transfer40:cohort1",
+        "read:conv0:mb0:s4:t0:p0",
+        "compute:conv0:mb0:s4:t0:p0",
+        "psum:conv0:mb0:s4:t0:p0",
+        "quant:conv0:mb0:s4:t0:p0",
+        "conv0:mb0:s4:t0:p0",
+        "transfer32:cohort1",
+        "transfer33:cohort1",
+        "transfer41:cohort1",
+        "transfer42:cohort1",
+        "read:conv0:mb0:s5:t0:p0",
+        "compute:conv0:mb0:s5:t0:p0",
+        "psum:conv0:mb0:s5:t0:p0",
+        "quant:conv0:mb0:s5:t0:p0",
+        "conv0:mb0:s5:t0:p0",
+        "transfer34:cohort1",
+        "transfer35:cohort1",
+        "transfer43:cohort1",
+        "transfer44:cohort1",
+        "read:conv0:mb0:s6:t0:p0",
+        "compute:conv0:mb0:s6:t0:p0",
+        "psum:conv0:mb0:s6:t0:p0",
+        "quant:conv0:mb0:s6:t0:p0",
+        "conv0:mb0:s6:t0:p0",
+        "transfer36:cohort1",
+        "transfer45:cohort1",
+        "read:conv0:mb0:s7:t0:p0",
+        "compute:conv0:mb0:s7:t0:p0",
+        "psum:conv0:mb0:s7:t0:p0",
+        "quant:conv0:mb0:s7:t0:p0",
+        "conv0:mb0:s7:t0:p0",
+        "transfer46:cohort1",
+        "transfer47:cohort1",
+        "transfer53:cohort1",
+        "transfer54:cohort1",
+        "read:conv0:mb0:s8:t0:p0",
+        "compute:conv0:mb0:s8:t0:p0",
+        "psum:conv0:mb0:s8:t0:p0",
+        "quant:conv0:mb0:s8:t0:p0",
+        "conv0:mb0:s8:t0:p0",
+        "transfer48:cohort1",
+        "transfer49:cohort1",
+        "transfer55:cohort1",
+        "transfer56:cohort1",
+        "read:conv0:mb0:s9:t0:p0",
+        "compute:conv0:mb0:s9:t0:p0",
+        "psum:conv0:mb0:s9:t0:p0",
+        "quant:conv0:mb0:s9:t0:p0",
+        "conv0:mb0:s9:t0:p0",
+        "transfer50:cohort1",
+        "transfer51:cohort1",
+        "transfer57:cohort1",
+        "transfer58:cohort1",
+        "read:conv0:mb0:s10:t0:p0",
+        "compute:conv0:mb0:s10:t0:p0",
+        "psum:conv0:mb0:s10:t0:p0",
+        "quant:conv0:mb0:s10:t0:p0",
+        "conv0:mb0:s10:t0:p0",
+        "transfer52:cohort1",
+        "transfer59:cohort1",
+        "read:conv0:mb0:s11:t0:p0",
+        "compute:conv0:mb0:s11:t0:p0",
+        "psum:conv0:mb0:s11:t0:p0",
+        "quant:conv0:mb0:s11:t0:p0",
+        "conv0:mb0:s11:t0:p0",
+        "transfer60:cohort1",
+        "transfer61:cohort1",
+        "read:conv0:mb0:s12:t0:p0",
+        "compute:conv0:mb0:s12:t0:p0",
+        "psum:conv0:mb0:s12:t0:p0",
+        "quant:conv0:mb0:s12:t0:p0",
+        "conv0:mb0:s12:t0:p0",
+        "transfer62:cohort1",
+        "transfer63:cohort1",
+        "read:conv0:mb0:s13:t0:p0",
+        "compute:conv0:mb0:s13:t0:p0",
+        "psum:conv0:mb0:s13:t0:p0",
+        "quant:conv0:mb0:s13:t0:p0",
+        "conv0:mb0:s13:t0:p0",
+        "transfer64:cohort1",
+        "transfer65:cohort1",
+        "read:conv0:mb0:s14:t0:p0",
+        "compute:conv0:mb0:s14:t0:p0",
+        "psum:conv0:mb0:s14:t0:p0",
+        "quant:conv0:mb0:s14:t0:p0",
+        "conv0:mb0:s14:t0:p0",
+        "transfer66:cohort1",
+        "read:conv0:mb0:s15:t0:p0",
+        "compute:conv0:mb0:s15:t0:p0"
+      ],
+      "layers": [
+        {
+          "layer_id": "conv0",
+          "pe_allocations": [
+            "compute:0/pe:0",
+            "compute:0/pe:1",
+            "compute:0/pe:10",
+            "compute:0/pe:11",
+            "compute:0/pe:12",
+            "compute:0/pe:13",
+            "compute:0/pe:14",
+            "compute:0/pe:15",
+            "compute:0/pe:2",
+            "compute:0/pe:3",
+            "compute:0/pe:4",
+            "compute:0/pe:5",
+            "compute:0/pe:6",
+            "compute:0/pe:7",
+            "compute:0/pe:8",
+            "compute:0/pe:9"
+          ],
+          "compute_busy_s": 4.41e-07,
+          "mac_service_s": 4.41e-07,
+          "l1_service_s": 2.1820312500000002e-07,
+          "vector_busy_s": 4.9e-08,
+          "resource_wait_s": 0.0,
+          "transfer_queue_wait_s": 0.00010252269042968747,
+          "max_job_queue_wait_s": 0.0,
+          "max_transfer_queue_wait_s": 4.377004882812501e-06,
+          "transfer_count": 67,
+          "criticality": 1.0,
+          "slack_s": 0.0,
+          "pe_utilization": 0.09765625,
+          "bottleneck": "compute",
+          "bottlenecks": [
+            {
+              "kind": "compute",
+              "confidence": "partial",
+              "signal": "critical calendar path, MAC service dominates L1 and VPU"
+            },
+            {
+              "kind": "dram_dma_or_network",
+              "confidence": "partial",
+              "signal": "observed route reservation queue; unique per-resource attribution unsupported"
+            }
+          ],
+          "memory_pressure": 0.009765625,
+          "memory_pressure_scope": "shared physical pools; not unique per-layer causality",
+          "has_parallelism": true
+        },
+        {
+          "layer_id": "conv1",
+          "pe_allocations": [
+            "compute:0/pe:0",
+            "compute:0/pe:1",
+            "compute:0/pe:10",
+            "compute:0/pe:11",
+            "compute:0/pe:12",
+            "compute:0/pe:13",
+            "compute:0/pe:14",
+            "compute:0/pe:15",
+            "compute:0/pe:2",
+            "compute:0/pe:3",
+            "compute:0/pe:4",
+            "compute:0/pe:5",
+            "compute:0/pe:6",
+            "compute:0/pe:7",
+            "compute:0/pe:8",
+            "compute:0/pe:9"
+          ],
+          "compute_busy_s": 4.9e-08,
+          "mac_service_s": 4.9e-08,
+          "l1_service_s": 3.4453125e-08,
+          "vector_busy_s": 4.9e-08,
+          "resource_wait_s": 8.83593750000005e-06,
+          "transfer_queue_wait_s": 2.589863281250008e-07,
+          "max_job_queue_wait_s": 1.1242421875000078e-06,
+          "max_transfer_queue_wait_s": 1.5610351562500043e-07,
+          "transfer_count": 18,
+          "criticality": 1.0,
+          "slack_s": 0.0,
+          "pe_utilization": 0.09765625,
+          "bottleneck": "network",
+          "bottlenecks": [
+            {
+              "kind": "dram_dma_or_network",
+              "confidence": "partial",
+              "signal": "observed route reservation queue; unique per-resource attribution unsupported"
+            }
+          ],
+          "memory_pressure": 0.009765625,
+          "memory_pressure_scope": "shared physical pools; not unique per-layer causality",
+          "has_parallelism": true
+        },
+        {
+          "layer_id": "add",
+          "pe_allocations": [
+            "compute:0/pe:0",
+            "compute:0/pe:1",
+            "compute:0/pe:10",
+            "compute:0/pe:11",
+            "compute:0/pe:12",
+            "compute:0/pe:13",
+            "compute:0/pe:14",
+            "compute:0/pe:15",
+            "compute:0/pe:2",
+            "compute:0/pe:3",
+            "compute:0/pe:4",
+            "compute:0/pe:5",
+            "compute:0/pe:6",
+            "compute:0/pe:7",
+            "compute:0/pe:8",
+            "compute:0/pe:9"
+          ],
+          "compute_busy_s": 0.0,
+          "mac_service_s": 0.0,
+          "l1_service_s": 0.0,
+          "vector_busy_s": 2.5000000000000002e-08,
+          "resource_wait_s": 0.0,
+          "transfer_queue_wait_s": 0.00011249626953125024,
+          "max_job_queue_wait_s": 0.0,
+          "max_transfer_queue_wait_s": 3.4266455078124888e-06,
+          "transfer_count": 65,
+          "criticality": 1.0,
+          "slack_s": 0.0,
+          "pe_utilization": 0.0,
+          "bottleneck": "network",
+          "bottlenecks": [
+            {
+              "kind": "dram_dma_or_network",
+              "confidence": "partial",
+              "signal": "observed route reservation queue; unique per-resource attribution unsupported"
+            },
+            {
+              "kind": "vector_or_shared_l2",
+              "confidence": "partial",
+              "signal": "die VPU/L2 reservation dominates local MAC stages"
+            }
+          ],
+          "memory_pressure": 0.009765625,
+          "memory_pressure_scope": "shared physical pools; not unique per-layer causality",
+          "has_parallelism": true
+        }
+      ],
+      "network": [
+        {
+          "link_id": "compute:0>io:0",
+          "source": "compute:0",
+          "destination": "io:0",
+          "kind": "nop",
+          "bytes": 304,
+          "time_windows": [
+            {
+              "flow_id": "transfer0",
+              "start_s": 5.913285156250009e-06,
+              "finish_s": 5.965895507812509e-06,
+              "transmitted_bytes": 32,
+              "queue_wait_s": 0.0
+            },
+            {
+              "flow_id": "transfer1",
+              "start_s": 6.07211621093751e-06,
+              "finish_s": 6.12533691406251e-06,
+              "transmitted_bytes": 32,
+              "queue_wait_s": 0.0
+            },
+            {
+              "flow_id": "transfer2",
+              "start_s": 6.23155761718751e-06,
+              "finish_s": 6.28477832031251e-06,
+              "transmitted_bytes": 32,
+              "queue_wait_s": 0.0
+            },
+            {
+              "flow_id": "transfer3",
+              "start_s": 6.39099902343751e-06,
+              "finish_s": 6.44421972656251e-06,
+              "transmitted_bytes": 32,
+              "queue_wait_s": 0.0
+            }
+          ],
+          "utilization": 0.04598829715560221,
+          "queue_wait_s": 0.0,
+          "time_window_count": 8,
+          "time_windows_truncated": true
+        },
+        {
+          "link_id": "compute:0>io:1",
+          "source": "compute:0",
+          "destination": "io:1",
+          "kind": "nop",
+          "bytes": 352,
+          "time_windows": [
+            {
+              "flow_id": "transfer8",
+              "start_s": 7.510530273437516e-06,
+              "finish_s": 7.563750976562516e-06,
+              "transmitted_bytes": 32,
+              "queue_wait_s": 0.0
+            },
+            {
+              "flow_id": "transfer9",
+              "start_s": 7.776192382812514e-06,
+              "finish_s": 7.830633789062513e-06,
+              "transmitted_bytes": 48,
+              "queue_wait_s": 0.0
+            },
+            {
+              "flow_id": "transfer10",
+              "start_s": 8.04307519531251e-06,
+              "finish_s": 8.09751660156251e-06,
+              "transmitted_bytes": 48,
+              "queue_wait_s": 0.0
+            },
+            {
+              "flow_id": "transfer11",
+              "start_s": 8.309958007812507e-06,
+              "finish_s": 8.364399414062506e-06,
+              "transmitted_bytes": 48,
+              "queue_wait_s": 0.0
+            }
+          ],
+          "utilization": 0.0464464950063763,
+          "queue_wait_s": 0.0,
+          "time_window_count": 8,
+          "time_windows_truncated": true
+        },
+        {
+          "link_id": "compute:0/l2_gateway:0>compute:0/pe:0",
+          "source": "compute:0/l2_gateway:0",
+          "destination": "compute:0/pe:0",
+          "kind": "noc",
+          "bytes": 1552,
+          "time_windows": [
+            {
+              "flow_id": "read:conv0:mb0:s10:t0:p0",
+              "start_s": 3.349708007812498e-06,
+              "finish_s": 3.374708007812498e-06,
+              "transmitted_bytes": 352,
+              "queue_wait_s": 0.0
+            },
+            {
+              "flow_id": "read:conv0:mb0:s11:t0:p0",
+              "start_s": 3.584811523437498e-06,
+              "finish_s": 3.606811523437498e-06,
+              "transmitted_bytes": 320,
+              "queue_wait_s": 0.0
+            },
+            {
+              "flow_id": "read:conv0:mb0:s14:t0:p0",
+              "start_s": 4.2511220703125e-06,
+              "finish_s": 4.2731220703125e-06,
+              "transmitted_bytes": 320,
+              "queue_wait_s": 0.0
+            },
+            {
+              "flow_id": "read:conv0:mb0:s15:t0:p0",
+              "start_s": 4.429615234375001e-06,
+              "finish_s": 4.449615234375001e-06,
+              "transmitted_bytes": 304,
+              "queue_wait_s": 0.0
+            }
+          ],
+          "utilization": 0.012118626219159667,
+          "queue_wait_s": 3.7321406250000243e-06,
+          "time_window_count": 8,
+          "time_windows_truncated": true
+        },
+        {
+          "link_id": "compute:0/l2_gateway:1>compute:0/pe:3",
+          "source": "compute:0/l2_gateway:1",
+          "destination": "compute:0/pe:3",
+          "kind": "noc",
+          "bytes": 1504,
+          "time_windows": [
+            {
+              "flow_id": "read:conv0:mb0:s8:t0:p0",
+              "start_s": 2.696059570312499e-06,
+              "finish_s": 2.7170595703124987e-06,
+              "transmitted_bytes": 304,
+              "queue_wait_s": 0.0
+            },
+            {
+              "flow_id": "read:conv0:mb0:s9:t0:p0",
+              "start_s": 3.0093837890624982e-06,
+              "finish_s": 3.0343837890624984e-06,
+              "transmitted_bytes": 352,
+              "queue_wait_s": 0.0
+            },
+            {
+              "flow_id": "read:conv0:mb0:s12:t0:p0",
+              "start_s": 3.815915039062498e-06,
+              "finish_s": 3.833915039062497e-06,
+              "transmitted_bytes": 272,
+              "queue_wait_s": 0.0
+            },
+            {
+              "flow_id": "read:conv0:mb0:s13:t0:p0",
+              "start_s": 4.020018554687498e-06,
+              "finish_s": 4.042018554687498e-06,
+              "transmitted_bytes": 320,
+              "queue_wait_s": 0.0
+            }
+          ],
+          "utilization": 0.011796892779712924,
+          "queue_wait_s": 3.117078125000019e-06,
+          "time_window_count": 8,
+          "time_windows_truncated": true
+        },
+        {
+          "link_id": "compute:0/l2_gateway:2>compute:0/pe:12",
+          "source": "compute:0/l2_gateway:2",
+          "destination": "compute:0/pe:12",
+          "kind": "noc",
+          "bytes": 1504,
+          "time_windows": [
+            {
+              "flow_id": "read:conv0:mb0:s2:t0:p0",
+              "start_s": 9.535556640624997e-07,
+              "finish_s": 9.745556640624997e-07,
+              "transmitted_bytes": 304,
+              "queue_wait_s": 0.0
+            },
+            {
+              "flow_id": "read:conv0:mb0:s3:t0:p0",
+              "start_s": 1.1616591796874997e-06,
+              "finish_s": 1.1796591796874997e-06,
+              "transmitted_bytes": 272,
+              "queue_wait_s": 0.0
+            },
+            {
+              "flow_id": "read:conv0:mb0:s6:t0:p0",
+              "start_s": 2.1246318359374994e-06,
+              "finish_s": 2.1496318359374996e-06,
+              "transmitted_bytes": 352,
+              "queue_wait_s": 0.0
+            },
+            {
+              "flow_id": "read:conv0:mb0:s7:t0:p0",
+              "start_s": 2.3597353515624994e-06,
+              "finish_s": 2.3817353515624993e-06,
+              "transmitted_bytes": 320,
+              "queue_wait_s": 0.0
+            }
+          ],
+          "utilization": 0.01179689277971298,
+          "queue_wait_s": 1.2898906250000046e-06,
+          "time_window_count": 8,
+          "time_windows_truncated": true
+        },
+        {
+          "link_id": "compute:0/l2_gateway:3>compute:0/pe:15",
+          "source": "compute:0/l2_gateway:3",
+          "destination": "compute:0/pe:15",
+          "kind": "noc",
+          "bytes": 1472,
+          "time_windows": [
+            {
+              "flow_id": "read:conv0:mb0:s0:t0:p0",
+              "start_s": 3.419072265625e-07,
+              "finish_s": 3.5990722656249996e-07,
+              "transmitted_bytes": 272,
+              "queue_wait_s": 0.0
+            },
+            {
+              "flow_id": "read:conv0:mb0:s1:t0:p0",
+              "start_s": 6.402314453124998e-07,
+              "finish_s": 6.612314453124998e-07,
+              "transmitted_bytes": 304,
+              "queue_wait_s": 0.0
+            },
+            {
+              "flow_id": "read:conv0:mb0:s4:t0:p0",
+              "start_s": 1.4709833984375e-06,
+              "finish_s": 1.4919833984375001e-06,
+              "transmitted_bytes": 304,
+              "queue_wait_s": 0.0
+            },
+            {
+              "flow_id": "read:conv0:mb0:s5:t0:p0",
+              "start_s": 1.7843076171875003e-06,
+              "finish_s": 1.8093076171875003e-06,
+              "transmitted_bytes": 352,
+              "queue_wait_s": 0.0
+            }
+          ],
+          "utilization": 0.011582403820081851,
+          "queue_wait_s": 6.968281250000018e-07,
+          "time_window_count": 8,
+          "time_windows_truncated": true
+        },
+        {
+          "link_id": "compute:0/pe:0>compute:0/l2_gateway:0",
+          "source": "compute:0/pe:0",
+          "destination": "compute:0/l2_gateway:0",
+          "kind": "noc",
+          "bytes": 640,
+          "time_windows": [
+            {
+              "flow_id": "psum:conv0:mb0:s10:t0:p0",
+              "start_s": 3.4107080078124983e-06,
+              "finish_s": 3.4187080078124985e-06,
+              "transmitted_bytes": 80,
+              "queue_wait_s": 0.0
+            },
+            {
+              "flow_id": "psum:conv0:mb0:s11:t0:p0",
+              "start_s": 3.642811523437498e-06,
+              "finish_s": 3.649811523437498e-06,
+              "transmitted_bytes": 80,
+              "queue_wait_s": 0.0
+            },
+            {
+              "flow_id": "psum:conv0:mb0:s14:t0:p0",
+              "start_s": 4.3091220703125e-06,
+              "finish_s": 4.3161220703125e-06,
+              "transmitted_bytes": 80,
+              "queue_wait_s": 0.0
+            },
+            {
+              "flow_id": "psum:conv0:mb0:s15:t0:p0",
+              "start_s": 4.485615234375001e-06,
+              "finish_s": 4.4916152343750004e-06,
+              "transmitted_bytes": 80,
+              "queue_wait_s": 0.0
+            }
+          ],
+          "utilization": 0.006005690869672043,
+          "queue_wait_s": 0.0,
+          "time_window_count": 8,
+          "time_windows_truncated": true
+        },
+        {
+          "link_id": "compute:0/pe:0>compute:0/pe:1",
+          "source": "compute:0/pe:0",
+          "destination": "compute:0/pe:1",
+          "kind": "noc",
+          "bytes": 800,
+          "time_windows": [
+            {
+              "flow_id": "read:conv0:mb0:s10:t0:p0",
+              "start_s": 3.349708007812498e-06,
+              "finish_s": 3.374708007812498e-06,
+              "transmitted_bytes": 352,
+              "queue_wait_s": 0.0
+            },
+            {
+              "flow_id": "read:conv0:mb0:s14:t0:p0",
+              "start_s": 4.2511220703125e-06,
+              "finish_s": 4.2731220703125e-06,
+              "transmitted_bytes": 320,
+              "queue_wait_s": 0.0
+            },
+            {
+              "flow_id": "read:conv1:mb0:s10:t0:p0",
+              "start_s": 5.400377929687505e-06,
+              "finish_s": 5.407377929687505e-06,
+              "transmitted_bytes": 64,
+              "queue_wait_s": 7.408281250000043e-07
+            },
+            {
+              "flow_id": "read:conv1:mb0:s14:t0:p0",
+              "start_s": 5.705909179687508e-06,
+              "finish_s": 5.711909179687508e-06,
+              "transmitted_bytes": 64,
+              "queue_wait_s": 1.0463593750000072e-06
+            }
+          ],
+          "utilization": 0.006434668788934368,
+          "queue_wait_s": 1.7871875000000114e-06,
+          "time_window_count": 4,
+          "time_windows_truncated": false
+        },
+        {
+          "link_id": "compute:0/pe:0>compute:0/pe:4",
+          "source": "compute:0/pe:0",
+          "destination": "compute:0/pe:4",
+          "kind": "noc",
+          "bytes": 384,
+          "time_windows": [
+            {
+              "flow_id": "read:conv0:mb0:s11:t0:p0",
+              "start_s": 3.584811523437498e-06,
+              "finish_s": 3.606811523437498e-06,
+              "transmitted_bytes": 320,
+              "queue_wait_s": 0.0
+            },
+            {
+              "flow_id": "read:conv1:mb0:s11:t0:p0",
+              "start_s": 5.480260742187506e-06,
+              "finish_s": 5.4862607421875056e-06,
+              "transmitted_bytes": 64,
+              "queue_wait_s": 8.20710937500005e-07
+            }
+          ],
+          "utilization": 0.003002845434835999,
+          "queue_wait_s": 8.20710937500005e-07,
+          "time_window_count": 2,
+          "time_windows_truncated": false
+        },
+        {
+          "link_id": "compute:0/pe:1>compute:0/pe:0",
+          "source": "compute:0/pe:1",
+          "destination": "compute:0/pe:0",
+          "kind": "noc",
+          "bytes": 320,
+          "time_windows": [
+            {
+              "flow_id": "psum:conv0:mb0:s10:t0:p0",
+              "start_s": 3.4107080078124983e-06,
+              "finish_s": 3.4187080078124985e-06,
+              "transmitted_bytes": 80,
+              "queue_wait_s": 0.0
+            },
+            {
+              "flow_id": "psum:conv0:mb0:s14:t0:p0",
+              "start_s": 4.3091220703125e-06,
+              "finish_s": 4.3161220703125e-06,
+              "transmitted_bytes": 80,
+              "queue_wait_s": 0.0
+            },
+            {
+              "flow_id": "psum:conv1:mb0:s10:t0:p0",
+              "start_s": 5.411377929687506e-06,
+              "finish_s": 5.419377929687505e-06,
+              "transmitted_bytes": 80,
+              "queue_wait_s": 0.0
+            },
+            {
+              "flow_id": "psum:conv1:mb0:s14:t0:p0",
+              "start_s": 5.715909179687508e-06,
+              "finish_s": 5.722909179687508e-06,
+              "transmitted_bytes": 80,
+              "queue_wait_s": 0.0
+            }
+          ],
+          "utilization": 0.0032173343944672064,
+          "queue_wait_s": 0.0,
+          "time_window_count": 4,
+          "time_windows_truncated": false
+        },
+        {
+          "link_id": "compute:0/pe:1>compute:0/pe:5",
+          "source": "compute:0/pe:1",
+          "destination": "compute:0/pe:5",
+          "kind": "noc",
+          "bytes": 416,
+          "time_windows": [
+            {
+              "flow_id": "read:conv0:mb0:s10:t0:p0",
+              "start_s": 3.349708007812498e-06,
+              "finish_s": 3.374708007812498e-06,
+              "transmitted_bytes": 352,
+              "queue_wait_s": 0.0
+            },
+            {
+              "flow_id": "read:conv1:mb0:s10:t0:p0",
+              "start_s": 5.400377929687505e-06,
+              "finish_s": 5.407377929687505e-06,
+              "transmitted_bytes": 64,
+              "queue_wait_s": 7.408281250000043e-07
+            }
+          ],
+          "utilization": 0.0034318233540983688,
+          "queue_wait_s": 7.408281250000043e-07,
+          "time_window_count": 2,
+          "time_windows_truncated": false
+        },
+        {
+          "link_id": "compute:0/pe:10>compute:0/pe:11",
+          "source": "compute:0/pe:10",
+          "destination": "compute:0/pe:11",
+          "kind": "noc",
+          "bytes": 160,
+          "time_windows": [
+            {
+              "flow_id": "psum:conv0:mb0:s5:t0:p0",
+              "start_s": 1.8453076171875002e-06,
+              "finish_s": 1.8533076171875002e-06,
+              "transmitted_bytes": 80,
+              "queue_wait_s": 0.0
+            },
+            {
+              "flow_id": "psum:conv1:mb0:s5:t0:p0",
+              "start_s": 5.0219638671875024e-06,
+              "finish_s": 5.029963867187502e-06,
+              "transmitted_bytes": 80,
+              "queue_wait_s": 0.0
+            }
+          ],
+          "utilization": 0.0017159116770491388,
+          "queue_wait_s": 0.0,
+          "time_window_count": 2,
+          "time_windows_truncated": false
+        },
+        {
+          "link_id": "compute:0/pe:11>compute:0/pe:10",
+          "source": "compute:0/pe:11",
+          "destination": "compute:0/pe:10",
+          "kind": "noc",
+          "bytes": 416,
+          "time_windows": [
+            {
+              "flow_id": "read:conv0:mb0:s5:t0:p0",
+              "start_s": 1.7843076171875003e-06,
+              "finish_s": 1.8093076171875003e-06,
+              "transmitted_bytes": 352,
+              "queue_wait_s": 0.0
+            },
+            {
+              "flow_id": "read:conv1:mb0:s5:t0:p0",
+              "start_s": 5.010963867187502e-06,
+              "finish_s": 5.017963867187502e-06,
+              "transmitted_bytes": 64,
+              "queue_wait_s": 3.514140625000011e-07
+            }
+          ],
+          "utilization": 0.0034318233540983458,
+          "queue_wait_s": 3.514140625000011e-07,
+          "time_window_count": 2,
+          "time_windows_truncated": false
+        },
+        {
+          "link_id": "compute:0/pe:11>compute:0/pe:15",
+          "source": "compute:0/pe:11",
+          "destination": "compute:0/pe:15",
+          "kind": "noc",
+          "bytes": 256,
+          "time_windows": [
+            {
+              "flow_id": "psum:conv0:mb0:s4:t0:p0",
+              "start_s": 1.5099833984375002e-06,
+              "finish_s": 1.5149833984375002e-06,
+              "transmitted_bytes": 48,
+              "queue_wait_s": 0.0
+            },
+            {
+              "flow_id": "psum:conv0:mb0:s5:t0:p0",
+              "start_s": 1.8453076171875002e-06,
+              "finish_s": 1.8533076171875002e-06,
+              "transmitted_bytes": 80,
+              "queue_wait_s": 0.0
+            },
+            {
+              "flow_id": "psum:conv1:mb0:s4:t0:p0",
+              "start_s": 4.947081054687502e-06,
+              "finish_s": 4.9520810546875016e-06,
+              "transmitted_bytes": 48,
+              "queue_wait_s": 0.0
+            },
+            {
+              "flow_id": "psum:conv1:mb0:s5:t0:p0",
+              "start_s": 5.0219638671875024e-06,
+              "finish_s": 5.029963867187502e-06,
+              "transmitted_bytes": 80,
+              "queue_wait_s": 0.0
+            }
+          ],
+          "utilization": 0.002788356475204859,
+          "queue_wait_s": 0.0,
+          "time_window_count": 4,
+          "time_windows_truncated": false
+        },
+        {
+          "link_id": "compute:0/pe:12>compute:0/l2_gateway:2",
+          "source": "compute:0/pe:12",
+          "destination": "compute:0/l2_gateway:2",
+          "kind": "noc",
+          "bytes": 512,
+          "time_windows": [
+            {
+              "flow_id": "psum:conv0:mb0:s2:t0:p0",
+              "start_s": 9.925556640624997e-07,
+              "finish_s": 9.975556640624997e-07,
+              "transmitted_bytes": 48,
+              "queue_wait_s": 0.0
+            },
+            {
+              "flow_id": "psum:conv0:mb0:s3:t0:p0",
+              "start_s": 1.1976591796874998e-06,
+              "finish_s": 1.2016591796875e-06,
+              "transmitted_bytes": 48,
+              "queue_wait_s": 0.0
+            },
+            {
+              "flow_id": "psum:conv0:mb0:s6:t0:p0",
+              "start_s": 2.1856318359374997e-06,
+              "finish_s": 2.1936318359375e-06,
+              "transmitted_bytes": 80,
+              "queue_wait_s": 0.0
+            },
+            {
+              "flow_id": "psum:conv0:mb0:s7:t0:p0",
+              "start_s": 2.4177353515624995e-06,
+              "finish_s": 2.4247353515624996e-06,
+              "transmitted_bytes": 80,
+              "queue_wait_s": 0.0
+            }
+          ],
+          "utilization": 0.005147735031147553,
+          "queue_wait_s": 0.0,
+          "time_window_count": 8,
+          "time_windows_truncated": true
+        },
+        {
+          "link_id": "compute:0/pe:12>compute:0/pe:13",
+          "source": "compute:0/pe:12",
+          "destination": "compute:0/pe:13",
+          "kind": "noc",
+          "bytes": 784,
+          "time_windows": [
+            {
+              "flow_id": "read:conv0:mb0:s2:t0:p0",
+              "start_s": 9.535556640624997e-07,
+              "finish_s": 9.745556640624997e-07,
+              "transmitted_bytes": 304,
+              "queue_wait_s": 0.0
+            },
+            {
+              "flow_id": "read:conv0:mb0:s6:t0:p0",
+              "start_s": 2.1246318359374994e-06,
+              "finish_s": 2.1496318359374996e-06,
+              "transmitted_bytes": 352,
+              "queue_wait_s": 0.0
+            },
+            {
+              "flow_id": "read:conv1:mb0:s2:t0:p0",
+              "start_s": 4.797315429687501e-06,
+              "finish_s": 4.8033154296875e-06,
+              "transmitted_bytes": 64,
+              "queue_wait_s": 1.377656249999999e-07
+            },
+            {
+              "flow_id": "read:conv1:mb0:s6:t0:p0",
+              "start_s": 5.090846679687503e-06,
+              "finish_s": 5.097846679687503e-06,
+              "transmitted_bytes": 64,
+              "queue_wait_s": 4.312968750000019e-07
+            }
+          ],
+          "utilization": 0.006327424309118797,
+          "queue_wait_s": 5.690625000000018e-07,
+          "time_window_count": 4,
+          "time_windows_truncated": false
+        },
+        {
+          "link_id": "compute:0/pe:12>compute:0/pe:8",
+          "source": "compute:0/pe:12",
+          "destination": "compute:0/pe:8",
+          "kind": "noc",
+          "bytes": 384,
+          "time_windows": [
+            {
+              "flow_id": "read:conv0:mb0:s7:t0:p0",
+              "start_s": 2.3597353515624994e-06,
+              "finish_s": 2.3817353515624993e-06,
+              "transmitted_bytes": 320,
+              "queue_wait_s": 0.0
+            },
+            {
+              "flow_id": "read:conv1:mb0:s7:t0:p0",
+              "start_s": 5.170729492187504e-06,
+              "finish_s": 5.176729492187503e-06,
+              "transmitted_bytes": 64,
+              "queue_wait_s": 5.111796875000027e-07
+            }
+          ],
+          "utilization": 0.003002845434835999,
+          "queue_wait_s": 5.111796875000027e-07,
+          "time_window_count": 2,
+          "time_windows_truncated": false
+        },
+        {
+          "link_id": "compute:0/pe:13>compute:0/pe:12",
+          "source": "compute:0/pe:13",
+          "destination": "compute:0/pe:12",
+          "kind": "noc",
+          "bytes": 256,
+          "time_windows": [
+            {
+              "flow_id": "psum:conv0:mb0:s2:t0:p0",
+              "start_s": 9.925556640624997e-07,
+              "finish_s": 9.975556640624997e-07,
+              "transmitted_bytes": 48,
+              "queue_wait_s": 0.0
+            },
+            {
+              "flow_id": "psum:conv0:mb0:s6:t0:p0",
+              "start_s": 2.1856318359374997e-06,
+              "finish_s": 2.1936318359375e-06,
+              "transmitted_bytes": 80,
+              "queue_wait_s": 0.0
+            },
+            {
+              "flow_id": "psum:conv1:mb0:s2:t0:p0",
+              "start_s": 4.8053154296875006e-06,
+              "finish_s": 4.8103154296875005e-06,
+              "transmitted_bytes": 48,
+              "queue_wait_s": 0.0
+            },
+            {
+              "flow_id": "psum:conv1:mb0:s6:t0:p0",
+              "start_s": 5.101846679687503e-06,
+              "finish_s": 5.109846679687503e-06,
+              "transmitted_bytes": 80,
+              "queue_wait_s": 0.0
+            }
+          ],
+          "utilization": 0.002788356475204882,
+          "queue_wait_s": 0.0,
+          "time_window_count": 4,
+          "time_windows_truncated": false
+        },
+        {
+          "link_id": "compute:0/pe:13>compute:0/pe:9",
+          "source": "compute:0/pe:13",
+          "destination": "compute:0/pe:9",
+          "kind": "noc",
+          "bytes": 416,
+          "time_windows": [
+            {
+              "flow_id": "read:conv0:mb0:s6:t0:p0",
+              "start_s": 2.1246318359374994e-06,
+              "finish_s": 2.1496318359374996e-06,
+              "transmitted_bytes": 352,
+              "queue_wait_s": 0.0
+            },
+            {
+              "flow_id": "read:conv1:mb0:s6:t0:p0",
+              "start_s": 5.090846679687503e-06,
+              "finish_s": 5.097846679687503e-06,
+              "transmitted_bytes": 64,
+              "queue_wait_s": 4.312968750000019e-07
+            }
+          ],
+          "utilization": 0.0034318233540983688,
+          "queue_wait_s": 4.312968750000019e-07,
+          "time_window_count": 2,
+          "time_windows_truncated": false
+        },
+        {
+          "link_id": "compute:0/pe:14>compute:0/pe:15",
+          "source": "compute:0/pe:14",
+          "destination": "compute:0/pe:15",
+          "kind": "noc",
+          "bytes": 96,
+          "time_windows": [
+            {
+              "flow_id": "psum:conv0:mb0:s1:t0:p0",
+              "start_s": 6.792314453124998e-07,
+              "finish_s": 6.842314453124998e-07,
+              "transmitted_bytes": 48,
+              "queue_wait_s": 0.0
+            },
+            {
+              "flow_id": "psum:conv1:mb0:s1:t0:p0",
+              "start_s": 4.7334326171875e-06,
+              "finish_s": 4.7384326171875e-06,
+              "transmitted_bytes": 48,
+              "queue_wait_s": 0.0
+            }
+          ],
+          "utilization": 0.0010724447981557202,
+          "queue_wait_s": 0.0,
+          "time_window_count": 2,
+          "time_windows_truncated": false
+        },
+        {
+          "link_id": "compute:0/pe:15>compute:0/l2_gateway:3",
+          "source": "compute:0/pe:15",
+          "destination": "compute:0/l2_gateway:3",
+          "kind": "noc",
+          "bytes": 416,
+          "time_windows": [
+            {
+              "flow_id": "psum:conv0:mb0:s0:t0:p0",
+              "start_s": 3.6890722656249995e-07,
+              "finish_s": 3.7190722656249996e-07,
+              "transmitted_bytes": 32,
+              "queue_wait_s": 0.0
+            },
+            {
+              "flow_id": "psum:conv0:mb0:s1:t0:p0",
+              "start_s": 6.792314453124998e-07,
+              "finish_s": 6.842314453124998e-07,
+              "transmitted_bytes": 48,
+              "queue_wait_s": 0.0
+            },
+            {
+              "flow_id": "psum:conv0:mb0:s4:t0:p0",
+              "start_s": 1.5099833984375002e-06,
+              "finish_s": 1.5149833984375002e-06,
+              "transmitted_bytes": 48,
+              "queue_wait_s": 0.0
+            },
+            {
+              "flow_id": "psum:conv0:mb0:s5:t0:p0",
+              "start_s": 1.8453076171875002e-06,
+              "finish_s": 1.8533076171875002e-06,
+              "transmitted_bytes": 80,
+              "queue_wait_s": 0.0
+            }
+          ],
+          "utilization": 0.004504268152253998,
+          "queue_wait_s": 0.0,
+          "time_window_count": 8,
+          "time_windows_truncated": true
+        },
+        {
+          "link_id": "compute:0/pe:15>compute:0/pe:11",
+          "source": "compute:0/pe:15",
+          "destination": "compute:0/pe:11",
+          "kind": "noc",
+          "bytes": 784,
+          "time_windows": [
+            {
+              "flow_id": "read:conv0:mb0:s4:t0:p0",
+              "start_s": 1.4709833984375e-06,
+              "finish_s": 1.4919833984375001e-06,
+              "transmitted_bytes": 304,
+              "queue_wait_s": 0.0
+            },
+            {
+              "flow_id": "read:conv0:mb0:s5:t0:p0",
+              "start_s": 1.7843076171875003e-06,
+              "finish_s": 1.8093076171875003e-06,
+              "transmitted_bytes": 352,
+              "queue_wait_s": 0.0
+            },
+            {
+              "flow_id": "read:conv1:mb0:s4:t0:p0",
+              "start_s": 4.939081054687502e-06,
+              "finish_s": 4.9450810546875015e-06,
+              "transmitted_bytes": 64,
+              "queue_wait_s": 2.7953125000000095e-07
+            },
+            {
+              "flow_id": "read:conv1:mb0:s5:t0:p0",
+              "start_s": 5.010963867187502e-06,
+              "finish_s": 5.017963867187502e-06,
+              "transmitted_bytes": 64,
+              "queue_wait_s": 3.514140625000011e-07
+            }
+          ],
+          "utilization": 0.006327424309118786,
+          "queue_wait_s": 6.309453125000021e-07,
+          "time_window_count": 4,
+          "time_windows_truncated": false
+        },
+        {
+          "link_id": "compute:0/pe:15>compute:0/pe:14",
+          "source": "compute:0/pe:15",
+          "destination": "compute:0/pe:14",
+          "kind": "noc",
+          "bytes": 368,
+          "time_windows": [
+            {
+              "flow_id": "read:conv0:mb0:s1:t0:p0",
+              "start_s": 6.402314453124998e-07,
+              "finish_s": 6.612314453124998e-07,
+              "transmitted_bytes": 304,
+              "queue_wait_s": 0.0
+            },
+            {
+              "flow_id": "read:conv1:mb0:s1:t0:p0",
+              "start_s": 4.725432617187501e-06,
+              "finish_s": 4.7314326171875e-06,
+              "transmitted_bytes": 64,
+              "queue_wait_s": 6.588281249999973e-08
+            }
+          ],
+          "utilization": 0.002895600955020429,
+          "queue_wait_s": 6.588281249999973e-08,
+          "time_window_count": 2,
+          "time_windows_truncated": false
+        },
+        {
+          "link_id": "compute:0/pe:2>compute:0/pe:3",
+          "source": "compute:0/pe:2",
+          "destination": "compute:0/pe:3",
+          "kind": "noc",
+          "bytes": 320,
+          "time_windows": [
+            {
+              "flow_id": "psum:conv0:mb0:s9:t0:p0",
+              "start_s": 3.0703837890624986e-06,
+              "finish_s": 3.0783837890624987e-06,
+              "transmitted_bytes": 80,
+              "queue_wait_s": 0.0
+            },
+            {
+              "flow_id": "psum:conv0:mb0:s13:t0:p0",
+              "start_s": 4.0780185546874985e-06,
+              "finish_s": 4.0850185546874986e-06,
+              "transmitted_bytes": 80,
+              "queue_wait_s": 0.0
+            },
+            {
+              "flow_id": "psum:conv1:mb0:s9:t0:p0",
+              "start_s": 5.331495117187505e-06,
+              "finish_s": 5.3394951171875046e-06,
+              "transmitted_bytes": 80,
+              "queue_wait_s": 0.0
+            },
+            {
+              "flow_id": "psum:conv1:mb0:s13:t0:p0",
+              "start_s": 5.638026367187507e-06,
+              "finish_s": 5.6450263671875075e-06,
+              "transmitted_bytes": 80,
+              "queue_wait_s": 0.0
+            }
+          ],
+          "utilization": 0.0032173343944672064,
+          "queue_wait_s": 0.0,
+          "time_window_count": 4,
+          "time_windows_truncated": false
+        },
+        {
+          "link_id": "compute:0/pe:2>compute:0/pe:6",
+          "source": "compute:0/pe:2",
+          "destination": "compute:0/pe:6",
+          "kind": "noc",
+          "bytes": 416,
+          "time_windows": [
+            {
+              "flow_id": "read:conv0:mb0:s9:t0:p0",
+              "start_s": 3.0093837890624982e-06,
+              "finish_s": 3.0343837890624984e-06,
+              "transmitted_bytes": 352,
+              "queue_wait_s": 0.0
+            },
+            {
+              "flow_id": "read:conv1:mb0:s9:t0:p0",
+              "start_s": 5.320495117187504e-06,
+              "finish_s": 5.3274951171875045e-06,
+              "transmitted_bytes": 64,
+              "queue_wait_s": 6.609453125000035e-07
+            }
+          ],
+          "utilization": 0.0034318233540983688,
+          "queue_wait_s": 6.609453125000035e-07,
+          "time_window_count": 2,
+          "time_windows_truncated": false
+        },
+        {
+          "link_id": "compute:0/pe:3>compute:0/l2_gateway:1",
+          "source": "compute:0/pe:3",
+          "destination": "compute:0/l2_gateway:1",
+          "kind": "noc",
+          "bytes": 512,
+          "time_windows": [
+            {
+              "flow_id": "psum:conv0:mb0:s8:t0:p0",
+              "start_s": 2.7350595703124988e-06,
+              "finish_s": 2.7400595703124987e-06,
+              "transmitted_bytes": 48,
+              "queue_wait_s": 0.0
+            },
+            {
+              "flow_id": "psum:conv0:mb0:s9:t0:p0",
+              "start_s": 3.0703837890624986e-06,
+              "finish_s": 3.0783837890624987e-06,
+              "transmitted_bytes": 80,
+              "queue_wait_s": 0.0
+            },
+            {
+              "flow_id": "psum:conv0:mb0:s12:t0:p0",
+              "start_s": 3.851915039062497e-06,
+              "finish_s": 3.855915039062497e-06,
+              "transmitted_bytes": 48,
+              "queue_wait_s": 0.0
+            },
+            {
+              "flow_id": "psum:conv0:mb0:s13:t0:p0",
+              "start_s": 4.0780185546874985e-06,
+              "finish_s": 4.0850185546874986e-06,
+              "transmitted_bytes": 80,
+              "queue_wait_s": 0.0
+            }
+          ],
+          "utilization": 0.0051477350311475755,
+          "queue_wait_s": 0.0,
+          "time_window_count": 8,
+          "time_windows_truncated": true
+        },
+        {
+          "link_id": "compute:0/pe:3>compute:0/pe:2",
+          "source": "compute:0/pe:3",
+          "destination": "compute:0/pe:2",
+          "kind": "noc",
+          "bytes": 800,
+          "time_windows": [
+            {
+              "flow_id": "read:conv0:mb0:s9:t0:p0",
+              "start_s": 3.0093837890624982e-06,
+              "finish_s": 3.0343837890624984e-06,
+              "transmitted_bytes": 352,
+              "queue_wait_s": 0.0
+            },
+            {
+              "flow_id": "read:conv0:mb0:s13:t0:p0",
+              "start_s": 4.020018554687498e-06,
+              "finish_s": 4.042018554687498e-06,
+              "transmitted_bytes": 320,
+              "queue_wait_s": 0.0
+            },
+            {
+              "flow_id": "read:conv1:mb0:s9:t0:p0",
+              "start_s": 5.320495117187504e-06,
+              "finish_s": 5.3274951171875045e-06,
+              "transmitted_bytes": 64,
+              "queue_wait_s": 6.609453125000035e-07
+            },
+            {
+              "flow_id": "read:conv1:mb0:s13:t0:p0",
+              "start_s": 5.6280263671875075e-06,
+              "finish_s": 5.634026367187507e-06,
+              "transmitted_bytes": 64,
+              "queue_wait_s": 9.684765625000065e-07
+            }
+          ],
+          "utilization": 0.006434668788934368,
+          "queue_wait_s": 1.62942187500001e-06,
+          "time_window_count": 4,
+          "time_windows_truncated": false
+        },
+        {
+          "link_id": "compute:0/pe:3>compute:0/pe:7",
+          "source": "compute:0/pe:3",
+          "destination": "compute:0/pe:7",
+          "kind": "noc",
+          "bytes": 368,
+          "time_windows": [
+            {
+              "flow_id": "read:conv0:mb0:s8:t0:p0",
+              "start_s": 2.696059570312499e-06,
+              "finish_s": 2.7170595703124987e-06,
+              "transmitted_bytes": 304,
+              "queue_wait_s": 0.0
+            },
+            {
+              "flow_id": "read:conv1:mb0:s8:t0:p0",
+              "start_s": 5.248612304687504e-06,
+              "finish_s": 5.254612304687504e-06,
+              "transmitted_bytes": 64,
+              "queue_wait_s": 5.890625000000033e-07
+            }
+          ],
+          "utilization": 0.0028956009550204177,
+          "queue_wait_s": 5.890625000000033e-07,
+          "time_window_count": 2,
+          "time_windows_truncated": false
+        },
+        {
+          "link_id": "compute:0/pe:4>compute:0/pe:0",
+          "source": "compute:0/pe:4",
+          "destination": "compute:0/pe:0",
+          "kind": "noc",
+          "bytes": 160,
+          "time_windows": [
+            {
+              "flow_id": "psum:conv0:mb0:s11:t0:p0",
+              "start_s": 3.642811523437498e-06,
+              "finish_s": 3.649811523437498e-06,
+              "transmitted_bytes": 80,
+              "queue_wait_s": 0.0
+            },
+            {
+              "flow_id": "psum:conv1:mb0:s11:t0:p0",
+              "start_s": 5.490260742187506e-06,
+              "finish_s": 5.497260742187506e-06,
+              "transmitted_bytes": 80,
+              "queue_wait_s": 0.0
+            }
+          ],
+          "utilization": 0.0015014227174180448,
+          "queue_wait_s": 0.0,
+          "time_window_count": 2,
+          "time_windows_truncated": false
+        },
+        {
+          "link_id": "compute:0/pe:5>compute:0/pe:1",
+          "source": "compute:0/pe:5",
+          "destination": "compute:0/pe:1",
+          "kind": "noc",
+          "bytes": 160,
+          "time_windows": [
+            {
+              "flow_id": "psum:conv0:mb0:s10:t0:p0",
+              "start_s": 3.4107080078124983e-06,
+              "finish_s": 3.4187080078124985e-06,
+              "transmitted_bytes": 80,
+              "queue_wait_s": 0.0
+            },
+            {
+              "flow_id": "psum:conv1:mb0:s10:t0:p0",
+              "start_s": 5.411377929687506e-06,
+              "finish_s": 5.419377929687505e-06,
+              "transmitted_bytes": 80,
+              "queue_wait_s": 0.0
+            }
+          ],
+          "utilization": 0.0017159116770491616,
+          "queue_wait_s": 0.0,
+          "time_window_count": 2,
+          "time_windows_truncated": false
+        },
+        {
+          "link_id": "compute:0/pe:6>compute:0/pe:2",
+          "source": "compute:0/pe:6",
+          "destination": "compute:0/pe:2",
+          "kind": "noc",
+          "bytes": 160,
+          "time_windows": [
+            {
+              "flow_id": "psum:conv0:mb0:s9:t0:p0",
+              "start_s": 3.0703837890624986e-06,
+              "finish_s": 3.0783837890624987e-06,
+              "transmitted_bytes": 80,
+              "queue_wait_s": 0.0
+            },
+            {
+              "flow_id": "psum:conv1:mb0:s9:t0:p0",
+              "start_s": 5.331495117187505e-06,
+              "finish_s": 5.3394951171875046e-06,
+              "transmitted_bytes": 80,
+              "queue_wait_s": 0.0
+            }
+          ],
+          "utilization": 0.0017159116770491616,
+          "queue_wait_s": 0.0,
+          "time_window_count": 2,
+          "time_windows_truncated": false
+        },
+        {
+          "link_id": "compute:0/pe:7>compute:0/pe:3",
+          "source": "compute:0/pe:7",
+          "destination": "compute:0/pe:3",
+          "kind": "noc",
+          "bytes": 96,
+          "time_windows": [
+            {
+              "flow_id": "psum:conv0:mb0:s8:t0:p0",
+              "start_s": 2.7350595703124988e-06,
+              "finish_s": 2.7400595703124987e-06,
+              "transmitted_bytes": 48,
+              "queue_wait_s": 0.0
+            },
+            {
+              "flow_id": "psum:conv1:mb0:s8:t0:p0",
+              "start_s": 5.256612304687504e-06,
+              "finish_s": 5.261612304687504e-06,
+              "transmitted_bytes": 48,
+              "queue_wait_s": 0.0
+            }
+          ],
+          "utilization": 0.0010724447981557202,
+          "queue_wait_s": 0.0,
+          "time_window_count": 2,
+          "time_windows_truncated": false
+        },
+        {
+          "link_id": "compute:0/pe:8>compute:0/pe:12",
+          "source": "compute:0/pe:8",
+          "destination": "compute:0/pe:12",
+          "kind": "noc",
+          "bytes": 160,
+          "time_windows": [
+            {
+              "flow_id": "psum:conv0:mb0:s7:t0:p0",
+              "start_s": 2.4177353515624995e-06,
+              "finish_s": 2.4247353515624996e-06,
+              "transmitted_bytes": 80,
+              "queue_wait_s": 0.0
+            },
+            {
+              "flow_id": "psum:conv1:mb0:s7:t0:p0",
+              "start_s": 5.1807294921875035e-06,
+              "finish_s": 5.187729492187504e-06,
+              "transmitted_bytes": 80,
+              "queue_wait_s": 0.0
+            }
+          ],
+          "utilization": 0.0015014227174180448,
+          "queue_wait_s": 0.0,
+          "time_window_count": 2,
+          "time_windows_truncated": false
+        },
+        {
+          "link_id": "compute:0/pe:9>compute:0/pe:13",
+          "source": "compute:0/pe:9",
+          "destination": "compute:0/pe:13",
+          "kind": "noc",
+          "bytes": 160,
+          "time_windows": [
+            {
+              "flow_id": "psum:conv0:mb0:s6:t0:p0",
+              "start_s": 2.1856318359374997e-06,
+              "finish_s": 2.1936318359375e-06,
+              "transmitted_bytes": 80,
+              "queue_wait_s": 0.0
+            },
+            {
+              "flow_id": "psum:conv1:mb0:s6:t0:p0",
+              "start_s": 5.101846679687503e-06,
+              "finish_s": 5.109846679687503e-06,
+              "transmitted_bytes": 80,
+              "queue_wait_s": 0.0
+            }
+          ],
+          "utilization": 0.0017159116770491616,
+          "queue_wait_s": 0.0,
+          "time_window_count": 2,
+          "time_windows_truncated": false
+        },
+        {
+          "link_id": "io:0>compute:0",
+          "source": "io:0",
+          "destination": "compute:0",
+          "kind": "nop",
+          "bytes": 3536,
+          "time_windows": [
+            {
+              "flow_id": "transfer16:cohort0",
+              "start_s": 5.859674804687509e-06,
+              "finish_s": 5.9122851562500095e-06,
+              "transmitted_bytes": 32,
+              "queue_wait_s": 1.196125000000008e-06
+            },
+            {
+              "flow_id": "transfer16:cohort1",
+              "start_s": 0.0,
+              "finish_s": 5.26103515625e-08,
+              "transmitted_bytes": 32,
+              "queue_wait_s": 0.0
+            },
+            {
+              "flow_id": "transfer17:cohort0",
+              "start_s": 5.965895507812509e-06,
+              "finish_s": 6.01850585937501e-06,
+              "transmitted_bytes": 32,
+              "queue_wait_s": 1.2344628906250092e-06
+            },
+            {
+              "flow_id": "transfer17:cohort1",
+              "start_s": 5.26103515625e-08,
+              "finish_s": 1.05220703125e-07,
+              "transmitted_bytes": 32,
+              "queue_wait_s": 5.26103515625e-08
+            }
+          ],
+          "utilization": 0.4446454580234751,
+          "queue_wait_s": 5.45892841796877e-05,
+          "time_window_count": 76,
+          "time_windows_truncated": true
+        },
+        {
+          "link_id": "io:0>memory:0",
+          "source": "io:0",
+          "destination": "memory:0",
+          "kind": "dram",
+          "bytes": 105,
+          "time_windows": [
+            {
+              "flow_id": "transfer0",
+              "start_s": 5.913285156250009e-06,
+              "finish_s": 5.965895507812509e-06,
+              "transmitted_bytes": 5,
+              "queue_wait_s": 0.0
+            },
+            {
+              "flow_id": "transfer1",
+              "start_s": 6.07211621093751e-06,
+              "finish_s": 6.12533691406251e-06,
+              "transmitted_bytes": 10,
+              "queue_wait_s": 0.0
+            },
+            {
+              "flow_id": "transfer2",
+              "start_s": 6.23155761718751e-06,
+              "finish_s": 6.28477832031251e-06,
+              "transmitted_bytes": 10,
+              "queue_wait_s": 0.0
+            },
+            {
+              "flow_id": "transfer3",
+              "start_s": 6.39099902343751e-06,
+              "finish_s": 6.44421972656251e-06,
+              "transmitted_bytes": 10,
+              "queue_wait_s": 0.0
+            }
+          ],
+          "utilization": 0.04598829715560221,
+          "queue_wait_s": 0.0,
+          "time_window_count": 8,
+          "time_windows_truncated": true
+        },
+        {
+          "link_id": "io:1>compute:0",
+          "source": "io:1",
+          "destination": "compute:0",
+          "kind": "nop",
+          "bytes": 1984,
+          "time_windows": [
+            {
+              "flow_id": "transfer38",
+              "start_s": 2.73427734375e-07,
+              "finish_s": 3.419072265625e-07,
+              "transmitted_bytes": 160,
+              "queue_wait_s": 2.73427734375e-07
+            },
+            {
+              "flow_id": "transfer39:cohort0",
+              "start_s": 7.4043095703125155e-06,
+              "finish_s": 7.456919921875016e-06,
+              "transmitted_bytes": 32,
+              "queue_wait_s": 2.1496972656250117e-06
+            },
+            {
+              "flow_id": "transfer39:cohort1",
+              "start_s": 1.3657626953124999e-06,
+              "finish_s": 1.418373046875e-06,
+              "transmitted_bytes": 32,
+              "queue_wait_s": 1.3657626953124999e-06
+            },
+            {
+              "flow_id": "transfer40:cohort0",
+              "start_s": 7.563750976562516e-06,
+              "finish_s": 7.616361328125016e-06,
+              "transmitted_bytes": 32,
+              "queue_wait_s": 2.2362558593750113e-06
+            }
+          ],
+          "utilization": 0.3290786390047112,
+          "queue_wait_s": 0.000160688662109375,
+          "time_window_count": 58,
+          "time_windows_truncated": true
+        },
+        {
+          "link_id": "io:1>memory:1",
+          "source": "io:1",
+          "destination": "memory:1",
+          "kind": "dram",
+          "bytes": 140,
+          "time_windows": [
+            {
+              "flow_id": "transfer8",
+              "start_s": 7.510530273437516e-06,
+              "finish_s": 7.563750976562516e-06,
+              "transmitted_bytes": 10,
+              "queue_wait_s": 0.0
+            },
+            {
+              "flow_id": "transfer9",
+              "start_s": 7.776192382812514e-06,
+              "finish_s": 7.830633789062513e-06,
+              "transmitted_bytes": 20,
+              "queue_wait_s": 0.0
+            },
+            {
+              "flow_id": "transfer10",
+              "start_s": 8.04307519531251e-06,
+              "finish_s": 8.09751660156251e-06,
+              "transmitted_bytes": 20,
+              "queue_wait_s": 0.0
+            },
+            {
+              "flow_id": "transfer11",
+              "start_s": 8.309958007812507e-06,
+              "finish_s": 8.364399414062506e-06,
+              "transmitted_bytes": 20,
+              "queue_wait_s": 0.0
+            }
+          ],
+          "utilization": 0.0464464950063763,
+          "queue_wait_s": 0.0,
+          "time_window_count": 8,
+          "time_windows_truncated": true
+        },
+        {
+          "link_id": "memory:0>io:0",
+          "source": "memory:0",
+          "destination": "io:0",
+          "kind": "dram",
+          "bytes": 1590,
+          "time_windows": [
+            {
+              "flow_id": "transfer16:cohort0",
+              "start_s": 5.859674804687509e-06,
+              "finish_s": 5.9122851562500095e-06,
+              "transmitted_bytes": 5,
+              "queue_wait_s": 1.196125000000008e-06
+            },
+            {
+              "flow_id": "transfer16:cohort1",
+              "start_s": 0.0,
+              "finish_s": 5.26103515625e-08,
+              "transmitted_bytes": 5,
+              "queue_wait_s": 0.0
+            },
+            {
+              "flow_id": "transfer17:cohort0",
+              "start_s": 5.965895507812509e-06,
+              "finish_s": 6.01850585937501e-06,
+              "transmitted_bytes": 5,
+              "queue_wait_s": 1.2344628906250092e-06
+            },
+            {
+              "flow_id": "transfer17:cohort1",
+              "start_s": 5.26103515625e-08,
+              "finish_s": 1.05220703125e-07,
+              "transmitted_bytes": 5,
+              "queue_wait_s": 5.26103515625e-08
+            }
+          ],
+          "utilization": 0.4446454580234751,
+          "queue_wait_s": 5.45892841796877e-05,
+          "time_window_count": 76,
+          "time_windows_truncated": true
+        },
+        {
+          "link_id": "memory:1>io:1",
+          "source": "memory:1",
+          "destination": "io:1",
+          "kind": "dram",
+          "bytes": 430,
+          "time_windows": [
+            {
+              "flow_id": "transfer38",
+              "start_s": 2.73427734375e-07,
+              "finish_s": 3.419072265625e-07,
+              "transmitted_bytes": 135,
+              "queue_wait_s": 2.73427734375e-07
+            },
+            {
+              "flow_id": "transfer39:cohort0",
+              "start_s": 7.4043095703125155e-06,
+              "finish_s": 7.456919921875016e-06,
+              "transmitted_bytes": 5,
+              "queue_wait_s": 2.1496972656250117e-06
+            },
+            {
+              "flow_id": "transfer39:cohort1",
+              "start_s": 1.3657626953124999e-06,
+              "finish_s": 1.418373046875e-06,
+              "transmitted_bytes": 5,
+              "queue_wait_s": 1.3657626953124999e-06
+            },
+            {
+              "flow_id": "transfer40:cohort0",
+              "start_s": 7.563750976562516e-06,
+              "finish_s": 7.616361328125016e-06,
+              "transmitted_bytes": 5,
+              "queue_wait_s": 2.2362558593750113e-06
+            }
+          ],
+          "utilization": 0.3290786390047112,
+          "queue_wait_s": 0.000160688662109375,
+          "time_window_count": 58,
+          "time_windows_truncated": true
+        }
+      ],
+      "memory": [
+        {
+          "pool_id": "compute:0:WL2",
+          "capacity_bytes": 524288,
+          "peak_live_bytes": 225,
+          "spill_bytes": 0,
+          "spill_status": "none"
+        },
+        {
+          "pool_id": "compute:0:AL2",
+          "capacity_bytes": 258048,
+          "peak_live_bytes": 110,
+          "spill_bytes": 0,
+          "spill_status": "none"
+        },
+        {
+          "pool_id": "compute:0:OL2",
+          "capacity_bytes": 262144,
+          "peak_live_bytes": 305,
+          "spill_bytes": 0,
+          "spill_status": "none"
+        },
+        {
+          "pool_id": "compute:0/pe:0:WL1",
+          "capacity_bytes": 131072,
+          "peak_live_bytes": 225,
+          "spill_bytes": 0,
+          "spill_status": "none"
+        },
+        {
+          "pool_id": "compute:0/pe:0:AL1",
+          "capacity_bytes": 32768,
+          "peak_live_bytes": 45,
+          "spill_bytes": 0,
+          "spill_status": "none"
+        },
+        {
+          "pool_id": "compute:0/pe:0:OL1",
+          "capacity_bytes": 16384,
+          "peak_live_bytes": 60,
+          "spill_bytes": 0,
+          "spill_status": "none"
+        },
+        {
+          "pool_id": "compute:0/pe:1:WL1",
+          "capacity_bytes": 131072,
+          "peak_live_bytes": 225,
+          "spill_bytes": 0,
+          "spill_status": "none"
+        },
+        {
+          "pool_id": "compute:0/pe:1:AL1",
+          "capacity_bytes": 32768,
+          "peak_live_bytes": 60,
+          "spill_bytes": 0,
+          "spill_status": "none"
+        },
+        {
+          "pool_id": "compute:0/pe:1:OL1",
+          "capacity_bytes": 16384,
+          "peak_live_bytes": 60,
+          "spill_bytes": 0,
+          "spill_status": "none"
+        },
+        {
+          "pool_id": "compute:0/pe:2:WL1",
+          "capacity_bytes": 131072,
+          "peak_live_bytes": 225,
+          "spill_bytes": 0,
+          "spill_status": "none"
+        },
+        {
+          "pool_id": "compute:0/pe:2:AL1",
+          "capacity_bytes": 32768,
+          "peak_live_bytes": 60,
+          "spill_bytes": 0,
+          "spill_status": "none"
+        },
+        {
+          "pool_id": "compute:0/pe:2:OL1",
+          "capacity_bytes": 16384,
+          "peak_live_bytes": 60,
+          "spill_bytes": 0,
+          "spill_status": "none"
+        },
+        {
+          "pool_id": "compute:0/pe:3:WL1",
+          "capacity_bytes": 131072,
+          "peak_live_bytes": 225,
+          "spill_bytes": 0,
+          "spill_status": "none"
+        },
+        {
+          "pool_id": "compute:0/pe:3:AL1",
+          "capacity_bytes": 32768,
+          "peak_live_bytes": 30,
+          "spill_bytes": 0,
+          "spill_status": "none"
+        },
+        {
+          "pool_id": "compute:0/pe:3:OL1",
+          "capacity_bytes": 16384,
+          "peak_live_bytes": 30,
+          "spill_bytes": 0,
+          "spill_status": "none"
+        },
+        {
+          "pool_id": "compute:0/pe:4:WL1",
+          "capacity_bytes": 131072,
+          "peak_live_bytes": 225,
+          "spill_bytes": 0,
+          "spill_status": "none"
+        },
+        {
+          "pool_id": "compute:0/pe:4:AL1",
+          "capacity_bytes": 32768,
+          "peak_live_bytes": 60,
+          "spill_bytes": 0,
+          "spill_status": "none"
+        },
+        {
+          "pool_id": "compute:0/pe:4:OL1",
+          "capacity_bytes": 16384,
+          "peak_live_bytes": 60,
+          "spill_bytes": 0,
+          "spill_status": "none"
+        },
+        {
+          "pool_id": "compute:0/pe:5:WL1",
+          "capacity_bytes": 131072,
+          "peak_live_bytes": 225,
+          "spill_bytes": 0,
+          "spill_status": "none"
+        },
+        {
+          "pool_id": "compute:0/pe:5:AL1",
+          "capacity_bytes": 32768,
+          "peak_live_bytes": 80,
+          "spill_bytes": 0,
+          "spill_status": "none"
+        },
+        {
+          "pool_id": "compute:0/pe:5:OL1",
+          "capacity_bytes": 16384,
+          "peak_live_bytes": 60,
+          "spill_bytes": 0,
+          "spill_status": "none"
+        },
+        {
+          "pool_id": "compute:0/pe:6:WL1",
+          "capacity_bytes": 131072,
+          "peak_live_bytes": 225,
+          "spill_bytes": 0,
+          "spill_status": "none"
+        },
+        {
+          "pool_id": "compute:0/pe:6:AL1",
+          "capacity_bytes": 32768,
+          "peak_live_bytes": 80,
+          "spill_bytes": 0,
+          "spill_status": "none"
+        },
+        {
+          "pool_id": "compute:0/pe:6:OL1",
+          "capacity_bytes": 16384,
+          "peak_live_bytes": 60,
+          "spill_bytes": 0,
+          "spill_status": "none"
+        },
+        {
+          "pool_id": "compute:0/pe:7:WL1",
+          "capacity_bytes": 131072,
+          "peak_live_bytes": 225,
+          "spill_bytes": 0,
+          "spill_status": "none"
+        },
+        {
+          "pool_id": "compute:0/pe:7:AL1",
+          "capacity_bytes": 32768,
+          "peak_live_bytes": 40,
+          "spill_bytes": 0,
+          "spill_status": "none"
+        },
+        {
+          "pool_id": "compute:0/pe:7:OL1",
+          "capacity_bytes": 16384,
+          "peak_live_bytes": 30,
+          "spill_bytes": 0,
+          "spill_status": "none"
+        },
+        {
+          "pool_id": "compute:0/pe:8:WL1",
+          "capacity_bytes": 131072,
+          "peak_live_bytes": 225,
+          "spill_bytes": 0,
+          "spill_status": "none"
+        },
+        {
+          "pool_id": "compute:0/pe:8:AL1",
+          "capacity_bytes": 32768,
+          "peak_live_bytes": 60,
+          "spill_bytes": 0,
+          "spill_status": "none"
+        },
+        {
+          "pool_id": "compute:0/pe:8:OL1",
+          "capacity_bytes": 16384,
+          "peak_live_bytes": 60,
+          "spill_bytes": 0,
+          "spill_status": "none"
+        },
+        {
+          "pool_id": "compute:0/pe:9:WL1",
+          "capacity_bytes": 131072,
+          "peak_live_bytes": 225,
+          "spill_bytes": 0,
+          "spill_status": "none"
+        },
+        {
+          "pool_id": "compute:0/pe:9:AL1",
+          "capacity_bytes": 32768,
+          "peak_live_bytes": 80,
+          "spill_bytes": 0,
+          "spill_status": "none"
+        },
+        {
+          "pool_id": "compute:0/pe:9:OL1",
+          "capacity_bytes": 16384,
+          "peak_live_bytes": 60,
+          "spill_bytes": 0,
+          "spill_status": "none"
+        },
+        {
+          "pool_id": "compute:0/pe:10:WL1",
+          "capacity_bytes": 131072,
+          "peak_live_bytes": 225,
+          "spill_bytes": 0,
+          "spill_status": "none"
+        },
+        {
+          "pool_id": "compute:0/pe:10:AL1",
+          "capacity_bytes": 32768,
+          "peak_live_bytes": 80,
+          "spill_bytes": 0,
+          "spill_status": "none"
+        },
+        {
+          "pool_id": "compute:0/pe:10:OL1",
+          "capacity_bytes": 16384,
+          "peak_live_bytes": 60,
+          "spill_bytes": 0,
+          "spill_status": "none"
+        },
+        {
+          "pool_id": "compute:0/pe:11:WL1",
+          "capacity_bytes": 131072,
+          "peak_live_bytes": 225,
+          "spill_bytes": 0,
+          "spill_status": "none"
+        },
+        {
+          "pool_id": "compute:0/pe:11:AL1",
+          "capacity_bytes": 32768,
+          "peak_live_bytes": 40,
+          "spill_bytes": 0,
+          "spill_status": "none"
+        },
+        {
+          "pool_id": "compute:0/pe:11:OL1",
+          "capacity_bytes": 16384,
+          "peak_live_bytes": 30,
+          "spill_bytes": 0,
+          "spill_status": "none"
+        },
+        {
+          "pool_id": "compute:0/pe:12:WL1",
+          "capacity_bytes": 131072,
+          "peak_live_bytes": 225,
+          "spill_bytes": 0,
+          "spill_status": "none"
+        },
+        {
+          "pool_id": "compute:0/pe:12:AL1",
+          "capacity_bytes": 32768,
+          "peak_live_bytes": 30,
+          "spill_bytes": 0,
+          "spill_status": "none"
+        },
+        {
+          "pool_id": "compute:0/pe:12:OL1",
+          "capacity_bytes": 16384,
+          "peak_live_bytes": 30,
+          "spill_bytes": 0,
+          "spill_status": "none"
+        },
+        {
+          "pool_id": "compute:0/pe:13:WL1",
+          "capacity_bytes": 131072,
+          "peak_live_bytes": 225,
+          "spill_bytes": 0,
+          "spill_status": "none"
+        },
+        {
+          "pool_id": "compute:0/pe:13:AL1",
+          "capacity_bytes": 32768,
+          "peak_live_bytes": 40,
+          "spill_bytes": 0,
+          "spill_status": "none"
+        },
+        {
+          "pool_id": "compute:0/pe:13:OL1",
+          "capacity_bytes": 16384,
+          "peak_live_bytes": 30,
+          "spill_bytes": 0,
+          "spill_status": "none"
+        },
+        {
+          "pool_id": "compute:0/pe:14:WL1",
+          "capacity_bytes": 131072,
+          "peak_live_bytes": 225,
+          "spill_bytes": 0,
+          "spill_status": "none"
+        },
+        {
+          "pool_id": "compute:0/pe:14:AL1",
+          "capacity_bytes": 32768,
+          "peak_live_bytes": 40,
+          "spill_bytes": 0,
+          "spill_status": "none"
+        },
+        {
+          "pool_id": "compute:0/pe:14:OL1",
+          "capacity_bytes": 16384,
+          "peak_live_bytes": 30,
+          "spill_bytes": 0,
+          "spill_status": "none"
+        },
+        {
+          "pool_id": "compute:0/pe:15:WL1",
+          "capacity_bytes": 131072,
+          "peak_live_bytes": 225,
+          "spill_bytes": 0,
+          "spill_status": "none"
+        },
+        {
+          "pool_id": "compute:0/pe:15:AL1",
+          "capacity_bytes": 32768,
+          "peak_live_bytes": 20,
+          "spill_bytes": 0,
+          "spill_status": "none"
+        },
+        {
+          "pool_id": "compute:0/pe:15:OL1",
+          "capacity_bytes": 16384,
+          "peak_live_bytes": 15,
+          "spill_bytes": 0,
+          "spill_status": "none"
+        },
+        {
+          "pool_id": "compute:0:quant_params",
+          "capacity_bytes": 4096,
+          "peak_live_bytes": 40,
+          "spill_bytes": 0,
+          "spill_status": "none"
+        }
+      ],
+      "flows": [
+        {
+          "flow_id": "transfer0",
+          "tensor_id": "add",
+          "producer_units": [
+            "add:mb0:s0:t0:p0"
+          ],
+          "consumer_units": [],
+          "source": "compute:0/pe:15",
+          "destinations": [
+            "memory:0"
+          ]
+        },
+        {
+          "flow_id": "transfer1",
+          "tensor_id": "add",
+          "producer_units": [
+            "add:mb0:s1:t0:p0"
+          ],
+          "consumer_units": [],
+          "source": "compute:0/pe:14",
+          "destinations": [
+            "memory:0"
+          ]
+        },
+        {
+          "flow_id": "transfer2",
+          "tensor_id": "add",
+          "producer_units": [
+            "add:mb0:s2:t0:p0"
+          ],
+          "consumer_units": [],
+          "source": "compute:0/pe:13",
+          "destinations": [
+            "memory:0"
+          ]
+        },
+        {
+          "flow_id": "transfer3",
+          "tensor_id": "add",
+          "producer_units": [
+            "add:mb0:s3:t0:p0"
+          ],
+          "consumer_units": [],
+          "source": "compute:0/pe:12",
+          "destinations": [
+            "memory:0"
+          ]
+        },
+        {
+          "flow_id": "transfer4",
+          "tensor_id": "add",
+          "producer_units": [
+            "add:mb0:s4:t0:p0"
+          ],
+          "consumer_units": [],
+          "source": "compute:0/pe:11",
+          "destinations": [
+            "memory:0"
+          ]
+        },
+        {
+          "flow_id": "transfer5",
+          "tensor_id": "add",
+          "producer_units": [
+            "add:mb0:s5:t0:p0"
+          ],
+          "consumer_units": [],
+          "source": "compute:0/pe:10",
+          "destinations": [
+            "memory:0"
+          ]
+        },
+        {
+          "flow_id": "transfer6",
+          "tensor_id": "add",
+          "producer_units": [
+            "add:mb0:s6:t0:p0"
+          ],
+          "consumer_units": [],
+          "source": "compute:0/pe:9",
+          "destinations": [
+            "memory:0"
+          ]
+        },
+        {
+          "flow_id": "transfer7",
+          "tensor_id": "add",
+          "producer_units": [
+            "add:mb0:s7:t0:p0"
+          ],
+          "consumer_units": [],
+          "source": "compute:0/pe:8",
+          "destinations": [
+            "memory:0"
+          ]
+        },
+        {
+          "flow_id": "transfer8",
+          "tensor_id": "add",
+          "producer_units": [
+            "add:mb0:s8:t0:p0"
+          ],
+          "consumer_units": [],
+          "source": "compute:0/pe:7",
+          "destinations": [
+            "memory:1"
+          ]
+        },
+        {
+          "flow_id": "transfer9",
+          "tensor_id": "add",
+          "producer_units": [
+            "add:mb0:s9:t0:p0"
+          ],
+          "consumer_units": [],
+          "source": "compute:0/pe:6",
+          "destinations": [
+            "memory:1"
+          ]
+        },
+        {
+          "flow_id": "transfer10",
+          "tensor_id": "add",
+          "producer_units": [
+            "add:mb0:s10:t0:p0"
+          ],
+          "consumer_units": [],
+          "source": "compute:0/pe:5",
+          "destinations": [
+            "memory:1"
+          ]
+        },
+        {
+          "flow_id": "transfer11",
+          "tensor_id": "add",
+          "producer_units": [
+            "add:mb0:s11:t0:p0"
+          ],
+          "consumer_units": [],
+          "source": "compute:0/pe:4",
+          "destinations": [
+            "memory:1"
+          ]
+        },
+        {
+          "flow_id": "transfer12",
+          "tensor_id": "add",
+          "producer_units": [
+            "add:mb0:s12:t0:p0"
+          ],
+          "consumer_units": [],
+          "source": "compute:0/pe:3",
+          "destinations": [
+            "memory:1"
+          ]
+        },
+        {
+          "flow_id": "transfer13",
+          "tensor_id": "add",
+          "producer_units": [
+            "add:mb0:s13:t0:p0"
+          ],
+          "consumer_units": [],
+          "source": "compute:0/pe:2",
+          "destinations": [
+            "memory:1"
+          ]
+        },
+        {
+          "flow_id": "transfer14",
+          "tensor_id": "add",
+          "producer_units": [
+            "add:mb0:s14:t0:p0"
+          ],
+          "consumer_units": [],
+          "source": "compute:0/pe:1",
+          "destinations": [
+            "memory:1"
+          ]
+        },
+        {
+          "flow_id": "transfer15",
+          "tensor_id": "add",
+          "producer_units": [
+            "add:mb0:s15:t0:p0"
+          ],
+          "consumer_units": [],
+          "source": "compute:0/pe:0",
+          "destinations": [
+            "memory:1"
+          ]
+        },
+        {
+          "flow_id": "transfer16:cohort0",
+          "tensor_id": "image",
+          "producer_units": [],
+          "consumer_units": [
+            "add:mb0:s0:t0:p0"
+          ],
+          "source": "memory:0",
+          "destinations": [
+            "compute:0/pe:15"
+          ]
+        },
+        {
+          "flow_id": "transfer16:cohort1",
+          "tensor_id": "image",
+          "producer_units": [],
+          "consumer_units": [
+            "conv0:mb0:s0:t0:p0",
+            "conv0:mb0:s1:t0:p0",
+            "conv0:mb0:s4:t0:p0",
+            "conv0:mb0:s5:t0:p0"
+          ],
+          "source": "memory:0",
+          "destinations": [
+            "compute:0/pe:15",
+            "compute:0/pe:14",
+            "compute:0/pe:11",
+            "compute:0/pe:10"
+          ]
+        },
+        {
+          "flow_id": "transfer17:cohort0",
+          "tensor_id": "image",
+          "producer_units": [],
+          "consumer_units": [
+            "add:mb0:s1:t0:p0"
+          ],
+          "source": "memory:0",
+          "destinations": [
+            "compute:0/pe:14"
+          ]
+        },
+        {
+          "flow_id": "transfer17:cohort1",
+          "tensor_id": "image",
+          "producer_units": [],
+          "consumer_units": [
+            "conv0:mb0:s0:t0:p0",
+            "conv0:mb0:s1:t0:p0",
+            "conv0:mb0:s4:t0:p0",
+            "conv0:mb0:s5:t0:p0"
+          ],
+          "source": "memory:0",
+          "destinations": [
+            "compute:0/pe:15",
+            "compute:0/pe:14",
+            "compute:0/pe:11",
+            "compute:0/pe:10"
+          ]
+        },
+        {
+          "flow_id": "transfer18:cohort0",
+          "tensor_id": "image",
+          "producer_units": [],
+          "consumer_units": [
+            "add:mb0:s1:t0:p0"
+          ],
+          "source": "memory:0",
+          "destinations": [
+            "compute:0/pe:14"
+          ]
+        },
+        {
+          "flow_id": "transfer18:cohort1",
+          "tensor_id": "image",
+          "producer_units": [],
+          "consumer_units": [
+            "conv0:mb0:s1:t0:p0",
+            "conv0:mb0:s2:t0:p0",
+            "conv0:mb0:s5:t0:p0",
+            "conv0:mb0:s6:t0:p0"
+          ],
+          "source": "memory:0",
+          "destinations": [
+            "compute:0/pe:14",
+            "compute:0/pe:13",
+            "compute:0/pe:10",
+            "compute:0/pe:9"
+          ]
+        },
+        {
+          "flow_id": "transfer19:cohort0",
+          "tensor_id": "image",
+          "producer_units": [],
+          "consumer_units": [
+            "add:mb0:s2:t0:p0"
+          ],
+          "source": "memory:0",
+          "destinations": [
+            "compute:0/pe:13"
+          ]
+        },
+        {
+          "flow_id": "transfer19:cohort1",
+          "tensor_id": "image",
+          "producer_units": [],
+          "consumer_units": [
+            "conv0:mb0:s1:t0:p0",
+            "conv0:mb0:s2:t0:p0",
+            "conv0:mb0:s5:t0:p0",
+            "conv0:mb0:s6:t0:p0"
+          ],
+          "source": "memory:0",
+          "destinations": [
+            "compute:0/pe:14",
+            "compute:0/pe:13",
+            "compute:0/pe:10",
+            "compute:0/pe:9"
+          ]
+        },
+        {
+          "flow_id": "transfer20:cohort0",
+          "tensor_id": "image",
+          "producer_units": [],
+          "consumer_units": [
+            "add:mb0:s2:t0:p0"
+          ],
+          "source": "memory:0",
+          "destinations": [
+            "compute:0/pe:13"
+          ]
+        },
+        {
+          "flow_id": "transfer20:cohort1",
+          "tensor_id": "image",
+          "producer_units": [],
+          "consumer_units": [
+            "conv0:mb0:s2:t0:p0",
+            "conv0:mb0:s3:t0:p0",
+            "conv0:mb0:s6:t0:p0",
+            "conv0:mb0:s7:t0:p0"
+          ],
+          "source": "memory:0",
+          "destinations": [
+            "compute:0/pe:13",
+            "compute:0/pe:12",
+            "compute:0/pe:9",
+            "compute:0/pe:8"
+          ]
+        },
+        {
+          "flow_id": "transfer21:cohort0",
+          "tensor_id": "image",
+          "producer_units": [],
+          "consumer_units": [
+            "add:mb0:s3:t0:p0"
+          ],
+          "source": "memory:0",
+          "destinations": [
+            "compute:0/pe:12"
+          ]
+        },
+        {
+          "flow_id": "transfer21:cohort1",
+          "tensor_id": "image",
+          "producer_units": [],
+          "consumer_units": [
+            "conv0:mb0:s2:t0:p0",
+            "conv0:mb0:s3:t0:p0",
+            "conv0:mb0:s6:t0:p0",
+            "conv0:mb0:s7:t0:p0"
+          ],
+          "source": "memory:0",
+          "destinations": [
+            "compute:0/pe:13",
+            "compute:0/pe:12",
+            "compute:0/pe:9",
+            "compute:0/pe:8"
+          ]
+        },
+        {
+          "flow_id": "transfer22:cohort0",
+          "tensor_id": "image",
+          "producer_units": [],
+          "consumer_units": [
+            "add:mb0:s3:t0:p0"
+          ],
+          "source": "memory:0",
+          "destinations": [
+            "compute:0/pe:12"
+          ]
+        },
+        {
+          "flow_id": "transfer22:cohort1",
+          "tensor_id": "image",
+          "producer_units": [],
+          "consumer_units": [
+            "conv0:mb0:s3:t0:p0",
+            "conv0:mb0:s7:t0:p0"
+          ],
+          "source": "memory:0",
+          "destinations": [
+            "compute:0/pe:12",
+            "compute:0/pe:8"
+          ]
+        },
+        {
+          "flow_id": "transfer23:cohort0",
+          "tensor_id": "image",
+          "producer_units": [],
+          "consumer_units": [
+            "add:mb0:s4:t0:p0"
+          ],
+          "source": "memory:0",
+          "destinations": [
+            "compute:0/pe:11"
+          ]
+        },
+        {
+          "flow_id": "transfer23:cohort1",
+          "tensor_id": "image",
+          "producer_units": [],
+          "consumer_units": [
+            "conv0:mb0:s0:t0:p0",
+            "conv0:mb0:s1:t0:p0",
+            "conv0:mb0:s4:t0:p0",
+            "conv0:mb0:s5:t0:p0"
+          ],
+          "source": "memory:0",
+          "destinations": [
+            "compute:0/pe:15",
+            "compute:0/pe:14",
+            "compute:0/pe:11",
+            "compute:0/pe:10"
+          ]
+        },
+        {
+          "flow_id": "transfer24:cohort0",
+          "tensor_id": "image",
+          "producer_units": [],
+          "consumer_units": [
+            "add:mb0:s5:t0:p0"
+          ],
+          "source": "memory:0",
+          "destinations": [
+            "compute:0/pe:10"
+          ]
+        },
+        {
+          "flow_id": "transfer24:cohort1",
+          "tensor_id": "image",
+          "producer_units": [],
+          "consumer_units": [
+            "conv0:mb0:s0:t0:p0",
+            "conv0:mb0:s1:t0:p0",
+            "conv0:mb0:s4:t0:p0",
+            "conv0:mb0:s5:t0:p0"
+          ],
+          "source": "memory:0",
+          "destinations": [
+            "compute:0/pe:15",
+            "compute:0/pe:14",
+            "compute:0/pe:11",
+            "compute:0/pe:10"
+          ]
+        },
+        {
+          "flow_id": "transfer25:cohort0",
+          "tensor_id": "image",
+          "producer_units": [],
+          "consumer_units": [
+            "add:mb0:s5:t0:p0"
+          ],
+          "source": "memory:0",
+          "destinations": [
+            "compute:0/pe:10"
+          ]
+        },
+        {
+          "flow_id": "transfer25:cohort1",
+          "tensor_id": "image",
+          "producer_units": [],
+          "consumer_units": [
+            "conv0:mb0:s1:t0:p0",
+            "conv0:mb0:s2:t0:p0",
+            "conv0:mb0:s5:t0:p0",
+            "conv0:mb0:s6:t0:p0"
+          ],
+          "source": "memory:0",
+          "destinations": [
+            "compute:0/pe:14",
+            "compute:0/pe:13",
+            "compute:0/pe:10",
+            "compute:0/pe:9"
+          ]
+        },
+        {
+          "flow_id": "transfer26:cohort0",
+          "tensor_id": "image",
+          "producer_units": [],
+          "consumer_units": [
+            "add:mb0:s6:t0:p0"
+          ],
+          "source": "memory:0",
+          "destinations": [
+            "compute:0/pe:9"
+          ]
+        },
+        {
+          "flow_id": "transfer26:cohort1",
+          "tensor_id": "image",
+          "producer_units": [],
+          "consumer_units": [
+            "conv0:mb0:s1:t0:p0",
+            "conv0:mb0:s2:t0:p0",
+            "conv0:mb0:s5:t0:p0",
+            "conv0:mb0:s6:t0:p0"
+          ],
+          "source": "memory:0",
+          "destinations": [
+            "compute:0/pe:14",
+            "compute:0/pe:13",
+            "compute:0/pe:10",
+            "compute:0/pe:9"
+          ]
+        },
+        {
+          "flow_id": "transfer27:cohort0",
+          "tensor_id": "image",
+          "producer_units": [],
+          "consumer_units": [
+            "add:mb0:s6:t0:p0"
+          ],
+          "source": "memory:0",
+          "destinations": [
+            "compute:0/pe:9"
+          ]
+        },
+        {
+          "flow_id": "transfer27:cohort1",
+          "tensor_id": "image",
+          "producer_units": [],
+          "consumer_units": [
+            "conv0:mb0:s2:t0:p0",
+            "conv0:mb0:s3:t0:p0",
+            "conv0:mb0:s6:t0:p0",
+            "conv0:mb0:s7:t0:p0"
+          ],
+          "source": "memory:0",
+          "destinations": [
+            "compute:0/pe:13",
+            "compute:0/pe:12",
+            "compute:0/pe:9",
+            "compute:0/pe:8"
+          ]
+        },
+        {
+          "flow_id": "transfer28:cohort0",
+          "tensor_id": "image",
+          "producer_units": [],
+          "consumer_units": [
+            "add:mb0:s7:t0:p0"
+          ],
+          "source": "memory:0",
+          "destinations": [
+            "compute:0/pe:8"
+          ]
+        },
+        {
+          "flow_id": "transfer28:cohort1",
+          "tensor_id": "image",
+          "producer_units": [],
+          "consumer_units": [
+            "conv0:mb0:s2:t0:p0",
+            "conv0:mb0:s3:t0:p0",
+            "conv0:mb0:s6:t0:p0",
+            "conv0:mb0:s7:t0:p0"
+          ],
+          "source": "memory:0",
+          "destinations": [
+            "compute:0/pe:13",
+            "compute:0/pe:12",
+            "compute:0/pe:9",
+            "compute:0/pe:8"
+          ]
+        },
+        {
+          "flow_id": "transfer29:cohort0",
+          "tensor_id": "image",
+          "producer_units": [],
+          "consumer_units": [
+            "add:mb0:s7:t0:p0"
+          ],
+          "source": "memory:0",
+          "destinations": [
+            "compute:0/pe:8"
+          ]
+        },
+        {
+          "flow_id": "transfer29:cohort1",
+          "tensor_id": "image",
+          "producer_units": [],
+          "consumer_units": [
+            "conv0:mb0:s3:t0:p0",
+            "conv0:mb0:s7:t0:p0"
+          ],
+          "source": "memory:0",
+          "destinations": [
+            "compute:0/pe:12",
+            "compute:0/pe:8"
+          ]
+        },
+        {
+          "flow_id": "transfer30:cohort0",
+          "tensor_id": "image",
+          "producer_units": [],
+          "consumer_units": [
+            "add:mb0:s4:t0:p0"
+          ],
+          "source": "memory:0",
+          "destinations": [
+            "compute:0/pe:11"
+          ]
+        },
+        {
+          "flow_id": "transfer30:cohort1",
+          "tensor_id": "image",
+          "producer_units": [],
+          "consumer_units": [
+            "conv0:mb0:s4:t0:p0",
+            "conv0:mb0:s5:t0:p0",
+            "conv0:mb0:s8:t0:p0",
+            "conv0:mb0:s9:t0:p0"
+          ],
+          "source": "memory:0",
+          "destinations": [
+            "compute:0/pe:11",
+            "compute:0/pe:10",
+            "compute:0/pe:7",
+            "compute:0/pe:6"
+          ]
+        },
+        {
+          "flow_id": "transfer31:cohort0",
+          "tensor_id": "image",
+          "producer_units": [],
+          "consumer_units": [
+            "add:mb0:s5:t0:p0"
+          ],
+          "source": "memory:0",
+          "destinations": [
+            "compute:0/pe:10"
+          ]
+        },
+        {
+          "flow_id": "transfer31:cohort1",
+          "tensor_id": "image",
+          "producer_units": [],
+          "consumer_units": [
+            "conv0:mb0:s4:t0:p0",
+            "conv0:mb0:s5:t0:p0",
+            "conv0:mb0:s8:t0:p0",
+            "conv0:mb0:s9:t0:p0"
+          ],
+          "source": "memory:0",
+          "destinations": [
+            "compute:0/pe:11",
+            "compute:0/pe:10",
+            "compute:0/pe:7",
+            "compute:0/pe:6"
+          ]
+        },
+        {
+          "flow_id": "transfer32:cohort0",
+          "tensor_id": "image",
+          "producer_units": [],
+          "consumer_units": [
+            "add:mb0:s5:t0:p0"
+          ],
+          "source": "memory:0",
+          "destinations": [
+            "compute:0/pe:10"
+          ]
+        },
+        {
+          "flow_id": "transfer32:cohort1",
+          "tensor_id": "image",
+          "producer_units": [],
+          "consumer_units": [
+            "conv0:mb0:s5:t0:p0",
+            "conv0:mb0:s6:t0:p0",
+            "conv0:mb0:s9:t0:p0",
+            "conv0:mb0:s10:t0:p0"
+          ],
+          "source": "memory:0",
+          "destinations": [
+            "compute:0/pe:10",
+            "compute:0/pe:9",
+            "compute:0/pe:6",
+            "compute:0/pe:5"
+          ]
+        },
+        {
+          "flow_id": "transfer33:cohort0",
+          "tensor_id": "image",
+          "producer_units": [],
+          "consumer_units": [
+            "add:mb0:s6:t0:p0"
+          ],
+          "source": "memory:0",
+          "destinations": [
+            "compute:0/pe:9"
+          ]
+        },
+        {
+          "flow_id": "transfer33:cohort1",
+          "tensor_id": "image",
+          "producer_units": [],
+          "consumer_units": [
+            "conv0:mb0:s5:t0:p0",
+            "conv0:mb0:s6:t0:p0",
+            "conv0:mb0:s9:t0:p0",
+            "conv0:mb0:s10:t0:p0"
+          ],
+          "source": "memory:0",
+          "destinations": [
+            "compute:0/pe:10",
+            "compute:0/pe:9",
+            "compute:0/pe:6",
+            "compute:0/pe:5"
+          ]
+        },
+        {
+          "flow_id": "transfer34:cohort0",
+          "tensor_id": "image",
+          "producer_units": [],
+          "consumer_units": [
+            "add:mb0:s6:t0:p0"
+          ],
+          "source": "memory:0",
+          "destinations": [
+            "compute:0/pe:9"
+          ]
+        },
+        {
+          "flow_id": "transfer34:cohort1",
+          "tensor_id": "image",
+          "producer_units": [],
+          "consumer_units": [
+            "conv0:mb0:s6:t0:p0",
+            "conv0:mb0:s7:t0:p0",
+            "conv0:mb0:s10:t0:p0",
+            "conv0:mb0:s11:t0:p0"
+          ],
+          "source": "memory:0",
+          "destinations": [
+            "compute:0/pe:9",
+            "compute:0/pe:8",
+            "compute:0/pe:5",
+            "compute:0/pe:4"
+          ]
+        },
+        {
+          "flow_id": "transfer35:cohort0",
+          "tensor_id": "image",
+          "producer_units": [],
+          "consumer_units": [
+            "add:mb0:s7:t0:p0"
+          ],
+          "source": "memory:0",
+          "destinations": [
+            "compute:0/pe:8"
+          ]
+        },
+        {
+          "flow_id": "transfer35:cohort1",
+          "tensor_id": "image",
+          "producer_units": [],
+          "consumer_units": [
+            "conv0:mb0:s6:t0:p0",
+            "conv0:mb0:s7:t0:p0",
+            "conv0:mb0:s10:t0:p0",
+            "conv0:mb0:s11:t0:p0"
+          ],
+          "source": "memory:0",
+          "destinations": [
+            "compute:0/pe:9",
+            "compute:0/pe:8",
+            "compute:0/pe:5",
+            "compute:0/pe:4"
+          ]
+        },
+        {
+          "flow_id": "transfer36:cohort0",
+          "tensor_id": "image",
+          "producer_units": [],
+          "consumer_units": [
+            "add:mb0:s7:t0:p0"
+          ],
+          "source": "memory:0",
+          "destinations": [
+            "compute:0/pe:8"
+          ]
+        },
+        {
+          "flow_id": "transfer36:cohort1",
+          "tensor_id": "image",
+          "producer_units": [],
+          "consumer_units": [
+            "conv0:mb0:s7:t0:p0",
+            "conv0:mb0:s11:t0:p0"
+          ],
+          "source": "memory:0",
+          "destinations": [
+            "compute:0/pe:8",
+            "compute:0/pe:4"
+          ]
+        },
+        {
+          "flow_id": "transfer37",
+          "tensor_id": "weights:conv0",
+          "producer_units": [],
+          "consumer_units": [
+            "conv0:mb0:s0:t0:p0",
+            "conv0:mb0:s1:t0:p0",
+            "conv0:mb0:s2:t0:p0",
+            "conv0:mb0:s3:t0:p0",
+            "conv0:mb0:s4:t0:p0",
+            "conv0:mb0:s5:t0:p0",
+            "conv0:mb0:s6:t0:p0",
+            "conv0:mb0:s7:t0:p0",
+            "conv0:mb0:s8:t0:p0",
+            "conv0:mb0:s9:t0:p0",
+            "conv0:mb0:s10:t0:p0",
+            "conv0:mb0:s11:t0:p0",
+            "conv0:mb0:s12:t0:p0",
+            "conv0:mb0:s13:t0:p0",
+            "conv0:mb0:s14:t0:p0",
+            "conv0:mb0:s15:t0:p0"
+          ],
+          "source": "memory:0",
+          "destinations": [
+            "compute:0/pe:15",
+            "compute:0/pe:14",
+            "compute:0/pe:13",
+            "compute:0/pe:12",
+            "compute:0/pe:11",
+            "compute:0/pe:10",
+            "compute:0/pe:9",
+            "compute:0/pe:8",
+            "compute:0/pe:7",
+            "compute:0/pe:6",
+            "compute:0/pe:5",
+            "compute:0/pe:4",
+            "compute:0/pe:3",
+            "compute:0/pe:2",
+            "compute:0/pe:1",
+            "compute:0/pe:0"
+          ]
+        },
+        {
+          "flow_id": "transfer38",
+          "tensor_id": "weights:conv0",
+          "producer_units": [],
+          "consumer_units": [
+            "conv0:mb0:s0:t0:p0",
+            "conv0:mb0:s1:t0:p0",
+            "conv0:mb0:s2:t0:p0",
+            "conv0:mb0:s3:t0:p0",
+            "conv0:mb0:s4:t0:p0",
+            "conv0:mb0:s5:t0:p0",
+            "conv0:mb0:s6:t0:p0",
+            "conv0:mb0:s7:t0:p0",
+            "conv0:mb0:s8:t0:p0",
+            "conv0:mb0:s9:t0:p0",
+            "conv0:mb0:s10:t0:p0",
+            "conv0:mb0:s11:t0:p0",
+            "conv0:mb0:s12:t0:p0",
+            "conv0:mb0:s13:t0:p0",
+            "conv0:mb0:s14:t0:p0",
+            "conv0:mb0:s15:t0:p0"
+          ],
+          "source": "memory:1",
+          "destinations": [
+            "compute:0/pe:15",
+            "compute:0/pe:14",
+            "compute:0/pe:13",
+            "compute:0/pe:12",
+            "compute:0/pe:11",
+            "compute:0/pe:10",
+            "compute:0/pe:9",
+            "compute:0/pe:8",
+            "compute:0/pe:7",
+            "compute:0/pe:6",
+            "compute:0/pe:5",
+            "compute:0/pe:4",
+            "compute:0/pe:3",
+            "compute:0/pe:2",
+            "compute:0/pe:1",
+            "compute:0/pe:0"
+          ]
+        },
+        {
+          "flow_id": "transfer39:cohort0",
+          "tensor_id": "image",
+          "producer_units": [],
+          "consumer_units": [
+            "add:mb0:s8:t0:p0"
+          ],
+          "source": "memory:1",
+          "destinations": [
+            "compute:0/pe:7"
+          ]
+        },
+        {
+          "flow_id": "transfer39:cohort1",
+          "tensor_id": "image",
+          "producer_units": [],
+          "consumer_units": [
+            "conv0:mb0:s4:t0:p0",
+            "conv0:mb0:s5:t0:p0",
+            "conv0:mb0:s8:t0:p0",
+            "conv0:mb0:s9:t0:p0"
+          ],
+          "source": "memory:1",
+          "destinations": [
+            "compute:0/pe:11",
+            "compute:0/pe:10",
+            "compute:0/pe:7",
+            "compute:0/pe:6"
+          ]
+        },
+        {
+          "flow_id": "transfer40:cohort0",
+          "tensor_id": "image",
+          "producer_units": [],
+          "consumer_units": [
+            "add:mb0:s9:t0:p0"
+          ],
+          "source": "memory:1",
+          "destinations": [
+            "compute:0/pe:6"
+          ]
+        },
+        {
+          "flow_id": "transfer40:cohort1",
+          "tensor_id": "image",
+          "producer_units": [],
+          "consumer_units": [
+            "conv0:mb0:s4:t0:p0",
+            "conv0:mb0:s5:t0:p0",
+            "conv0:mb0:s8:t0:p0",
+            "conv0:mb0:s9:t0:p0"
+          ],
+          "source": "memory:1",
+          "destinations": [
+            "compute:0/pe:11",
+            "compute:0/pe:10",
+            "compute:0/pe:7",
+            "compute:0/pe:6"
+          ]
+        },
+        {
+          "flow_id": "transfer41:cohort0",
+          "tensor_id": "image",
+          "producer_units": [],
+          "consumer_units": [
+            "add:mb0:s9:t0:p0"
+          ],
+          "source": "memory:1",
+          "destinations": [
+            "compute:0/pe:6"
+          ]
+        },
+        {
+          "flow_id": "transfer41:cohort1",
+          "tensor_id": "image",
+          "producer_units": [],
+          "consumer_units": [
+            "conv0:mb0:s5:t0:p0",
+            "conv0:mb0:s6:t0:p0",
+            "conv0:mb0:s9:t0:p0",
+            "conv0:mb0:s10:t0:p0"
+          ],
+          "source": "memory:1",
+          "destinations": [
+            "compute:0/pe:10",
+            "compute:0/pe:9",
+            "compute:0/pe:6",
+            "compute:0/pe:5"
+          ]
+        },
+        {
+          "flow_id": "transfer42:cohort0",
+          "tensor_id": "image",
+          "producer_units": [],
+          "consumer_units": [
+            "add:mb0:s10:t0:p0"
+          ],
+          "source": "memory:1",
+          "destinations": [
+            "compute:0/pe:5"
+          ]
+        },
+        {
+          "flow_id": "transfer42:cohort1",
+          "tensor_id": "image",
+          "producer_units": [],
+          "consumer_units": [
+            "conv0:mb0:s5:t0:p0",
+            "conv0:mb0:s6:t0:p0",
+            "conv0:mb0:s9:t0:p0",
+            "conv0:mb0:s10:t0:p0"
+          ],
+          "source": "memory:1",
+          "destinations": [
+            "compute:0/pe:10",
+            "compute:0/pe:9",
+            "compute:0/pe:6",
+            "compute:0/pe:5"
+          ]
+        },
+        {
+          "flow_id": "transfer43:cohort0",
+          "tensor_id": "image",
+          "producer_units": [],
+          "consumer_units": [
+            "add:mb0:s10:t0:p0"
+          ],
+          "source": "memory:1",
+          "destinations": [
+            "compute:0/pe:5"
+          ]
+        },
+        {
+          "flow_id": "transfer43:cohort1",
+          "tensor_id": "image",
+          "producer_units": [],
+          "consumer_units": [
+            "conv0:mb0:s6:t0:p0",
+            "conv0:mb0:s7:t0:p0",
+            "conv0:mb0:s10:t0:p0",
+            "conv0:mb0:s11:t0:p0"
+          ],
+          "source": "memory:1",
+          "destinations": [
+            "compute:0/pe:9",
+            "compute:0/pe:8",
+            "compute:0/pe:5",
+            "compute:0/pe:4"
+          ]
+        },
+        {
+          "flow_id": "transfer44:cohort0",
+          "tensor_id": "image",
+          "producer_units": [],
+          "consumer_units": [
+            "add:mb0:s11:t0:p0"
+          ],
+          "source": "memory:1",
+          "destinations": [
+            "compute:0/pe:4"
+          ]
+        },
+        {
+          "flow_id": "transfer44:cohort1",
+          "tensor_id": "image",
+          "producer_units": [],
+          "consumer_units": [
+            "conv0:mb0:s6:t0:p0",
+            "conv0:mb0:s7:t0:p0",
+            "conv0:mb0:s10:t0:p0",
+            "conv0:mb0:s11:t0:p0"
+          ],
+          "source": "memory:1",
+          "destinations": [
+            "compute:0/pe:9",
+            "compute:0/pe:8",
+            "compute:0/pe:5",
+            "compute:0/pe:4"
+          ]
+        },
+        {
+          "flow_id": "transfer45:cohort0",
+          "tensor_id": "image",
+          "producer_units": [],
+          "consumer_units": [
+            "add:mb0:s11:t0:p0"
+          ],
+          "source": "memory:1",
+          "destinations": [
+            "compute:0/pe:4"
+          ]
+        },
+        {
+          "flow_id": "transfer45:cohort1",
+          "tensor_id": "image",
+          "producer_units": [],
+          "consumer_units": [
+            "conv0:mb0:s7:t0:p0",
+            "conv0:mb0:s11:t0:p0"
+          ],
+          "source": "memory:1",
+          "destinations": [
+            "compute:0/pe:8",
+            "compute:0/pe:4"
+          ]
+        },
+        {
+          "flow_id": "transfer46:cohort0",
+          "tensor_id": "image",
+          "producer_units": [],
+          "consumer_units": [
+            "add:mb0:s8:t0:p0"
+          ],
+          "source": "memory:1",
+          "destinations": [
+            "compute:0/pe:7"
+          ]
+        },
+        {
+          "flow_id": "transfer46:cohort1",
+          "tensor_id": "image",
+          "producer_units": [],
+          "consumer_units": [
+            "conv0:mb0:s8:t0:p0",
+            "conv0:mb0:s9:t0:p0",
+            "conv0:mb0:s12:t0:p0",
+            "conv0:mb0:s13:t0:p0"
+          ],
+          "source": "memory:1",
+          "destinations": [
+            "compute:0/pe:7",
+            "compute:0/pe:6",
+            "compute:0/pe:3",
+            "compute:0/pe:2"
+          ]
+        },
+        {
+          "flow_id": "transfer47:cohort0",
+          "tensor_id": "image",
+          "producer_units": [],
+          "consumer_units": [
+            "add:mb0:s9:t0:p0"
+          ],
+          "source": "memory:1",
+          "destinations": [
+            "compute:0/pe:6"
+          ]
+        },
+        {
+          "flow_id": "transfer47:cohort1",
+          "tensor_id": "image",
+          "producer_units": [],
+          "consumer_units": [
+            "conv0:mb0:s8:t0:p0",
+            "conv0:mb0:s9:t0:p0",
+            "conv0:mb0:s12:t0:p0",
+            "conv0:mb0:s13:t0:p0"
+          ],
+          "source": "memory:1",
+          "destinations": [
+            "compute:0/pe:7",
+            "compute:0/pe:6",
+            "compute:0/pe:3",
+            "compute:0/pe:2"
+          ]
+        },
+        {
+          "flow_id": "transfer48:cohort0",
+          "tensor_id": "image",
+          "producer_units": [],
+          "consumer_units": [
+            "add:mb0:s9:t0:p0"
+          ],
+          "source": "memory:1",
+          "destinations": [
+            "compute:0/pe:6"
+          ]
+        },
+        {
+          "flow_id": "transfer48:cohort1",
+          "tensor_id": "image",
+          "producer_units": [],
+          "consumer_units": [
+            "conv0:mb0:s9:t0:p0",
+            "conv0:mb0:s10:t0:p0",
+            "conv0:mb0:s13:t0:p0",
+            "conv0:mb0:s14:t0:p0"
+          ],
+          "source": "memory:1",
+          "destinations": [
+            "compute:0/pe:6",
+            "compute:0/pe:5",
+            "compute:0/pe:2",
+            "compute:0/pe:1"
+          ]
+        },
+        {
+          "flow_id": "transfer49:cohort0",
+          "tensor_id": "image",
+          "producer_units": [],
+          "consumer_units": [
+            "add:mb0:s10:t0:p0"
+          ],
+          "source": "memory:1",
+          "destinations": [
+            "compute:0/pe:5"
+          ]
+        },
+        {
+          "flow_id": "transfer49:cohort1",
+          "tensor_id": "image",
+          "producer_units": [],
+          "consumer_units": [
+            "conv0:mb0:s9:t0:p0",
+            "conv0:mb0:s10:t0:p0",
+            "conv0:mb0:s13:t0:p0",
+            "conv0:mb0:s14:t0:p0"
+          ],
+          "source": "memory:1",
+          "destinations": [
+            "compute:0/pe:6",
+            "compute:0/pe:5",
+            "compute:0/pe:2",
+            "compute:0/pe:1"
+          ]
+        },
+        {
+          "flow_id": "transfer50:cohort0",
+          "tensor_id": "image",
+          "producer_units": [],
+          "consumer_units": [
+            "add:mb0:s10:t0:p0"
+          ],
+          "source": "memory:1",
+          "destinations": [
+            "compute:0/pe:5"
+          ]
+        },
+        {
+          "flow_id": "transfer50:cohort1",
+          "tensor_id": "image",
+          "producer_units": [],
+          "consumer_units": [
+            "conv0:mb0:s10:t0:p0",
+            "conv0:mb0:s11:t0:p0",
+            "conv0:mb0:s14:t0:p0",
+            "conv0:mb0:s15:t0:p0"
+          ],
+          "source": "memory:1",
+          "destinations": [
+            "compute:0/pe:5",
+            "compute:0/pe:4",
+            "compute:0/pe:1",
+            "compute:0/pe:0"
+          ]
+        },
+        {
+          "flow_id": "transfer51:cohort0",
+          "tensor_id": "image",
+          "producer_units": [],
+          "consumer_units": [
+            "add:mb0:s11:t0:p0"
+          ],
+          "source": "memory:1",
+          "destinations": [
+            "compute:0/pe:4"
+          ]
+        },
+        {
+          "flow_id": "transfer51:cohort1",
+          "tensor_id": "image",
+          "producer_units": [],
+          "consumer_units": [
+            "conv0:mb0:s10:t0:p0",
+            "conv0:mb0:s11:t0:p0",
+            "conv0:mb0:s14:t0:p0",
+            "conv0:mb0:s15:t0:p0"
+          ],
+          "source": "memory:1",
+          "destinations": [
+            "compute:0/pe:5",
+            "compute:0/pe:4",
+            "compute:0/pe:1",
+            "compute:0/pe:0"
+          ]
+        },
+        {
+          "flow_id": "transfer52:cohort0",
+          "tensor_id": "image",
+          "producer_units": [],
+          "consumer_units": [
+            "add:mb0:s11:t0:p0"
+          ],
+          "source": "memory:1",
+          "destinations": [
+            "compute:0/pe:4"
+          ]
+        },
+        {
+          "flow_id": "transfer52:cohort1",
+          "tensor_id": "image",
+          "producer_units": [],
+          "consumer_units": [
+            "conv0:mb0:s11:t0:p0",
+            "conv0:mb0:s15:t0:p0"
+          ],
+          "source": "memory:1",
+          "destinations": [
+            "compute:0/pe:4",
+            "compute:0/pe:0"
+          ]
+        },
+        {
+          "flow_id": "transfer53:cohort0",
+          "tensor_id": "image",
+          "producer_units": [],
+          "consumer_units": [
+            "add:mb0:s12:t0:p0"
+          ],
+          "source": "memory:1",
+          "destinations": [
+            "compute:0/pe:3"
+          ]
+        },
+        {
+          "flow_id": "transfer53:cohort1",
+          "tensor_id": "image",
+          "producer_units": [],
+          "consumer_units": [
+            "conv0:mb0:s8:t0:p0",
+            "conv0:mb0:s9:t0:p0",
+            "conv0:mb0:s12:t0:p0",
+            "conv0:mb0:s13:t0:p0"
+          ],
+          "source": "memory:1",
+          "destinations": [
+            "compute:0/pe:7",
+            "compute:0/pe:6",
+            "compute:0/pe:3",
+            "compute:0/pe:2"
+          ]
+        },
+        {
+          "flow_id": "transfer54:cohort0",
+          "tensor_id": "image",
+          "producer_units": [],
+          "consumer_units": [
+            "add:mb0:s13:t0:p0"
+          ],
+          "source": "memory:1",
+          "destinations": [
+            "compute:0/pe:2"
+          ]
+        },
+        {
+          "flow_id": "transfer54:cohort1",
+          "tensor_id": "image",
+          "producer_units": [],
+          "consumer_units": [
+            "conv0:mb0:s8:t0:p0",
+            "conv0:mb0:s9:t0:p0",
+            "conv0:mb0:s12:t0:p0",
+            "conv0:mb0:s13:t0:p0"
+          ],
+          "source": "memory:1",
+          "destinations": [
+            "compute:0/pe:7",
+            "compute:0/pe:6",
+            "compute:0/pe:3",
+            "compute:0/pe:2"
+          ]
+        },
+        {
+          "flow_id": "transfer55:cohort0",
+          "tensor_id": "image",
+          "producer_units": [],
+          "consumer_units": [
+            "add:mb0:s13:t0:p0"
+          ],
+          "source": "memory:1",
+          "destinations": [
+            "compute:0/pe:2"
+          ]
+        },
+        {
+          "flow_id": "transfer55:cohort1",
+          "tensor_id": "image",
+          "producer_units": [],
+          "consumer_units": [
+            "conv0:mb0:s9:t0:p0",
+            "conv0:mb0:s10:t0:p0",
+            "conv0:mb0:s13:t0:p0",
+            "conv0:mb0:s14:t0:p0"
+          ],
+          "source": "memory:1",
+          "destinations": [
+            "compute:0/pe:6",
+            "compute:0/pe:5",
+            "compute:0/pe:2",
+            "compute:0/pe:1"
+          ]
+        },
+        {
+          "flow_id": "transfer56:cohort0",
+          "tensor_id": "image",
+          "producer_units": [],
+          "consumer_units": [
+            "add:mb0:s14:t0:p0"
+          ],
+          "source": "memory:1",
+          "destinations": [
+            "compute:0/pe:1"
+          ]
+        },
+        {
+          "flow_id": "transfer56:cohort1",
+          "tensor_id": "image",
+          "producer_units": [],
+          "consumer_units": [
+            "conv0:mb0:s9:t0:p0",
+            "conv0:mb0:s10:t0:p0",
+            "conv0:mb0:s13:t0:p0",
+            "conv0:mb0:s14:t0:p0"
+          ],
+          "source": "memory:1",
+          "destinations": [
+            "compute:0/pe:6",
+            "compute:0/pe:5",
+            "compute:0/pe:2",
+            "compute:0/pe:1"
+          ]
+        },
+        {
+          "flow_id": "transfer57:cohort0",
+          "tensor_id": "image",
+          "producer_units": [],
+          "consumer_units": [
+            "add:mb0:s14:t0:p0"
+          ],
+          "source": "memory:1",
+          "destinations": [
+            "compute:0/pe:1"
+          ]
+        },
+        {
+          "flow_id": "transfer57:cohort1",
+          "tensor_id": "image",
+          "producer_units": [],
+          "consumer_units": [
+            "conv0:mb0:s10:t0:p0",
+            "conv0:mb0:s11:t0:p0",
+            "conv0:mb0:s14:t0:p0",
+            "conv0:mb0:s15:t0:p0"
+          ],
+          "source": "memory:1",
+          "destinations": [
+            "compute:0/pe:5",
+            "compute:0/pe:4",
+            "compute:0/pe:1",
+            "compute:0/pe:0"
+          ]
+        },
+        {
+          "flow_id": "transfer58:cohort0",
+          "tensor_id": "image",
+          "producer_units": [],
+          "consumer_units": [
+            "add:mb0:s15:t0:p0"
+          ],
+          "source": "memory:1",
+          "destinations": [
+            "compute:0/pe:0"
+          ]
+        },
+        {
+          "flow_id": "transfer58:cohort1",
+          "tensor_id": "image",
+          "producer_units": [],
+          "consumer_units": [
+            "conv0:mb0:s10:t0:p0",
+            "conv0:mb0:s11:t0:p0",
+            "conv0:mb0:s14:t0:p0",
+            "conv0:mb0:s15:t0:p0"
+          ],
+          "source": "memory:1",
+          "destinations": [
+            "compute:0/pe:5",
+            "compute:0/pe:4",
+            "compute:0/pe:1",
+            "compute:0/pe:0"
+          ]
+        },
+        {
+          "flow_id": "transfer59:cohort0",
+          "tensor_id": "image",
+          "producer_units": [],
+          "consumer_units": [
+            "add:mb0:s15:t0:p0"
+          ],
+          "source": "memory:1",
+          "destinations": [
+            "compute:0/pe:0"
+          ]
+        },
+        {
+          "flow_id": "transfer59:cohort1",
+          "tensor_id": "image",
+          "producer_units": [],
+          "consumer_units": [
+            "conv0:mb0:s11:t0:p0",
+            "conv0:mb0:s15:t0:p0"
+          ],
+          "source": "memory:1",
+          "destinations": [
+            "compute:0/pe:4",
+            "compute:0/pe:0"
+          ]
+        },
+        {
+          "flow_id": "transfer60:cohort0",
+          "tensor_id": "image",
+          "producer_units": [],
+          "consumer_units": [
+            "add:mb0:s12:t0:p0"
+          ],
+          "source": "memory:1",
+          "destinations": [
+            "compute:0/pe:3"
+          ]
+        },
+        {
+          "flow_id": "transfer60:cohort1",
+          "tensor_id": "image",
+          "producer_units": [],
+          "consumer_units": [
+            "conv0:mb0:s12:t0:p0",
+            "conv0:mb0:s13:t0:p0"
+          ],
+          "source": "memory:1",
+          "destinations": [
+            "compute:0/pe:3",
+            "compute:0/pe:2"
+          ]
+        },
+        {
+          "flow_id": "transfer61:cohort0",
+          "tensor_id": "image",
+          "producer_units": [],
+          "consumer_units": [
+            "add:mb0:s13:t0:p0"
+          ],
+          "source": "memory:1",
+          "destinations": [
+            "compute:0/pe:2"
+          ]
+        },
+        {
+          "flow_id": "transfer61:cohort1",
+          "tensor_id": "image",
+          "producer_units": [],
+          "consumer_units": [
+            "conv0:mb0:s12:t0:p0",
+            "conv0:mb0:s13:t0:p0"
+          ],
+          "source": "memory:1",
+          "destinations": [
+            "compute:0/pe:3",
+            "compute:0/pe:2"
+          ]
+        },
+        {
+          "flow_id": "transfer62:cohort0",
+          "tensor_id": "image",
+          "producer_units": [],
+          "consumer_units": [
+            "add:mb0:s13:t0:p0"
+          ],
+          "source": "memory:1",
+          "destinations": [
+            "compute:0/pe:2"
+          ]
+        },
+        {
+          "flow_id": "transfer62:cohort1",
+          "tensor_id": "image",
+          "producer_units": [],
+          "consumer_units": [
+            "conv0:mb0:s13:t0:p0",
+            "conv0:mb0:s14:t0:p0"
+          ],
+          "source": "memory:1",
+          "destinations": [
+            "compute:0/pe:2",
+            "compute:0/pe:1"
+          ]
+        },
+        {
+          "flow_id": "transfer63:cohort0",
+          "tensor_id": "image",
+          "producer_units": [],
+          "consumer_units": [
+            "add:mb0:s14:t0:p0"
+          ],
+          "source": "memory:1",
+          "destinations": [
+            "compute:0/pe:1"
+          ]
+        },
+        {
+          "flow_id": "transfer63:cohort1",
+          "tensor_id": "image",
+          "producer_units": [],
+          "consumer_units": [
+            "conv0:mb0:s13:t0:p0",
+            "conv0:mb0:s14:t0:p0"
+          ],
+          "source": "memory:1",
+          "destinations": [
+            "compute:0/pe:2",
+            "compute:0/pe:1"
+          ]
+        },
+        {
+          "flow_id": "transfer64:cohort0",
+          "tensor_id": "image",
+          "producer_units": [],
+          "consumer_units": [
+            "add:mb0:s14:t0:p0"
+          ],
+          "source": "memory:1",
+          "destinations": [
+            "compute:0/pe:1"
+          ]
+        },
+        {
+          "flow_id": "transfer64:cohort1",
+          "tensor_id": "image",
+          "producer_units": [],
+          "consumer_units": [
+            "conv0:mb0:s14:t0:p0",
+            "conv0:mb0:s15:t0:p0"
+          ],
+          "source": "memory:1",
+          "destinations": [
+            "compute:0/pe:1",
+            "compute:0/pe:0"
+          ]
+        },
+        {
+          "flow_id": "transfer65:cohort0",
+          "tensor_id": "image",
+          "producer_units": [],
+          "consumer_units": [
+            "add:mb0:s15:t0:p0"
+          ],
+          "source": "memory:1",
+          "destinations": [
+            "compute:0/pe:0"
+          ]
+        },
+        {
+          "flow_id": "transfer65:cohort1",
+          "tensor_id": "image",
+          "producer_units": [],
+          "consumer_units": [
+            "conv0:mb0:s14:t0:p0",
+            "conv0:mb0:s15:t0:p0"
+          ],
+          "source": "memory:1",
+          "destinations": [
+            "compute:0/pe:1",
+            "compute:0/pe:0"
+          ]
+        },
+        {
+          "flow_id": "transfer66:cohort0",
+          "tensor_id": "image",
+          "producer_units": [],
+          "consumer_units": [
+            "add:mb0:s15:t0:p0"
+          ],
+          "source": "memory:1",
+          "destinations": [
+            "compute:0/pe:0"
+          ]
+        },
+        {
+          "flow_id": "transfer66:cohort1",
+          "tensor_id": "image",
+          "producer_units": [],
+          "consumer_units": [
+            "conv0:mb0:s15:t0:p0"
+          ],
+          "source": "memory:1",
+          "destinations": [
+            "compute:0/pe:0"
+          ]
+        },
+        {
+          "flow_id": "transfer67",
+          "tensor_id": "weights:conv1",
+          "producer_units": [],
+          "consumer_units": [
+            "conv1:mb0:s0:t0:p0",
+            "conv1:mb0:s1:t0:p0",
+            "conv1:mb0:s2:t0:p0",
+            "conv1:mb0:s3:t0:p0",
+            "conv1:mb0:s4:t0:p0",
+            "conv1:mb0:s5:t0:p0",
+            "conv1:mb0:s6:t0:p0",
+            "conv1:mb0:s7:t0:p0",
+            "conv1:mb0:s8:t0:p0",
+            "conv1:mb0:s9:t0:p0",
+            "conv1:mb0:s10:t0:p0",
+            "conv1:mb0:s11:t0:p0",
+            "conv1:mb0:s12:t0:p0",
+            "conv1:mb0:s13:t0:p0",
+            "conv1:mb0:s14:t0:p0",
+            "conv1:mb0:s15:t0:p0"
+          ],
+          "source": "memory:0",
+          "destinations": [
+            "compute:0/pe:15",
+            "compute:0/pe:14",
+            "compute:0/pe:13",
+            "compute:0/pe:12",
+            "compute:0/pe:11",
+            "compute:0/pe:10",
+            "compute:0/pe:9",
+            "compute:0/pe:8",
+            "compute:0/pe:7",
+            "compute:0/pe:6",
+            "compute:0/pe:5",
+            "compute:0/pe:4",
+            "compute:0/pe:3",
+            "compute:0/pe:2",
+            "compute:0/pe:1",
+            "compute:0/pe:0"
+          ]
+        },
+        {
+          "flow_id": "transfer68",
+          "tensor_id": "weights:conv1",
+          "producer_units": [],
+          "consumer_units": [
+            "conv1:mb0:s0:t0:p0",
+            "conv1:mb0:s1:t0:p0",
+            "conv1:mb0:s2:t0:p0",
+            "conv1:mb0:s3:t0:p0",
+            "conv1:mb0:s4:t0:p0",
+            "conv1:mb0:s5:t0:p0",
+            "conv1:mb0:s6:t0:p0",
+            "conv1:mb0:s7:t0:p0",
+            "conv1:mb0:s8:t0:p0",
+            "conv1:mb0:s9:t0:p0",
+            "conv1:mb0:s10:t0:p0",
+            "conv1:mb0:s11:t0:p0",
+            "conv1:mb0:s12:t0:p0",
+            "conv1:mb0:s13:t0:p0",
+            "conv1:mb0:s14:t0:p0",
+            "conv1:mb0:s15:t0:p0"
+          ],
+          "source": "memory:1",
+          "destinations": [
+            "compute:0/pe:15",
+            "compute:0/pe:14",
+            "compute:0/pe:13",
+            "compute:0/pe:12",
+            "compute:0/pe:11",
+            "compute:0/pe:10",
+            "compute:0/pe:9",
+            "compute:0/pe:8",
+            "compute:0/pe:7",
+            "compute:0/pe:6",
+            "compute:0/pe:5",
+            "compute:0/pe:4",
+            "compute:0/pe:3",
+            "compute:0/pe:2",
+            "compute:0/pe:1",
+            "compute:0/pe:0"
+          ]
+        },
+        {
+          "flow_id": "quant:conv0:mb0:s0:t0:p0",
+          "tensor_id": "quant:conv0",
+          "producer_units": [],
+          "consumer_units": [
+            "conv0:mb0:s0:t0:p0"
+          ],
+          "source": "memory:0",
+          "destinations": [
+            "compute:0/pe:15"
+          ]
+        },
+        {
+          "flow_id": "quant:conv0:mb0:s1:t0:p0",
+          "tensor_id": "quant:conv0",
+          "producer_units": [],
+          "consumer_units": [
+            "conv0:mb0:s1:t0:p0"
+          ],
+          "source": "memory:0",
+          "destinations": [
+            "compute:0/pe:14"
+          ]
+        },
+        {
+          "flow_id": "quant:conv0:mb0:s2:t0:p0",
+          "tensor_id": "quant:conv0",
+          "producer_units": [],
+          "consumer_units": [
+            "conv0:mb0:s2:t0:p0"
+          ],
+          "source": "memory:0",
+          "destinations": [
+            "compute:0/pe:13"
+          ]
+        },
+        {
+          "flow_id": "quant:conv0:mb0:s3:t0:p0",
+          "tensor_id": "quant:conv0",
+          "producer_units": [],
+          "consumer_units": [
+            "conv0:mb0:s3:t0:p0"
+          ],
+          "source": "memory:0",
+          "destinations": [
+            "compute:0/pe:12"
+          ]
+        },
+        {
+          "flow_id": "quant:conv0:mb0:s4:t0:p0",
+          "tensor_id": "quant:conv0",
+          "producer_units": [],
+          "consumer_units": [
+            "conv0:mb0:s4:t0:p0"
+          ],
+          "source": "memory:0",
+          "destinations": [
+            "compute:0/pe:11"
+          ]
+        },
+        {
+          "flow_id": "quant:conv0:mb0:s5:t0:p0",
+          "tensor_id": "quant:conv0",
+          "producer_units": [],
+          "consumer_units": [
+            "conv0:mb0:s5:t0:p0"
+          ],
+          "source": "memory:0",
+          "destinations": [
+            "compute:0/pe:10"
+          ]
+        },
+        {
+          "flow_id": "quant:conv0:mb0:s6:t0:p0",
+          "tensor_id": "quant:conv0",
+          "producer_units": [],
+          "consumer_units": [
+            "conv0:mb0:s6:t0:p0"
+          ],
+          "source": "memory:0",
+          "destinations": [
+            "compute:0/pe:9"
+          ]
+        },
+        {
+          "flow_id": "quant:conv0:mb0:s7:t0:p0",
+          "tensor_id": "quant:conv0",
+          "producer_units": [],
+          "consumer_units": [
+            "conv0:mb0:s7:t0:p0"
+          ],
+          "source": "memory:0",
+          "destinations": [
+            "compute:0/pe:8"
+          ]
+        },
+        {
+          "flow_id": "quant:conv0:mb0:s8:t0:p0",
+          "tensor_id": "quant:conv0",
+          "producer_units": [],
+          "consumer_units": [
+            "conv0:mb0:s8:t0:p0"
+          ],
+          "source": "memory:0",
+          "destinations": [
+            "compute:0/pe:7"
+          ]
+        },
+        {
+          "flow_id": "quant:conv0:mb0:s9:t0:p0",
+          "tensor_id": "quant:conv0",
+          "producer_units": [],
+          "consumer_units": [
+            "conv0:mb0:s9:t0:p0"
+          ],
+          "source": "memory:0",
+          "destinations": [
+            "compute:0/pe:6"
+          ]
+        }
+      ],
+      "fusion": [],
+      "unsupported": {
+        "split_wait_attribution": "atomic flow reservations cannot assign one queue wait to a unique resource",
+        "bank_conflicts": "aggregate single RW ledger; physical address bank conflicts unsupported",
+        "packet_cycle_timing": "finite-buffer conservative reservation, not cycle-accurate protocol"
+      },
+      "latency_breakdown": "resource busy and queue times overlap and must not be added as E2E latency",
+      "critical_path_count": 327,
+      "critical_path_truncated": true,
+      "flows_truncated": true
+    },
+    "calendar_backend": "native",
+    "oracle_process_cpu_s": 0.03125,
+    "exact_geometry_cache_hit": false,
+    "oracle_phase_wall_s": {
+      "compile": 0.0,
+      "communication_and_job_build": 0.01600000006146729,
+      "schedule": 0.0,
+      "capacity_and_metrics": 0.0,
+      "diagnostics": 0.0
+    }
+  },
+  "cost": 0.8280868524957576,
+  "original_seed_cost": 0.8280868524957576,
+  "full_ppa": 2,
+  "wall_s": 0.6290752999484539,
+  "gain_before_rl_pct": 0.0,
+  "screen_domain_attempted": false
+}

@@ -1,0 +1,20 @@
+{
+  "source_identity": "a647c7a8e237f0324fd3633ee7c5e4b0b627f9c3928c11487be85eaa5460576f",
+  "representation": "frozen_prior_residual_normalized_continuation_q_v2",
+  "shared_prior_bitwise_equal": true,
+  "shared_observations": 83,
+  "own_real_transitions": 52,
+  "SGD": 3240,
+  "new_PPA": 0,
+  "residual_fits": 45,
+  "linear_candidates_fitted": 810,
+  "future_parameters_with_aged_optimizer_after_warmup": 0,
+  "continuation_std": 2.341088056564331,
+  "continuation_range": 7.356078147888184,
+  "continuation_target_std": 2.5435446363790897,
+  "continuation_target_MAE": 0.8223836897544062,
+  "elapsed_s": 46.882841099984944,
+  "original_checkpoint_sha256": "5386683499f1bddca1abf823b0023304a8ce3fa826b07d38dc267335575ab457",
+  "script_sha256": "930f7cc09294ed5c2102d1efe8f23f01684c1cf82114804f4a42693c884ea88b",
+  "scope": "development on already observed real PPA transitions and their original successor features; new SGD/linear fits but zero new PPA; targets bootstrap from each learner, not known optimal returns, not DSE efficacy or fresh confirmation"
+}

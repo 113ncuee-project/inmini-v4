@@ -1,0 +1,19 @@
+{
+  "status": "failed_QA_no_DNN",
+  "source": "a647c7a8e237f0324fd3633ee7c5e4b0b627f9c3928c11487be85eaa5460576f",
+  "actual_representation": "frozen_prior_residual_normalized_continuation_q_v2",
+  "stale_test_expected": "frozen_physical_prior_residual_double_q_v1",
+  "failure": "Stale harness string rejected valid v2 checkpoint; residual adaptation/future-tail checks were not reached",
+  "passed_regressions": 202,
+  "CLI_before_failure_s": 289.7716151,
+  "observed_CLI_trained_transitions": 7,
+  "observed_CLI_SGD": 96,
+  "observed_CLI_residual_fits": 0,
+  "follow_on_found_before_execution": "coordinator log inside fresh output would violate fresh-case admission; moved outside case in v13",
+  "new_DNN_PPA": 0,
+  "new_DNN_SGD": 0,
+  "fix_source": "fc69465e14ec57277e21af843d957fec32ea84e0bdb0eb4b110ae8294337b95b",
+  "next_study": "output/inmin_v13_20261105/qa_repaired_study_v1",
+  "frozen_sources_unchanged": true,
+  "created_utc": "2026-11-05T00:33:46.453168+00:00"
+}

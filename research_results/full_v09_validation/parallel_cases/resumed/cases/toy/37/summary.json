@@ -1,0 +1,922 @@
+{
+  "rl": {
+    "method": "rl",
+    "status": "full_query_budget_exhausted",
+    "common_full_ppa": 2,
+    "search_full_ppa": 30,
+    "full_ppa": 32,
+    "seed_cost": 0.8280868524957576,
+    "best_cost": 0.022722840870850768,
+    "gain_vs_seed_pct": 97.25598337875226,
+    "best": {
+      "feasible": true,
+      "latency_s": 1.3708359375e-06,
+      "energy_j": 6.324481855854324e-07,
+      "power_w": 0.4613595020997415,
+      "area_mm2": 32.39711576470588,
+      "dram_read_bytes": 860,
+      "dram_write_bytes": 245,
+      "noc_hop_bytes": 3120,
+      "nop_hop_bytes": 1360,
+      "executed_macs": 12250,
+      "recompute_macs": 0,
+      "unit_count": 5,
+      "calendar_backend": "native",
+      "oracle_phase_wall_s": {
+        "compile": 0.0,
+        "communication_and_job_build": 0.0,
+        "schedule": 0.0,
+        "capacity_and_metrics": 0.0,
+        "diagnostics": 0.0
+      },
+      "oracle_process_cpu_s": 0.0
+    },
+    "initial": {
+      "feasible": true,
+      "latency_s": 9.324489257812496e-06,
+      "energy_j": 3.3884309629011964e-06,
+      "power_w": 0.36339051600732014,
+      "area_mm2": 32.39711576470588,
+      "dram_read_bytes": 2020,
+      "dram_write_bytes": 245,
+      "noc_hop_bytes": 16752,
+      "nop_hop_bytes": 6176,
+      "executed_macs": 12250,
+      "recompute_macs": 0,
+      "unit_count": 48,
+      "calendar_backend": "native",
+      "oracle_phase_wall_s": {
+        "compile": 0.0,
+        "communication_and_job_build": 0.01600000006146729,
+        "schedule": 0.0,
+        "capacity_and_metrics": 0.0,
+        "diagnostics": 0.0
+      },
+      "oracle_process_cpu_s": 0.03125
+    },
+    "best_step": 11,
+    "best_state_hash": "3d2c3aa9fe6dc9b64741cf041efac987dec55de7f34fdec2a83dfe466a332d87",
+    "best_architecture": "single_array_c1_1x1",
+    "best_fusion_depth": 0,
+    "policy_updates": 720,
+    "search_wall_s": 19.203391699818894,
+    "charged_wall_s": 19.83246779977344,
+    "architecture_coverage": {
+      "single_array_c1_1x1": {
+        "status": "full_evaluated",
+        "feasible": true,
+        "step": 29
+      },
+      "single_array_c16_8x2": {
+        "status": "full_evaluated",
+        "feasible": true,
+        "step": 2
+      },
+      "single_array_c9_3x3": {
+        "status": "full_evaluated",
+        "feasible": true,
+        "step": 4
+      },
+      "single_array_c5_1x5": {
+        "status": "full_evaluated",
+        "feasible": true,
+        "step": 6
+      },
+      "single_array_c13_1x13": {
+        "status": "full_evaluated",
+        "feasible": true,
+        "step": 8
+      },
+      "single_array_c11_1x11": {
+        "status": "full_evaluated",
+        "feasible": true,
+        "step": 10
+      },
+      "single_array_c7_1x7": {
+        "status": "full_evaluated",
+        "feasible": true,
+        "step": 12
+      },
+      "single_array_c3_1x3": {
+        "status": "full_evaluated",
+        "feasible": true,
+        "step": 14
+      },
+      "single_array_c15_1x15": {
+        "status": "full_evaluated",
+        "feasible": true,
+        "step": 16
+      },
+      "single_array_c14_1x14": {
+        "status": "full_evaluated",
+        "feasible": true,
+        "step": 18
+      },
+      "single_array_c12_1x12": {
+        "status": "full_evaluated",
+        "feasible": true,
+        "step": 20
+      },
+      "single_array_c2_1x2": {
+        "status": "full_evaluated",
+        "feasible": true,
+        "step": 25
+      },
+      "single_array_c10_1x10": {
+        "status": "full_evaluated",
+        "feasible": true,
+        "step": 22
+      },
+      "single_array_c8_1x8": {
+        "status": "full_evaluated",
+        "feasible": true,
+        "step": 24
+      },
+      "single_array_c6_1x6": {
+        "status": "full_evaluated",
+        "feasible": true,
+        "step": 26
+      },
+      "single_array_c4_1x4": {
+        "status": "full_evaluated",
+        "feasible": true,
+        "step": 28
+      },
+      "single_array_c2_2x1": {
+        "status": "full_evaluated",
+        "feasible": true,
+        "step": 30
+      }
+    },
+    "gain_after_shared_screen_pct": 97.25598337875226,
+    "gain_before_rl_pct": 0.0,
+    "latency_improvement_pct": 85.2985412970319,
+    "energy_improvement_pct": 81.33507241227879,
+    "area_improvement_pct": 0.0,
+    "objective": "edp",
+    "gamma": 0.9,
+    "domain": "v08_stratified_architecture_full_schema3_1",
+    "strict_feasible": true,
+    "algorithm": "multistep_double_q",
+    "online_policy_updates_enabled": true,
+    "shared_warmstart_enabled": true,
+    "q_representation": "frozen_prior_residual_normalized_continuation_q_v2",
+    "residual_model": {
+      "prior_frozen": true,
+      "prior_warm_SGD": 0,
+      "continuation": "LayerNorm/SiLU; cold Adam during V-only warmup; TD loss in log-cost units",
+      "residual": {
+        "enabled": true,
+        "observations": 30,
+        "fits": 23,
+        "linear_candidates_fitted": 414,
+        "capacity": 128,
+        "selected_basis": "after",
+        "selected_ridge": 1.0,
+        "training_LOO_MSE": 36.50820801621123,
+        "scope": "own measured labels only; training-only LOO, no control labels or added PPA"
+      }
+    },
+    "episode_cost_rise_limit": 0.25,
+    "episode_restart_probability": 0.9,
+    "architecture_refresh": {
+      "interval": 2,
+      "tried": [
+        16,
+        9,
+        5,
+        13,
+        11,
+        7,
+        3,
+        15,
+        14,
+        12,
+        10,
+        8,
+        6,
+        4,
+        2
+      ],
+      "cycle": 0,
+      "history": [
+        {
+          "cycle": 0,
+          "count": 16,
+          "step": 2,
+          "state_hash": "613233a156985616a540a6fc85472973721b341edc20b41e79792b4391586521",
+          "status": "full_completed"
+        },
+        {
+          "cycle": 0,
+          "count": 9,
+          "step": 4,
+          "state_hash": "61b4c68351b84d0349a557f20de2bfa7d39d35c7efb341c0fb09b112d49c153b",
+          "status": "full_completed"
+        },
+        {
+          "cycle": 0,
+          "count": 5,
+          "step": 6,
+          "state_hash": "a12acf8b4ba3e00ccd9b9de204e9da21a76e6b546d059c5a63e2dda87721e547",
+          "status": "full_completed"
+        },
+        {
+          "cycle": 0,
+          "count": 13,
+          "step": 8,
+          "state_hash": "260b14273123c792ff44f322fea9c973cdfffab1cc759ddb168d5bfea68caf5f",
+          "status": "full_completed"
+        },
+        {
+          "cycle": 0,
+          "count": 11,
+          "step": 10,
+          "state_hash": "8b3945a6dc4b28f5c7fe824deb8a5c23a3c7c6a47dd514ec79983fb36259f2ab",
+          "status": "full_completed"
+        },
+        {
+          "cycle": 0,
+          "count": 7,
+          "step": 12,
+          "state_hash": "71920fc477f94f706fc5cedb324de9ed28df8a51d996ce29fa479963d3855d79",
+          "status": "full_completed"
+        },
+        {
+          "cycle": 0,
+          "count": 3,
+          "step": 14,
+          "state_hash": "00f3fa98ab0519ff319e63d27344d313541b6d83959185b1fcfac3c7eab7f6c6",
+          "status": "full_completed"
+        },
+        {
+          "cycle": 0,
+          "count": 15,
+          "step": 16,
+          "state_hash": "6eea169ece9432d17467722aa395870edd38b4980cec91f1d4471d9cba87449a",
+          "status": "full_completed"
+        },
+        {
+          "cycle": 0,
+          "count": 14,
+          "step": 18,
+          "state_hash": "37c9dcfefb825c051227cffbdc98b1c87d97b11443e485decfb7432473eaa275",
+          "status": "full_completed"
+        },
+        {
+          "cycle": 0,
+          "count": 12,
+          "step": 20,
+          "state_hash": "b48ae88a35db830694a0f7471a39e256c3a3f11af3acb85591b3753044521422",
+          "status": "full_completed"
+        },
+        {
+          "cycle": 0,
+          "count": 10,
+          "step": 22,
+          "state_hash": "50c0dfe723ebaf6028a523e2921d8681850077b14121be1648c9dabbfcad42d0",
+          "status": "full_completed"
+        },
+        {
+          "cycle": 0,
+          "count": 8,
+          "step": 24,
+          "state_hash": "0adf0b5020306b5bc42c2b98c4604fb7c6f97d966271e2f519d14bdf06ef8c30",
+          "status": "full_completed"
+        },
+        {
+          "cycle": 0,
+          "count": 6,
+          "step": 26,
+          "state_hash": "4ee2cd544104122364db4da4cd4a0b6702d291502cc2c2254f8c1fad13cdee4a",
+          "status": "full_completed"
+        },
+        {
+          "cycle": 0,
+          "count": 4,
+          "step": 28,
+          "state_hash": "2c7743489aadbdfda8f0840c68c4698fc0e73aacac816577216f2d942387ab84",
+          "status": "full_completed"
+        },
+        {
+          "cycle": 0,
+          "count": 2,
+          "step": 30,
+          "state_hash": "1c73b29021a28993118854b4b4fcc292705a36a40adc929f2052cc5bb27b5feb",
+          "status": "full_completed"
+        }
+      ],
+      "pending_count": null
+    },
+    "cost_rank_weight": 0.0,
+    "feature_evaluation": "all candidates for neural selection/TD",
+    "recommended_cost": 0.022722840870850768,
+    "note": "best_* and gain fields describe penalized search elite; recommendation.json contains only strict-feasible designs"
+  },
+  "sa": {
+    "method": "sa",
+    "status": "full_query_budget_exhausted",
+    "common_full_ppa": 2,
+    "search_full_ppa": 30,
+    "full_ppa": 32,
+    "seed_cost": 0.8280868524957576,
+    "best_cost": 0.04908912977710689,
+    "gain_vs_seed_pct": 94.07198295333902,
+    "best": {
+      "feasible": true,
+      "latency_s": 2.1024462890624997e-06,
+      "energy_j": 8.908574754678695e-07,
+      "power_w": 0.42372424927207586,
+      "area_mm2": 32.39711576470588,
+      "dram_read_bytes": 1020,
+      "dram_write_bytes": 245,
+      "noc_hop_bytes": 3280,
+      "nop_hop_bytes": 1904,
+      "executed_macs": 12250,
+      "recompute_macs": 0,
+      "unit_count": 11,
+      "calendar_backend": "native",
+      "oracle_phase_wall_s": {
+        "compile": 0.0,
+        "communication_and_job_build": 0.01600000006146729,
+        "schedule": 0.0,
+        "capacity_and_metrics": 0.0,
+        "diagnostics": 0.0
+      },
+      "oracle_process_cpu_s": 0.0
+    },
+    "initial": {
+      "feasible": true,
+      "latency_s": 9.324489257812496e-06,
+      "energy_j": 3.3884309629011964e-06,
+      "power_w": 0.36339051600732014,
+      "area_mm2": 32.39711576470588,
+      "dram_read_bytes": 2020,
+      "dram_write_bytes": 245,
+      "noc_hop_bytes": 16752,
+      "nop_hop_bytes": 6176,
+      "executed_macs": 12250,
+      "recompute_macs": 0,
+      "unit_count": 48,
+      "calendar_backend": "native",
+      "oracle_phase_wall_s": {
+        "compile": 0.0,
+        "communication_and_job_build": 0.01600000006146729,
+        "schedule": 0.0,
+        "capacity_and_metrics": 0.0,
+        "diagnostics": 0.0
+      },
+      "oracle_process_cpu_s": 0.03125
+    },
+    "best_step": 29,
+    "best_state_hash": "76a8d68935918e5d51b11082e548cb88a1c041baaf0aabf174da3f41ce41ecc8",
+    "best_architecture": "single_array_c1_1x1",
+    "best_fusion_depth": 0,
+    "policy_updates": 0,
+    "search_wall_s": 9.88435470010154,
+    "charged_wall_s": 10.513431299943477,
+    "architecture_coverage": {
+      "single_array_c1_1x1": {
+        "status": "full_evaluated",
+        "feasible": true,
+        "step": 29
+      },
+      "single_array_c16_8x2": {
+        "status": "full_evaluated",
+        "feasible": true,
+        "step": 2
+      },
+      "single_array_c9_3x3": {
+        "status": "full_evaluated",
+        "feasible": true,
+        "step": 4
+      },
+      "single_array_c5_1x5": {
+        "status": "full_evaluated",
+        "feasible": true,
+        "step": 6
+      },
+      "single_array_c13_1x13": {
+        "status": "full_evaluated",
+        "feasible": true,
+        "step": 27
+      },
+      "single_array_c9_9x1": {
+        "status": "full_evaluated",
+        "feasible": true,
+        "step": 9
+      },
+      "single_array_c11_1x11": {
+        "status": "full_evaluated",
+        "feasible": true,
+        "step": 10
+      },
+      "single_array_c6_6x1": {
+        "status": "full_evaluated",
+        "feasible": true,
+        "step": 11
+      },
+      "single_array_c7_7x1": {
+        "status": "full_evaluated",
+        "feasible": true,
+        "step": 12
+      },
+      "single_array_c3_3x1": {
+        "status": "full_evaluated",
+        "feasible": true,
+        "step": 14
+      },
+      "single_array_c15_1x15": {
+        "status": "full_evaluated",
+        "feasible": true,
+        "step": 16
+      },
+      "single_array_c14_1x14": {
+        "status": "full_evaluated",
+        "feasible": true,
+        "step": 18
+      },
+      "single_array_c12_4x3": {
+        "status": "full_evaluated",
+        "feasible": true,
+        "step": 23
+      },
+      "single_array_c10_10x1": {
+        "status": "full_evaluated",
+        "feasible": true,
+        "step": 22
+      },
+      "single_array_c8_1x8": {
+        "status": "full_evaluated",
+        "feasible": true,
+        "step": 24
+      },
+      "single_array_c6_2x3": {
+        "status": "full_evaluated",
+        "feasible": true,
+        "step": 26
+      },
+      "single_array_c4_2x2": {
+        "status": "full_evaluated",
+        "feasible": true,
+        "step": 28
+      },
+      "single_array_c2_2x1": {
+        "status": "full_evaluated",
+        "feasible": true,
+        "step": 30
+      }
+    },
+    "gain_after_shared_screen_pct": 94.07198295333902,
+    "gain_before_rl_pct": 0.0,
+    "latency_improvement_pct": 77.45242413893104,
+    "energy_improvement_pct": 73.70884975312846,
+    "area_improvement_pct": 0.0,
+    "objective": "edp",
+    "gamma": 0.9,
+    "domain": "v08_stratified_architecture_full_schema3_1",
+    "strict_feasible": true,
+    "algorithm": "sa",
+    "online_policy_updates_enabled": false,
+    "shared_warmstart_enabled": false,
+    "q_representation": null,
+    "episode_cost_rise_limit": 0.25,
+    "episode_restart_probability": 0.9,
+    "architecture_refresh": {
+      "interval": 2,
+      "tried": [
+        16,
+        9,
+        5,
+        13,
+        11,
+        7,
+        3,
+        15,
+        14,
+        12,
+        10,
+        8,
+        6,
+        4,
+        2
+      ],
+      "cycle": 0,
+      "history": [
+        {
+          "cycle": 0,
+          "count": 16,
+          "step": 2,
+          "state_hash": "613233a156985616a540a6fc85472973721b341edc20b41e79792b4391586521",
+          "status": "full_completed"
+        },
+        {
+          "cycle": 0,
+          "count": 9,
+          "step": 4,
+          "state_hash": "61b4c68351b84d0349a557f20de2bfa7d39d35c7efb341c0fb09b112d49c153b",
+          "status": "full_completed"
+        },
+        {
+          "cycle": 0,
+          "count": 5,
+          "step": 6,
+          "state_hash": "a12acf8b4ba3e00ccd9b9de204e9da21a76e6b546d059c5a63e2dda87721e547",
+          "status": "full_completed"
+        },
+        {
+          "cycle": 0,
+          "count": 13,
+          "step": 8,
+          "state_hash": "260b14273123c792ff44f322fea9c973cdfffab1cc759ddb168d5bfea68caf5f",
+          "status": "full_completed"
+        },
+        {
+          "cycle": 0,
+          "count": 11,
+          "step": 10,
+          "state_hash": "5d6651232705de5c34b76632b410ca44006f182ccd0a54359e3fe630880b7fcf",
+          "status": "full_completed"
+        },
+        {
+          "cycle": 0,
+          "count": 7,
+          "step": 12,
+          "state_hash": "dea706b01cf8406c37a13e5d93c3853a8decd34ca93f6269f429067a4db31bdb",
+          "status": "full_completed"
+        },
+        {
+          "cycle": 0,
+          "count": 3,
+          "step": 14,
+          "state_hash": "651b6c7a16cd6f113bda36fb3019eb58073670217c2625549a1f1e31a6278657",
+          "status": "full_completed"
+        },
+        {
+          "cycle": 0,
+          "count": 15,
+          "step": 16,
+          "state_hash": "44cd6558e9b8487fe5fa439e4466b7054a390151476588a104a20164ac94b10e",
+          "status": "full_completed"
+        },
+        {
+          "cycle": 0,
+          "count": 14,
+          "step": 18,
+          "state_hash": "00c3623846cde59d55e90efd808529112d447ab94054a5da17f6ba59be61547d",
+          "status": "full_completed"
+        },
+        {
+          "cycle": 0,
+          "count": 12,
+          "step": 20,
+          "state_hash": "1cf2dc34ccc6c37bccf63b8d4ea528d41967cffc7a444f57c1ef369fb1813e5d",
+          "status": "full_completed"
+        },
+        {
+          "cycle": 0,
+          "count": 10,
+          "step": 22,
+          "state_hash": "c3983505cdf1e8eaf77e4f59cbd1ff85278f87f8a4c84ba7b6dcdbfd5dd9031d",
+          "status": "full_completed"
+        },
+        {
+          "cycle": 0,
+          "count": 8,
+          "step": 24,
+          "state_hash": "929b908881085edb26e5cefa49ab39b71623f60dc8b350f70020de5d81b024a8",
+          "status": "full_completed"
+        },
+        {
+          "cycle": 0,
+          "count": 6,
+          "step": 26,
+          "state_hash": "820f93a2d0615b602e4bb19d921d120594ba1c28658717a5fc0fe41e73d80fc3",
+          "status": "full_completed"
+        },
+        {
+          "cycle": 0,
+          "count": 4,
+          "step": 28,
+          "state_hash": "54341db1b8cb1b1de9ec8351ac2344fa3ade8732ae97bdaa446f5ce13dddd7a9",
+          "status": "full_completed"
+        },
+        {
+          "cycle": 0,
+          "count": 2,
+          "step": 30,
+          "state_hash": "efd9c3522e67a1b8545f9dc45ac3a8193ed4eefeefbf51933642bf86266b963d",
+          "status": "full_completed"
+        }
+      ],
+      "pending_count": null
+    },
+    "cost_rank_weight": 0.0,
+    "feature_evaluation": "selected candidate only; no unused neural feature overhead",
+    "recommended_cost": 0.04908912977710689,
+    "note": "best_* and gain fields describe penalized search elite; recommendation.json contains only strict-feasible designs"
+  },
+  "random": {
+    "method": "random",
+    "status": "full_query_budget_exhausted",
+    "common_full_ppa": 2,
+    "search_full_ppa": 30,
+    "full_ppa": 32,
+    "seed_cost": 0.8280868524957576,
+    "best_cost": 0.02295078925600122,
+    "gain_vs_seed_pct": 97.22845626798322,
+    "best": {
+      "feasible": true,
+      "latency_s": 1.3608359375e-06,
+      "energy_j": 6.434868265604912e-07,
+      "power_w": 0.4728614293818877,
+      "area_mm2": 32.39711576470588,
+      "dram_read_bytes": 900,
+      "dram_write_bytes": 245,
+      "noc_hop_bytes": 4368,
+      "nop_hop_bytes": 1552,
+      "executed_macs": 12250,
+      "recompute_macs": 0,
+      "unit_count": 6,
+      "calendar_backend": "native",
+      "oracle_phase_wall_s": {
+        "compile": 0.0,
+        "communication_and_job_build": 0.0,
+        "schedule": 0.0,
+        "capacity_and_metrics": 0.015999999828636646,
+        "diagnostics": 0.0
+      },
+      "oracle_process_cpu_s": 0.015625
+    },
+    "initial": {
+      "feasible": true,
+      "latency_s": 9.324489257812496e-06,
+      "energy_j": 3.3884309629011964e-06,
+      "power_w": 0.36339051600732014,
+      "area_mm2": 32.39711576470588,
+      "dram_read_bytes": 2020,
+      "dram_write_bytes": 245,
+      "noc_hop_bytes": 16752,
+      "nop_hop_bytes": 6176,
+      "executed_macs": 12250,
+      "recompute_macs": 0,
+      "unit_count": 48,
+      "calendar_backend": "native",
+      "oracle_phase_wall_s": {
+        "compile": 0.0,
+        "communication_and_job_build": 0.01600000006146729,
+        "schedule": 0.0,
+        "capacity_and_metrics": 0.0,
+        "diagnostics": 0.0
+      },
+      "oracle_process_cpu_s": 0.03125
+    },
+    "best_step": 27,
+    "best_state_hash": "130fa0f77855c36c901a949128291f1113aecf453adeab52f8301de30abc6df8",
+    "best_architecture": "single_array_c1_1x1",
+    "best_fusion_depth": 0,
+    "policy_updates": 0,
+    "search_wall_s": 10.717225699918345,
+    "charged_wall_s": 11.346301899990067,
+    "architecture_coverage": {
+      "single_array_c1_1x1": {
+        "status": "full_evaluated",
+        "feasible": true,
+        "step": 29
+      },
+      "single_array_c16_8x2": {
+        "status": "full_evaluated",
+        "feasible": true,
+        "step": 2
+      },
+      "single_array_c9_3x3": {
+        "status": "full_evaluated",
+        "feasible": true,
+        "step": 4
+      },
+      "single_array_c5_1x5": {
+        "status": "full_evaluated",
+        "feasible": true,
+        "step": 6
+      },
+      "single_array_c13_1x13": {
+        "status": "full_evaluated",
+        "feasible": true,
+        "step": 8
+      },
+      "single_array_c9_9x1": {
+        "status": "full_evaluated",
+        "feasible": true,
+        "step": 9
+      },
+      "single_array_c11_1x11": {
+        "status": "full_evaluated",
+        "feasible": true,
+        "step": 10
+      },
+      "single_array_c6_6x1": {
+        "status": "full_evaluated",
+        "feasible": true,
+        "step": 11
+      },
+      "single_array_c7_7x1": {
+        "status": "full_evaluated",
+        "feasible": true,
+        "step": 12
+      },
+      "single_array_c3_3x1": {
+        "status": "full_evaluated",
+        "feasible": true,
+        "step": 25
+      },
+      "single_array_c15_1x15": {
+        "status": "full_evaluated",
+        "feasible": true,
+        "step": 16
+      },
+      "single_array_c14_1x14": {
+        "status": "full_evaluated",
+        "feasible": true,
+        "step": 18
+      },
+      "single_array_c12_4x3": {
+        "status": "full_evaluated",
+        "feasible": true,
+        "step": 20
+      },
+      "single_array_c10_10x1": {
+        "status": "full_evaluated",
+        "feasible": true,
+        "step": 22
+      },
+      "single_array_c8_1x8": {
+        "status": "full_evaluated",
+        "feasible": true,
+        "step": 24
+      },
+      "single_array_c6_2x3": {
+        "status": "full_evaluated",
+        "feasible": true,
+        "step": 26
+      },
+      "single_array_c4_4x1": {
+        "status": "full_evaluated",
+        "feasible": true,
+        "step": 28
+      },
+      "single_array_c2_1x2": {
+        "status": "full_evaluated",
+        "feasible": true,
+        "step": 30
+      }
+    },
+    "gain_after_shared_screen_pct": 97.22845626798322,
+    "gain_before_rl_pct": 0.0,
+    "latency_improvement_pct": 85.40578577684748,
+    "energy_improvement_pct": 81.00929800235524,
+    "area_improvement_pct": 0.0,
+    "objective": "edp",
+    "gamma": 0.9,
+    "domain": "v08_stratified_architecture_full_schema3_1",
+    "strict_feasible": true,
+    "algorithm": "random",
+    "online_policy_updates_enabled": false,
+    "shared_warmstart_enabled": false,
+    "q_representation": null,
+    "episode_cost_rise_limit": 0.25,
+    "episode_restart_probability": 0.9,
+    "architecture_refresh": {
+      "interval": 2,
+      "tried": [
+        16,
+        9,
+        5,
+        13,
+        11,
+        7,
+        3,
+        15,
+        14,
+        12,
+        10,
+        8,
+        6,
+        4,
+        2
+      ],
+      "cycle": 0,
+      "history": [
+        {
+          "cycle": 0,
+          "count": 16,
+          "step": 2,
+          "state_hash": "613233a156985616a540a6fc85472973721b341edc20b41e79792b4391586521",
+          "status": "full_completed"
+        },
+        {
+          "cycle": 0,
+          "count": 9,
+          "step": 4,
+          "state_hash": "61b4c68351b84d0349a557f20de2bfa7d39d35c7efb341c0fb09b112d49c153b",
+          "status": "full_completed"
+        },
+        {
+          "cycle": 0,
+          "count": 5,
+          "step": 6,
+          "state_hash": "a12acf8b4ba3e00ccd9b9de204e9da21a76e6b546d059c5a63e2dda87721e547",
+          "status": "full_completed"
+        },
+        {
+          "cycle": 0,
+          "count": 13,
+          "step": 8,
+          "state_hash": "260b14273123c792ff44f322fea9c973cdfffab1cc759ddb168d5bfea68caf5f",
+          "status": "full_completed"
+        },
+        {
+          "cycle": 0,
+          "count": 11,
+          "step": 10,
+          "state_hash": "5d6651232705de5c34b76632b410ca44006f182ccd0a54359e3fe630880b7fcf",
+          "status": "full_completed"
+        },
+        {
+          "cycle": 0,
+          "count": 7,
+          "step": 12,
+          "state_hash": "dea706b01cf8406c37a13e5d93c3853a8decd34ca93f6269f429067a4db31bdb",
+          "status": "full_completed"
+        },
+        {
+          "cycle": 0,
+          "count": 3,
+          "step": 14,
+          "state_hash": "651b6c7a16cd6f113bda36fb3019eb58073670217c2625549a1f1e31a6278657",
+          "status": "full_completed"
+        },
+        {
+          "cycle": 0,
+          "count": 15,
+          "step": 16,
+          "state_hash": "44cd6558e9b8487fe5fa439e4466b7054a390151476588a104a20164ac94b10e",
+          "status": "full_completed"
+        },
+        {
+          "cycle": 0,
+          "count": 14,
+          "step": 18,
+          "state_hash": "00c3623846cde59d55e90efd808529112d447ab94054a5da17f6ba59be61547d",
+          "status": "full_completed"
+        },
+        {
+          "cycle": 0,
+          "count": 12,
+          "step": 20,
+          "state_hash": "1cf2dc34ccc6c37bccf63b8d4ea528d41967cffc7a444f57c1ef369fb1813e5d",
+          "status": "full_completed"
+        },
+        {
+          "cycle": 0,
+          "count": 10,
+          "step": 22,
+          "state_hash": "c3983505cdf1e8eaf77e4f59cbd1ff85278f87f8a4c84ba7b6dcdbfd5dd9031d",
+          "status": "full_completed"
+        },
+        {
+          "cycle": 0,
+          "count": 8,
+          "step": 24,
+          "state_hash": "3cf5856991fbb375f72d731401fa52bf5eee7fa064c6c177a0ac4f4068c527ab",
+          "status": "full_completed"
+        },
+        {
+          "cycle": 0,
+          "count": 6,
+          "step": 26,
+          "state_hash": "82e728384f09b02e2aaea1cca16310c76e1933669968c257f60c6fc5c4606bff",
+          "status": "full_completed"
+        },
+        {
+          "cycle": 0,
+          "count": 4,
+          "step": 28,
+          "state_hash": "c7ec13b61cd4aa2c6b9b0a88bb37e605ef88b857e96accd3472a9195168d39ac",
+          "status": "full_completed"
+        },
+        {
+          "cycle": 0,
+          "count": 2,
+          "step": 30,
+          "state_hash": "b2f17da05f7123e7400f7b8619e9d6e9abcda211542e3810aa079a91b2bf6173",
+          "status": "full_completed"
+        }
+      ],
+      "pending_count": null
+    },
+    "cost_rank_weight": 0.0,
+    "feature_evaluation": "selected candidate only; no unused neural feature overhead",
+    "recommended_cost": 0.02295078925600122,
+    "note": "best_* and gain fields describe penalized search elite; recommendation.json contains only strict-feasible designs"
+  }
+}

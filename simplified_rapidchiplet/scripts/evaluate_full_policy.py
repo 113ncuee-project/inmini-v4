@@ -11,6 +11,7 @@ from run_local_rl_diagnostics import read, write
 from analyze_replay_mapping import ranking_metrics
 from simple_rapidchiplet.hybrid.multi_step_q import MultiStepQ
 from simple_rapidchiplet.hybrid.cost_value_q import CostValueQ
+from simple_rapidchiplet.hybrid.residual_cost_q import ResidualCostQ
 from simple_rapidchiplet.hybrid.full_space import DesignTrial
 
 
@@ -42,8 +43,10 @@ def evaluate(out):
             if not path.exists():
                 continue
             header = torch.load(path, map_location='cpu', weights_only=False)
-            factored = header.get('representation') == CostValueQ.representation
-            model = CostValueQ(x.shape[1], header['after_indices']) if factored else MultiStepQ(x.shape[1])
+            residual = header.get('representation') == ResidualCostQ.representation
+            factored = residual or header.get('representation') == CostValueQ.representation
+            model = (ResidualCostQ(x.shape[1],header['after_indices'],header['local_indices']) if residual else
+                     CostValueQ(x.shape[1], header['after_indices']) if factored else MultiStepQ(x.shape[1]))
             model.load(path)
             prediction = model.predict_reward(x, np.asarray([r['before_cost'] for r in controls])) if factored else model.predict_reward(x)
             result[label] = ranking_metrics(prediction, y)

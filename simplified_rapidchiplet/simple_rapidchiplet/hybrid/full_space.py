@@ -129,6 +129,21 @@ class FullDesignSpace:
             result.extend(range(start + len(SERVICE_NAMES), start + 2*len(SERVICE_NAMES)))
         return tuple(result)
 
+    @property
+    def residual_local_indices(self):
+        """Before PPA/context, explicit edit and observed target evidence.
+
+        Index construction respects boundary on/off and optional service
+        descriptors; no measured after-PPA enters a policy input.
+        """
+        prefix = 6+len(FAMILIES)
+        local = prefix+3*34
+        indices = [*range(prefix), *range(prefix+2*34,prefix+3*34), *range(local,local+15)]
+        if self.boundary_features:
+            offset = local+15+len(self.boundaries.names)
+            indices.extend(range(offset,offset+len(OBSERVED_NAMES)))
+        return tuple(indices)
+
     def domain(self):
         return dict(version=self.version, architectures=[c.to_dict() for c in self.candidates.values()],
             active_operator_scope=self.operators,

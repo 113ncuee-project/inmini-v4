@@ -1,0 +1,16 @@
+{
+  "source_identity": "b771758cbeba3788922270f05e4eb9f459b7336c0031f88e775151b45a1d89b4",
+  "source_files": 218,
+  "created_utc": "2026-11-05T01:02:20.337450+00:00",
+  "QA": "actual204 regression + explicit unchanged-source serialCLI reuse + actualGUI8Toy + actualparallel/serial/resume",
+  "DNN_status_at_export": {
+    "status": "running",
+    "stage": "development/residual/7",
+    "source_identity": "b771758cbeba3788922270f05e4eb9f459b7336c0031f88e775151b45a1d89b4"
+  },
+  "new_PPA_by_export": 0,
+  "new_SGD_by_export": 0,
+  "images": 0,
+  "exclusions": "private teammate files, images, optimizer/replay/RNG and active DNN partial results",
+  "scope": "functional release; new DNN selection/confirmation remains research, not a proved win"
+}

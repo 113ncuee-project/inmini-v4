@@ -32,7 +32,7 @@ CUSTOM_WORKLOAD
 <label>架構共同篩選 <select name="architecture_screen"><option value="all">全部 50 種</option><option value="off">僅在搜尋時切換架構</option></select></label><br>
 <label>DAG 資料邊界特徵 <select name="boundary_features"><option value="on">開啟</option><option value="off">關閉（消融）</option></select></label>
 <label>整組 PE 配額投影 <select name="resource_projection"><option value="on">開啟</option><option value="off">關閉（消融）</option></select></label><br>
-<label>RL 成本表示 <select name="cost_value_q"><option value="on">起點校正多步Q</option><option value="off">原多步Q（對照）</option></select></label>
+<label>RL 成本表示 <select name="cost_value_q"><option value="on">起點校正多步Q</option><option value="residual">固定先驗＋線上修正Q（實驗）</option><option value="off">原多步Q（對照）</option></select></label>
 <label>架構切換配額 <select name="architecture_scaling"><option value="proportional">按原使用比例配置</option><option value="legacy">舊版全部PE配置</option></select></label><br>
 <label>Episode 容許 Cost 惡化比例（空白停用） <input name="episode_cost_rise" type="number" step="0.05" min="0" value="0.25"></label>
 <label>惡化後重啟機率 <input name="episode_restart_probability" type="number" step="0.05" min="0" max="1" value="0.9"></label><br>
@@ -186,10 +186,12 @@ def main():
                     command += ['--seed-refinement', refinement]
                     cost_value_q = data.get('cost_value_q', 'off')
                     scaling = data.get('architecture_scaling', 'proportional')
-                    if cost_value_q not in ('on', 'off') or scaling not in ('legacy', 'proportional'):
+                    if cost_value_q not in ('on', 'off','residual') or scaling not in ('legacy', 'proportional'):
                         raise ValueError('unknown RL cost representation/architecture quota setting')
-                    if cost_value_q == 'on':
+                    if cost_value_q in ('on','residual'):
                         command += ['--cost-value-q']
+                    if cost_value_q == 'residual':
+                        command += ['--residual-cost-q']
                     command += ['--architecture-scaling', scaling]
                     refresh_interval=int(data.get('architecture_refresh_interval','0'))
                     if refresh_interval < 0:

@@ -14,6 +14,7 @@ def main():
     p.add_argument('--seed-case', required=True)
     p.add_argument('--out', required=True)
     p.add_argument('--cost-value-q', action='store_true')
+    p.add_argument('--residual-cost-q',action='store_true')
     p.add_argument('--episode-cost-rise',type=float)
     p.add_argument('--architecture-refresh-interval',type=int,default=0)
     p.add_argument('--service-features',action='store_true')
@@ -26,6 +27,8 @@ def main():
     script = APP / 'full_system_dse.py'
     start = time.perf_counter()
     def configured(arguments):
+        if args.residual_cost_q and '--resume' not in arguments and '--residual-cost-q' not in arguments:
+            arguments = [*arguments,'--residual-cost-q']
         if args.cost_value_q and '--resume' not in arguments and '--cost-value-q' not in arguments:
             arguments = [*arguments, '--cost-value-q']
         if args.episode_cost_rise is not None and '--resume' not in arguments and '--episode-cost-rise' not in arguments:
@@ -196,7 +199,8 @@ def main():
         import torch
         checkpoint = read(full / 'rl/checkpoint.json')
         trained = torch.load(full / 'rl' / checkpoint['policy_file'], map_location='cpu', weights_only=False)
-        if trained.get('representation') != 'physical_cost_factored_double_q_v1' or not trained['cost_replay']:
+        representation = 'frozen_prior_residual_normalized_continuation_q_v2' if args.residual_cost_q else 'physical_cost_factored_double_q_v1'
+        if trained.get('representation') != representation or not trained['cost_replay']:
             raise AssertionError('CLI did not train the declared physical cost representation')
         nonterminal_source='full'
         if not any(not row[3] for row in trained['replay']):
@@ -213,7 +217,22 @@ def main():
             if not any(not row[3] for row in data['replay']) or not analyze(continuation)['passed']:
                 raise AssertionError('explicit actual CLI failed to exercise nonterminal Bellman continuation')
             nonterminal_source='physical_continuation: measured reset probability0, same real oracle'
+        if args.residual_cost_q:
+            shared = torch.load(full/'rl/policy_after_shared.pt',map_location='cpu',weights_only=False)
+            for key in shared['model']:
+                if key.startswith('value.'):
+                    torch.testing.assert_close(shared['model'][key],trained['model'][key],rtol=0,atol=0)
+            if not trained['residual']['fit_count']:
+                adaptation=out/'physical_residual_adaptation'
+                run(['--seed-case',str(Path(args.seed_case).resolve()),'--out',adaptation,
+                     '--queries','22','--seconds','120','--architecture-screen','off','--seed-refinement','off',
+                     '--methods','rl','--warmup','0','--horizon','8','--replay-updates','4'])
+                cp=read(adaptation/'rl/checkpoint.json')
+                fitted=torch.load(adaptation/'rl'/cp['policy_file'],map_location='cpu',weights_only=False)
+                if not fitted['residual']['fit_count'] or not analyze(adaptation)['passed']:
+                    raise AssertionError('actual CLI never fit residuals from completed PPA')
     write(out / 'result.json', dict(passed=True, cost_value_q=args.cost_value_q, episode_cost_rise=args.episode_cost_rise,
+        residual_cost_q=args.residual_cost_q,
         architecture_refresh_interval=args.architecture_refresh_interval,service_features=args.service_features,
         cost_rank_weight=args.cost_rank_weight,nonterminal_source=nonterminal_source if args.cost_value_q else None,
         elapsed_s=time.perf_counter() - start,

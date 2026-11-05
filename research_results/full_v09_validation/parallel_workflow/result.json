@@ -1,0 +1,14 @@
+{
+  "passed": true,
+  "source_stable": true,
+  "actual_parallel_complete_PPA_intervals": true,
+  "observed_worker_completions": 180,
+  "serial_trajectory_cost_reward_exact": true,
+  "resume_trajectory_exact": true,
+  "duplicate_invocation_preserves_active_owner": true,
+  "completed_resume_new_PPA": 0,
+  "elapsed_s": 276.18815990001895,
+  "images": 0,
+  "scope": "actual Toy PPA only; not DNN speedup or policy efficacy",
+  "created_utc": "2026-11-05T00:53:13.264585+00:00"
+}
