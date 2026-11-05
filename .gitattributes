@@ -34,3 +34,7 @@ research_tools/replay_residual_development.py -text
 research_tools/analyze_residual_learning.py -text
 
 research_tools/report_residual_development.py -text
+
+research_results/full_v10_preferences/** -text
+
+research_results/full_v09_development_controls/** -text

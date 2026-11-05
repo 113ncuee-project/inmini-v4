@@ -1,0 +1,83 @@
+{
+  "passed": true,
+  "source_identity": "f434af44f03a95d0860f4f8ebfa94e248548f98a090613d952fe74884cf7b5f5",
+  "source_files": 220,
+  "physical_files_unchanged": 78,
+  "learners_and_full_space_unchanged": true,
+  "rows": [
+    {
+      "case": "balanced",
+      "preference": "balanced",
+      "new_actual_Toy_PPA": 32,
+      "methods": [
+        "rl",
+        "sa",
+        "random"
+      ],
+      "SGD": 80,
+      "audited": true
+    },
+    {
+      "case": "low_latency",
+      "preference": "low_latency",
+      "new_actual_Toy_PPA": 32,
+      "methods": [
+        "rl",
+        "sa",
+        "random"
+      ],
+      "SGD": 80,
+      "audited": true
+    },
+    {
+      "case": "low_power",
+      "preference": "low_power",
+      "new_actual_Toy_PPA": 34,
+      "methods": [
+        "rl",
+        "sa",
+        "random"
+      ],
+      "SGD": 88,
+      "audited": true
+    },
+    {
+      "case": "power_resume_reference",
+      "preference": "low_power",
+      "new_actual_Toy_PPA": 20,
+      "methods": [
+        "rl"
+      ],
+      "SGD": 152,
+      "audited": true
+    },
+    {
+      "case": "power_resumed",
+      "preference": "low_power",
+      "new_actual_Toy_PPA": 20,
+      "methods": [
+        "rl"
+      ],
+      "SGD": 152,
+      "audited": true
+    },
+    {
+      "case": "small_area",
+      "preference": "small_area",
+      "new_actual_Toy_PPA": 32,
+      "methods": [
+        "rl",
+        "sa",
+        "random"
+      ],
+      "SGD": 80,
+      "audited": true
+    }
+  ],
+  "actual_child_CLI_Toy_PPA": 170,
+  "actual_child_CLI_SGD": 632,
+  "new_DNN_PPA": 0,
+  "new_SGD_by_receipt": 0,
+  "images": 0,
+  "scope": "Real internal child-CLI integration; not new parent/cohort workflow. Complete historical b771 workflow retained with original source/time labels."
+}

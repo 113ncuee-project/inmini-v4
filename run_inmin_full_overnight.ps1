@@ -8,7 +8,7 @@ param(
     [ValidateRange(1,86400)][int]$EvaluationTimeout = 600,
     [ValidateRange(1,86400)][int]$ScreenSeconds = 3600,
     [ValidateRange(2,256)][int]$FusionDepth = 4,
-    [ValidateSet('balanced','edp','latency','energy')][string]$Objective = 'edp',
+    [ValidateSet('balanced','edp','latency','energy','low_latency','low_power','small_area')][string]$Objective = 'edp',
     [ValidateSet('all','off')][string]$ArchitectureScreen = 'all',
     [ValidateRange(0,1000000)][int]$ArchitectureRefreshInterval = 4,
     [ValidateSet('wide','off')][string]$SeedRefinement = 'wide',

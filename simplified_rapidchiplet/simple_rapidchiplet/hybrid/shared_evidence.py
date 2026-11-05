@@ -69,6 +69,17 @@ def import_shared(donor, out, current_files, seed_manifest, config):
     for key in ('objective', 'max_area', 'max_power', 'max_latency_ms', 'fixed_architecture', 'architecture_screen'):
         if previous.get(key) != getattr(config, key, None):
             raise ValueError('shared history protocol mismatch: ' + key)
+    from ppa_preferences import LEGACY_OBJECTIVES,objective_contract
+    descriptor=donor/'objective.json'
+    if descriptor.exists():
+        prior_contract=_read(descriptor)['contract']
+    elif previous['objective'] in LEGACY_OBJECTIVES:
+        # These four formulas/weights are retained exactly from full v0.9.
+        prior_contract=objective_contract(previous['objective'])
+    else:
+        raise ValueError('shared PPA preference requires its versioned objective descriptor')
+    if prior_contract!=objective_contract(config.objective):
+        raise ValueError('shared history user PPA preference formula/weights mismatch')
     common = _read(donor / 'common.json')
     screen = _read(donor / 'screening.json') if (donor / 'screening.json').exists() else dict(rows=[], full_ppa=0, wall_s=0., completed=False)
     if config.architecture_screen == 'all' and (not screen['completed'] or not screen['complete_domain_attempted']):
@@ -91,6 +102,10 @@ def import_shared(donor, out, current_files, seed_manifest, config):
         else:
             shutil.copyfile(donor / name, target)
         copied[name] = _digest(target)
+    if descriptor.exists():
+        target=history/'objective.json'
+        shutil.copyfile(descriptor,target)
+        copied['objective.json']=_digest(target)
     for name in ('common.json', 'screening.json'):
         shutil.copyfile(history / name, out / name)
     return dict(donor=str(donor), donor_source_identity=source['identity'], data_hashes=copied,

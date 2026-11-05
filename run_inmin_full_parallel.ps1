@@ -9,7 +9,7 @@ param(
     [ValidateRange(1,604800)][double]$Seconds = 7200,
     [ValidateRange(1,86400)][double]$EvalTimeout = 600,
     [ValidateSet('cost','residual','transition')][string]$Policy = 'cost',
-    [ValidateSet('edp','energy','latency','balanced')][string]$Objective = 'edp',
+    [ValidateSet('edp','energy','latency','balanced','low_latency','low_power','small_area')][string]$Objective = 'edp',
     [ValidateSet('all','off')][string]$ArchitectureScreen = 'all',
     [ValidateSet('wide','off')][string]$SeedRefinement = 'wide',
     [double]$ScreenSeconds = 3600,

@@ -1,0 +1,55 @@
+{
+  "passed": true,
+  "parallel_presets": [
+    {
+      "objective": "balanced",
+      "actual_PS_returncode": 0,
+      "new_PPA": 0,
+      "new_SGD": 0
+    },
+    {
+      "objective": "low_latency",
+      "actual_PS_returncode": 0,
+      "new_PPA": 0,
+      "new_SGD": 0
+    },
+    {
+      "objective": "low_power",
+      "actual_PS_returncode": 0,
+      "new_PPA": 0,
+      "new_SGD": 0
+    },
+    {
+      "objective": "small_area",
+      "actual_PS_returncode": 0,
+      "new_PPA": 0,
+      "new_SGD": 0
+    },
+    {
+      "objective": "edp",
+      "actual_PS_returncode": 0,
+      "new_PPA": 0,
+      "new_SGD": 0
+    },
+    {
+      "objective": "latency",
+      "actual_PS_returncode": 0,
+      "new_PPA": 0,
+      "new_SGD": 0
+    },
+    {
+      "objective": "energy",
+      "actual_PS_returncode": 0,
+      "new_PPA": 0,
+      "new_SGD": 0
+    }
+  ],
+  "serial_low_power_passed": true,
+  "hashes": {
+    "run_inmin_full_parallel.ps1": "6a33dd65bcab9316040cc0599c216989e9c74d13c1d683899215a8498311047c",
+    "run_inmin_full_overnight.ps1": "d628fea230efa22aca47b37217030b5ca247bc1a37f560d016f958707852046e"
+  },
+  "new_PPA": 0,
+  "new_SGD": 0,
+  "images": 0
+}

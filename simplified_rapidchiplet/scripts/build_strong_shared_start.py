@@ -21,6 +21,7 @@ from simple_rapidchiplet.hybrid.full_space import DesignTrial
 from simple_rapidchiplet.hybrid.rl_schema import stable_hash
 from simple_rapidchiplet.hybrid.shared_evidence import verify_physical_sources
 from profile_mapping_oracle import load_workload
+from ppa_preferences import run_objective_context,verify_objective_context
 
 
 def build(original, baseline, out, seeds=(7, 17), baseline_wall_s=None, model_id='resnet18'):
@@ -39,6 +40,9 @@ def build(original, baseline, out, seeds=(7, 17), baseline_wall_s=None, model_id
     if original_config.get('architecture_screen') == 'all' and not base_screen['completed']:
         raise ValueError('bounded architecture-screen phase must finish before refining its shared start')
     objective = SimpleNamespace(**original_config)
+    objective_context=run_objective_context(objective,common['reference'])
+    if (original/'objective.json').exists():
+        verify_objective_context(read(original/'objective.json'),objective_context)
     results = read(baseline / 'summary.json')
     if not results or not results['source_stable']:
         raise ValueError('stronger DP comparison did not complete with stable sources')
@@ -112,6 +116,7 @@ def build(original, baseline, out, seeds=(7, 17), baseline_wall_s=None, model_id
         config = dict(original_config)
         config.update(seed=seed, seed_case=str(folder / 'seed_input_snapshot'), out=str(folder))
         write(folder / 'effective_config.json', config)
+        write(folder/'objective.json',objective_context)
         write(folder / 'screening.json', screen)
         write(folder / 'status.json', dict(status='completed', phase='shared_presearch_only', return_code=0))
         write(folder / 'shared_origin.json', dict(original=str(original), baseline=str(baseline),

@@ -1,0 +1,23 @@
+{
+  "source_identity": "f434af44f03a95d0860f4f8ebfa94e248548f98a090613d952fe74884cf7b5f5",
+  "source_files": 220,
+  "images": 0,
+  "new_PPA_by_package": 0,
+  "new_SGD_by_package": 0,
+  "actual_functional_child_CLI_Toy_PPA": 170,
+  "actual_functional_child_CLI_SGD": 632,
+  "code": {
+    "path": "C:\\Users\\user\\Desktop\\rapidchiplet\\output\\uploads\\INMIN_Full_Code_20261105_v10_preferences_r1.zip",
+    "bytes": 2482963,
+    "files": 327,
+    "sha256": "e86f08ade3c9f2c7d078147bc182d43dde28da65d66044212529b9b9e0edde26",
+    "crc_and_sha_verified": true
+  },
+  "evidence": {
+    "path": "C:\\Users\\user\\Desktop\\rapidchiplet\\output\\uploads\\INMIN_Full_Evidence_20261105_v10_preferences_r1.zip",
+    "bytes": 6277018,
+    "files": 200,
+    "sha256": "176f7dd91a38190ac7d1e3ccbc35185fe36ebf14c81920358ba6ee6a30345aff",
+    "crc_and_sha_verified": true
+  }
+}

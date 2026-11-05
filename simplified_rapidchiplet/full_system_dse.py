@@ -25,6 +25,7 @@ from run_local_rl_diagnostics import read, write, sources, sha, lock, environmen
 from profile_mapping_oracle import load_workload
 from full_cohort import admission
 from replay_mapping_dse import compact, cost, append
+from ppa_preferences import OBJECTIVES, PPA_WEIGHTS, run_objective_context,resolve_target,verify_objective_context
 from simple_rapidchiplet.hybrid.full_space import FullDesignSpace, DesignTrial, decision_hash
 from simple_rapidchiplet.hybrid.multi_step_q import MultiStepQ
 from simple_rapidchiplet.hybrid.cost_value_q import CostValueQ
@@ -63,6 +64,12 @@ def execute(args):
     manifest = read(out / 'source_snapshot_manifest.json')
     if sources(APP) != manifest['files']:
         raise ValueError('frozen source hash mismatch')
+    old_common=read(out/'common.json')
+    objective_context=run_objective_context(args,old_common['reference'] if old_common else None)
+    prior_objective=read(out/'objective.json')
+    if prior_objective:
+        verify_objective_context(prior_objective,objective_context,allow_reference_upgrade=True)
+    write(out/'objective.json',objective_context)
     for name, digest in read(out / 'seed_input_manifest.json')['files'].items():
         if hashlib.sha256((case / name).read_bytes()).hexdigest() != digest:
             raise ValueError('seed input changed: ' + name)
@@ -120,6 +127,8 @@ def execute(args):
         finally:
             pool.close()
     initial, reference = DesignState.from_dict(common['initial_state']), common['reference']
+    objective_context=run_objective_context(args,reference)
+    write(out/'objective.json',objective_context)
     initial_metrics, seed_cost = common['metrics'], common['seed_cost']
     space = FullDesignSpace(workload, architectures, shortlist=args.shortlist, max_depth=args.max_fusion_depth,
                            inner=not args.no_inner, composites=not args.no_composites,
@@ -245,6 +254,8 @@ def execute(args):
         folder = out / method
         folder.mkdir(exist_ok=True)
         saved = read(folder / 'checkpoint.json', {})
+        if saved:
+            verify_objective_context(saved.get('objective_context',{}),objective_context)
         current = DesignState.from_dict(saved['current']) if saved else start_state
         current_m = saved.get('current_metrics', start_m)
         elite = DesignState.from_dict(saved['elite']) if saved else start_state
@@ -334,7 +345,8 @@ def execute(args):
                 temporary.replace(target)
                 history = [name, *policy_history]
                 obsolete, policy_history = history[2:], history[:2]
-            write(folder / 'checkpoint.json', dict(version=1, status=status, current=current.to_dict(), current_metrics=current_m,
+            write(folder / 'checkpoint.json', dict(version=1, status=status, objective_context=objective_context,
+                current=current.to_dict(), current_metrics=current_m,
                 elite=elite.to_dict(), elite_metrics=elite_m, elite_cost=elite_cost, visited=sorted(visited), steps=steps,
                 epoch_steps=epoch_steps, episode=episode, rng=rng.getstate(), accept_rng=accept_rng.getstate(),
                 generator_calls=space.calls, elapsed_s=elapsed + time.perf_counter() - started, policy_file=name,
@@ -350,7 +362,8 @@ def execute(args):
                     (folder / old).unlink(missing_ok=True)
             write(folder / 'recommendation.json', dict(state=feasible_state.to_dict() if feasible_state else None,
                 metrics=feasible_m, cost=feasible_cost, strict_feasible=feasible_state is not None,
-                closest=dict(state=elite.to_dict(), metrics=elite_m, penalized_cost=elite_cost), source_identity=manifest['identity']))
+                closest=dict(state=elite.to_dict(), metrics=elite_m, penalized_cost=elite_cost), source_identity=manifest['identity'],
+                objective_context=objective_context))
 
         stop_reason = 'full_query_budget_exhausted'
         try:
@@ -537,7 +550,7 @@ def execute(args):
             latency_improvement_pct=100 * (1 - elite_m['latency_s'] / initial_metrics['latency_s']),
             energy_improvement_pct=100 * (1 - elite_m['energy_j'] / initial_metrics['energy_j']),
             area_improvement_pct=100 * (1 - elite_m['area_mm2'] / initial_metrics['area_mm2']),
-            objective=args.objective, gamma=args.gamma, domain=space.version)
+            objective=args.objective, objective_context=objective_context, gamma=args.gamma, domain=space.version)
         summary['strict_feasible'] = feasible_state is not None
         summary['algorithm'] = ('uniform_horizon_control' if args.uniform_policy else
             'frozen_shared_q_control' if args.freeze_search_policy and not args.no_shared_warmstart else
@@ -597,7 +610,8 @@ def main():
     p.add_argument('--sa-temperature', type=float, default=.08)
     p.add_argument('--sa-temperature-reference', choices=('seed', 'shared'), default='seed')
     p.add_argument('--max-fusion-depth', type=int, default=4)
-    p.add_argument('--objective', choices=('balanced', 'edp', 'latency', 'energy'), default='edp')
+    p.add_argument('--objective', choices=OBJECTIVES)
+    p.add_argument('--preference', choices=tuple(PPA_WEIGHTS),help='V3 user PPA preset; alias of the corresponding objective')
     p.add_argument('--max-power', type=float)
     p.add_argument('--max-area', type=float)
     p.add_argument('--max-latency-ms', type=float)
@@ -638,6 +652,9 @@ def main():
     p.add_argument('--ppa-slot',type=int,default=0,help=argparse.SUPPRESS)
     p.add_argument('--frozen-child', action='store_true', help=argparse.SUPPRESS)
     args = p.parse_args()
+    requested_objective=args.preference or args.objective
+    try:args.objective=resolve_target(args.objective,args.preference)
+    except ValueError as error:p.error(str(error))
     if args.residual_cost_q and not args.cost_value_q:
         p.error('residual-cost-q requires cost-value-q')
     if args.no_residual_correction and not args.residual_cost_q:
@@ -683,6 +700,8 @@ def main():
             saved = read(out / 'effective_config.json')
             if not saved:
                 raise ValueError('no saved experiment to resume')
+            if requested_objective and requested_objective!=saved['objective']:
+                raise ValueError('Resume preserves the original PPA preference; use a new experiment to change it')
             for k, v in saved.items():
                 setattr(args, k, v)
             args.resume = True

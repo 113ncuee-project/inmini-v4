@@ -1,0 +1,16 @@
+{
+  "q": {
+    "budget": 156,
+    "original9ee_EDP": 0.04301301442480798,
+    "residual_EDP": 0.0403914110103346,
+    "improvement_pct": 6.094907435646634
+  },
+  "seconds": {
+    "budget": 4032.35629969975,
+    "original9ee_EDP": 0.04301301442480798,
+    "residual_EDP": 0.03785854283952569,
+    "improvement_pct": 11.983516278062634
+  },
+  "selected": true,
+  "new_PPA_by_analysis": 0
+}

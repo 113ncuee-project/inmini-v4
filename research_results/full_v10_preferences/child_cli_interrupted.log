@@ -1,0 +1,4 @@
+{"method": "rl", "step": 1, "full_ppa": 2, "gain_vs_seed_pct": 0.0, "architecture": "single_array_c1_1x1", "fusion_depth": 0, "policy_updates": 0, "last_status": "full_completed"}
+{"method": "rl", "step": 2, "full_ppa": 3, "gain_vs_seed_pct": 0.0, "architecture": "single_array_c1_1x1", "fusion_depth": 0, "policy_updates": 8, "last_status": "full_completed"}
+{"method": "rl", "step": 3, "full_ppa": 4, "gain_vs_seed_pct": 0.5606655285151585, "architecture": "single_array_c1_1x1", "fusion_depth": 0, "policy_updates": 16, "last_status": "full_completed"}
+{"method": "rl", "step": 4, "full_ppa": 5, "gain_vs_seed_pct": 0.5606655285151585, "architecture": "single_array_c1_1x1", "fusion_depth": 0, "policy_updates": 24, "last_status": "full_completed"}

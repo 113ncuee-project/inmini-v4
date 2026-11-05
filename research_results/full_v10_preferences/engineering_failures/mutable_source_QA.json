@@ -1,0 +1,16 @@
+{
+  "tests": 210,
+  "failures": 0,
+  "errors": 0,
+  "elapsed_s": 92.31199999991804,
+  "passed": false,
+  "source_stable": false,
+  "observed_utc": "2026-11-05T02:47:59.566685+00:00",
+  "cause": "Agent edited mutable prototype during the first acceptance invocation. All210individual tests passed, but source-stability receipt correctly failed. This is NOT an accepted version.",
+  "changed_files": [
+    "full_system_dse.py",
+    "scripts\\analyze_full_system.py",
+    "scripts\\run_parallel_full_suite.py"
+  ],
+  "action": "Freeze completed implementation and rerun complete suite; preserve original result/log."
+}

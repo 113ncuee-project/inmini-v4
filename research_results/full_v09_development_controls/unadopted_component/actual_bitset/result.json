@@ -1,0 +1,39 @@
+{
+  "passed": true,
+  "finished_utc": "2026-11-05T02:00:29.958327+00:00",
+  "source_identity": "b771758cbeba3788922270f05e4eb9f459b7336c0031f88e775151b45a1d89b4",
+  "paid_design": "single_array_c14_2x7",
+  "unit_count": 23552,
+  "demands": 6214784,
+  "groups": 24168,
+  "max_group_demands": 2560,
+  "single_member_groups": 12544,
+  "compile": {
+    "wall_s": 64.07148759998381,
+    "cpu_s": 54.125
+  },
+  "profiled_build_before_atoms": {
+    "wall_s": 271.05454350006767,
+    "cpu_s": 231.25,
+    "profile_overhead": true
+  },
+  "atomic_component": {
+    "original": {
+      "wall_s": 109.05585250002332,
+      "cpu_s": 96.75,
+      "atoms": 112474
+    },
+    "bitset": {
+      "wall_s": 103.2191759000998,
+      "cpu_s": 92.578125,
+      "atoms": 112474
+    }
+  },
+  "exact_ordered_outputs_identical": true,
+  "component_wall_ratio": 1.0565464367354813,
+  "component_CPU_ratio": 1.0450632911392406,
+  "new_PPA": 0,
+  "new_SGD": 0,
+  "adopted": false,
+  "scope": "Compiler+communication component on one already paid DNN design; all exact atom outputs equal. Profiled builder includes instrumentation overhead. No schedule/capacity/energy/PPA or end-to-end DSE acceleration was evaluated. Frozen/live engines unchanged."
+}

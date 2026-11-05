@@ -35,6 +35,8 @@ def _refine_start_impl(out, args, prior_elapsed=0., call_start=None):
         for name in ('common.json', 'screening.json', 'shared_start.json', 'source_snapshot_manifest.json',
                      'seed_input_manifest.json', 'effective_config.json', 'environment.json'):
             shutil.copyfile(out / name, backup / name)
+        if (out/'objective.json').exists():
+            shutil.copyfile(out/'objective.json',backup/'objective.json')
         for name in ('source_snapshot', 'seed_input_snapshot'):
             shutil.copytree(out / name, backup / name, dirs_exist_ok=True)
         write(backup / 'captured.json', dict(scope='immutable before wider-start refinement; copied inputs/source/common observations, zero new PPA'))

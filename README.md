@@ -1,6 +1,6 @@
 # INMIN：完整 chiplet／mapping 設計空間的本機 RL 搜尋
 
-目前程式為 **Full v0.9**，包含原 v3 的有效搜尋變數：1–16 顆 Compute、50 種矩形布局、Layer Group、整數 B/K/H/W 切分、PE 份額／排序、DRAM Flow、Fusion／Tile／Cache，以及三種已定價的片內 Dataflow。
+目前程式為 **Full v0.10**，包含原 v3 的有效搜尋變數：1–16 顆 Compute、50 種矩形布局、Layer Group、整數 B/K/H/W 切分、PE 份額／排序、DRAM Flow、Fusion／Tile／Cache，以及三種已定價的片內 Dataflow。四種原V3使用者PPA偏好已接回同一搜尋引擎，EDP保留為研究目標。
 
 使用完整 compiler、通訊、資源排程、buffer lifetime 與能量模型評估候選；結果為解析 PPA。長時間搜尋由本機 Python 執行，可停止、續跑及保留已學到的 policy。報告使用文字、JSON 和數字表格。
 
@@ -8,7 +8,8 @@
 |---|---|
 |[完整操作與設計空間](docs/INMIN_FULL_SYSTEM_GUIDE.md)|安裝、GUI、長跑、停止／續跑、延長預算|
 |[組員閱讀入口](docs/INMIN_TEAM_README.md)|程式地圖、實驗流程與論文結果判讀|
-|[目前驗證報告](docs/INMIN_FULL_SYSTEM_VALIDATION.md)|204項回歸、明記來源的CLI驗收、實際GUI／並行與精確續跑|
+|[目前驗證報告](docs/INMIN_FULL_SYSTEM_VALIDATION.md)|210項回歸、四偏好實際child-CLI、精確續跑及GUI/API檢查|
+|[使用者PPA偏好](docs/INMIN_USER_PPA_PREFERENCES.md)|均衡／低延遲／低功率／小面積權重、固定reference、硬上限與policy隔離|
 |[搜尋技術與實驗協定](docs/INMIN_GRAPH_EDIT_DEVELOPMENT.md)|Q學習、張量邊界／PE指派特徵、資源守恆DP與公平對照|
 |[新版分層探索與實驗進度](docs/INMIN_STRATIFIED_SEARCH.md)|完整V3空間、成本拆分Q、架構探索修正與待完成對照|
 |[學習器修正與完整空間](docs/INMIN_RESIDUAL_RL_DESIGN.md)|固定共享先驗、自己量測殘差、normalized多步Q與因果控制|
@@ -42,6 +43,8 @@ py -3.12 -m venv .venv
 
 GUI的RL成本表示選「固定先驗＋線上修正Q（實驗）」。指令列的新選項是 `--cost-value-q --residual-cost-q`；未指定的新舊介面預設值保留相容性。
 
+GUI的PPA偏好可選 `balanced`、`low_latency`、`low_power`、`small_area`。CLI用 `--preference low_power`，多種子wrapper用 `-Objective low_power`；不同偏好請分別開輸出目錄。CLI為舊研究腳本保留預設EDP；GUI預設Balanced。每個實驗的偏好、reference與硬限制固定，不能續跑時改標籤。詳見[偏好契約](docs/INMIN_USER_PPA_PREFERENCES.md)。
+
 ```powershell
 .\run_inmin_full_parallel.ps1 -Out output/r18_residual_long -Models resnet18 -Seeds "7,37,47" -Jobs 3 -Policy residual -Queries 612 -Seconds 7200 -ScreenSeconds 14400 -SeedSeconds 7200 -SeedDPSeconds 3600 -EvalTimeout 600
 ```
@@ -57,7 +60,9 @@ GUI的RL成本表示選「固定先驗＋線上修正Q（實驗）」。指令�
 
 ## 結果應如何判讀
 
-v0.9修復了部分種子多步價值分支近常數、共享暖身造成空Adam更新的問題，並以自己的完整PPA觀察修正共享成本先驗。第一組已審計ResNet18開發結果：新RL在共同強起點後降低26.48% EDP，較舊RL在相同查詢下改善6.09%、相同時間下改善11.98%；但舊Random7仍更好。新消融與fresh RNG確認尚未完成，不能宣稱穩定勝過Random／SA。
+v0.9修復了部分種子多步價值分支近常數、共享暖身造成空Adam更新的問題，並以自己的完整PPA觀察修正共享成本先驗。第一組已審計ResNet18開發結果：新RL在共同強起點後降低26.48% EDP，較舊RL在相同查詢下改善6.09%、相同時間下改善11.98%；但舊Random7仍更好。fresh RNG確認尚未完成，不能宣稱穩定勝過Random／SA。
+
+兩個開發消融已完成：主臂同query比gamma0好13.80%，但比無殘差版本差4.74%；同time只比無殘差好1.83%。這些結果保留，fresh197／207／217確認仍執行中。全部長跑選EDP，並未證明其他PPA偏好的搜尋優勢；相對共同強起點，新最佳解面積增加50%、能量增加2.84%，不能把26.48% EDP改善寫成全面PPA改善。
 
 [完成主臂的原始證據與推論模型](research_results/full_v09_development/README.md)提供0新增PPA／SGD的重現方式，包含固定同一起點的細部成本排序，以及最佳控制方案預測名次退步的結果：
 

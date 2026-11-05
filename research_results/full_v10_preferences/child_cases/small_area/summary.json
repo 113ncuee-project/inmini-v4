@@ -1,0 +1,585 @@
+{
+  "rl": {
+    "method": "rl",
+    "status": "full_query_budget_exhausted",
+    "common_full_ppa": 2,
+    "search_full_ppa": 10,
+    "full_ppa": 12,
+    "seed_cost": 0.9918359045983905,
+    "best_cost": 0.9751498196472886,
+    "gain_vs_seed_pct": 1.682343306361589,
+    "best": {
+      "feasible": true,
+      "latency_s": 7.641154296875017e-06,
+      "energy_j": 2.7662845925050134e-06,
+      "power_w": 0.3620244383281638,
+      "area_mm2": 32.39711576470588,
+      "dram_read_bytes": 1700,
+      "dram_write_bytes": 245,
+      "noc_hop_bytes": 11712,
+      "nop_hop_bytes": 5216,
+      "executed_macs": 12250,
+      "recompute_macs": 0,
+      "unit_count": 40,
+      "calendar_backend": "native",
+      "oracle_phase_wall_s": {
+        "compile": 0.0,
+        "communication_and_job_build": 0.0,
+        "schedule": 0.014999999897554517,
+        "capacity_and_metrics": 0.0,
+        "diagnostics": 0.0
+      },
+      "oracle_process_cpu_s": 0.015625
+    },
+    "initial": {
+      "feasible": true,
+      "latency_s": 9.324489257812496e-06,
+      "energy_j": 3.3884309629011964e-06,
+      "power_w": 0.36339051600732014,
+      "area_mm2": 32.39711576470588,
+      "dram_read_bytes": 2020,
+      "dram_write_bytes": 245,
+      "noc_hop_bytes": 16752,
+      "nop_hop_bytes": 6176,
+      "executed_macs": 12250,
+      "recompute_macs": 0,
+      "unit_count": 48,
+      "calendar_backend": "native",
+      "oracle_phase_wall_s": {
+        "compile": 0.0,
+        "communication_and_job_build": 0.01500000013038516,
+        "schedule": 0.0,
+        "capacity_and_metrics": 0.015999999828636646,
+        "diagnostics": 0.0
+      },
+      "oracle_process_cpu_s": 0.03125
+    },
+    "best_step": 3,
+    "best_state_hash": "3316d47e1a60d426cf13716dc23bb0b42167e7b5e2cf5a7741e5a10a57ce6e1f",
+    "best_architecture": "single_array_c1_1x1",
+    "best_fusion_depth": 0,
+    "policy_updates": 80,
+    "search_wall_s": 17.674835399957374,
+    "charged_wall_s": 18.60324509977363,
+    "architecture_coverage": {
+      "single_array_c1_1x1": {
+        "status": "full_evaluated",
+        "feasible": true,
+        "step": 9
+      },
+      "single_array_c16_8x2": {
+        "status": "full_evaluated",
+        "feasible": true,
+        "step": 2
+      },
+      "single_array_c9_3x3": {
+        "status": "full_evaluated",
+        "feasible": true,
+        "step": 4
+      },
+      "single_array_c5_1x5": {
+        "status": "full_evaluated",
+        "feasible": true,
+        "step": 6
+      },
+      "single_array_c13_1x13": {
+        "status": "full_evaluated",
+        "feasible": true,
+        "step": 8
+      },
+      "single_array_c11_1x11": {
+        "status": "full_evaluated",
+        "feasible": true,
+        "step": 10
+      }
+    },
+    "gain_after_shared_screen_pct": 1.682343306361589,
+    "gain_before_rl_pct": 0.0,
+    "latency_improvement_pct": 18.05283822411079,
+    "energy_improvement_pct": 18.360898516388758,
+    "area_improvement_pct": 0.0,
+    "objective": "small_area",
+    "objective_context": {
+      "contract": {
+        "version": "ppa_preference_fixed_reference_v1",
+        "name": "small_area",
+        "weights": {
+          "latency": 0.1,
+          "area": 0.8,
+          "power": 0.1
+        },
+        "formula": "weighted normalized latency/area/average power",
+        "normalization": "fixed common measured reference for every architecture",
+        "power_definition": "modeled average inference power; distinct from energy"
+      },
+      "hard_limits": {
+        "max_area": null,
+        "max_power": null,
+        "max_latency_ms": null
+      },
+      "policy_binding": "one frozen preference and limits per run; change preference in a new experiment",
+      "fixed_reference": {
+        "latency_s": 1.0324394531249994e-05,
+        "area_mm2": 32.39711576470588,
+        "power_w": 0.3579469126736644,
+        "energy_j": 3.6955851476858e-06
+      }
+    },
+    "gamma": 0.9,
+    "domain": "v08_stratified_architecture_full_schema3_1",
+    "strict_feasible": true,
+    "algorithm": "multistep_double_q",
+    "online_policy_updates_enabled": true,
+    "shared_warmstart_enabled": true,
+    "q_representation": "frozen_prior_residual_normalized_continuation_q_v2",
+    "residual_model": {
+      "prior_frozen": true,
+      "prior_warm_SGD": 0,
+      "continuation": "LayerNorm/SiLU; cold Adam during V-only warmup; TD loss in log-cost units",
+      "residual": {
+        "enabled": true,
+        "observations": 10,
+        "fits": 3,
+        "linear_candidates_fitted": 54,
+        "capacity": 128,
+        "selected_basis": "after",
+        "selected_ridge": 0.01,
+        "training_LOO_MSE": 4.98373814882641,
+        "scope": "own measured labels only; training-only LOO, no control labels or added PPA"
+      }
+    },
+    "episode_cost_rise_limit": 0.25,
+    "episode_restart_probability": 0.9,
+    "architecture_refresh": {
+      "interval": 2,
+      "tried": [
+        16,
+        9,
+        5,
+        13,
+        11
+      ],
+      "cycle": 0,
+      "history": [
+        {
+          "cycle": 0,
+          "count": 16,
+          "step": 2,
+          "state_hash": "dc9d74fa1cd15feb8624ccef2fa4dfdfba277f2d5d57ca9b0313f916c8229179",
+          "status": "full_completed"
+        },
+        {
+          "cycle": 0,
+          "count": 9,
+          "step": 4,
+          "state_hash": "0f741eae0502f08ee1e90aae6c2499c3f897f721b09a3c5c71db4609e653c5c2",
+          "status": "full_completed"
+        },
+        {
+          "cycle": 0,
+          "count": 5,
+          "step": 6,
+          "state_hash": "a4705d0283257d8d84b5baf8303bd07674b465874445dc53b235cc0bb1531d6b",
+          "status": "full_completed"
+        },
+        {
+          "cycle": 0,
+          "count": 13,
+          "step": 8,
+          "state_hash": "f760c736dbe6fd9e25cb57d0997acb5cabd02f69f99d1967a51bfa39ead26eb8",
+          "status": "full_completed"
+        },
+        {
+          "cycle": 0,
+          "count": 11,
+          "step": 10,
+          "state_hash": "3fd355e3dca9686f6aceea5d5cf1be949972401733c6be962f1a044b9e216645",
+          "status": "full_completed"
+        }
+      ],
+      "pending_count": null
+    },
+    "cost_rank_weight": 0.0,
+    "feature_evaluation": "all candidates for neural selection/TD",
+    "recommended_cost": 0.9751498196472886,
+    "note": "best_* and gain fields describe penalized search elite; recommendation.json contains only strict-feasible designs"
+  },
+  "sa": {
+    "method": "sa",
+    "status": "full_query_budget_exhausted",
+    "common_full_ppa": 2,
+    "search_full_ppa": 10,
+    "full_ppa": 12,
+    "seed_cost": 0.9918359045983905,
+    "best_cost": 0.939696501610569,
+    "gain_vs_seed_pct": 5.25685778727013,
+    "best": {
+      "feasible": true,
+      "latency_s": 1.6089531249999997e-06,
+      "energy_j": 7.147885046176057e-07,
+      "power_w": 0.44425688574215355,
+      "area_mm2": 32.39711576470588,
+      "dram_read_bytes": 860,
+      "dram_write_bytes": 245,
+      "noc_hop_bytes": 3632,
+      "nop_hop_bytes": 1552,
+      "executed_macs": 12250,
+      "recompute_macs": 0,
+      "unit_count": 4,
+      "calendar_backend": "native",
+      "oracle_phase_wall_s": {
+        "compile": 0.0,
+        "communication_and_job_build": 0.0,
+        "schedule": 0.0,
+        "capacity_and_metrics": 0.0,
+        "diagnostics": 0.0
+      },
+      "oracle_process_cpu_s": 0.015625
+    },
+    "initial": {
+      "feasible": true,
+      "latency_s": 9.324489257812496e-06,
+      "energy_j": 3.3884309629011964e-06,
+      "power_w": 0.36339051600732014,
+      "area_mm2": 32.39711576470588,
+      "dram_read_bytes": 2020,
+      "dram_write_bytes": 245,
+      "noc_hop_bytes": 16752,
+      "nop_hop_bytes": 6176,
+      "executed_macs": 12250,
+      "recompute_macs": 0,
+      "unit_count": 48,
+      "calendar_backend": "native",
+      "oracle_phase_wall_s": {
+        "compile": 0.0,
+        "communication_and_job_build": 0.01500000013038516,
+        "schedule": 0.0,
+        "capacity_and_metrics": 0.015999999828636646,
+        "diagnostics": 0.0
+      },
+      "oracle_process_cpu_s": 0.03125
+    },
+    "best_step": 7,
+    "best_state_hash": "a2e3c3da74a11a5d3a3c14b62807afa52e9d9b59fd4d32933fd4c95740ecd6a0",
+    "best_architecture": "single_array_c1_1x1",
+    "best_fusion_depth": 0,
+    "policy_updates": 0,
+    "search_wall_s": 4.163055799901485,
+    "charged_wall_s": 5.0914622999262065,
+    "architecture_coverage": {
+      "single_array_c1_1x1": {
+        "status": "full_evaluated",
+        "feasible": true,
+        "step": 9
+      },
+      "single_array_c16_8x2": {
+        "status": "full_evaluated",
+        "feasible": true,
+        "step": 2
+      },
+      "single_array_c9_9x1": {
+        "status": "full_evaluated",
+        "feasible": true,
+        "step": 4
+      },
+      "single_array_c5_5x1": {
+        "status": "full_evaluated",
+        "feasible": true,
+        "step": 6
+      },
+      "single_array_c13_13x1": {
+        "status": "full_evaluated",
+        "feasible": true,
+        "step": 8
+      },
+      "single_array_c11_1x11": {
+        "status": "full_evaluated",
+        "feasible": true,
+        "step": 10
+      }
+    },
+    "gain_after_shared_screen_pct": 5.25685778727013,
+    "gain_before_rl_pct": 0.0,
+    "latency_improvement_pct": 82.74486590617343,
+    "energy_improvement_pct": 78.9050297189588,
+    "area_improvement_pct": 0.0,
+    "objective": "small_area",
+    "objective_context": {
+      "contract": {
+        "version": "ppa_preference_fixed_reference_v1",
+        "name": "small_area",
+        "weights": {
+          "latency": 0.1,
+          "area": 0.8,
+          "power": 0.1
+        },
+        "formula": "weighted normalized latency/area/average power",
+        "normalization": "fixed common measured reference for every architecture",
+        "power_definition": "modeled average inference power; distinct from energy"
+      },
+      "hard_limits": {
+        "max_area": null,
+        "max_power": null,
+        "max_latency_ms": null
+      },
+      "policy_binding": "one frozen preference and limits per run; change preference in a new experiment",
+      "fixed_reference": {
+        "latency_s": 1.0324394531249994e-05,
+        "area_mm2": 32.39711576470588,
+        "power_w": 0.3579469126736644,
+        "energy_j": 3.6955851476858e-06
+      }
+    },
+    "gamma": 0.9,
+    "domain": "v08_stratified_architecture_full_schema3_1",
+    "strict_feasible": true,
+    "algorithm": "sa",
+    "online_policy_updates_enabled": false,
+    "shared_warmstart_enabled": false,
+    "q_representation": null,
+    "episode_cost_rise_limit": 0.25,
+    "episode_restart_probability": 0.9,
+    "architecture_refresh": {
+      "interval": 2,
+      "tried": [
+        16,
+        9,
+        5,
+        13,
+        11
+      ],
+      "cycle": 0,
+      "history": [
+        {
+          "cycle": 0,
+          "count": 16,
+          "step": 2,
+          "state_hash": "dc9d74fa1cd15feb8624ccef2fa4dfdfba277f2d5d57ca9b0313f916c8229179",
+          "status": "full_completed"
+        },
+        {
+          "cycle": 0,
+          "count": 9,
+          "step": 4,
+          "state_hash": "4c49eda9eb96b307d235c0fa22a2503b84e12379c1c5630b4d884be15c80e69b",
+          "status": "full_completed"
+        },
+        {
+          "cycle": 0,
+          "count": 5,
+          "step": 6,
+          "state_hash": "b4e6c4fbf7dba05798fbad9570fae2b23c85511781c56c0e335c31fc4f839138",
+          "status": "full_completed"
+        },
+        {
+          "cycle": 0,
+          "count": 13,
+          "step": 8,
+          "state_hash": "10af03c7ec8186b48927cd23adf3fe751d016604f89afc175747ab7e92778b47",
+          "status": "full_completed"
+        },
+        {
+          "cycle": 0,
+          "count": 11,
+          "step": 10,
+          "state_hash": "736e1d87bf90ae83d5df080ff065c8ee8a2b02d18951bcd67a789cd654c6e8c4",
+          "status": "full_completed"
+        }
+      ],
+      "pending_count": null
+    },
+    "cost_rank_weight": 0.0,
+    "feature_evaluation": "selected candidate only; no unused neural feature overhead",
+    "recommended_cost": 0.939696501610569,
+    "note": "best_* and gain fields describe penalized search elite; recommendation.json contains only strict-feasible designs"
+  },
+  "random": {
+    "method": "random",
+    "status": "full_query_budget_exhausted",
+    "common_full_ppa": 2,
+    "search_full_ppa": 10,
+    "full_ppa": 12,
+    "seed_cost": 0.9918359045983905,
+    "best_cost": 0.939696501610569,
+    "gain_vs_seed_pct": 5.25685778727013,
+    "best": {
+      "feasible": true,
+      "latency_s": 1.6089531249999997e-06,
+      "energy_j": 7.147885046176057e-07,
+      "power_w": 0.44425688574215355,
+      "area_mm2": 32.39711576470588,
+      "dram_read_bytes": 860,
+      "dram_write_bytes": 245,
+      "noc_hop_bytes": 3632,
+      "nop_hop_bytes": 1552,
+      "executed_macs": 12250,
+      "recompute_macs": 0,
+      "unit_count": 4,
+      "calendar_backend": "native",
+      "oracle_phase_wall_s": {
+        "compile": 0.014999999897554517,
+        "communication_and_job_build": 0.0,
+        "schedule": 0.0,
+        "capacity_and_metrics": 0.0,
+        "diagnostics": 0.0
+      },
+      "oracle_process_cpu_s": 0.0
+    },
+    "initial": {
+      "feasible": true,
+      "latency_s": 9.324489257812496e-06,
+      "energy_j": 3.3884309629011964e-06,
+      "power_w": 0.36339051600732014,
+      "area_mm2": 32.39711576470588,
+      "dram_read_bytes": 2020,
+      "dram_write_bytes": 245,
+      "noc_hop_bytes": 16752,
+      "nop_hop_bytes": 6176,
+      "executed_macs": 12250,
+      "recompute_macs": 0,
+      "unit_count": 48,
+      "calendar_backend": "native",
+      "oracle_phase_wall_s": {
+        "compile": 0.0,
+        "communication_and_job_build": 0.01500000013038516,
+        "schedule": 0.0,
+        "capacity_and_metrics": 0.015999999828636646,
+        "diagnostics": 0.0
+      },
+      "oracle_process_cpu_s": 0.03125
+    },
+    "best_step": 7,
+    "best_state_hash": "a2e3c3da74a11a5d3a3c14b62807afa52e9d9b59fd4d32933fd4c95740ecd6a0",
+    "best_architecture": "single_array_c1_1x1",
+    "best_fusion_depth": 0,
+    "policy_updates": 0,
+    "search_wall_s": 4.78851730003953,
+    "charged_wall_s": 5.7169224000535905,
+    "architecture_coverage": {
+      "single_array_c1_1x1": {
+        "status": "full_evaluated",
+        "feasible": true,
+        "step": 9
+      },
+      "single_array_c16_8x2": {
+        "status": "full_evaluated",
+        "feasible": true,
+        "step": 2
+      },
+      "single_array_c9_9x1": {
+        "status": "full_evaluated",
+        "feasible": true,
+        "step": 4
+      },
+      "single_array_c5_5x1": {
+        "status": "full_evaluated",
+        "feasible": true,
+        "step": 6
+      },
+      "single_array_c13_13x1": {
+        "status": "full_evaluated",
+        "feasible": true,
+        "step": 8
+      },
+      "single_array_c11_1x11": {
+        "status": "full_evaluated",
+        "feasible": true,
+        "step": 10
+      }
+    },
+    "gain_after_shared_screen_pct": 5.25685778727013,
+    "gain_before_rl_pct": 0.0,
+    "latency_improvement_pct": 82.74486590617343,
+    "energy_improvement_pct": 78.9050297189588,
+    "area_improvement_pct": 0.0,
+    "objective": "small_area",
+    "objective_context": {
+      "contract": {
+        "version": "ppa_preference_fixed_reference_v1",
+        "name": "small_area",
+        "weights": {
+          "latency": 0.1,
+          "area": 0.8,
+          "power": 0.1
+        },
+        "formula": "weighted normalized latency/area/average power",
+        "normalization": "fixed common measured reference for every architecture",
+        "power_definition": "modeled average inference power; distinct from energy"
+      },
+      "hard_limits": {
+        "max_area": null,
+        "max_power": null,
+        "max_latency_ms": null
+      },
+      "policy_binding": "one frozen preference and limits per run; change preference in a new experiment",
+      "fixed_reference": {
+        "latency_s": 1.0324394531249994e-05,
+        "area_mm2": 32.39711576470588,
+        "power_w": 0.3579469126736644,
+        "energy_j": 3.6955851476858e-06
+      }
+    },
+    "gamma": 0.9,
+    "domain": "v08_stratified_architecture_full_schema3_1",
+    "strict_feasible": true,
+    "algorithm": "random",
+    "online_policy_updates_enabled": false,
+    "shared_warmstart_enabled": false,
+    "q_representation": null,
+    "episode_cost_rise_limit": 0.25,
+    "episode_restart_probability": 0.9,
+    "architecture_refresh": {
+      "interval": 2,
+      "tried": [
+        16,
+        9,
+        5,
+        13,
+        11
+      ],
+      "cycle": 0,
+      "history": [
+        {
+          "cycle": 0,
+          "count": 16,
+          "step": 2,
+          "state_hash": "dc9d74fa1cd15feb8624ccef2fa4dfdfba277f2d5d57ca9b0313f916c8229179",
+          "status": "full_completed"
+        },
+        {
+          "cycle": 0,
+          "count": 9,
+          "step": 4,
+          "state_hash": "4c49eda9eb96b307d235c0fa22a2503b84e12379c1c5630b4d884be15c80e69b",
+          "status": "full_completed"
+        },
+        {
+          "cycle": 0,
+          "count": 5,
+          "step": 6,
+          "state_hash": "b4e6c4fbf7dba05798fbad9570fae2b23c85511781c56c0e335c31fc4f839138",
+          "status": "full_completed"
+        },
+        {
+          "cycle": 0,
+          "count": 13,
+          "step": 8,
+          "state_hash": "10af03c7ec8186b48927cd23adf3fe751d016604f89afc175747ab7e92778b47",
+          "status": "full_completed"
+        },
+        {
+          "cycle": 0,
+          "count": 11,
+          "step": 10,
+          "state_hash": "736e1d87bf90ae83d5df080ff065c8ee8a2b02d18951bcd67a789cd654c6e8c4",
+          "status": "full_completed"
+        }
+      ],
+      "pending_count": null
+    },
+    "cost_rank_weight": 0.0,
+    "feature_evaluation": "selected candidate only; no unused neural feature overhead",
+    "recommended_cost": 0.939696501610569,
+    "note": "best_* and gain fields describe penalized search elite; recommendation.json contains only strict-feasible designs"
+  }
+}

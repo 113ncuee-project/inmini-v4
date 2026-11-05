@@ -40,11 +40,8 @@ METRICS=('feasible','latency_s','energy_j','power_w','area_mm2','dram_read_bytes
 def compact(m):return {k:m.get(k) for k in METRICS}
 
 def cost(m,reference,objective='balanced'):
-    if not m.get('feasible'):return None
-    if objective=='edp':return (m['energy_j']/reference['energy_j'])*(m['latency_s']/reference['latency_s'])
-    if objective=='latency':return m['latency_s']/reference['latency_s']
-    if objective=='energy':return m['energy_j']/reference['energy_j']
-    return sum(m[k]/reference[k] for k in ('latency_s','area_mm2','power_w'))/3
+    from ppa_preferences import scalar_cost
+    return scalar_cost(m,reference,objective)
 
 def append(path,row):
     with path.open('a',encoding='utf-8') as stream:stream.write(json.dumps(row,ensure_ascii=False,allow_nan=False)+'\n')
@@ -291,7 +288,8 @@ def main():
     p.add_argument('--eval-timeout',type=float,default=300);p.add_argument('--seed',type=int,default=7)
     p.add_argument('--shortlist',type=int,default=64);p.add_argument('--local-candidates',type=int,default=16)
     p.add_argument('--warmup',type=int,default=4);p.add_argument('--replay-updates',type=int,default=32)
-    p.add_argument('--objective',choices=('balanced','edp','latency','energy'),default='balanced')
+    from ppa_preferences import OBJECTIVES
+    p.add_argument('--objective',choices=OBJECTIVES,default='balanced')
     p.add_argument('--generator',choices=('guided','generic'),default='guided')
     p.add_argument('--bottleneck-features',choices=('on','off'),default='on')
     p.add_argument('--no-inner',action='store_true');p.add_argument('--save-candidate-sets',action='store_true')

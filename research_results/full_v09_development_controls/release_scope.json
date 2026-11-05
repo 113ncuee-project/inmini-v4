@@ -1,0 +1,7 @@
+{
+  "created_utc": "2026-11-05T03:06:20.780742+00:00",
+  "scope": "All three adaptive RNG7 development arms completed/audited under b771; fresh197/207/217 pending. PPA uncalibrated. R loses matched queries; retain noR/myopic, IO/area/power and host-overlap limits.",
+  "new_PPA_by_export": 0,
+  "new_SGD_by_export": 0,
+  "images": 0
+}

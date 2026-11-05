@@ -1,0 +1,271 @@
+{
+  "passed": true,
+  "actual_child_CLI": true,
+  "elapsed_s": 303.4154868000187,
+  "rows": [
+    {
+      "preference": "balanced",
+      "methods": "rl,sa,random",
+      "audit": {
+        "passed": true,
+        "errors": [],
+        "warnings": [],
+        "source_identity": "f434af44f03a95d0860f4f8ebfa94e248548f98a090613d952fe74884cf7b5f5",
+        "methods": [
+          {
+            "method": "rl",
+            "full_ppa": 12,
+            "timeouts": 0,
+            "feasible": 10,
+            "learning_transitions": 10,
+            "multi_step_transitions": 4,
+            "completed": true,
+            "best_cost": 0.8757012744397622
+          },
+          {
+            "method": "sa",
+            "full_ppa": 12,
+            "timeouts": 0,
+            "feasible": 10,
+            "learning_transitions": 0,
+            "multi_step_transitions": 0,
+            "completed": true,
+            "best_cost": 0.7989883387018962
+          },
+          {
+            "method": "random",
+            "full_ppa": 12,
+            "timeouts": 0,
+            "feasible": 10,
+            "learning_transitions": 0,
+            "multi_step_transitions": 0,
+            "completed": true,
+            "best_cost": 0.7989883387018962
+          }
+        ],
+        "physical_scope": "analytical PPA; same schema3 hardware; full schedules and lifetime checks",
+        "comparison_scope": "project Tangram-style seed and same-domain SA; no original Gemini executable comparison"
+      },
+      "query_counts": {
+        "rl": 12,
+        "sa": 12,
+        "random": 12
+      },
+      "SGD": 80
+    },
+    {
+      "preference": "low_latency",
+      "methods": "rl,sa,random",
+      "audit": {
+        "passed": true,
+        "errors": [],
+        "warnings": [],
+        "source_identity": "f434af44f03a95d0860f4f8ebfa94e248548f98a090613d952fe74884cf7b5f5",
+        "methods": [
+          {
+            "method": "rl",
+            "full_ppa": 12,
+            "timeouts": 0,
+            "feasible": 10,
+            "learning_transitions": 10,
+            "multi_step_transitions": 3,
+            "completed": true,
+            "best_cost": 0.3257123711250708
+          },
+          {
+            "method": "sa",
+            "full_ppa": 12,
+            "timeouts": 0,
+            "feasible": 10,
+            "learning_transitions": 0,
+            "multi_step_transitions": 0,
+            "completed": true,
+            "best_cost": 0.3325755296522522
+          },
+          {
+            "method": "random",
+            "full_ppa": 12,
+            "timeouts": 0,
+            "feasible": 10,
+            "learning_transitions": 0,
+            "multi_step_transitions": 0,
+            "completed": true,
+            "best_cost": 0.3325755296522522
+          }
+        ],
+        "physical_scope": "analytical PPA; same schema3 hardware; full schedules and lifetime checks",
+        "comparison_scope": "project Tangram-style seed and same-domain SA; no original Gemini executable comparison"
+      },
+      "query_counts": {
+        "rl": 12,
+        "sa": 12,
+        "random": 12
+      },
+      "SGD": 80
+    },
+    {
+      "preference": "low_power",
+      "methods": "rl,sa,random",
+      "audit": {
+        "passed": true,
+        "errors": [],
+        "warnings": [],
+        "source_identity": "f434af44f03a95d0860f4f8ebfa94e248548f98a090613d952fe74884cf7b5f5",
+        "methods": [
+          {
+            "method": "rl",
+            "full_ppa": 12,
+            "timeouts": 0,
+            "feasible": 11,
+            "learning_transitions": 11,
+            "multi_step_transitions": 3,
+            "completed": true,
+            "best_cost": 0.9943933447148484
+          },
+          {
+            "method": "sa",
+            "full_ppa": 12,
+            "timeouts": 0,
+            "feasible": 11,
+            "learning_transitions": 0,
+            "multi_step_transitions": 0,
+            "completed": true,
+            "best_cost": 1.0
+          },
+          {
+            "method": "random",
+            "full_ppa": 12,
+            "timeouts": 0,
+            "feasible": 11,
+            "learning_transitions": 0,
+            "multi_step_transitions": 0,
+            "completed": true,
+            "best_cost": 1.0
+          }
+        ],
+        "physical_scope": "analytical PPA; same schema3 hardware; full schedules and lifetime checks",
+        "comparison_scope": "project Tangram-style seed and same-domain SA; no original Gemini executable comparison"
+      },
+      "query_counts": {
+        "rl": 12,
+        "sa": 12,
+        "random": 12
+      },
+      "SGD": 88
+    },
+    {
+      "preference": "small_area",
+      "methods": "rl,sa,random",
+      "audit": {
+        "passed": true,
+        "errors": [],
+        "warnings": [],
+        "source_identity": "f434af44f03a95d0860f4f8ebfa94e248548f98a090613d952fe74884cf7b5f5",
+        "methods": [
+          {
+            "method": "rl",
+            "full_ppa": 12,
+            "timeouts": 0,
+            "feasible": 10,
+            "learning_transitions": 10,
+            "multi_step_transitions": 4,
+            "completed": true,
+            "best_cost": 0.9751498196472886
+          },
+          {
+            "method": "sa",
+            "full_ppa": 12,
+            "timeouts": 0,
+            "feasible": 10,
+            "learning_transitions": 0,
+            "multi_step_transitions": 0,
+            "completed": true,
+            "best_cost": 0.939696501610569
+          },
+          {
+            "method": "random",
+            "full_ppa": 12,
+            "timeouts": 0,
+            "feasible": 10,
+            "learning_transitions": 0,
+            "multi_step_transitions": 0,
+            "completed": true,
+            "best_cost": 0.939696501610569
+          }
+        ],
+        "physical_scope": "analytical PPA; same schema3 hardware; full schedules and lifetime checks",
+        "comparison_scope": "project Tangram-style seed and same-domain SA; no original Gemini executable comparison"
+      },
+      "query_counts": {
+        "rl": 12,
+        "sa": 12,
+        "random": 12
+      },
+      "SGD": 80
+    },
+    {
+      "preference": "low_power",
+      "methods": "rl",
+      "audit": {
+        "passed": true,
+        "errors": [],
+        "warnings": [],
+        "source_identity": "f434af44f03a95d0860f4f8ebfa94e248548f98a090613d952fe74884cf7b5f5",
+        "methods": [
+          {
+            "method": "rl",
+            "full_ppa": 20,
+            "timeouts": 0,
+            "feasible": 19,
+            "learning_transitions": 19,
+            "multi_step_transitions": 8,
+            "completed": true,
+            "best_cost": 0.9943933447148484
+          }
+        ],
+        "physical_scope": "analytical PPA; same schema3 hardware; full schedules and lifetime checks",
+        "comparison_scope": "project Tangram-style seed and same-domain SA; no original Gemini executable comparison"
+      },
+      "query_counts": {
+        "rl": 20
+      },
+      "SGD": 152
+    },
+    {
+      "preference": "low_power",
+      "methods": "rl",
+      "audit": {
+        "passed": true,
+        "errors": [],
+        "warnings": [],
+        "source_identity": "f434af44f03a95d0860f4f8ebfa94e248548f98a090613d952fe74884cf7b5f5",
+        "methods": [
+          {
+            "method": "rl",
+            "full_ppa": 20,
+            "timeouts": 0,
+            "feasible": 19,
+            "learning_transitions": 19,
+            "multi_step_transitions": 8,
+            "completed": true,
+            "best_cost": 0.9943933447148484
+          }
+        ],
+        "physical_scope": "analytical PPA; same schema3 hardware; full schedules and lifetime checks",
+        "comparison_scope": "project Tangram-style seed and same-domain SA; no original Gemini executable comparison"
+      },
+      "query_counts": {
+        "rl": 20
+      },
+      "SGD": 152
+    }
+  ],
+  "same_preference_stop_resume_exact": true,
+  "different_preference_resume_rejected_before_PPA": true,
+  "source_identity": "f434af44f03a95d0860f4f8ebfa94e248548f98a090613d952fe74884cf7b5f5",
+  "script_sha256": "8f5c96a57f0f632b72f604a8bcee4c710550899dfe200f2fdd5415dcf55bb313",
+  "finished_utc": "2026-11-05T02:59:02.038975+00:00",
+  "new_DNN_PPA": 0,
+  "images": 0,
+  "scope": "Tiny correctness fixture of actual internal frozen-child CLI with all four PPA preferences and real resource-calendar PPA/reward/learner. Actual Toy PPA and SGD are counted in each case, not zero. Outer-parent admission and full GUI job/cohort workflow are separate; existing b771 parent checks cannot be labeled rerun on this source. Same-host DNN confirmation runs concurrently; no timing/quality claim."
+}

@@ -1,0 +1,29 @@
+{
+  "passed": true,
+  "finished_utc": "2026-11-05T02:18:53.775045+00:00",
+  "source_identity": "b771758cbeba3788922270f05e4eb9f459b7336c0031f88e775151b45a1d89b4",
+  "compiled_input_sha256": "3c3c3da9272a32ccfbce7e6b848a034fe4bbef50e6b8b3320823e4df6d19919d",
+  "unit_count": 23552,
+  "transfers": 112602,
+  "lifetimes": 9921792,
+  "ordered_unit_dependency_rows": 23552,
+  "wall_s": 579.6064416998997,
+  "cpu_s": 473.0,
+  "complete_ordered_communication_equal": null,
+  "source_unchanged": true,
+  "placement": {
+    "idle_priority": true,
+    "affinity_set": true,
+    "affinity_mask": 32768
+  },
+  "intersection_cache": {
+    "hits": 6266176,
+    "misses": 132672,
+    "maxsize": 65536,
+    "currsize": 65536
+  },
+  "new_PPA": 0,
+  "new_SGD": 0,
+  "adopted": false,
+  "scope": "Complete communication builder on identical precompiled paid DNN input; exact transfer/lifetime/dependency equality including order. No compiler/schedule/buffer/energy/full-PPA or end-to-end DSE acceleration evaluated. One idle-priority CPU overlaps developmental myopic control; source guards remain unchanged."
+}

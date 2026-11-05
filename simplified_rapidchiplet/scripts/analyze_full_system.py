@@ -11,6 +11,7 @@ from types import SimpleNamespace
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from run_local_rl_diagnostics import read, write, sources
 from full_system_dse import objective_cost, physical_violation
+from ppa_preferences import run_objective_context,verify_objective_context
 from simple_rapidchiplet.hybrid.shared_evidence import verify_physical_sources
 from simple_rapidchiplet.hybrid.full_space import DesignTrial
 from simple_rapidchiplet.hybrid.rl_schema import DesignState
@@ -29,6 +30,11 @@ def analyze(out):
     common = read(out / 'common.json')
     if not common:
         return dict(passed=False, errors=errors + ['common seed evaluation not completed'], warnings=warnings)
+    objective_context=run_objective_context(config,common['reference'])
+    new_contract='ppa_preferences.py' in manifest['files']
+    if new_contract:
+        try:verify_objective_context(read(out/'objective.json',{}),objective_context)
+        except ValueError as error:errors.append(str(error))
     inherited = read(out / 'imported_shared.json')
     if inherited:
         history = out / 'shared_physical_history'
@@ -51,6 +57,10 @@ def analyze(out):
     canonical_groups = bool(read(out / 'design_space.json', {}).get('decision_identity'))
     for method in config.methods.split(','):
         folder = out / method
+        checkpoint=read(folder/'checkpoint.json',{})
+        if checkpoint and new_contract:
+            try:verify_objective_context(checkpoint.get('objective_context',{}),objective_context)
+            except ValueError as error:errors.append(method+': '+str(error))
         ledger = read(folder / 'worker/accounting.json', [])
         full = sum(r.get('full_evaluations', 0) for r in ledger)
         physical_keys = [r.get('durable_key') for r in ledger if r.get('full_evaluations')]
@@ -91,6 +101,9 @@ def analyze(out):
         if sum(e.get('new_full_ppa', 0) for e in events) != full:
             warnings.append(method + ': orphan completed response or interrupted bookkeeping; inspect durable evidence')
         rec = read(folder / 'recommendation.json', {})
+        if rec and new_contract:
+            try:verify_objective_context(rec.get('objective_context',{}),objective_context)
+            except ValueError as error:errors.append(method+': '+str(error))
         if rec.get('strict_feasible'):
             if not rec.get('state') or not rec['metrics']['feasible'] or physical_violation(rec['metrics'], config):
                 errors.append(method + ': strict recommendation violates a physical constraint')

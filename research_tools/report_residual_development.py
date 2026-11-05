@@ -37,23 +37,51 @@ def main():
         rows.append(dict(method=label,EDP=rec['cost'],new_PPA=summary['search_full_ppa'],charged_PPA=summary['full_ppa'],
             search_seconds=summary['search_wall_s'],architecture=metrics['architecture_candidate_id'],
             latency_ms=metrics['latency_s']*1000,energy_mJ=metrics['energy_j']*1000,area_mm2=metrics['area_mm2'],power_W=metrics['power_w']))
+    shared=read(case/'shared_start.json');common=read(case/'common.json')
+    starts=[]
+    for label,metrics,cost,queries in (('Tangram_style_portable_seed',common['metrics'],common['seed_cost'],common['full_ppa']),
+                                      ('paid_strong_shared_start',shared['metrics'],shared['cost'],shared['full_ppa'])):
+        starts.append(dict(phase=label,EDP=cost,charged_PPA=queries,architecture=metrics['architecture_candidate_id'],
+            compute=metrics['compute_chiplets'],IO=metrics['io_chiplets'],latency_ms=metrics['latency_s']*1000,
+            energy_mJ=metrics['energy_j']*1000,area_mm2=metrics['area_mm2'],power_W=metrics['power_w']))
     learning_path=study.parent/'development_learning_seed7_context_v2.json'
     if not learning_path.exists():learning_path=study.parent/'development_learning_seed7.json'
     learning=read(learning_path)
     pending={name:read(study/f'development/{name}/7/status.json').get('status') if (study/f'development/{name}/7/status.json').exists() else 'not_started'
         for name in ('no_residual','myopic')}
+    ablations={}
+    for family,status in pending.items():
+        path=study/f'development/{family}/7'
+        if status!='completed':continue
+        if not read(path/'analysis/audit.json')['passed']:raise ValueError('Completed ablation audit failed: '+family)
+        rec=read(path/'rl/recommendation.json');m=rec['metrics'];summary=read(path/'summary.json')['rl']
+        rows.append(dict(method='new_'+family,EDP=rec['cost'],new_PPA=summary['search_full_ppa'],charged_PPA=summary['full_ppa'],
+            search_seconds=summary['search_wall_s'],architecture=m['architecture_candidate_id'],latency_ms=m['latency_s']*1000,
+            energy_mJ=m['energy_j']*1000,area_mm2=m['area_mm2'],power_W=m['power_w']))
+        other=curve(path);matched_arm={}
+        for axis in ('q','seconds'):
+            floor=min(max(r[axis] for r in current),max(r[axis] for r in other))
+            baseline=min(r['cost'] for r in other if r[axis]<=floor);primary=min(r['cost'] for r in current if r[axis]<=floor)
+            matched_arm[axis]=dict(budget=floor,control_EDP=baseline,primary_EDP=primary,primary_improvement_pct=100*(1-primary/baseline))
+        ablations[family]=matched_arm
     result=dict(updated_utc=datetime.now(timezone.utc).isoformat(),source_identity=read(case/'source_snapshot_manifest.json')['identity'],
         random_seed=7,scope='one adaptive development RNG; old-controller references; fresh confirmation and causal controls pending',
-        rows=rows,matched=matched,controls=pending,learning_diagnostic=learning,new_PPA_by_report=0,new_SGD_by_report=0,images=0,
+        initial_phases=starts,rows=rows,matched=matched,controls=pending,matched_ablations=ablations,learning_diagnostic=learning,new_PPA_by_report=0,new_SGD_by_report=0,images=0,
         script_sha256=hashlib.sha256(Path(__file__).read_bytes()).hexdigest())
     (study/'DEVELOPMENT_SNAPSHOT.json').write_text(json.dumps(result,indent=2),encoding='utf-8')
     lines=['# 修正後RL：已完成的開發結果','',
-        '2026-11-05；一個開發RNG7，Batch1／224×224 ResNet18，EDP。新來源b771、218檔，完整V3有效空間、同一物理模型與已支付100次PPA／2230.010633秒的共同起點。舊控制器資料是開發參考；新確認仍在等待控制完成。','',
+        '2026-11-05；一個開發RNG7，Batch1／224×224 ResNet18，EDP。新來源b771、218檔，完整V3有效空間、同一物理模型與已支付100次PPA／2230.010633秒的共同起點。舊控制器資料是開發參考；請依下方控制完成狀態判讀，新RNG確認另列。','',
         '|方法|新／累計PPA|EDP|搜尋秒|架構|T ms|E mJ|Area mm²|平均W|','|---|---:|---:|---:|---|---:|---:|---:|---:|']
     for r in rows:
         lines.append(f"|{r['method']}|{r['new_PPA']}／{r['charged_PPA']}|{r['EDP']:.9f}|{r['search_seconds']:.3f}|{r['architecture']}|{r['latency_ms']:.6f}|{r['energy_mJ']:.6f}|{r['area_mm2']:.3f}|{r['power_W']:.6f}|")
     lines += ['', '|匹配方式|含共同階段的預算floor|舊RL EDP|新RL EDP|改善%|','|---|---:|---:|---:|---:|']
     for axis,row in matched.items():lines.append(f"|{axis}|{row['budget']:.3f}|{row['old_RL']:.9f}|{row['new_RL']:.9f}|{row['improvement_pct']:.4f}|")
+    lines += ['', '|搜尋前階段|累計PPA|EDP|架構|Compute／IO|T ms|E mJ|Area mm²|平均W|',
+              '|---|---:|---:|---|---:|---:|---:|---:|---:|']
+    for r in starts:
+        lines.append(f"|{r['phase']}|{r['charged_PPA']}|{r['EDP']:.9f}|{r['architecture']}|{r['compute']}／{r['IO']}|{r['latency_ms']:.6f}|{r['energy_mJ']:.6f}|{r['area_mm2']:.3f}|{r['power_W']:.6f}|")
+    p,s=rows[1],starts[1]
+    lines += ['', f"原可攜Tangram-style種子到共同強起點的{shared['gain_before_rl_pct']:.4f}% EDP改善屬於前置DP／篩選，不能算RL。新RL比共同強起點的延遲下降{100*(1-p['latency_ms']/s['latency_ms']):.4f}%，但能量上升{100*(p['energy_mJ']/s['energy_mJ']-1):.4f}%、面積上升{100*(p['area_mm2']/s['area_mm2']-1):.4f}%、平均功率上升{100*(p['power_W']/s['power_W']-1):.4f}%。因此26.48%是EDP改善，並非全面PPA或節能改善；2×1固定硬體確認仍須另看。",'']
     warm,final=learning['models']['after_shared'],learning['models']['final']
     lines += ['',
         '新RL相對共同強起點降低26.4827% EDP。這個種子仍未超過原Random最佳值；不能因為勝過舊RL，就宣稱勝過Random、SA或原論文。舊RL的12顆2×6布局有4個IO，新RL的12顆3×4布局有6個IO；面積和平均功率上升，延遲與能量下降，屬於完整架構／mapping取捨。','',
@@ -70,6 +98,13 @@ def main():
             w,f=warm[key],final[key]
             lines.append(f"|{label}|{f['groups']}|{f['non_tied_pairs']}|{w['concordance']:.6f}|{f['concordance']:.6f}|")
         lines += ['', '這些比較再固定before-state，避免已知起點成本造成排序相關性的假象。它們是控制軌跡的回顧子集合，並非原始完整候選池的反事實測試；pair也不是獨立PPA查詢或獨立隨機種子。僅對V0＋R的實際成本排序評分，未把H的多步值當成已知的真實未來回報。','']
+    if ablations:
+        lines += ['|新控制器消融比較|匹配方式|預算floor|控制EDP|主臂EDP|主臂改善%|',
+                  '|---|---|---:|---:|---:|---:|']
+        for family,values in ablations.items():
+            for axis,r in values.items():
+                lines.append(f"|{family}|{axis}|{r['budget']:.3f}|{r['control_EDP']:.9f}|{r['primary_EDP']:.9f}|{r['primary_improvement_pct']:.4f}|")
+        lines += ['', '正值表示主臂較好，負值表示控制較好。不能以勝過舊RL替代這項消融。無殘差對照的後段，與一個單核心低優先權通訊元件profile同機執行（非完整PPA），已記錄host activity；小幅同時間差距須保留此限制，同query與後續fresh確認更重要。','']
     (ROOT/'docs/INMIN_RESIDUAL_RL_RESULTS.md').write_text('\n'.join(lines),encoding='utf-8')
     print(json.dumps(dict(new_EDP=rows[1]['EDP'],matched=matched,controls=pending,new_PPA=0,new_SGD=0)))
 

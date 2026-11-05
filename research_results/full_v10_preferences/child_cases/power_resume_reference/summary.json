@@ -1,0 +1,264 @@
+{
+  "rl": {
+    "method": "rl",
+    "status": "full_query_budget_exhausted",
+    "common_full_ppa": 1,
+    "search_full_ppa": 19,
+    "full_ppa": 20,
+    "seed_cost": 1.0,
+    "best_cost": 0.9943933447148484,
+    "gain_vs_seed_pct": 0.5606655285151585,
+    "best": {
+      "feasible": true,
+      "latency_s": 1.0324394531249994e-05,
+      "energy_j": 3.6696853076857998e-06,
+      "power_w": 0.35543830648648256,
+      "area_mm2": 32.39711576470588,
+      "dram_read_bytes": 1550,
+      "dram_write_bytes": 735,
+      "noc_hop_bytes": 13648,
+      "nop_hop_bytes": 6048,
+      "executed_macs": 12250,
+      "recompute_macs": 0,
+      "unit_count": 48,
+      "calendar_backend": "native",
+      "oracle_phase_wall_s": {
+        "compile": 0.015999999828636646,
+        "communication_and_job_build": 0.030999999959021807,
+        "schedule": 0.0,
+        "capacity_and_metrics": 0.01600000006146729,
+        "diagnostics": 0.0
+      },
+      "oracle_process_cpu_s": 0.046875
+    },
+    "initial": {
+      "feasible": true,
+      "latency_s": 1.0324394531249994e-05,
+      "energy_j": 3.6955851476858e-06,
+      "power_w": 0.3579469126736644,
+      "area_mm2": 32.39711576470588,
+      "dram_read_bytes": 1550,
+      "dram_write_bytes": 735,
+      "noc_hop_bytes": 13648,
+      "nop_hop_bytes": 6048,
+      "executed_macs": 12250,
+      "recompute_macs": 0,
+      "unit_count": 48,
+      "calendar_backend": "native",
+      "oracle_phase_wall_s": {
+        "compile": 0.01600000006146729,
+        "communication_and_job_build": 0.014999999897554517,
+        "schedule": 0.01600000006146729,
+        "capacity_and_metrics": 0.0,
+        "diagnostics": 0.0
+      },
+      "oracle_process_cpu_s": 0.046875
+    },
+    "best_step": 3,
+    "best_state_hash": "e785e44e3117a9479434fa64040d41c0857c563618f6a531f7839d66b2e5f382",
+    "best_architecture": "single_array_c1_1x1",
+    "best_fusion_depth": 0,
+    "policy_updates": 152,
+    "search_wall_s": 27.629166099941358,
+    "charged_wall_s": 28.62560209981166,
+    "architecture_coverage": {
+      "single_array_c16_4x4": {
+        "status": "full_evaluated",
+        "feasible": true,
+        "step": 1
+      },
+      "single_array_c16_1x16": {
+        "status": "full_evaluated",
+        "feasible": true,
+        "step": 2
+      },
+      "single_array_c1_1x1": {
+        "status": "full_evaluated",
+        "feasible": true,
+        "step": 19
+      },
+      "single_array_c9_3x3": {
+        "status": "full_evaluated",
+        "feasible": true,
+        "step": 4
+      },
+      "single_array_c5_1x5": {
+        "status": "full_evaluated",
+        "feasible": true,
+        "step": 6
+      },
+      "single_array_c13_1x13": {
+        "status": "full_evaluated",
+        "feasible": true,
+        "step": 8
+      },
+      "single_array_c11_1x11": {
+        "status": "full_evaluated",
+        "feasible": true,
+        "step": 10
+      },
+      "single_array_c7_1x7": {
+        "status": "full_evaluated",
+        "feasible": true,
+        "step": 12
+      },
+      "single_array_c3_1x3": {
+        "status": "full_evaluated",
+        "feasible": true,
+        "step": 14
+      },
+      "single_array_c15_1x15": {
+        "status": "full_evaluated",
+        "feasible": true,
+        "step": 16
+      },
+      "single_array_c14_1x14": {
+        "status": "full_evaluated",
+        "feasible": true,
+        "step": 18
+      }
+    },
+    "gain_after_shared_screen_pct": 0.5606655285151585,
+    "gain_before_rl_pct": 0.0,
+    "latency_improvement_pct": 0.0,
+    "energy_improvement_pct": 0.7008319106439509,
+    "area_improvement_pct": 0.0,
+    "objective": "low_power",
+    "objective_context": {
+      "contract": {
+        "version": "ppa_preference_fixed_reference_v1",
+        "name": "low_power",
+        "weights": {
+          "latency": 0.1,
+          "area": 0.1,
+          "power": 0.8
+        },
+        "formula": "weighted normalized latency/area/average power",
+        "normalization": "fixed common measured reference for every architecture",
+        "power_definition": "modeled average inference power; distinct from energy"
+      },
+      "hard_limits": {
+        "max_area": null,
+        "max_power": null,
+        "max_latency_ms": null
+      },
+      "policy_binding": "one frozen preference and limits per run; change preference in a new experiment",
+      "fixed_reference": {
+        "latency_s": 1.0324394531249994e-05,
+        "area_mm2": 32.39711576470588,
+        "power_w": 0.3579469126736644,
+        "energy_j": 3.6955851476858e-06
+      }
+    },
+    "gamma": 0.9,
+    "domain": "v08_stratified_architecture_full_schema3_1",
+    "strict_feasible": true,
+    "algorithm": "multistep_double_q",
+    "online_policy_updates_enabled": true,
+    "shared_warmstart_enabled": true,
+    "q_representation": "frozen_prior_residual_normalized_continuation_q_v2",
+    "residual_model": {
+      "prior_frozen": true,
+      "prior_warm_SGD": 0,
+      "continuation": "LayerNorm/SiLU; cold Adam during V-only warmup; TD loss in log-cost units",
+      "residual": {
+        "enabled": true,
+        "observations": 19,
+        "fits": 12,
+        "linear_candidates_fitted": 216,
+        "capacity": 128,
+        "selected_basis": "full",
+        "selected_ridge": 0.01,
+        "training_LOO_MSE": 2.102533834540822,
+        "scope": "own measured labels only; training-only LOO, no control labels or added PPA"
+      }
+    },
+    "episode_cost_rise_limit": 0.25,
+    "episode_restart_probability": 0.9,
+    "architecture_refresh": {
+      "interval": 2,
+      "tried": [
+        16,
+        9,
+        5,
+        13,
+        11,
+        7,
+        3,
+        15,
+        14
+      ],
+      "cycle": 0,
+      "history": [
+        {
+          "cycle": 0,
+          "count": 16,
+          "step": 2,
+          "state_hash": "fd9c99f8be9f031baf808c3da64cb236b9d4158ea00080f6333d2695cdc6c0c1",
+          "status": "full_completed"
+        },
+        {
+          "cycle": 0,
+          "count": 9,
+          "step": 4,
+          "state_hash": "98467d73058cfc6f09daf61ca8dc9a9e20fd0a5422bc44fe45ad2b942e42c50f",
+          "status": "full_completed"
+        },
+        {
+          "cycle": 0,
+          "count": 5,
+          "step": 6,
+          "state_hash": "a2e6f04e1259e04f29b9b2cc0d25b3e4c0249f16bc78bf597fd6d4a447487454",
+          "status": "full_completed"
+        },
+        {
+          "cycle": 0,
+          "count": 13,
+          "step": 8,
+          "state_hash": "fb96c8e42332cf7effe1c75a5af4b26d6a2b881cc02925f891c2d6ae999c1c27",
+          "status": "full_completed"
+        },
+        {
+          "cycle": 0,
+          "count": 11,
+          "step": 10,
+          "state_hash": "f2d62a95d7382fb4cfa0dbf7a26fb9b751e7eccc1da3b95c7029804fae49da03",
+          "status": "full_completed"
+        },
+        {
+          "cycle": 0,
+          "count": 7,
+          "step": 12,
+          "state_hash": "eee880beadcedf7f9c0195a5e75afae889c850eecf10429a188ba10803508d5f",
+          "status": "full_completed"
+        },
+        {
+          "cycle": 0,
+          "count": 3,
+          "step": 14,
+          "state_hash": "3313f59ed3e8f2b3907e990789616dcf6591dc475d870bdab2e29513dc4a7865",
+          "status": "full_completed"
+        },
+        {
+          "cycle": 0,
+          "count": 15,
+          "step": 16,
+          "state_hash": "75cea5b12788e8cc9f1f91427f6f584ee10362dd3d0cdf982aedcad91426104f",
+          "status": "full_completed"
+        },
+        {
+          "cycle": 0,
+          "count": 14,
+          "step": 18,
+          "state_hash": "80028f682b49e85a149b59fa43fa071904feebfb67ca9ae29463ae1746fd6365",
+          "status": "full_completed"
+        }
+      ],
+      "pending_count": null
+    },
+    "cost_rank_weight": 0.0,
+    "feature_evaluation": "all candidates for neural selection/TD",
+    "recommended_cost": 0.9943933447148484,
+    "note": "best_* and gain fields describe penalized search elite; recommendation.json contains only strict-feasible designs"
+  }
+}

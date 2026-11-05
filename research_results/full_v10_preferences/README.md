@@ -1,0 +1,7 @@
+# Full v0.10 user PPA preferences
+
+Source f434af44f03a95d0860f4f8ebfa94e248548f98a090613d952fe74884cf7b5f5,220files. Read PREFERENCES.md and the repository validation report. V3 balanced/low_latency/low_power/small_area use unchanged exact presets and a fixed measured reference. EDP is an additional research objective, not the default meaning of PPA preference. Hard limits remain independent; the final recommendation must satisfy all of them.
+
+Actual210stable regression checks passed. Actual localhost preview validates all seven objectives, limits and generated CLI arguments without starting a job; seven parallel PowerShell preflights and a serial low-power preflight also ran with zero PPA/SGD. Internal frozen-child CLI fixtures actually ran all four preferences with RL/SA/Random, plus low-power exact stop/resume and wrong-preference rejection. They used170real Toy PPA and632SGD, not zero; see VALIDATION_RECEIPT.json and raw case ledgers. These do NOT claim a new outer-parent admission or full-cohort workflow; the historical b771 workflow remains in full_v09_validation with its actual source/time. They are functional checks, not DNN performance samples or isolated DSE speed measurements.
+
+manifest.json verifies all public bytes; payload_locations.json verifies decompressed original evidence bytes. Optimizer/training replay/RNG and private teammate files are omitted. First mutable-source QA failed its stability receipt despite all210individual tests passing, and that negative result is retained. No image is included.

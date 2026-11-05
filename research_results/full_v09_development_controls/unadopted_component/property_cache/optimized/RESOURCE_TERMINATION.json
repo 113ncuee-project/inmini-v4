@@ -1,0 +1,14 @@
+{
+  "created_local": "2026-11-05T10:18:56.3516630+08:00",
+  "CPU_seconds": 530.953125,
+  "observed_local": "2026-11-05T10:50:13.5170882+08:00",
+  "new_PPA": 0,
+  "working_set_bytes": 10077372416,
+  "reason": "Cached TensorRegion properties caused >9 GB working set; final whole-plan equality would load a second large plan. No physical PPA had been executed. Preserve baseline/results; do not adopt this prototype.",
+  "parent_pid": 12176,
+  "pid": 35324,
+  "available_RAM_KiB": 2771948,
+  "command": "\"C:\\Users\\user\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe\" -u -X utf8 output/inmin_v16_20261105/exact_component_study_v2/compare_communication.py --variant optimized",
+  "status": "terminated_component_prototype_for_memory_pressure",
+  "new_SGD": 0
+}

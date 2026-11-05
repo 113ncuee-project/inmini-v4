@@ -48,8 +48,15 @@ def main():
     args=parser.parse_args();folder=args.evidence.resolve();verify(folder)
     torch.set_num_threads(1)
     receipt=read(folder/'inference_receipt.json')
-    if sha(sources(ROOT/'simplified_rapidchiplet'))!=receipt['source_identity']:
-        raise ValueError('Released learner/source differs from inference evidence')
+    current=sources(ROOT/'simplified_rapidchiplet');current_identity=sha(current)
+    historical=read(folder/'primary/source_snapshot_manifest.json')['files']
+    # New user-preference entry points do not alter this recorded EDP model.
+    # Require every inference/domain/physical module byte to remain identical;
+    # shared_evidence only validates imports and is not used by prediction.
+    dependencies={n:v for n,v in historical.items() if n.startswith('simple_rapidchiplet/') and
+                  n!='simple_rapidchiplet/hybrid/shared_evidence.py'}
+    if not dependencies or any(current.get(n)!=v for n,v in dependencies.items()):
+        raise ValueError('Inference/domain/physical dependency source differs from recorded model')
     corpus=read(folder/'inference_corpus.json');rows=corpus['rows']
     if set(r['state_hash'] for r in rows)&set(corpus['excluded_observed_state_hashes']):
         raise ValueError('Corpus contains an RL-observed/shared design')
@@ -92,7 +99,8 @@ def main():
     changed=sum(int(last.predict(x.numpy(),1.).argmax()!=last.predict_reward(x.numpy(),1.).argmax()) for x in pools)
     if len(pools)!=expected['recorded_nonterminal_pools'] or changed!=expected['continuation_changes_argmax_pools']:
         raise ValueError('Recorded successor-pool ranking differs')
-    result=dict(passed=True,source_identity=receipt['source_identity'],untouched_development_designs=len(rows),
+    result=dict(passed=True,source_identity=receipt['source_identity'],executing_source_identity=current_identity,
+        identical_inference_domain_physical_dependencies=len(dependencies),untouched_development_designs=len(rows),
         models=models,continuation_changed_argmax=changed,recorded_nonterminal_pools=len(pools),
         new_PPA=0,new_SGD=0,images=0,
         scope='Inference-only replay on development controls; not fresh generalization, useful-foresight proof or new DSE. Exported models contain no optimizer, training replay or RNG; successor inputs have no reward labels.')

@@ -1,6 +1,6 @@
 # 組員閱讀入口：程式、實驗與論文證據
 
-目前可執行完整空間版本為Full v0.9，來源b771758c／218檔；固定先驗＋線上修正多步Q已通過204回歸、明記來源的CLI驗收、實際GUI與並行精確恢復，新的DNN對照仍在執行。先依根目錄README安裝Python3.12依賴，再使用GUI或`run_inmin_full_parallel.ps1 -Policy residual`。本機Python實驗不需要Codex或LLM持續連線；所有報告使用文字、JSON、數字表格。
+目前可執行完整空間版本為Full v0.10，來源f434af44／220檔。原V3四種PPA偏好接回完整引擎，已通過210回歸、四偏好實際child-CLI與精確續跑、GUI/API預覽。舊b771外層CLI／並行驗收保留原來源；新的EDP DNN確認仍使用其原凍結來源執行。先依根目錄README安裝Python3.12依賴，再使用GUI或`run_inmin_full_parallel.ps1 -Policy residual -Objective low_power`。本機Python實驗不需要Codex或LLM持續連線；報告使用文字、JSON、數字表格。
 
 ## 建議閱讀順序
 
@@ -11,6 +11,7 @@
 5. [RACE-RL參考核對](INMIN_RACE_REFERENCE_AUDIT.md)：與同學原生RACE的演算法／硬體差異。對方完整ZIP／Word並未隨專案公開。
 6. [本版學習修復與因果控制](INMIN_RESIDUAL_RL_DESIGN.md)：V0／R／H的責任、真正Double-Q target、cold Adam、完整V3變數，以及尚未證明的研究優勢。
 7. [修正後RL的實際開發結果](INMIN_RESIDUAL_RL_RESULTS.md)：完成主臂、相同query／time、固定起點的排序檢查，以及未勝Random的限制。
+8. [使用者PPA偏好](INMIN_USER_PPA_PREFERENCES.md)：四種原V3權重、EDP研究目標的區別、固定reference、硬上限和policy續跑隔離。
 
 ## 主要程式在哪裡
 
@@ -20,6 +21,7 @@
 |---|---|
 |`simplified_rapidchiplet/full_system_dse.py`|共同初始化、選候選、完整評估、reward、replay、checkpoint及各方法預算|
 |`simplified_rapidchiplet/full_system_gui.py`|本機GUI與API，將使用者設定傳入同一搜尋引擎|
+|`simplified_rapidchiplet/ppa_preferences.py`|使用者T/A/P權重、版本化目標契約、固定reference與checkpoint核對|
 |`run_inmin_full_overnight.ps1`|多模型／多RNG串行執行、共用起點、保持喚醒、原設定續跑|
 |`simple_rapidchiplet/hybrid/full_space.py`|所有V3有效設計變數的提案／特徵與完整交易|
 |`hybrid/architecture_refresh.py`|顆數分層轉移；這是外層非學習協調，所有方法共用|

@@ -1,0 +1,43 @@
+         107429931 function calls (107427894 primitive calls) in 230.710 seconds
+
+   Ordered by: cumulative time
+   List reduced from 59 to 35 due to restriction <35>
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+        1  113.905  113.905  270.951  270.951 C:\Users\user\Desktop\rapidchiplet\output\inmin_v14_20261105\readiness_study_v1\engine\simple_rapidchiplet\hybrid\communication.py:148(build_communication)
+  6214144    8.540    0.000   62.017    0.000 C:\Users\user\Desktop\rapidchiplet\output\inmin_v14_20261105\readiness_study_v1\engine\simple_rapidchiplet\hybrid\mapping.py:48(elements)
+  6330624   25.644    0.000   49.783    0.000 C:\Users\user\Desktop\rapidchiplet\output\inmin_v14_20261105\readiness_study_v1\engine\simple_rapidchiplet\hybrid\mapping.py:44(shape)
+ 31653120   24.139    0.000   24.139    0.000 C:\Users\user\Desktop\rapidchiplet\output\inmin_v14_20261105\readiness_study_v1\engine\simple_rapidchiplet\hybrid\mapping.py:46(<genexpr>)
+ 12797696   11.324    0.000   19.792    0.000 <string>:2(__hash__)
+    23552    4.910    0.000   15.322    0.001 {built-in method builtins.sorted}
+ 12797696    8.467    0.000    8.467    0.000 {built-in method builtins.hash}
+  8057069    8.226    0.000    8.226    0.000 <string>:2(__eq__)
+  6214016    6.769    0.000    6.769    0.000 C:\Users\user\Desktop\rapidchiplet\output\inmin_v14_20261105\readiness_study_v1\engine\simple_rapidchiplet\hybrid\communication.py:200(<genexpr>)
+  6214144    4.266    0.000    4.266    0.000 {built-in method math.prod}
+  6335744    3.864    0.000    3.864    0.000 {method 'append' of 'list' objects}
+   123491    0.980    0.000    3.644    0.000 C:\Users\user\Desktop\rapidchiplet\output\inmin_v14_20261105\readiness_study_v1\engine\simple_rapidchiplet\hybrid\mapping.py:52(intersection)
+  6190464    3.644    0.000    3.644    0.000 C:\Users\user\Desktop\rapidchiplet\output\inmin_v14_20261105\readiness_study_v1\engine\simple_rapidchiplet\hybrid\communication.py:202(<lambda>)
+    23296    1.069    0.000    3.586    0.000 C:\Users\user\Desktop\rapidchiplet\output\inmin_v14_20261105\readiness_study_v1\engine\simple_rapidchiplet\hybrid\communication.py:93(_memory_regions)
+    23552    0.082    0.000    3.183    0.000 {built-in method fromkeys}
+    91392    0.579    0.000    3.101    0.000 C:\Users\user\Desktop\rapidchiplet\output\inmin_v14_20261105\readiness_study_v1\engine\simple_rapidchiplet\hybrid\communication.py:185(<genexpr>)
+   354555    0.869    0.000    1.716    0.000 {built-in method builtins.any}
+   207640    0.426    0.000    1.683    0.000 C:\Users\user\Desktop\rapidchiplet\output\inmin_v14_20261105\readiness_study_v1\engine\simple_rapidchiplet\hybrid\mapping.py:40(__post_init__)
+   617455    0.791    0.000    1.373    0.000 C:\Users\user\Desktop\rapidchiplet\output\inmin_v14_20261105\readiness_study_v1\engine\simple_rapidchiplet\hybrid\mapping.py:54(<genexpr>)
+   519436    0.532    0.000    1.080    0.000 {built-in method builtins.max}
+  1038200    0.624    0.000    0.624    0.000 C:\Users\user\Desktop\rapidchiplet\output\inmin_v14_20261105\readiness_study_v1\engine\simple_rapidchiplet\hybrid\mapping.py:41(<genexpr>)
+    93184    0.083    0.000    0.548    0.000 C:\Users\user\Desktop\rapidchiplet\output\inmin_v14_20261105\readiness_study_v1\engine\simple_rapidchiplet\hybrid\communication.py:100(<lambda>)
+   517260    0.271    0.000    0.271    0.000 {built-in method builtins.min}
+   581141    0.231    0.000    0.231    0.000 C:\Users\user\Desktop\rapidchiplet\output\inmin_v14_20261105\readiness_study_v1\engine\simple_rapidchiplet\hybrid\mapping.py:55(<genexpr>)
+        1    0.000    0.000    0.118    0.118 C:\Users\user\Desktop\rapidchiplet\tmp\inmin_v14_readiness\profile_actual_demands.py:73(capture)
+        1    0.118    0.118    0.118    0.118 {method 'extend' of 'list' objects}
+    23552    0.117    0.000    0.117    0.000 <string>:2(__init__)
+   231064    0.110    0.000    0.110    0.000 {built-in method builtins.len}
+    23555    0.050    0.000    0.050    0.000 {method 'get' of 'dict' objects}
+    72832    0.033    0.000    0.033    0.000 {method 'setdefault' of 'dict' objects}
+    47872    0.027    0.000    0.027    0.000 C:\Users\user\Desktop\rapidchiplet\output\inmin_v14_20261105\readiness_study_v1\engine\simple_rapidchiplet\hybrid\communication.py:174(<genexpr>)
+     1152    0.006    0.000    0.017    0.000 C:\Users\user\Desktop\rapidchiplet\output\inmin_v14_20261105\readiness_study_v1\engine\simple_rapidchiplet\hybrid\mapping.py:57(full)
+        3    0.000    0.000    0.013    0.004 C:\Users\user\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\functools.py:982(__get__)
+        1    0.007    0.007    0.007    0.007 C:\Users\user\Desktop\rapidchiplet\output\inmin_v14_20261105\readiness_study_v1\engine\simple_rapidchiplet\hybrid\mapping.py:175(unit_map)
+        1    0.000    0.000    0.006    0.006 C:\Users\user\Desktop\rapidchiplet\output\inmin_v14_20261105\readiness_study_v1\engine\simple_rapidchiplet\hybrid\workload.py:82(fingerprint)
+
+

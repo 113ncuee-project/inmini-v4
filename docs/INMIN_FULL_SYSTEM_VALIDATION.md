@@ -1,20 +1,24 @@
-# Full v0.9功能驗收與研究界線
+# Full v0.10：PPA偏好功能驗收與研究界線
 
-2026-11-05；來源 `b771758cbeba3788922270f05e4eb9f459b7336c0031f88e775151b45a1d89b4`，218個來源檔。原v08驗收已保存在history，原profiles及報告均保留。
+2026-11-05；來源 `f434af44f03a95d0860f4f8ebfa94e248548f98a090613d952fe74884cf7b5f5`，220檔。舊版報告及profile保存在history，正在執行的EDP研究仍使用原凍結b771來源。
 
 |項目|實際證據|結果|
 |---|---|---|
-|整套回歸|204項，72.938秒，前後來源相同|通過|
-|Serial CLI|fc694實際319.013秒；本版全部driver／learner／物理／CLI harness逐byte相同，僅coordinator與其unit checks改變|明記來源沿用，不聲稱新重跑|
-|CLI涵蓋|3方法、停止／續跑、共同初始化／原成本沿用、50個Toy布局、嚴格可行推薦、真正nonterminal、真正殘差fit及V0逐bit固定|通過|
-|實際GUI|16fields，8個完整ToyPPA，residual選項／status API／token檢查|通過|
-|實際並行|兩種子真實PPA時間區間重疊；與串行逐步action／cost／reward／SGD一致|通過|
-|並行續跑|cooperative stop／Resume逐步一致；重複啟動不改活躍owner；完成後Resume0新PPA|通過|
-|物理／空間相容|78個物理來源逐byte相同，11個原FullDesignSpace方法AST相同|通過|
-|本機PowerShell|6個實際preflight情境；硬限制、參數、原設定續跑、stop、路徑驗證|0PPA／SGD；saved resume fixture明記為synthetic|
+|整套回歸|210項，108.906秒；0錯誤／失敗，來源前後相同|通過|
+|V3偏好一致|Balanced／低延遲／低功率／小面積權重與原V3一致；四個舊研究公式逐bit保留|通過|
+|真實物理PPA|偏好單元測試使用實際Toy calendar結果；功率與能量分開、硬上限獨立|通過|
+|實際child-CLI|四偏好×RL／SA／Random，另低功率完整與停止續跑兩案例；303.415秒|通過|
+|child-CLI實際成本|六個案例共170次真實Toy PPA、632次SGD；逐案audit及原始帳本保留|不是0PPA，也不是DNN效益樣本|
+|child-CLI精確恢復|相同偏好：action／cost／reward／SGD一致；改偏好：新增PPA前拒絕|通過|
+|偏好保存|objective.json及checkpoint／summary／recommendation保存精確權重、硬限制、固定reference|通過|
+|實際GUI HTTP預覽|七目標正確轉成CLI參數；V3 preference別名、相斥目標、NaN／Inf硬限制、token、原job不變|0新增PPA／SGD，通過|
+|實際PowerShell|七個並行wrapper目標＋串行低功率preflight；偏好／硬限制正確，未建立實驗目錄|0新增PPA／SGD，通過|
+|物理／RL／空間相容|78物理檔逐byte一致，learner／FullDesignSpace／架構refresh未改|通過|
 
-以上DNN以外的Tiny／Toy測試是功能驗收。新DNN尚未完成控制與確認，不能把功能驗收或舊資料重播訓練當成搜尋勝利。Root仍保存每個實驗的frozen source／query／time／policy／checkpoint。
+實際internal child-CLI測試是小型功能fixture，執行完整compiler／communication／calendar／buffer／reward／learner，但沒有聲稱重新跑過外層parent的global admission或整批cohort。b771的實際外層並行／串行／停止續跑證據保留原始來源與時間，詳見history的v09驗收；不把它標記成f434的新執行。功能測試與三個DNN確認案例同機執行，時間不可當作隔離的搜尋加速。
 
-v12的舊representation斷言失敗、v13的screen-off等待問題，原始來源及失敗紀錄均保留。v14只修正host readiness和unit checks；學習器與物理模型未再次變更。CLI沿用明細在`workflow/UNCHANGED_SOURCE_REUSE.json`，原實測在v13；實際並行結果在`parallel_workflow/result.json`。
+第一次可變原型驗收的210個個別測試全通過，但我在測試期間仍修改了來源，來源穩定檢查因此正確失敗。這次不採用；保存原log與失敗說明後，凍結完成來源，再取得上表108.906秒的實際通過結果。第一次localhost檢查被沙箱阻擋，後來以實際HTTP重新測通；沒有把未執行當成通過。
 
-完整本機證據：`output/inmin_v14_20261105/readiness_study_v1`。每種子獨立訓練，共享起點查詢與時間仍計入每臂；SGD、ridge fits、cache hit、timeout和完整PPA各自列帳。PPA仍為未經晶片校準的解析模型。
+完整本機證據：`output/inmin_v17_20261105/preference_readiness_v1`。`VALIDATION_RECEIPT.json`逐案例列出實際PPA／SGD，`HTTP_preflight.json`、`wrappers/result.json`記錄0搜尋的預覽。原完整b771工作流在`output/inmin_v14_20261105/readiness_study_v1`。
+
+目前長跑目標為EDP。開發主臂和無殘差、gamma0消融已完成；fresh197／207／217與固定硬體對照尚未完成。不能以這些EDP結果宣稱LowPower／SmallArea／Balanced的DNN搜尋已改善，也不能把低平均功率當成低能量。所有PPA為未經晶片校準的解析模型；完整成本與資源守恆優先，不宣稱穩定勝過Random／SA、原論文binary或晶片量測。

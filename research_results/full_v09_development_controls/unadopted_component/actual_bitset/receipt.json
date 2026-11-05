@@ -1,0 +1,22 @@
+{
+  "started_utc": "2026-11-05T01:50:28.437791+00:00",
+  "pid": 35624,
+  "source_identity": "b771758cbeba3788922270f05e4eb9f459b7336c0031f88e775151b45a1d89b4",
+  "paid_record_sha256": "0e0c6ce2c1c84b019b673d0f1f8fa4946ce39033e35473b4860af6da0b04eda3",
+  "script_sha256": "18230fb425f977cc8c327a931ea96f184ceded7fda9bc9136794e58e7407257a",
+  "prototype_sha256": "c969fa048ee0c5f361b7ba88fc6af5973aa43cbb5318c50cbe1eae7d4ec12295",
+  "concurrent_study_at_start": {
+    "status": "running",
+    "stage": "development/no_residual/7",
+    "source_identity": "b771758cbeba3788922270f05e4eb9f459b7336c0031f88e775151b45a1d89b4"
+  },
+  "placement": {
+    "idle_priority": true,
+    "affinity_set": true,
+    "affinity_mask": 32768,
+    "logical_CPUs": 16
+  },
+  "new_PPA": 0,
+  "new_SGD": 0,
+  "scope": "Already paid design; compiler and communication component only. Not a physical re-evaluation or DSE speedup. Host research activity overlaps developmental control and must be disclosed in wall-time interpretation."
+}

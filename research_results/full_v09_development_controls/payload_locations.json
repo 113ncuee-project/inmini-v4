@@ -1,0 +1,217 @@
+{
+  "cases/no_residual/status.json": {
+    "path": "cases/no_residual/status.json",
+    "original_sha256": "66055c2369a14bea83938c829fee39ae7e3e20bdfb606b0ae46606e1aa736ebd",
+    "gzip": false
+  },
+  "cases/no_residual/summary.json": {
+    "path": "cases/no_residual/summary.json",
+    "original_sha256": "41e5992653e7cf587421b8a0aea3cff5947c2632ef1d9bdb91cbb89e2322f80f",
+    "gzip": false
+  },
+  "cases/no_residual/effective_config.json": {
+    "path": "cases/no_residual/effective_config.json",
+    "original_sha256": "96f8ff21ca0ccb7563452aa094faf5623a96b0e7602bcaea2d081ea94b301a35",
+    "gzip": false
+  },
+  "cases/no_residual/environment.json": {
+    "path": "cases/no_residual/environment.json",
+    "original_sha256": "92f2bb77bfcd4cead00823efc2f3e0e4cbe2d572a91b0d1b60cd22d81597f924",
+    "gzip": false
+  },
+  "cases/no_residual/source_snapshot_manifest.json": {
+    "path": "cases/no_residual/source_snapshot_manifest.json",
+    "original_sha256": "e9281a255b7aa28f5f60c436c6f36230719e929d5accd405aded78cabf783137",
+    "gzip": false
+  },
+  "cases/no_residual/seed_input_manifest.json": {
+    "path": "cases/no_residual/seed_input_manifest.json",
+    "original_sha256": "cce76e03c0fd18debdaa7424c49df9084f0ef97487ca4bf8ad802e78894d77ea",
+    "gzip": false
+  },
+  "cases/no_residual/analysis/audit.json": {
+    "path": "cases/no_residual/analysis/audit.json",
+    "original_sha256": "1000440f34aacc3b71e21e275941afac5cfd092e1a4242c4db36f4a8587349b0",
+    "gzip": false
+  },
+  "cases/no_residual/common.json": {
+    "path": "cases/no_residual/common.json.gz",
+    "original_sha256": "86673334e0486b006c24d4ca35e8efc8bdff1084c1f53ae29eac1b12d1bc75a9",
+    "gzip": true
+  },
+  "cases/no_residual/screening.json": {
+    "path": "cases/no_residual/screening.json.gz",
+    "original_sha256": "ccd9e52a07cfae2635a5a20a0651df63a5a1ec7971f79a5179de92c3339eba3b",
+    "gzip": true
+  },
+  "cases/no_residual/shared_start.json": {
+    "path": "cases/no_residual/shared_start.json.gz",
+    "original_sha256": "efe4550d2e229138dc512e35b6d8f5e911b356ee0dbc91bf1c286860519b0ab8",
+    "gzip": true
+  },
+  "cases/no_residual/rl/events.jsonl": {
+    "path": "cases/no_residual/rl/events.jsonl.gz",
+    "original_sha256": "527035b7396375c0e825b86f9fb1f5fbbeaee0ff256ebd3251750b97ebadfc42",
+    "gzip": true
+  },
+  "cases/no_residual/rl/learning.jsonl": {
+    "path": "cases/no_residual/rl/learning.jsonl.gz",
+    "original_sha256": "f2114345d2d51b09ce14f0e6afca3a6323b3668cf54dcf5820d23b1eda1501bb",
+    "gzip": true
+  },
+  "cases/no_residual/rl/proposal_ledger.jsonl": {
+    "path": "cases/no_residual/rl/proposal_ledger.jsonl.gz",
+    "original_sha256": "d75837774b95549c719e6b89dd849b82132603f0290d064a5be24f88c1e562e8",
+    "gzip": true
+  },
+  "cases/no_residual/rl/recommendation.json": {
+    "path": "cases/no_residual/rl/recommendation.json.gz",
+    "original_sha256": "75e092648ec6c17b7d3075118fed52fdb29fb527b6f9c38e5e6ca2f867f1157c",
+    "gzip": true
+  },
+  "cases/no_residual/rl/worker/accounting.json": {
+    "path": "cases/no_residual/rl/worker/accounting.json.gz",
+    "original_sha256": "1b4f1cb1c7047234e287efe241204310d881fd4f76d27e8f5a2eb0128a289ed6",
+    "gzip": true
+  },
+  "cases/myopic/status.json": {
+    "path": "cases/myopic/status.json",
+    "original_sha256": "90f1ec212680270f18f166b26dc96bf7a798a1cd66d269ca4694ae0dfca2edc2",
+    "gzip": false
+  },
+  "cases/myopic/summary.json": {
+    "path": "cases/myopic/summary.json",
+    "original_sha256": "51135ea023fd083db17757136d6542f8afdc0f33be20208c4bfb813bd436fe45",
+    "gzip": false
+  },
+  "cases/myopic/effective_config.json": {
+    "path": "cases/myopic/effective_config.json",
+    "original_sha256": "a9b1c9ed4aed60f70360ea6d307d7d2480d03881c002e129d2e4f787e913972a",
+    "gzip": false
+  },
+  "cases/myopic/environment.json": {
+    "path": "cases/myopic/environment.json",
+    "original_sha256": "92f2bb77bfcd4cead00823efc2f3e0e4cbe2d572a91b0d1b60cd22d81597f924",
+    "gzip": false
+  },
+  "cases/myopic/source_snapshot_manifest.json": {
+    "path": "cases/myopic/source_snapshot_manifest.json",
+    "original_sha256": "e9281a255b7aa28f5f60c436c6f36230719e929d5accd405aded78cabf783137",
+    "gzip": false
+  },
+  "cases/myopic/seed_input_manifest.json": {
+    "path": "cases/myopic/seed_input_manifest.json",
+    "original_sha256": "cce76e03c0fd18debdaa7424c49df9084f0ef97487ca4bf8ad802e78894d77ea",
+    "gzip": false
+  },
+  "cases/myopic/analysis/audit.json": {
+    "path": "cases/myopic/analysis/audit.json",
+    "original_sha256": "287e84da58fec4372a92c298ae6528e0848821e0b5569ccfdc648792d10163dc",
+    "gzip": false
+  },
+  "cases/myopic/common.json": {
+    "path": "cases/myopic/common.json.gz",
+    "original_sha256": "86673334e0486b006c24d4ca35e8efc8bdff1084c1f53ae29eac1b12d1bc75a9",
+    "gzip": true
+  },
+  "cases/myopic/screening.json": {
+    "path": "cases/myopic/screening.json.gz",
+    "original_sha256": "ccd9e52a07cfae2635a5a20a0651df63a5a1ec7971f79a5179de92c3339eba3b",
+    "gzip": true
+  },
+  "cases/myopic/shared_start.json": {
+    "path": "cases/myopic/shared_start.json.gz",
+    "original_sha256": "efe4550d2e229138dc512e35b6d8f5e911b356ee0dbc91bf1c286860519b0ab8",
+    "gzip": true
+  },
+  "cases/myopic/rl/events.jsonl": {
+    "path": "cases/myopic/rl/events.jsonl.gz",
+    "original_sha256": "3760fd46c04b29b51d069ff25fc7bef4e7f806c17cdba119f44b33f9639c6023",
+    "gzip": true
+  },
+  "cases/myopic/rl/learning.jsonl": {
+    "path": "cases/myopic/rl/learning.jsonl.gz",
+    "original_sha256": "a5d527802ceffeeb7d5528817a7ccef227a78a17dc3dd0db83c4c88fa324b549",
+    "gzip": true
+  },
+  "cases/myopic/rl/proposal_ledger.jsonl": {
+    "path": "cases/myopic/rl/proposal_ledger.jsonl.gz",
+    "original_sha256": "950692987a9fd417135850b0fd96ce403e0c7ca37a1ce9775f1d278f406990a4",
+    "gzip": true
+  },
+  "cases/myopic/rl/recommendation.json": {
+    "path": "cases/myopic/rl/recommendation.json.gz",
+    "original_sha256": "6a7a8e77a6a5bacdbf41076841395621bf2ec66a80da6f7f3c25722046fe756e",
+    "gzip": true
+  },
+  "cases/myopic/rl/worker/accounting.json": {
+    "path": "cases/myopic/rl/worker/accounting.json.gz",
+    "original_sha256": "faed27a098b3f194d347b341e8501c9f5d9addd596455411600fe76d47003976",
+    "gzip": true
+  },
+  "protocol.json": {
+    "path": "protocol.json",
+    "original_sha256": "dda9ff0edd2eff8afc916719d9dfd7c8826c75494f6b4e24a834d1332c52cb42",
+    "gzip": false
+  },
+  "DEVELOPMENT_SELECTION.json": {
+    "path": "DEVELOPMENT_SELECTION.json",
+    "original_sha256": "a87c64d19912c62f47f6341b550c0bb5d61419773c35005d36cf4419fb02b568",
+    "gzip": false
+  },
+  "DEVELOPMENT_SNAPSHOT.json": {
+    "path": "DEVELOPMENT_SNAPSHOT.json",
+    "original_sha256": "0d5c8164db085648b6aa0e1c4fc9dfc7b35e52af62bf3da9eee599cda98fa99d",
+    "gzip": false
+  },
+  "RESULTS.md": {
+    "path": "RESULTS.md",
+    "original_sha256": "e4c48e8929615286471fcbc0984a1427e4b59aac1fec21354bb2c68226072842",
+    "gzip": false
+  },
+  "prospective_noR_fresh/supplemental_protocol.json": {
+    "path": "prospective_noR_fresh/supplemental_protocol.json",
+    "original_sha256": "8fa9af127c08b25e876020b9511ec3c43b1c7e9c84dd71e9d4ad607eb10a7788",
+    "gzip": false
+  },
+  "prospective_noR_fresh/plan.json": {
+    "path": "prospective_noR_fresh/plan.json",
+    "original_sha256": "7b0e5cd9e66d43731f93749a43fc05c88b84a2d20427eebdd5cedbb4fd71410c",
+    "gzip": false
+  },
+  "reporter_QA/confirmation_reporter_Toy_QA_v2.json": {
+    "path": "reporter_QA/confirmation_reporter_Toy_QA_v2.json",
+    "original_sha256": "7d024af970964318c03bb9fe8e4f63877d3ad17bba26e28995973d4e755b6abf",
+    "gzip": false
+  },
+  "unadopted_component/actual_bitset/receipt.json": {
+    "path": "unadopted_component/actual_bitset/receipt.json",
+    "original_sha256": "da9c80b0fde7a724d2b12a8ae2bada57f20dc0b8e323c40b261660b5b14f2e1d",
+    "gzip": false
+  },
+  "unadopted_component/actual_bitset/result.json": {
+    "path": "unadopted_component/actual_bitset/result.json",
+    "original_sha256": "4758a67c70e655b0c4a325e1808e140695e15c77d4eca7ef592d554601dce99a",
+    "gzip": false
+  },
+  "unadopted_component/actual_bitset/build_before_atoms_top.txt": {
+    "path": "unadopted_component/actual_bitset/build_before_atoms_top.txt",
+    "original_sha256": "0296f81a5dced1a9e9b1b3e5e0a0de73bc1feca114f38e1dabd78b06d423ba03",
+    "gzip": false
+  },
+  "unadopted_component/property_cache/protocol.json": {
+    "path": "unadopted_component/property_cache/protocol.json",
+    "original_sha256": "8718e66d3375bb7376c134fd972150b6fb0f11cdd1c9f71868e051ca08f6cd58",
+    "gzip": false
+  },
+  "unadopted_component/property_cache/baseline/result.json": {
+    "path": "unadopted_component/property_cache/baseline/result.json",
+    "original_sha256": "31f966dafac61343e8cc7825b855a664ecb6ed877ae84b245aab5f11f79300b1",
+    "gzip": false
+  },
+  "unadopted_component/property_cache/optimized/RESOURCE_TERMINATION.json": {
+    "path": "unadopted_component/property_cache/optimized/RESOURCE_TERMINATION.json",
+    "original_sha256": "671a6d193d82a1e9446eeb237d00cff809004e0cda3795f41d3c5bb24fd71e0a",
+    "gzip": false
+  }
+}

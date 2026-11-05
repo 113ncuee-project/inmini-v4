@@ -1,0 +1,190 @@
+{
+  "promoted_utc": "2026-11-05T03:00:22.346187+00:00",
+  "old_source_identity": "b771758cbeba3788922270f05e4eb9f459b7336c0031f88e775151b45a1d89b4",
+  "new_source_identity": "f434af44f03a95d0860f4f8ebfa94e248548f98a090613d952fe74884cf7b5f5",
+  "source_files": 220,
+  "physical_files_unchanged": 78,
+  "actual_regressions": 210,
+  "actual_child_CLI": {
+    "passed": true,
+    "source_identity": "f434af44f03a95d0860f4f8ebfa94e248548f98a090613d952fe74884cf7b5f5",
+    "source_files": 220,
+    "physical_files_unchanged": 78,
+    "learners_and_full_space_unchanged": true,
+    "rows": [
+      {
+        "case": "balanced",
+        "preference": "balanced",
+        "new_actual_Toy_PPA": 32,
+        "methods": [
+          "rl",
+          "sa",
+          "random"
+        ],
+        "SGD": 80,
+        "audited": true
+      },
+      {
+        "case": "low_latency",
+        "preference": "low_latency",
+        "new_actual_Toy_PPA": 32,
+        "methods": [
+          "rl",
+          "sa",
+          "random"
+        ],
+        "SGD": 80,
+        "audited": true
+      },
+      {
+        "case": "low_power",
+        "preference": "low_power",
+        "new_actual_Toy_PPA": 34,
+        "methods": [
+          "rl",
+          "sa",
+          "random"
+        ],
+        "SGD": 88,
+        "audited": true
+      },
+      {
+        "case": "power_resume_reference",
+        "preference": "low_power",
+        "new_actual_Toy_PPA": 20,
+        "methods": [
+          "rl"
+        ],
+        "SGD": 152,
+        "audited": true
+      },
+      {
+        "case": "power_resumed",
+        "preference": "low_power",
+        "new_actual_Toy_PPA": 20,
+        "methods": [
+          "rl"
+        ],
+        "SGD": 152,
+        "audited": true
+      },
+      {
+        "case": "small_area",
+        "preference": "small_area",
+        "new_actual_Toy_PPA": 32,
+        "methods": [
+          "rl",
+          "sa",
+          "random"
+        ],
+        "SGD": 80,
+        "audited": true
+      }
+    ],
+    "actual_child_CLI_Toy_PPA": 170,
+    "actual_child_CLI_SGD": 632,
+    "new_DNN_PPA": 0,
+    "new_SGD_by_receipt": 0,
+    "images": 0,
+    "scope": "Real internal child-CLI integration; not new parent/cohort workflow. Complete historical b771 workflow retained with original source/time labels."
+  },
+  "actual_HTTP": {
+    "passed": true,
+    "actual_HTTP": true,
+    "objectives": [
+      {
+        "objective": "balanced",
+        "weights": {
+          "latency": 0.3333333333333333,
+          "area": 0.3333333333333333,
+          "power": 0.3333333333333333
+        },
+        "hard_limits": {
+          "max_power": 3.5,
+          "max_area": 120.0,
+          "max_latency_ms": 10.0
+        }
+      },
+      {
+        "objective": "low_latency",
+        "weights": {
+          "latency": 0.8,
+          "area": 0.1,
+          "power": 0.1
+        },
+        "hard_limits": {
+          "max_power": 3.5,
+          "max_area": 120.0,
+          "max_latency_ms": 10.0
+        }
+      },
+      {
+        "objective": "low_power",
+        "weights": {
+          "latency": 0.1,
+          "area": 0.1,
+          "power": 0.8
+        },
+        "hard_limits": {
+          "max_power": 3.5,
+          "max_area": 120.0,
+          "max_latency_ms": 10.0
+        }
+      },
+      {
+        "objective": "small_area",
+        "weights": {
+          "latency": 0.1,
+          "area": 0.8,
+          "power": 0.1
+        },
+        "hard_limits": {
+          "max_power": 3.5,
+          "max_area": 120.0,
+          "max_latency_ms": 10.0
+        }
+      },
+      {
+        "objective": "edp",
+        "weights": null,
+        "hard_limits": {
+          "max_power": 3.5,
+          "max_area": 120.0,
+          "max_latency_ms": 10.0
+        }
+      },
+      {
+        "objective": "latency",
+        "weights": null,
+        "hard_limits": {
+          "max_power": 3.5,
+          "max_area": 120.0,
+          "max_latency_ms": 10.0
+        }
+      },
+      {
+        "objective": "energy",
+        "weights": null,
+        "hard_limits": {
+          "max_power": 3.5,
+          "max_area": 120.0,
+          "max_latency_ms": 10.0
+        }
+      }
+    ],
+    "preference_alias": true,
+    "conflicting_target_rejected": true,
+    "nonfinite_limits_rejected": true,
+    "token_required": true,
+    "preview_preserves_saved_job": true,
+    "new_PPA": 0,
+    "new_SGD": 0,
+    "script_sha256": "78b03c8906f9aa74201c7fb9a166bc470fa6c31ccd9ea9a1f9b2867946b510b9",
+    "scope": "Actual GUI HTTP forms/normalization and generated CLI flags, no worker or PPA execution. True CLI search/stop/resume remains a separate required check."
+  },
+  "parent_cohort_coverage": "Historical b771 full workflow remains labeled b771; new preference internal child-CLI actually rerun. Do not claim a new outer-parent/cohort run.",
+  "existing_DNN_studies": "Continue unchanged frozen b771 and original checkpoints/objective; no relabeling or experiment restart",
+  "new_PPA_by_promotion": 0,
+  "new_SGD_by_promotion": 0,
+  "images": 0
+}

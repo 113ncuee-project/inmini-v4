@@ -1,6 +1,6 @@
-# INMIN Full v0.9：本機操作與完整搜尋空間
+# INMIN Full v0.10：本機操作與完整搜尋空間
 
-更新：2026-11-04。程式來源 `b771758cbeba3788922270f05e4eb9f459b7336c0031f88e775151b45a1d89b4`。204項回歸、明記來源的CLI涵蓋證據、實際GUI與並行精確恢復已通過；新RL技術的收益另由實驗對照驗證。[驗證證據](INMIN_FULL_SYSTEM_VALIDATION.md) · [技術與協定](INMIN_GRAPH_EDIT_DEVELOPMENT.md) · [新版分層探索](INMIN_STRATIFIED_SEARCH.md) · [前版成本Q結果](INMIN_COST_VALUE_RESULTS.md) · [歷史結果](INMIN_GRAPH_EDIT_RESULTS.md) · [RACE-RL參考核對](INMIN_RACE_REFERENCE_AUDIT.md)。
+更新：2026-11-05。來源 `f434af44f03a95d0860f4f8ebfa94e248548f98a090613d952fe74884cf7b5f5`，220檔。210項回歸、四PPA偏好的實際internal child-CLI／精確續跑、實際GUI/API預覽通過；前版b771的外層CLI／並行證據保留原來源，沒有標成新版重跑。新RL收益另以實驗對照判定。[驗證證據](INMIN_FULL_SYSTEM_VALIDATION.md) · [使用者PPA偏好](INMIN_USER_PPA_PREFERENCES.md) · [技術與協定](INMIN_GRAPH_EDIT_DEVELOPMENT.md) · [新版分層探索](INMIN_STRATIFIED_SEARCH.md) · [RACE-RL參考核對](INMIN_RACE_REFERENCE_AUDIT.md)。
 
 ## 最短啟動方式
 
@@ -15,6 +15,8 @@ py -3.12 -m venv .venv
 
 隨附 `inputs/replay_v04/{resnet18,resnet50,mobilenet_v2}` 的工作量與已驗證初始mapping，重播不下載權重。新DNN可透過原seed工具建立相同格式的 `--seed-case`；原GUI04與歷史profile保留。
 
+使用者PPA偏好有均衡、低延遲、低平均功率、小面積，權重沿用V3；所有種子排名、篩選、reward與推薦都用同一固定reference的加權目標。GUI預設Balanced；CLI可用`--preference low_power`，wrapper用`-Objective low_power`。EDP／純Energy／純Latency另列研究目標，未指定的CLI預設EDP保留相容性。改偏好須開新實驗，續跑與已學policy不會混用；`objective.json`及checkpoint保存契約。
+
 ## 一次完整長跑
 
 ```powershell
@@ -28,7 +30,7 @@ py -3.12 -m venv .venv
 .\run_inmin_full_overnight.ps1 -Resume -OutputRoot output/full_system_overnight -KeepAwake
 ```
 
-腳本預設cost-Q、量測後0.25惡化reset／機率0.9、每4步顆數分層探索及600秒單次oracle；可用 -Policy transition、-DisableCostRestart、-ArchitectureRefreshInterval 0 做對照。預設三RNG×三方法，搜尋上限合計九小時，另加共同階段。每個模型的第一個RNG生成共同起點，後續RNG預設重用同一份已支付起點與共同觀察，重新初始化自己的網路、optimizer及RNG；不導入任何搜尋結果或訓練policy。每一方法仍繼承完整共同查詢與時間帳。若要重新生成不同起點，使用 -IndependentInitialization，並分開報告起點與隨機性。每個模型的第一個RNG生成共同起點，後續RNG預設重用同一份已支付起點與共同觀察，重新初始化自己的網路、optimizer及RNG；不導入任何搜尋結果或訓練policy。每一方法仍繼承完整共同查詢與時間帳。若要重新生成不同起點，使用 -IndependentInitialization，並分開報告起點與隨機性。每個模型的第一個RNG生成共同起點，後續RNG預設重用同一份已支付起點與共同觀察，重新初始化自己的網路、optimizer及RNG；不導入任何搜尋結果或訓練policy。每一方法仍繼承完整共同查詢與時間帳。若要重新生成不同起點，使用 -IndependentInitialization，並分開報告起點與隨機性。可指定多個模型；請先選擇符合可用時間的組合。腳本執行期間暫時避免自動睡眠；電腦要保持開機。一般本機執行不需要對話或LLM服務。
+腳本預設cost-Q、量測後0.25惡化reset／機率0.9、每4步顆數分層探索及600秒單次oracle；可用 -Policy transition、-DisableCostRestart、-ArchitectureRefreshInterval 0 做對照。預設三RNG×三方法，搜尋上限合計九小時，另加共同階段。每個模型的第一個RNG生成共同起點，後續RNG預設重用同一份已支付起點與共同觀察，重新初始化自己的網路、optimizer及RNG；不導入任何搜尋結果或訓練policy。每一方法仍繼承完整共同查詢與時間帳。若要重新生成不同起點，使用 -IndependentInitialization，並分開報告起點與隨機性。可指定多個模型；請先選擇符合可用時間的組合。腳本執行期間暫時避免自動睡眠；電腦要保持開機。一般本機執行不需要對話或LLM服務。
 
 夜間腳本可另指定 `-SeedQueries 48 -SeedSeconds 3600 -SeedDPSeconds 1800` 延長初始化；`-ScreenSeconds` 控制共同架構篩選。這些是有界計算預算，不保證窮舉完成。硬限制可事前指定 `-MaxArea 150 -MaxPower 6.5 -MaxLatencyMs 5`，0表示不設定；不能看到輸贏後才加限制。`-DryRun`只列命令，不啟動PPA或建立實驗目錄。
 

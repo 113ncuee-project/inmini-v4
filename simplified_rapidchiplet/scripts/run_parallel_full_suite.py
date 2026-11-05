@@ -23,6 +23,8 @@ ROOT = next((p for p in APP.parents if (p/'inputs/replay_v04').is_dir() and (p/'
 sys.path.insert(0,str(APP/'scripts'))
 from run_local_rl_diagnostics import sources,sha,lock,read,write,environment
 from full_cohort import shared_lock
+sys.path.insert(0,str(APP))
+from ppa_preferences import OBJECTIVES,PPA_WEIGHTS,resolve_target
 
 
 def default_jobs(args):
@@ -71,6 +73,12 @@ def prepare(out,args):
         protocol = read(out/'cohort_protocol.json')
         if not protocol:
             raise ValueError('No cohort to resume')
+        requested=getattr(args,'preference',None)
+        if requested:
+            for job in protocol['jobs']:
+                flags=job['arguments']
+                value=flags[flags.index('--objective')+1] if '--objective' in flags else 'edp'
+                if value!=requested:raise ValueError('Resume preserves each saved PPA preference; use a new experiment')
         return protocol
     if (out/'cohort_protocol.json').exists():
         raise ValueError('Cohort exists; use --resume or new output')
@@ -310,7 +318,8 @@ def main():
     parser.add_argument('--queries',type=int,default=512)
     parser.add_argument('--seconds',type=float,default=7200)
     parser.add_argument('--eval-timeout',type=float,default=600)
-    parser.add_argument('--objective',default='edp',choices=('edp','energy','latency','balanced'))
+    parser.add_argument('--objective',choices=OBJECTIVES)
+    parser.add_argument('--preference',choices=tuple(PPA_WEIGHTS))
     parser.add_argument('--policy',default='cost',choices=('cost','residual','transition'))
     parser.add_argument('--architecture-screen',default='all',choices=('all','off'))
     parser.add_argument('--screen-seconds',type=float,default=3600)
@@ -327,6 +336,8 @@ def main():
     parser.add_argument('--seed-case',type=Path)
     parser.add_argument('--shared-case',type=Path)
     args=parser.parse_args()
+    try:args.objective=resolve_target(args.objective,args.preference)
+    except ValueError as error:parser.error(str(error))
     out=args.out.resolve()
     if not out.is_relative_to(ROOT/'output'):
         raise ValueError('Cohort must remain in project output')

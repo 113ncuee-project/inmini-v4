@@ -16,13 +16,14 @@ APP = Path(__file__).resolve().parent
 ROOT = APP.parent
 sys.path.insert(0, str(APP / 'scripts'))
 from run_local_rl_diagnostics import read, write
+from ppa_preferences import OBJECTIVES,objective_contract,resolve_target
 
 HTML = '''<!doctype html><html lang="zh-Hant"><meta charset="utf-8"><title>INMIN Full System</title>
 <style>body{font:16px system-ui;max-width:1050px;margin:35px auto;background:#101720;color:#edf2f9}input,select,button{padding:8px;margin:5px;background:#233245;color:inherit;border:1px solid #526880;border-radius:5px}label{display:inline-block}pre{white-space:pre-wrap;background:#192535;padding:16px}a{color:#8fc8ff}table{border-collapse:collapse;width:100%}td,th{border:1px solid #526880;padding:7px}</style>
 <h1>INMIN 完整設計空間搜尋</h1><p>沿用 v3 硬體：1–16 Compute／50 矩形、16 PE／Compute、共享 L2、Batch=1。完整 Mapping、分組、Fusion／Tile／Cache、Dataflow 與 DRAM。所有結果須完成完整 PPA。</p>
 CUSTOM_WORKLOAD
 <form id="form"><label>模型 <select name="model"><option>resnet18</option><option>resnet50</option><option>mobilenet_v2</option></select></label>
-<label>目標 <select name="objective"><option>edp</option><option>balanced</option><option>latency</option><option>energy</option></select></label>
+<label>使用者 PPA 偏好／研究目標 <select name="objective"><option value="balanced">均衡（T/A/P 各1/3）</option><option value="low_latency">低延遲（T80%、A/P各10%）</option><option value="low_power">低平均功率（P80%、T/A各10%）</option><option value="small_area">小面積（A80%、T/P各10%）</option><option value="edp">研究：EDP</option><option value="latency">研究：純Latency</option><option value="energy">研究：純Energy</option></select></label>
 <label>方法 <select name="methods"><option value="rl,sa,random">RL + SA + Random</option><option value="rl,sa">RL + SA</option><option value="rl">RL</option></select></label><br>
 <label>每方法完整 PPA 上限 <input name="queries" type="number" min="8" value="512"></label>
 <label>每方法搜尋秒數 <input name="seconds" type="number" min="1" value="3600"></label>
@@ -44,13 +45,13 @@ CUSTOM_WORKLOAD
 <label>Area 上限 mm²（可空） <input name="max_area" type="number" step="any" min="0"></label>
 <label>Latency 上限 ms（可空） <input name="max_latency_ms" type="number" step="any" min="0"></label><br>
 <button>開始新實驗</button><button type="button" onclick="act('resume')">續跑上次實驗</button><button type="button" onclick="act('stop')">儲存後停止</button></form>
-<p>可鎖定螢幕，請維持電腦開機。數值屬解析 PPA。RL／SA 勝負以相同查詢與時間下的結果為準。</p>
+<p>每次實驗固定使用者偏好與硬限制；續跑沿用原設定，改偏好請開新實驗。低平均功率與低能量是不同目標。可鎖定螢幕，請維持電腦開機。數值屬解析 PPA，RL／SA勝負以相同查詢與時間判讀。</p>
 <h2>執行狀態</h2><pre id="status">載入中</pre><div id="results"></div><h2>最新記錄</h2><pre id="log"></pre>
 <script>
 async function act(action,params={}){let r=await fetch('/api/'+action,{method:'POST',headers:{'Content-Type':'application/json','X-INMIN-Token':TOKEN},body:JSON.stringify(params)});let d=await r.json();if(!r.ok)alert(d.error);await refresh()}
 document.querySelector('#form').onsubmit=e=>{e.preventDefault();act('start',Object.fromEntries(new FormData(e.target)))};
 async function refresh(){try{
-let d=await(await fetch('/api/status')).json();document.querySelector('#status').textContent=JSON.stringify(d.status,null,2)+'\\n'+(d.out||'');document.querySelector('#log').textContent=d.log||'';
+let d=await(await fetch('/api/status')).json();document.querySelector('#status').textContent=JSON.stringify(d.status,null,2)+'\\n'+(d.out||'')+'\\n'+JSON.stringify(d.objective||{},null,2);document.querySelector('#log').textContent=d.log||'';
 let box=document.querySelector('#results');box.replaceChildren();
 for(let [k,v] of Object.entries(d.summary||{})){
 let p=document.createElement('p'),r=(d.recommendations||{})[k];
@@ -140,6 +141,7 @@ def main():
                 summaries = read(out / 'summary.json', {}) if out else {}
                 self.respond(dict(out=str(out) if out else None, status=read(out / 'status.json', {}) if out else {},
                     summary=summaries, recommendations=recommendations(out, summaries) if out else {},
+                    objective=read(out/'objective.json',{}) if out else {},
                     shared_start={k:v for k,v in read(out / 'shared_start.json', {}).items() if k in ('cost', 'full_ppa', 'wall_s', 'gain_before_rl_pct', 'initialization')} if out else {}, log=log))
             else:
                 self.respond(dict(error='not found'), 404)
@@ -164,8 +166,9 @@ def main():
                     if not out.is_relative_to((ROOT / 'output/full_system_gui').resolve()):
                         raise ValueError('job output escapes GUI directory')
                     command = [sys.executable, '-u', '-X', 'utf8', str(APP / 'full_system_dse.py'), '--out', str(out), '--resume']
-                elif self.path == '/api/start':
-                    if data['model'] not in ('resnet18', 'resnet50', 'mobilenet_v2') or data['objective'] not in ('balanced', 'edp', 'latency', 'energy'):
+                elif self.path in ('/api/start','/api/preview'):
+                    data['objective']=resolve_target(data.get('objective'),data.get('preference'),default='balanced')
+                    if data['model'] not in ('resnet18', 'resnet50', 'mobilenet_v2') or data['objective'] not in OBJECTIVES:
                         raise ValueError('unknown model/objective')
                     if data['methods'] not in ('rl,sa,random', 'rl,sa', 'rl') or data['architecture_screen'] not in ('all', 'off'):
                         raise ValueError('unknown methods/screen')
@@ -217,9 +220,13 @@ def main():
                     for key in ('max_power', 'max_area', 'max_latency_ms'):
                         if data.get(key):
                             value = float(data[key])
-                            if value <= 0:
+                            if not math.isfinite(value) or value <= 0:
                                 raise ValueError('limits must be positive')
                             command += ['--' + key.replace('_', '-'), str(value)]
+                    if self.path=='/api/preview':
+                        return self.respond(dict(status='validated_without_execution',objective=objective_contract(data['objective']),
+                            hard_limits={k:float(data[k]) if data.get(k) else None for k in ('max_power','max_area','max_latency_ms')},
+                            command=command,new_PPA=0,new_SGD=0))
                     job = dict(out=str(out), command=command)
                     write(registry, job)
                 else:

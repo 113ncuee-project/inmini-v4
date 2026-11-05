@@ -1,0 +1,25 @@
+{
+  "created_utc": "2026-11-05T01:54:42.331739+00:00",
+  "source_identity": "b771758cbeba3788922270f05e4eb9f459b7336c0031f88e775151b45a1d89b4",
+  "script_sha256": "a11e39be2454bbf893293a9d40f690cddd45dd59f27955e7698843d1b0038277",
+  "plan_sha256": "12cab70004c8cdd814777c19a4dc53bf1131557b137503a13ebc0080ec0d17ad",
+  "scope": "ADDITIONAL control designed after development residual/7 and partial no_residual/7, before any fresh197/207/217 PPA. Not part of the original study selection gate. Original protocol remains immutable.",
+  "dependency": "C:\\Users\\user\\Desktop\\rapidchiplet\\output\\inmin_v14_20261105\\readiness_study_v1",
+  "seeds": [
+    197,
+    207,
+    217
+  ],
+  "methods": [
+    "rl_without_residual_correction"
+  ],
+  "new_queries_per_seed": 192,
+  "search_seconds_per_seed": 3600,
+  "oracle_seconds": 600,
+  "concurrent_cases": 3,
+  "contrast": "Only disable measured residual R. Same frozenV0, realH, proposal/cut/restart/refresh/physical model and paid shared start as original fresh residual cohort.",
+  "analysis": "Compare BOTH matched charged query and matched charged wall floors, all seeds, negatives, CPU/wall ledgers and shared costs. No transfer of search labels or weights. Do not select only favorable endpoints.",
+  "images": 0,
+  "new_PPA_by_preparation": 0,
+  "new_SGD_by_preparation": 0
+}

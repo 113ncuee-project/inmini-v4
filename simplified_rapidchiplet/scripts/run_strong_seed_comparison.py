@@ -19,6 +19,7 @@ from run_local_rl_diagnostics import read, write, sources, sha, lock
 from profile_mapping_oracle import load_workload
 from replay_mapping_dse import compact, append
 from full_system_dse import objective_cost
+from ppa_preferences import OBJECTIVES
 from simple_rapidchiplet.hybrid.full_space import FullDesignSpace, DesignTrial
 from simple_rapidchiplet.hybrid.rl_schema import DesignState
 from simple_rapidchiplet.hybrid.single_array_hardware import enumerate_single_array_architectures_v3
@@ -183,7 +184,7 @@ if __name__ == '__main__':
     p.add_argument('--dp-seconds', type=float, default=600)
     p.add_argument('--seconds', type=float, default=1200)
     p.add_argument('--eval-timeout', type=float, default=240)
-    p.add_argument('--objective', choices=('edp', 'balanced', 'latency', 'energy'), default='edp')
+    p.add_argument('--objective', choices=OBJECTIVES, default='edp')
     p.add_argument('--max-area', type=float)
     p.add_argument('--max-power', type=float)
     p.add_argument('--max-latency-ms', type=float)
