@@ -12,6 +12,7 @@
 |[搜尋技術與實驗協定](docs/INMIN_GRAPH_EDIT_DEVELOPMENT.md)|Q學習、張量邊界／PE指派特徵、資源守恆DP與公平對照|
 |[新版分層探索與實驗進度](docs/INMIN_STRATIFIED_SEARCH.md)|完整V3空間、成本拆分Q、架構探索修正與待完成對照|
 |[學習器修正與完整空間](docs/INMIN_RESIDUAL_RL_DESIGN.md)|固定共享先驗、自己量測殘差、normalized多步Q與因果控制|
+|[修正後RL的實際開發結果](docs/INMIN_RESIDUAL_RL_RESULTS.md)|一個已完成種子、相同查詢／時間、固定起點排序與負面結果|
 |[RL學習檢查](docs/INMIN_POLICY_LEARNING_RESULTS.md)|未訓練設計的成本排序、細部排序與退步案例|
 |[成本拆分Q前版結果](docs/INMIN_COST_VALUE_RESULTS.md)|v0.7強DP後RL改善16.06%，Random24.42%；保留負面結果|
 |[RACE-RL來源核對](docs/INMIN_RACE_REFERENCE_AUDIT.md)|組員方法、不同硬體與可移植範圍|
@@ -56,7 +57,13 @@ GUI的RL成本表示選「固定先驗＋線上修正Q（實驗）」。指令�
 
 ## 結果應如何判讀
 
-v0.9修復了部分種子多步價值分支近常數、共享暖身造成空Adam更新的問題，並以自己的完整PPA觀察修正共享成本先驗。新控制器已通過功能驗收，新的ResNet18 DNN實驗仍在進行；尚未證明它勝過舊版、Random或SA。
+v0.9修復了部分種子多步價值分支近常數、共享暖身造成空Adam更新的問題，並以自己的完整PPA觀察修正共享成本先驗。第一組已審計ResNet18開發結果：新RL在共同強起點後降低26.48% EDP，較舊RL在相同查詢下改善6.09%、相同時間下改善11.98%；但舊Random7仍更好。新消融與fresh RNG確認尚未完成，不能宣稱穩定勝過Random／SA。
+
+[完成主臂的原始證據與推論模型](research_results/full_v09_development/README.md)提供0新增PPA／SGD的重現方式，包含固定同一起點的細部成本排序，以及最佳控制方案預測名次退步的結果：
+
+```powershell
+.venv/Scripts/python.exe -X utf8 research_tools/replay_residual_development.py
+```
 
 v0.8的18項結果已完成。主方法同query floor的平均EDP，RL為0.040524、Random為0.043626、同域SA為0.047132；但加入相同horizon的均勻控制後，RL同時間平均優勢只有約1.7%。開發種子7由Random勝出，確認種子37／47由RL勝出。所有負面結果和完整帳本都保留，三個種子不足以宣稱穩定或統計顯著優勢。
 

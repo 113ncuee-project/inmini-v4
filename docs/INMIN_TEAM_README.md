@@ -10,6 +10,7 @@
 4. [RL有沒有學到](INMIN_POLICY_LEARNING_RESULTS.md)：共享後與線上訓練後的相同未訓練設計排序；同架構／分組內檢查。
 5. [RACE-RL參考核對](INMIN_RACE_REFERENCE_AUDIT.md)：與同學原生RACE的演算法／硬體差異。對方完整ZIP／Word並未隨專案公開。
 6. [本版學習修復與因果控制](INMIN_RESIDUAL_RL_DESIGN.md)：V0／R／H的責任、真正Double-Q target、cold Adam、完整V3變數，以及尚未證明的研究優勢。
+7. [修正後RL的實際開發結果](INMIN_RESIDUAL_RL_RESULTS.md)：完成主臂、相同query／time、固定起點的排序檢查，以及未勝Random的限制。
 
 ## 主要程式在哪裡
 
@@ -23,6 +24,7 @@
 |`simple_rapidchiplet/hybrid/full_space.py`|所有V3有效設計變數的提案／特徵與完整交易|
 |`hybrid/architecture_refresh.py`|顆數分層轉移；這是外層非學習協調，所有方法共用|
 |`hybrid/cost_value_q.py`|成本拆分Double Q、物理成本輔助學習、target／replay|
+|`hybrid/residual_cost_q.py`|固定已付費V0、僅自己的真實PPA殘差R、非飽和多步H|
 |`hybrid/single_array_seed_v3.py`|容量感知Tangram-style連續segment DP／beam起點|
 |`scripts/refine_full_start.py`、`build_strong_shared_start.py`|較寬DP／內層mapping候選，完整PPA重新排名與共同計帳|
 |`hybrid/single_array_compiler.py`|16PE／共享L2／精度／ownership／Fusion的實體編譯|
@@ -31,6 +33,7 @@
 |`hybrid/native_calendar.cpp`|相同物理定義的可選C++calendar計算核心|
 |`scripts/analyze_full_system.py`|來源／功率能量／reward／查詢／機率／推薦可行性審計|
 |`research_tools/analyze_policy_learning.py`|獨立診斷成本排序，0新增PPA／SGD|
+|`research_tools/replay_residual_development.py`|從公開推論權重與固定corpus重現新學習診斷，0新增PPA／SGD|
 |`research_tools/extend_full_run.py`|在新目錄延長已完成研究，保留所有原查詢／時間／policy|
 
 表中`hybrid/`均位於`simplified_rapidchiplet/simple_rapidchiplet/`；`scripts/`位於`simplified_rapidchiplet/`。硬體profile與歷史入口保留，不應把舊4Core數值當成新16PE架構。
@@ -53,4 +56,4 @@ RL保留current與best，允許有限較差中間狀態；Random每次回到best
 
 目前硬體為未經晶片校準的解析模型，M／T假設見規格與輸出profile；Tangram-style與Gemini-style／SA是同域改編，沒有重現原論文全部二進位實驗。Fusion也有流量較多、EDP較差的實評配對，不能當成必然收益。
 
-新的固定先驗／線上殘差Double Q已完成小型測試，正在排隊進行完整驗收與新PPA。請依對應來源與完成標記判讀；不要將原型或排入佇列寫成已完成的論文結果。
+新的固定先驗／線上殘差Double Q已通過完整功能驗收，第一組真實ResNet18開發主臂也已完成審計。其EDP比共同強起點降低26.48%，但同種子的舊Random仍較好；消融與新種子確認尚未完成。公開原始數據與安全推論模型的hash驗證及三階段排序重播已實際通過。請依來源、完成標記與控制範圍判讀，避免把開發結果當成獨立確認。

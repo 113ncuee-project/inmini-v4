@@ -26,3 +26,11 @@ research_results/full_v09_validation/** -text
 run_inmin_full_parallel.ps1 -text
 
 run_inmin_full_parallel.cmd -text
+
+research_results/full_v09_development/** -text
+
+research_tools/replay_residual_development.py -text
+
+research_tools/analyze_residual_learning.py -text
+
+research_tools/report_residual_development.py -text

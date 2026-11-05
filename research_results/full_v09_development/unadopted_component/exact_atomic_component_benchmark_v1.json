@@ -1,0 +1,41 @@
+{
+  "ordered_outputs_identical": true,
+  "tested_inputs": 163,
+  "timings": [
+    {
+      "case": "singletons",
+      "demands": 1024,
+      "iterations": 12,
+      "seconds": {
+        "original": 0.2062162000220269,
+        "bitset": 0.05514810001477599
+      },
+      "component_speed_ratio": 3.7393164944354345
+    },
+    {
+      "case": "duplicates",
+      "demands": 512,
+      "iterations": 12,
+      "seconds": {
+        "original": 0.007785700028762221,
+        "bitset": 0.008745600003749132
+      },
+      "component_speed_ratio": 0.8902419531449628
+    },
+    {
+      "case": "diagonal",
+      "demands": 128,
+      "iterations": 12,
+      "seconds": {
+        "original": 0.14551199995912611,
+        "bitset": 0.02029230003245175
+      },
+      "component_speed_ratio": 7.170798762408458
+    }
+  ],
+  "new_PPA": 0,
+  "new_SGD": 0,
+  "source_script_sha256": "be32ac15cbe458a8d98b067f0d735f4e6c00ea631b24b66444f0afa369732b7c",
+  "adopted": false,
+  "scope": "synthetic exact atomic-demand partition component only; not full PPA equivalence, full oracle or DSE acceleration; existing physics/source guards unchanged"
+}

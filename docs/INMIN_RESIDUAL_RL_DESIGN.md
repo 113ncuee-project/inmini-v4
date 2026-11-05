@@ -110,3 +110,5 @@ terminal的future項為0。gamma仍為0.9；target network及target residual每6
 原有RNG7轉移重播時，舊residual的自身bootstrap擬合MAE為0.501，新版為0.822；RNG37為2.119與1.714。三個種子的原共享V均逐bit相同。這些target隨learner而不同，不能用來宣稱預測了已知最優回報。全部重播共20640次SGD、320次residual fit、5760個ridge候選，新增0次PPA。它們是開發診斷，沒有混入新DNN查詢。
 
 v08完整18項資料及五種方法對照保留。與均勻horizon控制相比，v08同時間平均優勢約1.7%，不是已解決的穩定學習優勢。新版本的殘差與gamma0／凍結控制仍須由新DNN結果判定。
+
+第一個新主臂已完成審計，EDP比共同強起點降低26.48%；同query及同time下分別優於舊RL6.09%及11.98%，但仍輸舊Random7。固定同一起點＋結果架構／分組的236個回顧pair，一致率由.550847變.627119；最佳控制方案rank則由22退到26。數字與限制見[實際開發結果](INMIN_RESIDUAL_RL_RESULTS.md)，安全推論重播已實際驗證。這不取代新RNG及gamma0／凍結等因果控制。

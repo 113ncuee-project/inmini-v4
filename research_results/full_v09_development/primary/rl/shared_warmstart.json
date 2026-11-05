@@ -1,0 +1,8 @@
+{
+  "physical_samples": 83,
+  "available_shared_samples": 83,
+  "policy_updates": 1992,
+  "charged_shared_full_ppa": 98,
+  "cost_value_q": true,
+  "scope": "absolute after-state physical cost labels; before-invariant potential head; continuation branch remains zero; zero new PPA"
+}

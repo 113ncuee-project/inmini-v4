@@ -1,0 +1,15 @@
+{
+  "created_utc": "2026-11-05T01:40:35.863503+00:00",
+  "source_identity": "b771758cbeba3788922270f05e4eb9f459b7336c0031f88e775151b45a1d89b4",
+  "included_completed_cases": [
+    "development/residual/7"
+  ],
+  "controls_status_at_export": {
+    "no_residual": "running",
+    "myopic": "not_started"
+  },
+  "new_PPA_by_export": 0,
+  "new_SGD_by_export": 0,
+  "images": 0,
+  "scope": "One adaptive development RNG. Old Random7 remains better. Fresh RNG confirmation and causal controls pending; no stable RL/native-paper/silicon claim."
+}

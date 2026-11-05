@@ -1,0 +1,21 @@
+{
+  "source_identity": "b771758cbeba3788922270f05e4eb9f459b7336c0031f88e775151b45a1d89b4",
+  "source_files": 218,
+  "images": 0,
+  "new_PPA_by_package": 0,
+  "new_SGD_by_package": 0,
+  "code": {
+    "path": "C:\\Users\\user\\Desktop\\rapidchiplet\\output\\uploads\\INMIN_Full_Code_20261105_v09_development_r1.zip",
+    "bytes": 2452632,
+    "files": 319,
+    "sha256": "2a682cd631b8744dc722ec836f4c4197f12e1542e241af092374a06a64e6e7b7",
+    "crc_and_sha_verified": true
+  },
+  "development": {
+    "path": "C:\\Users\\user\\Desktop\\rapidchiplet\\output\\uploads\\INMIN_Full_Development_20261105_v09_development_r1.zip",
+    "bytes": 3854444,
+    "files": 37,
+    "sha256": "f8c3e0d3a5a821d816fbc06f7081310292eda831e65d1e2d70a80e0cd3006887",
+    "crc_and_sha_verified": true
+  }
+}

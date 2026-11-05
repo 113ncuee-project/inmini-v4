@@ -1,0 +1,34 @@
+{
+  "source_identity": "b771758cbeba3788922270f05e4eb9f459b7336c0031f88e775151b45a1d89b4",
+  "models": [
+    {
+      "stage": "initial",
+      "SGD": 0,
+      "original_checkpoint_sha256": "5b5c476520979031367b37122672d927a9f5c7125132cfb635fe6563fd2964f2",
+      "observed_transitions": 0,
+      "nonterminal_transitions": 0,
+      "residual_fits": 0
+    },
+    {
+      "stage": "after_shared",
+      "SGD": 1992,
+      "original_checkpoint_sha256": "dfc710f164d28e55a4dc0d87b3009e711c311714cd7f0025043e9d3983e35580",
+      "observed_transitions": 0,
+      "nonterminal_transitions": 0,
+      "residual_fits": 0
+    },
+    {
+      "stage": "final",
+      "SGD": 3720,
+      "original_checkpoint_sha256": "5f7a30bb250da5476f06e407a76f3962e05556d7df9c1c87df3b898924e7d8d3",
+      "observed_transitions": 72,
+      "nonterminal_transitions": 48,
+      "residual_fits": 65
+    }
+  ],
+  "shared_value_bitwise_frozen": true,
+  "controller": "frozen prior + measured own residual + genuine nonterminal Double Q",
+  "exclusions": "No optimizer, training replay, RNG, private teammate files or images; successor inputs have no actions/rewards.",
+  "new_PPA_by_export": 0,
+  "new_SGD_by_export": 0
+}
